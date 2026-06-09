@@ -46,7 +46,7 @@ function CategoryPage() {
           <p className="text-muted-foreground">No items yet — please <Link to="/contact" className="text-primary font-semibold">contact us</Link> for procurement.</p>
         ) : (
           <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            {items.map((p) => (<ProductCard key={p.id} product={p} />))}
+            {items.map((p: typeof items[number]) => (<ProductCard key={p.id} product={p} />))}
           </div>
         )}
       </div>

@@ -58,7 +58,7 @@ function ProductPage() {
           </div>
           <p className="mt-5 text-foreground/85 leading-relaxed">{product.description}</p>
           <ul className="mt-5 space-y-2">
-            {product.features.map((f) => (
+            {product.features.map((f: string) => (
               <li key={f} className="flex items-start gap-2 text-sm"><CheckCircle2 className="mt-0.5 h-4 w-4 text-success shrink-0" /><span>{f}</span></li>
             ))}
           </ul>
@@ -95,7 +95,7 @@ function ProductPage() {
         <section className="mt-16">
           <h2 className="font-display text-2xl font-semibold">Related products</h2>
           <div className="mt-6 grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            {related.map((p) => (<ProductCard key={p.id} product={p} />))}
+            {related.map((p: typeof related[number]) => (<ProductCard key={p.id} product={p} />))}
           </div>
         </section>
       )}
