@@ -28,6 +28,7 @@ function Home() {
       <WhyChooseUs />
       <Procurement />
       <Testimonials />
+      <SalesRepBanner />
       <DeliveryBanner />
       <WhatsAppSection />
       <Newsletter />
@@ -212,6 +213,31 @@ function Testimonials() {
             </figcaption>
           </figure>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function SalesRepBanner() {
+  return (
+    <section className="container-page py-6">
+      <div className="relative overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-r from-primary via-primary-deep to-primary p-6 sm:p-10 shadow-elevated">
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold/20 blur-3xl" aria-hidden />
+        <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-primary-foreground">
+          <div className="flex items-start gap-4">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-gold text-gold-foreground shadow-soft">
+              <Users className="h-7 w-7" />
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-widest text-gold">Earn with us</div>
+              <div className="font-display text-2xl font-semibold sm:text-3xl">Would you like to become a Sales Representative?</div>
+              <p className="mt-2 text-sm text-primary-foreground/85 max-w-2xl">Join our nationwide partner program and earn attractive commissions selling books, medical and lab products to your network.</p>
+            </div>
+          </div>
+          <Link to="/sales-rep" className="inline-flex items-center gap-2 rounded-md bg-gradient-gold px-6 py-3 text-sm font-semibold text-gold-foreground shadow-soft hover:opacity-95 whitespace-nowrap">
+            Apply Now <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );
