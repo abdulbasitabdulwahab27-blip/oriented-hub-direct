@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star, CheckCircle2, Sparkles, FileText, ClipboardList } from "lucide-react";
 import { categories, bestSellers, products } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
@@ -27,6 +27,7 @@ function Home() {
       <BestSellers />
       <WhyChooseUs />
       <Procurement />
+      <QuotationListBanner />
       <Testimonials />
       <SalesRepBanner />
       <DeliveryBanner />
@@ -213,6 +214,40 @@ function Testimonials() {
             </figcaption>
           </figure>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function QuotationListBanner() {
+  const msg = "Hello Oriented Hub, I have a list of items I would like a quotation for. I will share the list now.";
+  return (
+    <section className="container-page py-6">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-elevated">
+        <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-primary/10 blur-3xl" aria-hidden />
+        <div className="relative grid gap-6 sm:grid-cols-[auto,1fr,auto] sm:items-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shadow-soft">
+            <ClipboardList className="h-7 w-7" />
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-primary font-semibold">Bulk & institutional orders</div>
+            <h3 className="mt-1 font-display text-2xl font-semibold sm:text-3xl">Have you got a list? Kindly request a quotation.</h3>
+            <p className="mt-2 text-sm text-muted-foreground max-w-2xl">Send us your full procurement list — books, equipment, consumables — and we'll respond with itemised pricing, availability and delivery details.</p>
+            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-success" /> Itemised pricing</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-success" /> Institutional discounts</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-success" /> Fast turnaround</span>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 sm:items-end">
+            <a href={waLink(msg)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95 whitespace-nowrap">
+              <FileText className="h-4 w-4" /> Send Your List on WhatsApp
+            </a>
+            <a href={`mailto:${EMAIL}?subject=Quotation%20Request%20-%20Item%20List`} className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-6 py-3 text-sm font-semibold hover:bg-muted whitespace-nowrap">
+              <Mail className="h-4 w-4" /> Email Your List
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
