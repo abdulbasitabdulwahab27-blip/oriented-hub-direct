@@ -90,7 +90,7 @@ export type Product = {
   bestSeller?: boolean;
 };
 
-export const products: Product[] = [
+const rawProducts: Product[] = [
   { id: "p100", slug: 'hutchison-clinical-methods', name: "Hutchison's Clinical Methods (25th Edition)", category: 'books', image: p100img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Glynn & Drake', 'Hardcover'], bestSeller: true },
   { id: "p101", slug: 'clinical-biochemistry-crook', name: 'Clinical Biochemistry and Metabolic Medicine', category: 'books', image: p101img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ["International Students' Edition", 'Martin A. Crook'] },
   { id: "p102", slug: 'public-health-tropics-lucas', name: 'Short Textbook of Public Health Medicine for the Tropics', category: 'books', image: p102img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Revised 4th Edition', 'Lucas & Gilles'] },
@@ -152,6 +152,23 @@ export const products: Product[] = [
   { id: "p158", slug: 'drive-automatic-bp-monitor-kwl-b04', name: 'Drive Automatic Upper Arm Blood Pressure Monitor (KWL-B04)', category: 'medical-equipment', image: p158img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['One-key measurement', 'Arrhythmia monitoring', 'Large display', '99-group memory'], bestSeller: true },
   { id: "p159", slug: '3m-littmann-classic-iii-stethoscope', name: '3M Littmann Classic III Stethoscope', category: 'medical-equipment', image: p159img.url, description: 'Authentic 3M product supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Dual-sided chestpiece', 'Tunable diaphragm', 'Latex-free'], bestSeller: true },
 ];
+
+// Deduplicate: keep the first occurrence per slug, name (case-insensitive) and image URL.
+export const products: Product[] = (() => {
+  const seenSlug = new Set<string>();
+  const seenName = new Set<string>();
+  const seenImage = new Set<string>();
+  const out: Product[] = [];
+  for (const p of rawProducts) {
+    const nameKey = p.name.trim().toLowerCase();
+    if (seenSlug.has(p.slug) || seenName.has(nameKey) || seenImage.has(p.image)) continue;
+    seenSlug.add(p.slug);
+    seenName.add(nameKey);
+    seenImage.add(p.image);
+    out.push(p);
+  }
+  return out;
+})();
 
 export function getProduct(id: string) {
   return products.find((p) => p.id === id || p.slug === id);
