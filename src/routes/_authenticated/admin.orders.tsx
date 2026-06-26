@@ -158,8 +158,17 @@ function AdminOrders() {
             </button>
           )}
         </div>
-        <div className="mt-3 text-xs text-muted-foreground">
-          Showing <b>{filtered.length}</b> of {orders.length} order{orders.length === 1 ? "" : "s"}.
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="text-xs text-muted-foreground">
+            Showing <b>{filtered.length}</b> of {orders.length} order{orders.length === 1 ? "" : "s"}.
+          </div>
+          <button
+            onClick={exportCsv}
+            disabled={filtered.length === 0}
+            className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <Download className="h-3.5 w-3.5" /> Export CSV
+          </button>
         </div>
       </div>
 
