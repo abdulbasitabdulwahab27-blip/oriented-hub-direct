@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PlansRouteImport } from './routes/plans'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -46,6 +47,11 @@ const SalesRepRoute = SalesRepRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlansRoute = PlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/plans': typeof PlansRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/plans': typeof PlansRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/plans': typeof PlansRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/plans'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -159,6 +169,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/plans'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -174,6 +185,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/plans'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -190,6 +202,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  PlansRoute: typeof PlansRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesRepRoute: typeof SalesRepRoute
   ShopRoute: typeof ShopRoute
@@ -234,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plans': {
+      id: '/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof PlansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -302,6 +322,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  PlansRoute: PlansRoute,
   PrivacyRoute: PrivacyRoute,
   SalesRepRoute: SalesRepRoute,
   ShopRoute: ShopRoute,
@@ -313,13 +334,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
