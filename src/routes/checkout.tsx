@@ -32,16 +32,32 @@ function Checkout() {
     );
   }
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = schema.safeParse(form);
     if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Please check your details."); return; }
 
     const lines = items.map((it) => ({
+      id: it.id,
       name: it.name,
       category: categories.find((c) => c.slug === it.category)?.name ?? it.category,
       quantity: it.quantity,
     }));
+
+    // Save to database (best-effort; do not block WhatsApp handoff on failure)
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      await supabase.from("orders").insert({
+        customer_name: form.name,
+        customer_phone: form.phone,
+        customer_address: form.address,
+        notes: form.notes || null,
+        items: lines,
+      });
+    } catch (err) {
+      console.error("Order save failed", err);
+    }
+
     const msg = cartOrderMessage(lines, { name: form.name, phone: form.phone, address: form.address + (form.notes ? `\nNotes: ${form.notes}` : "") });
     window.open(waLink(msg), "_blank");
     toast.success("Order sent to WhatsApp — we'll confirm shortly.");

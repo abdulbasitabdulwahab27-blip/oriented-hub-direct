@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { categories, products } from "@/lib/products";
+import { categories } from "@/lib/products";
+import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 
 export const Route = createFileRoute("/shop")({
@@ -19,12 +20,13 @@ export const Route = createFileRoute("/shop")({
 function Shop() {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<string>("all");
+  const { products } = useAllProducts();
   const list = useMemo(() => {
     return products.filter((p) =>
       (cat === "all" || p.category === cat) &&
       (q.trim() === "" || p.name.toLowerCase().includes(q.toLowerCase()) || p.description.toLowerCase().includes(q.toLowerCase()))
     );
-  }, [q, cat]);
+  }, [products, q, cat]);
 
   return (
     <div className="container-page py-10 md:py-14">
