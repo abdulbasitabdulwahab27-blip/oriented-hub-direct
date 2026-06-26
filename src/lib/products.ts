@@ -153,6 +153,23 @@ const rawProducts: Product[] = [
   { id: "p159", slug: '3m-littmann-classic-iii-stethoscope', name: '3M Littmann Classic III Stethoscope', category: 'medical-equipment', image: p159img.url, description: 'Authentic 3M product supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Dual-sided chestpiece', 'Tunable diaphragm', 'Latex-free'], bestSeller: true },
 ];
 
+// Deduplicate: keep the first occurrence per slug, name (case-insensitive) and image URL.
+export const products: Product[] = (() => {
+  const seenSlug = new Set<string>();
+  const seenName = new Set<string>();
+  const seenImage = new Set<string>();
+  const out: Product[] = [];
+  for (const p of rawProducts) {
+    const nameKey = p.name.trim().toLowerCase();
+    if (seenSlug.has(p.slug) || seenName.has(nameKey) || seenImage.has(p.image)) continue;
+    seenSlug.add(p.slug);
+    seenName.add(nameKey);
+    seenImage.add(p.image);
+    out.push(p);
+  }
+  return out;
+})();
+
 export function getProduct(id: string) {
   return products.find((p) => p.id === id || p.slug === id);
 }
