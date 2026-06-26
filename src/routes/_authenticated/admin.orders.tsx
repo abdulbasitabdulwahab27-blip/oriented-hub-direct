@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_authenticated/admin/orders")({
   component: AdminOrders,
 });
 
-type OrderItem = { id?: string; name: string; category?: string; quantity: number };
+type OrderItem = { id?: string; name: string; category?: string; quantity: number; price?: number; fee?: number };
 type Order = {
   id: string;
   customer_name: string;
