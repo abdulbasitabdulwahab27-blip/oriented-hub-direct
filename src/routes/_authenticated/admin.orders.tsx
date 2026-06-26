@@ -103,14 +103,34 @@ function AdminOrders() {
       const s = v === null || v === undefined ? "" : String(v);
       return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
     };
-    const headers = ["Order ID","Customer","Phone","Address","Status","Placed","Received","Preparing","Quoted","Delivered","Items","Notes"];
-    const rows = filtered.map((o) => [
-      o.id, o.customer_name, o.customer_phone, o.customer_address, o.status,
-      fmt(o.created_at) ?? "", fmt(o.received_at) ?? "", fmt(o.preparing_at) ?? "",
-      fmt(o.quoted_at) ?? "", fmt(o.delivered_at) ?? "",
-      o.items.map((it) => `${it.quantity}× ${it.name}${it.category ? ` (${it.category})` : ""}`).join("; "),
-      o.notes ?? "",
-    ].map(esc).join(","));
+    const money = (n: number) => (n > 0 ? n.toFixed(2) : "");
+    const headers = ["Order ID","Customer","Phone","Address","Status","Placed","Received","Preparing","Quoted","Delivered","Line Items","Total Quantity","Subtotal","Fees","Total","Items","Notes"];
+    const rows = filtered.map((o) => {
+      const lineItems = o.items.length;
+      const totalQty = o.items.reduce((s, it) => s + (Number(it.quantity) || 0), 0);
+      const subtotal = o.items.reduce((s, it) => s + (Number(it.price) || 0) * (Number(it.quantity) || 0), 0);
+      const fees = o.items.reduce((s, it) => s + (Number(it.fee) || 0), 0);
+      const total = subtotal + fees;
+      return [
+        o.id, o.customer_name, o.customer_phone, o.customer_address, o.status,
+        fmt(o.created_at) ?? "", fmt(o.received_at) ?? "", fmt(o.preparing_at) ?? "",
+        fmt(o.quoted_at) ?? "", fmt(o.delivered_at) ?? "",
+        lineItems, totalQty, money(subtotal), money(fees), money(total),
+        o.items.map((it) => `${it.quantity}× ${it.name}${it.category ? ` (${it.category})` : ""}`).join("; "),
+        o.notes ?? "",
+      ].map(esc).join(",");
+    });
+    const csv = [headers.join(","), ...rows].join("\n");
+    const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const stamp = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `orders-${stamp}.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${filtered.length} order${filtered.length === 1 ? "" : "s"}.`);
+  };
     const csv = [headers.join(","), ...rows].join("\n");
     const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
