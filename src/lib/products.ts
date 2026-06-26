@@ -53,6 +53,16 @@ import p146img from "@/assets/products/user-wa0035.jpg.asset.json";
 import p147img from "@/assets/products/user-wa0021.jpg.asset.json";
 import p148img from "@/assets/products/user-wa0014.jpg.asset.json";
 import p149img from "@/assets/products/user-wa0010.jpg.asset.json";
+import p150img from "@/assets/products/user-wa0013.jpg.asset.json";
+import p151img from "@/assets/products/user-wa0016.jpg.asset.json";
+import p152img from "@/assets/products/user-wa0012.jpg.asset.json";
+import p153img from "@/assets/products/user-wa0227.jpg.asset.json";
+import p154img from "@/assets/products/user-wa0027.jpg.asset.json";
+import p155img from "@/assets/products/user-wa0028.jpg.asset.json";
+import p156img from "@/assets/products/user-wa0030.jpg.asset.json";
+import p157img from "@/assets/products/user-wa0219.jpg.asset.json";
+import p158img from "@/assets/products/user-wa0217.jpg.asset.json";
+import p159img from "@/assets/products/user-wa0218.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -135,6 +145,16 @@ export const products: Product[] = [
   { id: "p147", slug: 'respiratory-system-anatomical-model', name: 'Human Respiratory System Anatomical Model (Heart & Lungs)', category: 'laboratory', image: p147img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size teaching model', 'Includes larynx, trachea, lungs & heart', 'Mounted on base'] },
   { id: "p148", slug: 'student-monocular-binocular-microscope', name: 'Student Microscope Set — Monocular & Binocular', category: 'laboratory', image: p148img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Celestron Labs grade', '4x / 10x / 40x objectives', 'Ideal for schools & training labs'] },
   { id: "p149", slug: 'medical-equipment-educational-chart', name: 'Medical Equipment & Tools Educational Wall Chart', category: 'educational', image: p149img.url, description: 'Glossy laminated teaching aid sourced by Oriented Hub. Bulk pricing for schools and clinics.', features: ['30 labelled medical items', 'Ideal for classrooms & clinics', 'Durable laminate finish'] },
+  { id: "p150", slug: 'electric-hospital-bed-3-function', name: 'Electric Hospital Bed (3-Function) with Side Rails', category: 'medical-equipment', image: p150img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Electric backrest, knee & height adjustment', 'ABS head & foot boards', 'Lockable castors', 'Mattress included'], bestSeller: true },
+  { id: "p151", slug: 'newlife-infant-incubator-nl6g', name: 'Newlife NL-6G Infant Incubator', category: 'medical-equipment', image: p151img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Servo temperature control', 'Digital display', 'Mobile stand with shelf', 'Made in England'], bestSeller: true },
+  { id: "p152", slug: 'abs-hospital-bedside-cabinet', name: 'ABS Hospital Bedside Cabinet with Drawer', category: 'medical-equipment', image: p152img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Durable ABS construction', 'Drawer + cabinet storage', 'Mobile castors'] },
+  { id: "p153", slug: 'manual-operating-theatre-table', name: 'Manual Operating Theatre Table (Multi-Function)', category: 'medical-equipment', image: p153img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Stainless steel base', 'Hydraulic height adjustment', 'Removable head & leg sections'], bestSeller: true },
+  { id: "p154", slug: 'ganongs-review-medical-physiology-27e', name: "Ganong's Review of Medical Physiology (27th Edition)", category: 'books', image: p154img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Barrett, Barman, Brooks & Yuan', 'McGraw Hill LANGE'], bestSeller: true },
+  { id: "p155", slug: 'guyton-hall-medical-physiology-15e', name: 'Guyton and Hall Textbook of Medical Physiology (15th Edition)', category: 'books', image: p155img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['John E. Hall & Michael E. Hall', 'Elsevier', 'Enhanced digital version included'], bestSeller: true },
+  { id: "p156", slug: 'clinically-oriented-anatomy-moore-8e', name: 'Clinically Oriented Anatomy (8th Edition) — International Edition', category: 'books', image: p156img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Moore, Dalley & Agur', 'Wolters Kluwer'], bestSeller: true },
+  { id: "p157", slug: 'k-life-digital-thermometer', name: 'K-Life Digital Clinical Thermometer', category: 'medical-equipment', image: p157img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Fast oral/underarm reading', 'LCD display', 'Fever alarm'] },
+  { id: "p158", slug: 'drive-automatic-bp-monitor-kwl-b04', name: 'Drive Automatic Upper Arm Blood Pressure Monitor (KWL-B04)', category: 'medical-equipment', image: p158img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['One-key measurement', 'Arrhythmia monitoring', 'Large display', '99-group memory'], bestSeller: true },
+  { id: "p159", slug: '3m-littmann-classic-iii-stethoscope', name: '3M Littmann Classic III Stethoscope', category: 'medical-equipment', image: p159img.url, description: 'Authentic 3M product supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Dual-sided chestpiece', 'Tunable diaphragm', 'Latex-free'], bestSeller: true },
 ];
 
 export function getProduct(id: string) {
