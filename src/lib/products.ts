@@ -46,6 +46,7 @@ import p139img from "@/assets/products/pelvic-pregnancy-model.jpg.asset.json";
 import p140img from "@/assets/products/binocular-microscope-lcd.jpg.asset.json";
 import p141img from "@/assets/products/electrophoresis-machine-dy300.jpg.asset.json";
 import p142img from "@/assets/products/medical-suction-machine.jpg.asset.json";
+import p143img from "@/assets/products/ld3-electronic-centrifuge.jpg.asset.json";
 
 export type Category = {
   slug: string;
