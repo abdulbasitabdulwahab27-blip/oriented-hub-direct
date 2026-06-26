@@ -47,6 +47,12 @@ import p140img from "@/assets/products/binocular-microscope-lcd.jpg.asset.json";
 import p141img from "@/assets/products/electrophoresis-machine-dy300.jpg.asset.json";
 import p142img from "@/assets/products/medical-suction-machine.jpg.asset.json";
 import p143img from "@/assets/products/ld3-electronic-centrifuge.jpg.asset.json";
+import p144img from "@/assets/products/user-wa0239.jpg.asset.json";
+import p145img from "@/assets/products/user-wa0034.jpg.asset.json";
+import p146img from "@/assets/products/user-wa0035.jpg.asset.json";
+import p147img from "@/assets/products/user-wa0021.jpg.asset.json";
+import p148img from "@/assets/products/user-wa0014.jpg.asset.json";
+import p149img from "@/assets/products/user-wa0010.jpg.asset.json";
 
 export type Category = {
   slug: string;
