@@ -50,6 +50,10 @@ const fmt = (s: string | null) => (s ? new Date(s).toLocaleString() : null);
 function AdminOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | StatusKey>("all");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
   const load = async () => {
     setLoading(true);
@@ -74,18 +78,74 @@ function AdminOrders() {
     else { toast.success("Deleted."); load(); }
   };
 
+  const q = query.trim().toLowerCase();
+  const fromTs = fromDate ? new Date(fromDate + "T00:00:00").getTime() : null;
+  const toTs = toDate ? new Date(toDate + "T23:59:59").getTime() : null;
+
+  const filtered = orders.filter((o) => {
+    if (statusFilter !== "all" && o.status !== statusFilter) return false;
+    const placed = new Date(o.created_at).getTime();
+    if (fromTs !== null && placed < fromTs) return false;
+    if (toTs !== null && placed > toTs) return false;
+    if (q) {
+      const hay = `${o.customer_name} ${o.customer_phone}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const hasFilters = q || statusFilter !== "all" || fromDate || toDate;
+  const clearAll = () => { setQuery(""); setStatusFilter("all"); setFromDate(""); setToDate(""); };
+
   return (
     <div>
       <h2 className="font-display text-xl font-semibold mb-1">Orders</h2>
       <p className="text-sm text-muted-foreground mb-6">Track every order through Received → Preparing → Quoted → Delivered. Timestamps are recorded automatically.</p>
 
+      <div className="mb-6 rounded-xl border border-border bg-card p-4 shadow-card">
+        <div className="grid gap-3 md:grid-cols-[1fr_auto_auto_auto_auto]">
+          <label className="relative block">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search name or phone…"
+              className="w-full rounded-md border border-input bg-background pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </label>
+          <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as "all" | StatusKey)} className="rounded-md border border-input bg-background px-3 py-2 text-sm">
+            <option value="all">All statuses</option>
+            {allStatuses.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <label className="text-xs text-muted-foreground inline-flex items-center gap-2">
+            From
+            <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} className="rounded-md border border-input bg-background px-2 py-1.5 text-sm" />
+          </label>
+          <label className="text-xs text-muted-foreground inline-flex items-center gap-2">
+            To
+            <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className="rounded-md border border-input bg-background px-2 py-1.5 text-sm" />
+          </label>
+          {hasFilters && (
+            <button onClick={clearAll} className="inline-flex items-center justify-center gap-1 rounded-md border border-border px-3 py-2 text-xs hover:bg-muted">
+              <X className="h-3 w-3" /> Clear
+            </button>
+          )}
+        </div>
+        <div className="mt-3 text-xs text-muted-foreground">
+          Showing <b>{filtered.length}</b> of {orders.length} order{orders.length === 1 ? "" : "s"}.
+        </div>
+      </div>
+
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
-      ) : orders.length === 0 ? (
-        <div className="text-center py-12 rounded-xl border border-dashed border-border bg-card/50 text-muted-foreground">No orders yet.</div>
+      ) : filtered.length === 0 ? (
+        <div className="text-center py-12 rounded-xl border border-dashed border-border bg-card/50 text-muted-foreground">
+          {orders.length === 0 ? "No orders yet." : "No orders match your filters."}
+        </div>
       ) : (
         <div className="space-y-4">
-          {orders.map((o) => {
+          {filtered.map((o) => {
             const currentIdx = workflow.findIndex((w) => w.key === o.status);
             const isCancelled = o.status === "cancelled";
             return (
