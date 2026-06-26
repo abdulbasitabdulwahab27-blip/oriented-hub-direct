@@ -68,7 +68,7 @@ function Shop() {
                     View all {items.length} →
                   </button>
                 </div>
-                <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+                <div className="grid gap-5 grid-cols-2 md:grid-cols-3">
                   {items.map((p) => (<ProductCard key={p.id} product={p} />))}
                 </div>
               </section>
@@ -76,7 +76,7 @@ function Shop() {
           })}
         </div>
       ) : (
-        <div className="mt-8 grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 grid-cols-2 md:grid-cols-3">
           {list.map((p) => (<ProductCard key={p.id} product={p} />))}
         </div>
       )}
