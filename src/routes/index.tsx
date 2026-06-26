@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star, CheckCircle2, Sparkles, FileText, ClipboardList } from "lucide-react";
 import { categories, bestSellers, products } from "@/lib/products";
+import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
 import { useState } from "react";
@@ -112,7 +113,9 @@ function FeaturedCategories() {
 }
 
 function BestSellers() {
-  const featured = bestSellers.length ? bestSellers : products.slice(0, 6);
+  const { products: all } = useAllProducts();
+  const allBest = all.filter((p) => p.bestSeller);
+  const featured = allBest.length ? allBest : (bestSellers.length ? bestSellers : products.slice(0, 6));
   return (
     <section className="bg-secondary/40 py-14 md:py-20">
       <div className="container-page">
