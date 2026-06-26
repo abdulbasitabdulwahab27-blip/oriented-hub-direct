@@ -52,6 +52,29 @@ function Shop() {
           <p className="text-muted-foreground">No products match your search.</p>
           <Link to="/contact" className="mt-3 inline-flex text-sm font-semibold text-primary">Request it via procurement →</Link>
         </div>
+      ) : cat === "all" ? (
+        <div className="mt-10 space-y-14">
+          {categories.map((c) => {
+            const items = list.filter((p) => p.category === c.slug);
+            if (items.length === 0) return null;
+            return (
+              <section key={c.slug} id={c.slug} className="scroll-mt-24">
+                <div className="mb-5 flex items-end justify-between gap-4 border-b border-border pb-3">
+                  <div>
+                    <h2 className="font-display text-2xl font-semibold sm:text-3xl">{c.name}</h2>
+                    <p className="mt-1 text-sm text-muted-foreground">{c.tagline}</p>
+                  </div>
+                  <button onClick={() => setCat(c.slug)} className="shrink-0 text-xs font-semibold text-primary hover:underline">
+                    View all {items.length} →
+                  </button>
+                </div>
+                <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+                  {items.map((p) => (<ProductCard key={p.id} product={p} />))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
       ) : (
         <div className="mt-8 grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {list.map((p) => (<ProductCard key={p.id} product={p} />))}
