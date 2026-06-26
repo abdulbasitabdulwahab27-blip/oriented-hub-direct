@@ -1,44 +1,41 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
-import { getProduct, categories, productsByCategory } from "@/lib/products";
+import { categories } from "@/lib/products";
+import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/lib/cart";
 import { productOrderMessage, waLink } from "@/lib/whatsapp";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/product/$id")({
-  loader: ({ params }) => {
-    const product = getProduct(params.id);
-    if (!product) throw notFound();
-    const cat = categories.find((c) => c.slug === product.category)!;
-    const related = productsByCategory(product.category).filter((p) => p.id !== product.id).slice(0, 4);
-    return { product, cat, related };
-  },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? [
-      { title: `${loaderData.product.name} — Oriented Hub` },
-      { name: "description", content: loaderData.product.description },
-      { property: "og:title", content: loaderData.product.name },
-      { property: "og:description", content: loaderData.product.description },
-      { property: "og:image", content: loaderData.product.image },
-      { property: "og:type", content: "product" },
-    ] : [],
-  }),
-  notFoundComponent: () => (
-    <div className="container-page py-20 text-center">
-      <h1 className="font-display text-3xl font-semibold">Product not found</h1>
-      <Link to="/shop" className="mt-4 inline-block text-primary font-semibold">Back to shop →</Link>
-    </div>
-  ),
+  head: () => ({ meta: [{ title: "Product — Oriented Hub" }] }),
   errorComponent: () => <div className="container-page py-20 text-center text-muted-foreground">Failed to load product.</div>,
   component: ProductPage,
 });
 
 function ProductPage() {
-  const { product, cat, related } = Route.useLoaderData();
+  const { id } = Route.useParams();
+  const { products, loading } = useAllProducts();
   const [qty, setQty] = useState(1);
   const { add } = useCart();
+
+  if (loading) {
+    return <div className="container-page py-20 text-center text-muted-foreground">Loading…</div>;
+  }
+
+  const product = products.find((p) => p.id === id || p.slug === id);
+  if (!product) {
+    return (
+      <div className="container-page py-20 text-center">
+        <h1 className="font-display text-3xl font-semibold">Product not found</h1>
+        <Link to="/shop" className="mt-4 inline-block text-primary font-semibold">Back to shop →</Link>
+      </div>
+    );
+  }
+
+  const cat = categories.find((c) => c.slug === product.category) ?? { slug: product.category, name: product.category };
+  const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   return (
     <div className="container-page py-8 md:py-12">
@@ -95,7 +92,7 @@ function ProductPage() {
         <section className="mt-16">
           <h2 className="font-display text-2xl font-semibold">Related products</h2>
           <div className="mt-6 grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            {related.map((p: typeof related[number]) => (<ProductCard key={p.id} product={p} />))}
+            {related.map((p) => (<ProductCard key={p.id} product={p} />))}
           </div>
         </section>
       )}

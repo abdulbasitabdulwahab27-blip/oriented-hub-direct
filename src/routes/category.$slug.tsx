@@ -1,12 +1,13 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { getCategory, productsByCategory } from "@/lib/products";
+import { getCategory } from "@/lib/products";
+import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 
 export const Route = createFileRoute("/category/$slug")({
   loader: ({ params }) => {
     const cat = getCategory(params.slug);
     if (!cat) throw notFound();
-    return { cat, items: productsByCategory(params.slug) };
+    return { cat };
   },
   head: ({ loaderData }) => ({
     meta: loaderData ? [
@@ -28,7 +29,10 @@ export const Route = createFileRoute("/category/$slug")({
 });
 
 function CategoryPage() {
-  const { cat, items } = Route.useLoaderData();
+  const { cat } = Route.useLoaderData();
+  const { products } = useAllProducts();
+  const items = products.filter((p) => p.category === cat.slug);
+
   return (
     <>
       <section className="relative overflow-hidden bg-gradient-hero">
@@ -46,7 +50,7 @@ function CategoryPage() {
           <p className="text-muted-foreground">No items yet — please <Link to="/contact" className="text-primary font-semibold">contact us</Link> for procurement.</p>
         ) : (
           <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            {items.map((p: typeof items[number]) => (<ProductCard key={p.id} product={p} />))}
+            {items.map((p) => (<ProductCard key={p.id} product={p} />))}
           </div>
         )}
       </div>
