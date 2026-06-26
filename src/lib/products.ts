@@ -90,7 +90,7 @@ export type Product = {
   bestSeller?: boolean;
 };
 
-export const products: Product[] = [
+const rawProducts: Product[] = [
   { id: "p100", slug: 'hutchison-clinical-methods', name: "Hutchison's Clinical Methods (25th Edition)", category: 'books', image: p100img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Glynn & Drake', 'Hardcover'], bestSeller: true },
   { id: "p101", slug: 'clinical-biochemistry-crook', name: 'Clinical Biochemistry and Metabolic Medicine', category: 'books', image: p101img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ["International Students' Edition", 'Martin A. Crook'] },
   { id: "p102", slug: 'public-health-tropics-lucas', name: 'Short Textbook of Public Health Medicine for the Tropics', category: 'books', image: p102img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Revised 4th Edition', 'Lucas & Gilles'] },
