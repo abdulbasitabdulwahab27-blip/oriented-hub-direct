@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, ShoppingCart, X, Search } from "lucide-react";
+import { Menu, ShoppingCart, X, Search, Shield } from "lucide-react";
 import { useCart } from "@/lib/cart";
+import { useCurrentUser } from "@/lib/auth-hook";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -16,6 +17,7 @@ const nav = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const { count } = useCart();
+  const { isAdmin } = useCurrentUser();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/75">
