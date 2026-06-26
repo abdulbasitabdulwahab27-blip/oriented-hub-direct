@@ -20,9 +20,13 @@ export type Database = {
           customer_address: string
           customer_name: string
           customer_phone: string
+          delivered_at: string | null
           id: string
           items: Json
           notes: string | null
+          preparing_at: string | null
+          quoted_at: string | null
+          received_at: string | null
           status: string
         }
         Insert: {
@@ -30,9 +34,13 @@ export type Database = {
           customer_address: string
           customer_name: string
           customer_phone: string
+          delivered_at?: string | null
           id?: string
           items: Json
           notes?: string | null
+          preparing_at?: string | null
+          quoted_at?: string | null
+          received_at?: string | null
           status?: string
         }
         Update: {
@@ -40,9 +48,13 @@ export type Database = {
           customer_address?: string
           customer_name?: string
           customer_phone?: string
+          delivered_at?: string | null
           id?: string
           items?: Json
           notes?: string | null
+          preparing_at?: string | null
+          quoted_at?: string | null
+          received_at?: string | null
           status?: string
         }
         Relationships: []

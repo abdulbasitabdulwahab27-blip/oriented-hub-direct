@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Trash2, Phone, MapPin } from "lucide-react";
+import { Trash2, Phone, MapPin, Inbox, Package, FileText, Truck, CheckCircle2, XCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
@@ -18,16 +18,34 @@ type Order = {
   items: OrderItem[];
   status: string;
   created_at: string;
+  received_at: string | null;
+  preparing_at: string | null;
+  quoted_at: string | null;
+  delivered_at: string | null;
 };
 
-const statuses = ["new", "contacted", "fulfilled", "cancelled"] as const;
+type StatusKey = "new" | "received" | "preparing" | "quoted" | "delivered" | "cancelled";
+
+const workflow: { key: StatusKey; label: string; stampField: keyof Order | null; icon: typeof Inbox }[] = [
+  { key: "new", label: "New", stampField: "created_at", icon: Inbox },
+  { key: "received", label: "Received", stampField: "received_at", icon: CheckCircle2 },
+  { key: "preparing", label: "Preparing", stampField: "preparing_at", icon: Package },
+  { key: "quoted", label: "Quoted", stampField: "quoted_at", icon: FileText },
+  { key: "delivered", label: "Delivered", stampField: "delivered_at", icon: Truck },
+];
+
+const allStatuses: StatusKey[] = ["new", "received", "preparing", "quoted", "delivered", "cancelled"];
 
 const badge: Record<string, string> = {
   new: "bg-blue-100 text-blue-700 border-blue-300",
-  contacted: "bg-amber-100 text-amber-700 border-amber-300",
-  fulfilled: "bg-green-100 text-green-700 border-green-300",
+  received: "bg-sky-100 text-sky-700 border-sky-300",
+  preparing: "bg-amber-100 text-amber-700 border-amber-300",
+  quoted: "bg-purple-100 text-purple-700 border-purple-300",
+  delivered: "bg-green-100 text-green-700 border-green-300",
   cancelled: "bg-red-100 text-red-700 border-red-300",
 };
+
+const fmt = (s: string | null) => (s ? new Date(s).toLocaleString() : null);
 
 function AdminOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -37,7 +55,7 @@ function AdminOrders() {
     setLoading(true);
     const { data, error } = await supabase.from("orders").select("*").order("created_at", { ascending: false });
     if (error) toast.error(error.message);
-    else setOrders((data ?? []) as Order[]);
+    else setOrders((data ?? []) as unknown as Order[]);
     setLoading(false);
   };
 
@@ -59,7 +77,7 @@ function AdminOrders() {
   return (
     <div>
       <h2 className="font-display text-xl font-semibold mb-1">Orders</h2>
-      <p className="text-sm text-muted-foreground mb-6">Every checkout submission is captured here.</p>
+      <p className="text-sm text-muted-foreground mb-6">Track every order through Received → Preparing → Quoted → Delivered. Timestamps are recorded automatically.</p>
 
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Loading…</div>
@@ -67,40 +85,79 @@ function AdminOrders() {
         <div className="text-center py-12 rounded-xl border border-dashed border-border bg-card/50 text-muted-foreground">No orders yet.</div>
       ) : (
         <div className="space-y-4">
-          {orders.map((o) => (
-            <div key={o.id} className="rounded-xl border border-border bg-card p-5 shadow-card">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-semibold">{o.customer_name}</h3>
-                    <span className={`text-xs uppercase tracking-wide rounded-full border px-2 py-0.5 ${badge[o.status] ?? badge.new}`}>{o.status}</span>
+          {orders.map((o) => {
+            const currentIdx = workflow.findIndex((w) => w.key === o.status);
+            const isCancelled = o.status === "cancelled";
+            return (
+              <div key={o.id} className="rounded-xl border border-border bg-card p-5 shadow-card">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <h3 className="font-semibold">{o.customer_name}</h3>
+                      <span className={`text-xs uppercase tracking-wide rounded-full border px-2 py-0.5 ${badge[o.status] ?? badge.new}`}>{o.status}</span>
+                    </div>
+                    <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                      <span className="inline-flex items-center gap-1"><Phone className="h-3 w-3" />{o.customer_phone}</span>
+                      <span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3" />{o.customer_address}</span>
+                      <span>Placed: {fmt(o.created_at)}</span>
+                    </div>
                   </div>
-                  <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center gap-1"><Phone className="h-3 w-3" />{o.customer_phone}</span>
-                    <span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3" />{o.customer_address}</span>
-                    <span>{new Date(o.created_at).toLocaleString()}</span>
+                  <div className="flex items-center gap-2">
+                    <select value={o.status} onChange={(e) => updateStatus(o.id, e.target.value)} className="rounded border border-border bg-background px-2 py-1 text-xs">
+                      {allStatuses.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                    <button onClick={() => remove(o.id)} className="rounded p-1.5 text-destructive hover:bg-destructive/10" aria-label="Delete order"><Trash2 className="h-4 w-4" /></button>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <select value={o.status} onChange={(e) => updateStatus(o.id, e.target.value)} className="rounded border border-border bg-background px-2 py-1 text-xs">
-                    {statuses.map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                  <button onClick={() => remove(o.id)} className="rounded p-1.5 text-destructive hover:bg-destructive/10" aria-label="Delete order"><Trash2 className="h-4 w-4" /></button>
+
+                {/* Workflow timeline */}
+                <div className="mt-4 rounded-lg border border-border/60 bg-muted/30 p-3">
+                  {isCancelled ? (
+                    <div className="flex items-center gap-2 text-sm text-destructive"><XCircle className="h-4 w-4" /> Order cancelled</div>
+                  ) : (
+                    <ol className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                      {workflow.map((step, i) => {
+                        const Icon = step.icon;
+                        const stamp = step.stampField ? (o[step.stampField] as string | null) : null;
+                        const reached = i <= currentIdx;
+                        const isCurrent = i === currentIdx;
+                        return (
+                          <li key={step.key} className="flex flex-col items-start gap-1">
+                            <div className={`flex items-center gap-1.5 text-xs font-semibold ${reached ? "text-primary" : "text-muted-foreground"}`}>
+                              <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full border ${reached ? "bg-primary text-primary-foreground border-primary" : "border-border bg-background"} ${isCurrent ? "ring-2 ring-primary/30" : ""}`}>
+                                <Icon className="h-3 w-3" />
+                              </span>
+                              {step.label}
+                            </div>
+                            <div className="text-[10px] text-muted-foreground pl-7">
+                              {stamp ? fmt(stamp) : "—"}
+                            </div>
+                            {reached && step.key !== "new" && !stamp && (
+                              <button onClick={() => updateStatus(o.id, step.key)} className="ml-7 text-[10px] text-primary hover:underline">Stamp now</button>
+                            )}
+                            {!reached && (
+                              <button onClick={() => updateStatus(o.id, step.key)} className="ml-7 text-[10px] text-primary hover:underline">Mark</button>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  )}
                 </div>
+
+                {o.notes && <p className="mt-3 text-sm text-muted-foreground"><b>Notes:</b> {o.notes}</p>}
+
+                <ul className="mt-3 divide-y divide-border border-t border-border">
+                  {o.items.map((it, i) => (
+                    <li key={i} className="flex justify-between py-2 text-sm">
+                      <span>{it.name}{it.category && <span className="text-muted-foreground"> · {it.category}</span>}</span>
+                      <span className="font-semibold">× {it.quantity}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              {o.notes && <p className="mt-3 text-sm text-muted-foreground"><b>Notes:</b> {o.notes}</p>}
-
-              <ul className="mt-3 divide-y divide-border border-t border-border">
-                {o.items.map((it, i) => (
-                  <li key={i} className="flex justify-between py-2 text-sm">
-                    <span>{it.name}{it.category && <span className="text-muted-foreground"> · {it.category}</span>}</span>
-                    <span className="font-semibold">× {it.quantity}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
