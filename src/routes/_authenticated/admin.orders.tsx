@@ -131,17 +131,6 @@ function AdminOrders() {
     URL.revokeObjectURL(url);
     toast.success(`Exported ${filtered.length} order${filtered.length === 1 ? "" : "s"}.`);
   };
-    const csv = [headers.join(","), ...rows].join("\n");
-    const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    const stamp = new Date().toISOString().slice(0, 10);
-    a.href = url;
-    a.download = `orders-${stamp}.csv`;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-    toast.success(`Exported ${filtered.length} order${filtered.length === 1 ? "" : "s"}.`);
-  };
 
   return (
     <div>
