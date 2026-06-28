@@ -251,14 +251,51 @@ function AdminOrders() {
 
                 {o.notes && <p className="mt-3 text-sm text-muted-foreground"><b>Notes:</b> {o.notes}</p>}
 
-                <ul className="mt-3 divide-y divide-border border-t border-border">
-                  {o.items.map((it, i) => (
-                    <li key={i} className="flex justify-between py-2 text-sm">
-                      <span>{it.name}{it.category && <span className="text-muted-foreground"> · {it.category}</span>}</span>
-                      <span className="font-semibold">× {it.quantity}</span>
-                    </li>
-                  ))}
-                </ul>
+                {(() => {
+                  const lineItems = o.items.length;
+                  const totalQty = o.items.reduce((s, it) => s + (Number(it.quantity) || 0), 0);
+                  const subtotal = o.items.reduce((s, it) => s + (Number(it.price) || 0) * (Number(it.quantity) || 0), 0);
+                  const fees = o.items.reduce((s, it) => s + (Number(it.fee) || 0), 0);
+                  const total = subtotal + fees;
+                  const fmtMoney = (n: number) => n > 0 ? `₦${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : "—";
+                  return (
+                    <>
+                      <div className="mt-3 overflow-x-auto border-t border-border">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">
+                              <th className="py-2 pr-3 font-medium">Item</th>
+                              <th className="py-2 px-3 font-medium text-right">Qty</th>
+                              <th className="py-2 px-3 font-medium text-right">Price</th>
+                              <th className="py-2 px-3 font-medium text-right">Fee</th>
+                              <th className="py-2 pl-3 font-medium text-right">Line Total</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-border">
+                            {o.items.map((it, i) => {
+                              const lineTotal = (Number(it.price) || 0) * (Number(it.quantity) || 0) + (Number(it.fee) || 0);
+                              return (
+                                <tr key={i}>
+                                  <td className="py-2 pr-3">{it.name}{it.category && <span className="text-muted-foreground"> · {it.category}</span>}</td>
+                                  <td className="py-2 px-3 text-right">{it.quantity}</td>
+                                  <td className="py-2 px-3 text-right">{Number(it.price) > 0 ? fmtMoney(Number(it.price)) : "—"}</td>
+                                  <td className="py-2 px-3 text-right">{Number(it.fee) > 0 ? fmtMoney(Number(it.fee)) : "—"}</td>
+                                  <td className="py-2 pl-3 text-right font-medium">{lineTotal > 0 ? fmtMoney(lineTotal) : "—"}</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div className="mt-3 grid gap-2 sm:grid-cols-4 rounded-lg border border-border/60 bg-muted/30 p-3 text-sm">
+                        <div><div className="text-xs text-muted-foreground">Items</div><div className="font-semibold">{lineItems} ({totalQty} qty)</div></div>
+                        <div><div className="text-xs text-muted-foreground">Subtotal</div><div className="font-semibold">{fmtMoney(subtotal)}</div></div>
+                        <div><div className="text-xs text-muted-foreground">Fees</div><div className="font-semibold">{fmtMoney(fees)}</div></div>
+                        <div><div className="text-xs text-muted-foreground">Total</div><div className="font-semibold text-primary">{fmtMoney(total)}</div></div>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
             );
           })}
