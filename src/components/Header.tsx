@@ -23,8 +23,8 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/75">
       <div className="bg-gradient-primary text-primary-foreground text-xs">
         <div className="container-page flex h-8 items-center justify-between">
-          <span className="hidden sm:inline">Nationwide delivery across Nigeria · Institutional procurement supported</span>
-          <span className="sm:hidden">Nationwide delivery · Bulk orders</span>
+          <span className="hidden sm:inline">Nationwide delivery across Nigeria · Worldwide shipping available · Institutional procurement supported</span>
+          <span className="sm:hidden">Nationwide & worldwide delivery · Bulk orders</span>
           <a href="mailto:Orientedbanque@outlook.com" className="hidden md:inline hover:underline">Orientedbanque@outlook.com</a>
         </div>
       </div>
