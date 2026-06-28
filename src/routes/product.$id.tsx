@@ -83,7 +83,7 @@ function ProductPage() {
 
           <div className="mt-6 grid grid-cols-2 gap-3 text-xs text-muted-foreground">
             <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Verified supplier</div>
-            <div className="flex items-center gap-2"><Truck className="h-4 w-4 text-primary" /> Nationwide delivery</div>
+            <div className="flex items-center gap-2"><Truck className="h-4 w-4 text-primary" /> Nationwide & worldwide delivery</div>
           </div>
         </div>
       </div>
