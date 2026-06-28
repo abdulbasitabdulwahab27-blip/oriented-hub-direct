@@ -134,7 +134,7 @@ function BestSellers() {
 function WhyChooseUs() {
   const items = [
     { icon: ShieldCheck, title: "Authentic & verified", text: "Every product is sourced from authorised distributors and verified suppliers." },
-    { icon: Truck, title: "Nationwide delivery", text: "Door-to-door delivery across all 36 states and the FCT." },
+    { icon: Truck, title: "Nationwide & worldwide delivery", text: "Door-to-door across all 36 states and the FCT, plus international shipping on request." },
     { icon: Award, title: "Institutional grade", text: "Trusted by hospitals, universities, schools and procurement officers." },
     { icon: Users, title: "Bulk & retail", text: "Single units to large institutional orders — same care, same quality." },
   ];
