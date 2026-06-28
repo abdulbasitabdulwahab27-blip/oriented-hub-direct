@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   { q: "Why are prices shown as 'Price on Request'?", a: "Our prices depend on availability, supplier costs and procurement conditions. To give you the most accurate, up-to-date quote, we confirm pricing at the point of enquiry via WhatsApp or email." },
   { q: "Are your books physical or digital?", a: "All books on Oriented Hub are physical printed books. We do not sell PDFs or ebooks." },
-  { q: "Do you deliver nationwide?", a: "Yes — we deliver to all 36 states and the FCT. Delivery timelines and fees are confirmed at checkout based on your location and order." },
+  { q: "Do you deliver nationwide?", a: "Yes — we deliver to all 36 states and the FCT, and we also ship worldwide on request. Delivery timelines and fees are confirmed at checkout based on your location and order." },
   { q: "Can I place a bulk or institutional order?", a: "Absolutely. Hospitals, schools, universities and procurement officers are welcome. Send your list via WhatsApp or our contact form for a tailored quotation." },
   { q: "How do I place an order?", a: "Add items to your cart and proceed to checkout, or click 'Order on WhatsApp' on any product page. Our team will confirm pricing, availability and delivery." },
   { q: "What if a product I want isn't listed?", a: "Use our procurement service on the homepage or the contact page. Tell us what you need and we'll source it for you." },
