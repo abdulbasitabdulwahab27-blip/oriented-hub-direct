@@ -290,8 +290,8 @@ function DeliveryBanner() {
             <Truck className="h-7 w-7" />
           </div>
           <div>
-            <div className="text-xs uppercase tracking-widest text-gold">Nationwide delivery</div>
-            <div className="font-display text-2xl font-semibold">We deliver everywhere in Nigeria.</div>
+            <div className="text-xs uppercase tracking-widest text-gold">Worldwide delivery</div>
+            <div className="font-display text-2xl font-semibold">We deliver nationwide across Nigeria — and worldwide.</div>
           </div>
         </div>
         <Link to="/shop" className="inline-flex items-center gap-2 rounded-md bg-background px-5 py-3 text-sm font-semibold text-primary hover:bg-background/90">Start Shopping <ArrowRight className="h-4 w-4" /></Link>
