@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
-import { categories } from "@/lib/products";
+import { categories, formatPrice } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/lib/cart";
