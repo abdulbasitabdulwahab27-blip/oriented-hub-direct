@@ -49,7 +49,7 @@ function CategoryPage() {
         {items.length === 0 ? (
           <p className="text-muted-foreground">No items yet — please <Link to="/contact" className="text-primary font-semibold">contact us</Link> for procurement.</p>
         ) : (
-          <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="grid gap-3 sm:gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
             {items.map((p) => (<ProductCard key={p.id} product={p} />))}
           </div>
         )}

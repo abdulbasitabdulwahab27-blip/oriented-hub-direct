@@ -123,7 +123,7 @@ function BestSellers() {
           <SectionHeading eyebrow="Customer favourites" title="Best sellers" subtitle="The products our clients reorder most." />
           <Link to="/shop" className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">View all <ArrowRight className="h-4 w-4" /></Link>
         </div>
-        <div className="mt-8 grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-8 grid gap-3 sm:gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
           {featured.slice(0, 8).map((p) => (<ProductCard key={p.id} product={p} />))}
         </div>
       </div>
