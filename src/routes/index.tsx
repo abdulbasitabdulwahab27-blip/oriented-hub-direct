@@ -100,10 +100,9 @@ function FeaturedCategories() {
             <div className="aspect-[4/5] overflow-hidden bg-muted">
               <img src={c.image} alt={c.name} loading="lazy" width={600} height={750} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/85 via-primary/20 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-4">
-              <h3 className="font-display text-lg font-semibold text-primary-foreground">{c.name}</h3>
-              <p className="text-xs text-primary-foreground/80">{c.tagline}</p>
+            <div className="bg-gradient-primary p-4 text-primary-foreground">
+              <h3 className="font-display text-lg font-semibold leading-tight">{c.name}</h3>
+              <p className="mt-1 text-[11px] leading-snug text-primary-foreground/90">{c.tagline}</p>
             </div>
           </Link>
         ))}
