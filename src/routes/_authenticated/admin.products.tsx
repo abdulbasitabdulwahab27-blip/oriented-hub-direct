@@ -127,6 +127,7 @@ function AdminProducts() {
               <input type="checkbox" checked={form.track_stock} onChange={(e) => setForm({ ...form, track_stock: e.target.checked })} />
               <span className="text-sm font-semibold">Track inventory (show out-of-stock badge)</span>
             </label>
+          </div>
           <label className="block mt-4">
             <span className="text-sm font-semibold">Description</span>
             <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm" />
