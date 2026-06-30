@@ -19,9 +19,13 @@ type DBProduct = {
   features: string[];
   best_seller: boolean;
   sort_order: number;
+  price: number;
+  currency: string;
+  stock: number;
+  track_stock: boolean;
 };
 
-const empty: Omit<DBProduct, "id"> = { slug: "", name: "", category: "books", image: "", description: "", features: [], best_seller: false, sort_order: 0 };
+const empty: Omit<DBProduct, "id"> = { slug: "", name: "", category: "books", image: "", description: "", features: [], best_seller: false, sort_order: 0, price: 0, currency: "NGN", stock: 0, track_stock: false };
 
 function AdminProducts() {
   const [items, setItems] = useState<DBProduct[]>([]);
