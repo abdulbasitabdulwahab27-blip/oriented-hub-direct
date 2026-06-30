@@ -25,6 +25,8 @@ function Home() {
     <>
       <Hero />
       <FeaturedCategories />
+      <FeaturedProducts />
+      
       
       <WhyChooseUs />
       <Procurement />
@@ -111,19 +113,18 @@ function FeaturedCategories() {
   );
 }
 
-function BestSellers() {
+function FeaturedProducts() {
   const { products: all } = useAllProducts();
-  const allBest = all.filter((p) => p.bestSeller);
-  const featured = allBest.length ? allBest : (bestSellers.length ? bestSellers : products.slice(0, 6));
+  const featured = all.length ? all : products;
   return (
     <section className="bg-secondary/40 py-14 md:py-20">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading eyebrow="Customer favourites" title="Best sellers" subtitle="The products our clients reorder most." />
+          <SectionHeading eyebrow="Our catalogue" title="Featured products" subtitle="A glimpse of what we supply — books, medical and lab essentials." />
           <Link to="/shop" className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all">View all <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="mt-8 grid gap-3 sm:gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
-          {featured.slice(0, 8).map((p) => (<ProductCard key={p.id} product={p} />))}
+          {featured.slice(0, 12).map((p) => (<ProductCard key={p.id} product={p} />))}
         </div>
       </div>
     </section>

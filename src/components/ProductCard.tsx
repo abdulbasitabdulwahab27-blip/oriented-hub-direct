@@ -15,9 +15,6 @@ export function ProductCard({ product }: { product: Product }) {
     >
       <div className="relative aspect-square overflow-hidden bg-muted">
         <img src={product.image} alt={product.name} loading="lazy" width={300} height={300} className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${outOfStock ? "opacity-60" : ""}`} />
-        {product.bestSeller && !outOfStock && (
-          <span className="absolute top-2 left-2 rounded-full bg-gradient-gold px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-gold-foreground shadow-soft">Best</span>
-        )}
         {outOfStock && (
           <span className="absolute top-2 left-2 rounded-full bg-destructive px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-destructive-foreground shadow-soft">Out of stock</span>
         )}
