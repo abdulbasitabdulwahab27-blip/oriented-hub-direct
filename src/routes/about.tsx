@@ -4,7 +4,7 @@ import { Award, Heart, ShieldCheck, Target } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({ meta: [
     { title: "About Us — Oriented Hub" },
-    { name: "description", content: "Oriented Hub is a procurement-based platform supplying quality books, medical equipment, lab instruments and educational materials across Nigeria." },
+    { name: "description", content: "Oriented Hub is a procurement-based platform supplying quality books, medical equipment, lab equipment and educational materials across Nigeria." },
     { property: "og:title", content: "About Oriented Hub" },
     { property: "og:description", content: "Quality Products. Better Care. Total Solutions." },
   ] }),

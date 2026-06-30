@@ -9,7 +9,7 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
       { title: "Shop — Oriented Hub" },
-      { name: "description", content: "Browse books, medical equipment, laboratory instruments, hospital consumables and educational materials." },
+      { name: "description", content: "Browse books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
       { property: "og:title", content: "Shop — Oriented Hub" },
       { property: "og:description", content: "Browse our full procurement catalogue." },
     ],

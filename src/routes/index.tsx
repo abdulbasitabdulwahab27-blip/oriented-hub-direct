@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Oriented Hub — Books, Medical & Lab Procurement in Nigeria" },
-      { name: "description", content: "Oriented Hub supplies books, medical equipment, laboratory instruments, hospital consumables and educational materials to institutions and individuals nationwide." },
+      { name: "description", content: "Oriented Hub supplies books, medical equipment, laboratory equipment, hospital consumables and educational materials to institutions and individuals nationwide." },
       { property: "og:title", content: "Oriented Hub — Quality Products. Better Care. Total Solutions." },
       { property: "og:description", content: "Premium procurement for healthcare and education across Nigeria." },
     ],
@@ -53,7 +53,7 @@ function Hero() {
             <span className="text-primary">Better Care.</span> Total Solutions.
           </h1>
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Oriented Hub supplies authentic books, medical equipment, laboratory instruments, hospital consumables and educational materials — delivered to institutions and individuals nationwide.
+            Oriented Hub supplies authentic books, medical equipment, laboratory equipment, hospital consumables and educational materials — delivered to institutions and individuals nationwide.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link to="/shop" className="inline-flex items-center gap-2 rounded-md bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft hover:opacity-95 transition">

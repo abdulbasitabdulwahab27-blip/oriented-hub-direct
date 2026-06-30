@@ -78,7 +78,7 @@ export type Category = {
 export const categories: Category[] = [
   { slug: "books", name: "Books", tagline: "Medical · Law · Engineering · Sciences · Management · A-Levels · JAMB · WAEC", image: catBooks },
   { slug: "medical-equipment", name: "Medical Equipment", tagline: "Diagnostic & clinical tools", image: catMedical },
-  { slug: "laboratory", name: "Laboratory Instruments", tagline: "Microscopes, glassware, reagents", image: catLab },
+  { slug: "laboratory", name: "Laboratory Equipment", tagline: "Microscopes, glassware, reagents", image: catLab },
   { slug: "consumables", name: "Hospital Consumables", tagline: "PPE, syringes, dressings", image: catConsumables },
   { slug: "educational", name: "Educational Materials", tagline: "Stationery, learning aids", image: catEducation },
 ];
