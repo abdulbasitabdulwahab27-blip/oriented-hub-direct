@@ -65,6 +65,7 @@ function AdminLayout() {
         <AdminTab to="/admin/products" icon={<Package className="h-4 w-4" />} label="Products" />
         <AdminTab to="/admin/orders" icon={<ShoppingBag className="h-4 w-4" />} label="Orders" />
         <AdminTab to="/admin/customers" icon={<Users className="h-4 w-4" />} label="Customers" />
+        <AdminTab to="/admin/audit" icon={<History className="h-4 w-4" />} label="Audit Log" />
       </nav>
 
       <Outlet />
