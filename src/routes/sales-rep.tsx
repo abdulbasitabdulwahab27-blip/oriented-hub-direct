@@ -8,7 +8,7 @@ export const Route = createFileRoute("/sales-rep")({
   head: () => ({
     meta: [
       { title: "Become a Sales Representative — Oriented Hub" },
-      { name: "description", content: "Join the Oriented Hub sales team. Earn attractive commissions promoting books, medical equipment, lab instruments and educational materials across Nigeria." },
+      { name: "description", content: "Join the Oriented Hub sales team. Earn attractive commissions promoting books, medical equipment, lab equipment and educational materials across Nigeria." },
       { property: "og:title", content: "Become a Sales Representative — Oriented Hub" },
       { property: "og:description", content: "Partner with Oriented Hub and earn commissions on every successful order. Apply in minutes via WhatsApp." },
     ],
@@ -44,7 +44,7 @@ function SalesRepPage() {
   const benefits = [
     { icon: Wallet, title: "Attractive commissions", text: "Earn a generous percentage on every successful sale you bring in." },
     { icon: TrendingUp, title: "Unlimited earnings", text: "No earnings cap — the more you sell, the more you earn." },
-    { icon: Users, title: "Wide product range", text: "Sell books, medical equipment, lab instruments, consumables and education materials." },
+    { icon: Users, title: "Wide product range", text: "Sell books, medical equipment, lab equipment, consumables and education materials." },
     { icon: Award, title: "Marketing support", text: "We provide product info, pricing guides and branded materials." },
     { icon: GraduationCap, title: "Training included", text: "Free onboarding and product training to help you close more deals." },
     { icon: HeartHandshake, title: "Flexible & remote", text: "Work from anywhere in Nigeria, full-time or part-time." },
