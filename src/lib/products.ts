@@ -63,6 +63,10 @@ import p156img from "@/assets/products/user-wa0030.jpg.asset.json";
 import p157img from "@/assets/products/user-wa0219.jpg.asset.json";
 import p158img from "@/assets/products/user-wa0217.jpg.asset.json";
 import p159img from "@/assets/products/user-wa0218.jpg.asset.json";
+import p160img from "@/assets/products/blacks-law-dictionary-12e.jpg.asset.json";
+import p161img from "@/assets/products/laboratory-heating-plate.jpg.asset.json";
+import p162img from "@/assets/products/cost-accounting-adeniji.jpg.asset.json";
+import p163img from "@/assets/products/economic-development-todaro.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -163,6 +167,10 @@ const rawProducts: Product[] = [
   { id: "p157", slug: 'k-life-digital-thermometer', name: 'K-Life Digital Clinical Thermometer', category: 'medical-equipment', image: p157img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Fast oral/underarm reading', 'LCD display', 'Fever alarm'] },
   { id: "p158", slug: 'drive-automatic-bp-monitor-kwl-b04', name: 'Drive Automatic Upper Arm Blood Pressure Monitor (KWL-B04)', category: 'medical-equipment', image: p158img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['One-key measurement', 'Arrhythmia monitoring', 'Large display', '99-group memory'], bestSeller: true },
   { id: "p159", slug: '3m-littmann-classic-iii-stethoscope', name: '3M Littmann Classic III Stethoscope', category: 'medical-equipment', image: p159img.url, description: 'Authentic 3M product supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Dual-sided chestpiece', 'Tunable diaphragm', 'Latex-free'], bestSeller: true },
+  { id: "p160", slug: 'blacks-law-dictionary-12e', name: "Black's Law Dictionary (12th Edition)", category: 'books', image: p160img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Bryan A. Garner, Chief Editor', 'Thomson Reuters', 'Hardcover'], bestSeller: true },
+  { id: "p161", slug: 'laboratory-heating-plate', name: 'Laboratory Heating Plate', category: 'laboratory', image: p161img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Adjustable temperature (0–100°C)', 'Heating & main indicators', 'Durable stainless plate'] },
+  { id: "p162", slug: 'cost-accounting-adeniji-6e', name: 'Cost Accounting: A Managerial Approach (6th Edition)', category: 'books', image: p162img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. A. Adeniji', 'Illustrative & exam questions with solutions'] },
+  { id: "p163", slug: 'economic-development-todaro-smith-12e', name: 'Economic Development (12th Edition)', category: 'books', image: p163img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Michael P. Todaro & Stephen C. Smith', 'Pearson'] },
 ];
 
 // Deduplicate: keep the first occurrence per slug, name (case-insensitive) and image URL.
