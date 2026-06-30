@@ -115,7 +115,18 @@ function AdminProducts() {
               <input type="checkbox" checked={form.best_seller} onChange={(e) => setForm({ ...form, best_seller: e.target.checked })} />
               <span className="text-sm font-semibold">Best seller (show on home)</span>
             </label>
-          </div>
+            <Field label="Price (0 = Price on Request)" type="number" value={String(form.price)} onChange={(v) => setForm({ ...form, price: Number(v) || 0 })} />
+            <label className="block">
+              <span className="text-sm font-semibold">Currency</span>
+              <select value={form.currency} onChange={(e) => setForm({ ...form, currency: e.target.value })} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm">
+                {["NGN","USD","GBP","EUR","GHS","KES","ZAR"].map((c) => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </label>
+            <Field label="Stock quantity" type="number" value={String(form.stock)} onChange={(v) => setForm({ ...form, stock: Number(v) || 0 })} />
+            <label className="flex items-center gap-2 mt-7">
+              <input type="checkbox" checked={form.track_stock} onChange={(e) => setForm({ ...form, track_stock: e.target.checked })} />
+              <span className="text-sm font-semibold">Track inventory (show out-of-stock badge)</span>
+            </label>
           <label className="block mt-4">
             <span className="text-sm font-semibold">Description</span>
             <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={3} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm" />
