@@ -11,6 +11,10 @@ type DBProductRow = {
   description: string;
   features: string[];
   best_seller: boolean;
+  price: number | null;
+  currency: string | null;
+  stock: number | null;
+  track_stock: boolean | null;
 };
 
 function mapRow(r: DBProductRow): Product {
@@ -23,12 +27,15 @@ function mapRow(r: DBProductRow): Product {
     description: r.description,
     features: r.features ?? [],
     bestSeller: r.best_seller,
+    price: r.price ?? 0,
+    currency: r.currency ?? "NGN",
+    stock: r.stock ?? 0,
+    trackStock: r.track_stock ?? false,
   };
 }
 
 /**
  * Returns code-bundled products merged with admin-managed products from the database.
- * DB products are listed first so newly-added items appear at the top of category lists.
  */
 export function useAllProducts() {
   const [dbProducts, setDbProducts] = useState<Product[]>([]);
@@ -39,7 +46,7 @@ export function useAllProducts() {
     (async () => {
       const { data, error } = await supabase
         .from("products")
-        .select("id, slug, name, category, image, description, features, best_seller")
+        .select("id, slug, name, category, image, description, features, best_seller, price, currency, stock, track_stock")
         .order("sort_order", { ascending: true })
         .order("created_at", { ascending: false });
       if (cancelled) return;
@@ -47,14 +54,13 @@ export function useAllProducts() {
         console.error("Failed to load DB products", error);
         setDbProducts([]);
       } else {
-        setDbProducts((data ?? []).map(mapRow));
+        setDbProducts((data ?? []).map((r) => mapRow(r as DBProductRow)));
       }
       setLoading(false);
     })();
     return () => { cancelled = true; };
   }, []);
 
-  // Dedupe by slug; DB entries take precedence over code entries with the same slug.
   const seen = new Set<string>();
   const merged: Product[] = [];
   for (const p of [...dbProducts, ...codeProducts]) {
