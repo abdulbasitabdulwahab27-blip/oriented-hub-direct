@@ -63,6 +63,10 @@ import p156img from "@/assets/products/user-wa0030.jpg.asset.json";
 import p157img from "@/assets/products/user-wa0219.jpg.asset.json";
 import p158img from "@/assets/products/user-wa0217.jpg.asset.json";
 import p159img from "@/assets/products/user-wa0218.jpg.asset.json";
+import p160img from "@/assets/products/blacks-law-dictionary-12e.jpg.asset.json";
+import p161img from "@/assets/products/laboratory-heating-plate.jpg.asset.json";
+import p162img from "@/assets/products/cost-accounting-adeniji.jpg.asset.json";
+import p163img from "@/assets/products/economic-development-todaro.jpg.asset.json";
 
 export type Category = {
   slug: string;
