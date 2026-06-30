@@ -25,7 +25,7 @@ function Home() {
     <>
       <Hero />
       <FeaturedCategories />
-      <BestSellers />
+      
       <WhyChooseUs />
       <Procurement />
       <QuotationListBanner />
