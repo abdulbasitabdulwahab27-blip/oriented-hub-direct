@@ -47,12 +47,14 @@ function Checkout() {
     // Save to database (best-effort; do not block WhatsApp handoff on failure)
     try {
       const { supabase } = await import("@/integrations/supabase/client");
+      const { data: u } = await supabase.auth.getUser();
       await supabase.from("orders").insert({
         customer_name: form.name,
         customer_phone: form.phone,
         customer_address: form.address,
         notes: form.notes || null,
         items: lines,
+        user_id: u.user?.id ?? null,
       });
     } catch (err) {
       console.error("Order save failed", err);
