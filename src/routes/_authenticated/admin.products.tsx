@@ -46,7 +46,7 @@ function AdminProducts() {
   useEffect(() => { load(); }, []);
 
   const openNew = () => { setEditing(null); setForm(empty); setShowForm(true); };
-  const openEdit = (p: DBProduct) => { setEditing(p); setForm({ slug: p.slug, name: p.name, category: p.category, image: p.image, description: p.description, features: p.features, best_seller: p.best_seller, sort_order: p.sort_order }); setShowForm(true); };
+  const openEdit = (p: DBProduct) => { setEditing(p); setForm({ slug: p.slug, name: p.name, category: p.category, image: p.image, description: p.description, features: p.features, best_seller: p.best_seller, sort_order: p.sort_order, price: p.price ?? 0, currency: p.currency ?? "NGN", stock: p.stock ?? 0, track_stock: p.track_stock ?? false }); setShowForm(true); };
 
   const slugify = (s: string) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
