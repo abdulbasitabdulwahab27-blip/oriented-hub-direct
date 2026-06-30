@@ -19,9 +19,13 @@ type DBProduct = {
   features: string[];
   best_seller: boolean;
   sort_order: number;
+  price: number;
+  currency: string;
+  stock: number;
+  track_stock: boolean;
 };
 
-const empty: Omit<DBProduct, "id"> = { slug: "", name: "", category: "books", image: "", description: "", features: [], best_seller: false, sort_order: 0 };
+const empty: Omit<DBProduct, "id"> = { slug: "", name: "", category: "books", image: "", description: "", features: [], best_seller: false, sort_order: 0, price: 0, currency: "NGN", stock: 0, track_stock: false };
 
 function AdminProducts() {
   const [items, setItems] = useState<DBProduct[]>([]);
@@ -42,7 +46,7 @@ function AdminProducts() {
   useEffect(() => { load(); }, []);
 
   const openNew = () => { setEditing(null); setForm(empty); setShowForm(true); };
-  const openEdit = (p: DBProduct) => { setEditing(p); setForm({ slug: p.slug, name: p.name, category: p.category, image: p.image, description: p.description, features: p.features, best_seller: p.best_seller, sort_order: p.sort_order }); setShowForm(true); };
+  const openEdit = (p: DBProduct) => { setEditing(p); setForm({ slug: p.slug, name: p.name, category: p.category, image: p.image, description: p.description, features: p.features, best_seller: p.best_seller, sort_order: p.sort_order, price: p.price ?? 0, currency: p.currency ?? "NGN", stock: p.stock ?? 0, track_stock: p.track_stock ?? false }); setShowForm(true); };
 
   const slugify = (s: string) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -111,6 +115,18 @@ function AdminProducts() {
               <input type="checkbox" checked={form.best_seller} onChange={(e) => setForm({ ...form, best_seller: e.target.checked })} />
               <span className="text-sm font-semibold">Best seller (show on home)</span>
             </label>
+            <Field label="Price (0 = Price on Request)" type="number" value={String(form.price)} onChange={(v) => setForm({ ...form, price: Number(v) || 0 })} />
+            <label className="block">
+              <span className="text-sm font-semibold">Currency</span>
+              <select value={form.currency} onChange={(e) => setForm({ ...form, currency: e.target.value })} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm">
+                {["NGN","USD","GBP","EUR","GHS","KES","ZAR"].map((c) => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </label>
+            <Field label="Stock quantity" type="number" value={String(form.stock)} onChange={(v) => setForm({ ...form, stock: Number(v) || 0 })} />
+            <label className="flex items-center gap-2 mt-7">
+              <input type="checkbox" checked={form.track_stock} onChange={(e) => setForm({ ...form, track_stock: e.target.checked })} />
+              <span className="text-sm font-semibold">Track inventory (show out-of-stock badge)</span>
+            </label>
           </div>
           <label className="block mt-4">
             <span className="text-sm font-semibold">Description</span>
@@ -144,23 +160,37 @@ function AdminProducts() {
                 <th className="px-4 py-3 font-semibold">Image</th>
                 <th className="px-4 py-3 font-semibold">Name</th>
                 <th className="px-4 py-3 font-semibold">Category</th>
-                <th className="px-4 py-3 font-semibold">Best seller</th>
+                <th className="px-4 py-3 font-semibold">Price</th>
+                <th className="px-4 py-3 font-semibold">Stock</th>
+                <th className="px-4 py-3 font-semibold">Best</th>
                 <th className="px-4 py-3 font-semibold text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {items.map((p) => (
+              {items.map((p) => {
+                const out = p.track_stock && (p.stock ?? 0) <= 0;
+                const low = p.track_stock && !out && (p.stock ?? 0) <= 5;
+                return (
                 <tr key={p.id} className="border-t border-border">
                   <td className="px-4 py-3"><img src={p.image} alt={p.name} className="h-12 w-12 rounded object-cover" /></td>
                   <td className="px-4 py-3 font-medium">{p.name}</td>
                   <td className="px-4 py-3 text-muted-foreground">{categories.find((c) => c.slug === p.category)?.name ?? p.category}</td>
+                  <td className="px-4 py-3">{(p.price ?? 0) > 0 ? `${p.currency ?? "NGN"} ${Number(p.price).toLocaleString()}` : <span className="text-muted-foreground">On request</span>}</td>
+                  <td className="px-4 py-3">
+                    {p.track_stock ? (
+                      <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${out ? "bg-destructive/10 text-destructive" : low ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`}>
+                        {out ? "Out" : `${p.stock} in stock`}
+                      </span>
+                    ) : <span className="text-muted-foreground">—</span>}
+                  </td>
                   <td className="px-4 py-3">{p.best_seller ? "Yes" : "—"}</td>
                   <td className="px-4 py-3 text-right">
                     <button onClick={() => openEdit(p)} className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-semibold hover:bg-muted"><Edit className="h-3.5 w-3.5" /> Edit</button>
                     <button onClick={() => remove(p.id)} className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-semibold text-destructive hover:bg-destructive/10"><Trash2 className="h-3.5 w-3.5" /> Delete</button>
                   </td>
                 </tr>
-              ))}
+                );
+              })}
             </tbody>
           </table>
         </div>

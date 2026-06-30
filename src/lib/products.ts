@@ -88,7 +88,19 @@ export type Product = {
   description: string;
   features: string[];
   bestSeller?: boolean;
+  price?: number;
+  currency?: string;
+  stock?: number;
+  trackStock?: boolean;
 };
+
+export function formatPrice(amount: number, currency = "NGN") {
+  try {
+    return new Intl.NumberFormat("en-NG", { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
+  } catch {
+    return `${currency} ${amount.toLocaleString()}`;
+  }
+}
 
 const rawProducts: Product[] = [
   { id: "p100", slug: 'hutchison-clinical-methods', name: "Hutchison's Clinical Methods (25th Edition)", category: 'books', image: p100img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Glynn & Drake', 'Hardcover'], bestSeller: true },

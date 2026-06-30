@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
-import { categories } from "@/lib/products";
+import { categories, formatPrice } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/lib/cart";
@@ -50,8 +50,15 @@ function ProductPage() {
           <div className="text-xs uppercase tracking-widest text-primary font-semibold">{cat.name}</div>
           <h1 className="mt-2 font-display text-3xl sm:text-4xl font-semibold">{product.name}</h1>
           <div className="mt-4 rounded-xl border border-gold/40 bg-gold/10 p-4">
-            <div className="text-2xl font-display font-bold text-primary">Price on Request</div>
-            <p className="mt-1 text-xs text-muted-foreground">Prices vary based on availability, supplier costs, and procurement conditions.</p>
+            <div className="text-2xl font-display font-bold text-primary">
+              {(product.price ?? 0) > 0 ? formatPrice(product.price!, product.currency) : "Price on Request"}
+            </div>
+            {product.trackStock && (
+              <div className={`mt-1 text-xs font-semibold ${(product.stock ?? 0) <= 0 ? "text-destructive" : (product.stock ?? 0) <= 5 ? "text-amber-600" : "text-emerald-700"}`}>
+                {(product.stock ?? 0) <= 0 ? "Out of stock" : `${product.stock} in stock`}
+              </div>
+            )}
+            <p className="mt-1 text-xs text-muted-foreground">{(product.price ?? 0) > 0 ? "Bulk pricing available — contact us for institutional rates." : "Prices vary based on availability, supplier costs, and procurement conditions."}</p>
           </div>
           <p className="mt-5 text-foreground/85 leading-relaxed">{product.description}</p>
           <ul className="mt-5 space-y-2">

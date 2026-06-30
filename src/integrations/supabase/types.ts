@@ -64,39 +64,51 @@ export type Database = {
           best_seller: boolean
           category: string
           created_at: string
+          currency: string
           description: string
           features: string[]
           id: string
           image: string
           name: string
+          price: number
           slug: string
           sort_order: number
+          stock: number
+          track_stock: boolean
           updated_at: string
         }
         Insert: {
           best_seller?: boolean
           category: string
           created_at?: string
+          currency?: string
           description?: string
           features?: string[]
           id?: string
           image: string
           name: string
+          price?: number
           slug: string
           sort_order?: number
+          stock?: number
+          track_stock?: boolean
           updated_at?: string
         }
         Update: {
           best_seller?: boolean
           category?: string
           created_at?: string
+          currency?: string
           description?: string
           features?: string[]
           id?: string
           image?: string
           name?: string
+          price?: number
           slug?: string
           sort_order?: number
+          stock?: number
+          track_stock?: boolean
           updated_at?: string
         }
         Relationships: []
