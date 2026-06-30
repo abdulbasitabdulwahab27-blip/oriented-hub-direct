@@ -160,23 +160,37 @@ function AdminProducts() {
                 <th className="px-4 py-3 font-semibold">Image</th>
                 <th className="px-4 py-3 font-semibold">Name</th>
                 <th className="px-4 py-3 font-semibold">Category</th>
-                <th className="px-4 py-3 font-semibold">Best seller</th>
+                <th className="px-4 py-3 font-semibold">Price</th>
+                <th className="px-4 py-3 font-semibold">Stock</th>
+                <th className="px-4 py-3 font-semibold">Best</th>
                 <th className="px-4 py-3 font-semibold text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {items.map((p) => (
+              {items.map((p) => {
+                const out = p.track_stock && (p.stock ?? 0) <= 0;
+                const low = p.track_stock && !out && (p.stock ?? 0) <= 5;
+                return (
                 <tr key={p.id} className="border-t border-border">
                   <td className="px-4 py-3"><img src={p.image} alt={p.name} className="h-12 w-12 rounded object-cover" /></td>
                   <td className="px-4 py-3 font-medium">{p.name}</td>
                   <td className="px-4 py-3 text-muted-foreground">{categories.find((c) => c.slug === p.category)?.name ?? p.category}</td>
+                  <td className="px-4 py-3">{(p.price ?? 0) > 0 ? `${p.currency ?? "NGN"} ${Number(p.price).toLocaleString()}` : <span className="text-muted-foreground">On request</span>}</td>
+                  <td className="px-4 py-3">
+                    {p.track_stock ? (
+                      <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${out ? "bg-destructive/10 text-destructive" : low ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`}>
+                        {out ? "Out" : `${p.stock} in stock`}
+                      </span>
+                    ) : <span className="text-muted-foreground">—</span>}
+                  </td>
                   <td className="px-4 py-3">{p.best_seller ? "Yes" : "—"}</td>
                   <td className="px-4 py-3 text-right">
                     <button onClick={() => openEdit(p)} className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-semibold hover:bg-muted"><Edit className="h-3.5 w-3.5" /> Edit</button>
                     <button onClick={() => remove(p.id)} className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-semibold text-destructive hover:bg-destructive/10"><Trash2 className="h-3.5 w-3.5" /> Delete</button>
                   </td>
                 </tr>
-              ))}
+                );
+              })}
             </tbody>
           </table>
         </div>
