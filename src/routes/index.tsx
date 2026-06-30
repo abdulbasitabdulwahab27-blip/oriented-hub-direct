@@ -25,6 +25,8 @@ function Home() {
     <>
       <Hero />
       <FeaturedCategories />
+      <FeaturedProducts />
+      
       
       <WhyChooseUs />
       <Procurement />
