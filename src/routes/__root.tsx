@@ -64,6 +64,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.theorientedhub.com/#organization",
+              name: "Oriented Hub",
+              alternateName: ["The Oriented Hub", "Oriented Hub Nigeria"],
+              url: "https://www.theorientedhub.com",
+              logo: "https://www.theorientedhub.com/favicon.ico",
+              email: "Orientedbanque@outlook.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "5, Oke-Fia Street, Opposite Zenith Bank",
+                addressLocality: "Osogbo",
+                addressCountry: "NG",
+              },
+              sameAs: [],
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.theorientedhub.com/#website",
+              url: "https://www.theorientedhub.com",
+              name: "Oriented Hub",
+              publisher: { "@id": "https://www.theorientedhub.com/#organization" },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://www.theorientedhub.com/shop?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
