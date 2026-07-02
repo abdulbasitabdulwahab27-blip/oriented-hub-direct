@@ -91,6 +91,10 @@ import p190img from "@/assets/products/childrens-storybooks-stack.jpg.asset.json
 import p191img from "@/assets/products/jawetz-medical-microbiology-27e.jpg.asset.json";
 import p192img from "@/assets/products/management-marketing-mis-stack.jpg.asset.json";
 import p193img from "@/assets/products/chaurasia-anatomy-stroud-maths-stack.jpg.asset.json";
+import p194img from "@/assets/products/netter-atlas-anatomy-8e.jpg.asset.json";
+import p195img from "@/assets/products/engineering-textbooks-stack.jpg.asset.json";
+import p196img from "@/assets/products/childrens-books-collage.jpg.asset.json";
+import p197img from "@/assets/products/general-interest-books-collage.jpg.asset.json";
 
 export type Category = {
   slug: string;
