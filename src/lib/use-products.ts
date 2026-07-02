@@ -70,11 +70,14 @@ export function useAllProducts() {
     return () => { cancelled = true; };
   }, []);
 
-  const seen = new Set<string>();
+  const seenSlug = new Set<string>();
+  const seenName = new Set<string>();
   const merged: Product[] = [];
   for (const p of [...dbProducts, ...codeProducts]) {
-    if (seen.has(p.slug)) continue;
-    seen.add(p.slug);
+    const nameKey = p.name.trim().toLowerCase();
+    if (seenSlug.has(p.slug) || seenName.has(nameKey)) continue;
+    seenSlug.add(p.slug);
+    seenName.add(nameKey);
     const override = priceMap[p.slug];
     merged.push(override ? { ...p, price: override.price, currency: override.currency } : p);
   }
