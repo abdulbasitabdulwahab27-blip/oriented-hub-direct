@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { Save, Search } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { products, categories, formatPrice } from "@/lib/products";
+import { products, categories, formatPrice, productSlugAliases } from "@/lib/products";
 import { fetchPriceMap } from "@/lib/product-prices";
 
 export const Route = createFileRoute("/_authenticated/admin/pricing")({
@@ -26,7 +26,9 @@ function AdminPricing() {
       const map = await fetchPriceMap();
       const init: Record<string, Draft> = {};
       for (const p of products) {
-        const row = map[p.slug];
+        const row = [p.slug, ...(productSlugAliases[p.slug] ?? [])]
+          .map((slug) => map[slug])
+          .find(Boolean);
         init[p.slug] = {
           price: row ? String(row.price) : "",
           currency: row?.currency ?? "NGN",
