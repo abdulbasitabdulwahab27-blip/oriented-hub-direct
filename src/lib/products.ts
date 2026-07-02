@@ -81,6 +81,16 @@ import p180img from "@/assets/products/big-data-hadoop-jain.jpg.asset.json";
 import p181img from "@/assets/products/cloud-computing-bhatnagar.jpg.asset.json";
 import p182img from "@/assets/products/basic-econometrics-gujarati.jpg.asset.json";
 import p183img from "@/assets/products/economics-development-planning-jhingan.jpg.asset.json";
+import p184img from "@/assets/products/ph-community-epidemiology-stack.jpg.asset.json";
+import p185img from "@/assets/products/social-medicine-safety-ohm-stack.jpg.asset.json";
+import p186img from "@/assets/products/safety-construction-water-phm-stack.jpg.asset.json";
+import p187img from "@/assets/products/medical-surgical-nursing-basavanthappa.jpg.asset.json";
+import p188img from "@/assets/products/richards-medical-surgical-nursing-ogunyemi.jpg.asset.json";
+import p189img from "@/assets/products/business-finance-accounting-stack.jpg.asset.json";
+import p190img from "@/assets/products/childrens-storybooks-stack.jpg.asset.json";
+import p191img from "@/assets/products/jawetz-medical-microbiology-27e.jpg.asset.json";
+import p192img from "@/assets/products/management-marketing-mis-stack.jpg.asset.json";
+import p193img from "@/assets/products/chaurasia-anatomy-stroud-maths-stack.jpg.asset.json";
 
 export type Category = {
   slug: string;
