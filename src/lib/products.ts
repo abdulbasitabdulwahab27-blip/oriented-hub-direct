@@ -88,6 +88,7 @@ import p187img from "@/assets/products/medical-surgical-nursing-basavanthappa.jp
 import p188img from "@/assets/products/richards-medical-surgical-nursing-ogunyemi.jpg.asset.json";
 import p189img from "@/assets/products/business-finance-accounting-stack.jpg.asset.json";
 import p190img from "@/assets/products/childrens-storybooks-stack.jpg.asset.json";
+import p198img from "@/assets/products/human-torso-anatomical-model.jpg.asset.json";
 import p191img from "@/assets/products/jawetz-medical-microbiology-27e.jpg.asset.json";
 import p192img from "@/assets/products/management-marketing-mis-stack.jpg.asset.json";
 import p193img from "@/assets/products/chaurasia-anatomy-stroud-maths-stack.jpg.asset.json";
@@ -269,6 +270,7 @@ const rawProducts: Product[] = [
   { id: "p197h", slug: 'canon-eos-rebel-t5-1200d-for-dummies', name: 'Canon EOS Rebel T5/1200D For Dummies', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Julie Adair King & Robert Correll', 'Wiley'] },
   { id: "p197i", slug: 'boxing-fitness-ian-oliver', name: 'Boxing Fitness — A Guide to Get Fighting Fit', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ian Oliver'] },
   { id: "p197j", slug: 'bob-marley-the-untold-story-salewicz', name: 'Bob Marley: The Untold Story', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Chris Salewicz'] },
+  { id: "p198", slug: 'human-torso-anatomical-model', name: 'Human Torso Anatomical Model', category: 'laboratory', image: p198img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size dual-view teaching model', 'Removable organs', 'Muscular & internal anatomy', 'Mounted on wooden base'] },
 ];
 
 // Deduplicate: keep the first occurrence per slug and name (case-insensitive).
