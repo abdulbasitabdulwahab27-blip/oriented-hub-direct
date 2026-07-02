@@ -67,6 +67,16 @@ import p160img from "@/assets/products/blacks-law-dictionary-12e.jpg.asset.json"
 import p161img from "@/assets/products/laboratory-heating-plate.jpg.asset.json";
 import p162img from "@/assets/products/cost-accounting-adeniji.jpg.asset.json";
 import p163img from "@/assets/products/economic-development-todaro.jpg.asset.json";
+import p164img from "@/assets/products/latex-exam-gloves.jpg.asset.json";
+import p165img from "@/assets/products/iv-cannula-set.jpg.asset.json";
+import p166img from "@/assets/products/disposable-syringes.jpg.asset.json";
+import p167img from "@/assets/products/disposable-apron.jpg.asset.json";
+import p168img from "@/assets/products/surgical-face-mask.jpg.asset.json";
+import p169img from "@/assets/products/disposable-bouffant-cap.jpg.asset.json";
+import p170img from "@/assets/products/disposable-surgical-gown.jpg.asset.json";
+import p171img from "@/assets/products/surgical-instruments-set.jpg.asset.json";
+import p172img from "@/assets/products/conforming-bandages.jpg.asset.json";
+import p173img from "@/assets/products/stainless-steel-instrument-set.jpg.asset.json";
 
 export type Category = {
   slug: string;
