@@ -75,6 +75,12 @@ import p174img from "@/assets/products/tourniquet.jpg.asset.json";
 import p175img from "@/assets/products/absorbent-cotton-wool.jpg.asset.json";
 import p176img from "@/assets/products/surgical-blades.jpg.asset.json";
 import p177img from "@/assets/products/agary-surgical-gloves.jpg.asset.json";
+import p178img from "@/assets/products/data-mining-warehousing-singh.jpg.asset.json";
+import p179img from "@/assets/products/data-science-analytics-jain.jpg.asset.json";
+import p180img from "@/assets/products/big-data-hadoop-jain.jpg.asset.json";
+import p181img from "@/assets/products/cloud-computing-bhatnagar.jpg.asset.json";
+import p182img from "@/assets/products/basic-econometrics-gujarati.jpg.asset.json";
+import p183img from "@/assets/products/economics-development-planning-jhingan.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -186,7 +192,12 @@ const rawProducts: Product[] = [
   { id: "p174", slug: 'quick-release-tourniquet', name: 'Medical Tourniquet', category: 'consumables', image: p174img.url, description: 'Elastic quick-release tourniquet for venepuncture and IV cannulation. Sourced from verified suppliers. Bulk pricing on request.', features: ['One-hand quick-release buckle', 'Latex-free elastic strap', 'Reusable, easy to clean'] },
   { id: "p175", slug: 'absorbent-cotton-wool-500g', name: 'Absorbent Cotton Wool', category: 'consumables', image: p175img.url, description: 'Hospital-grade hydrophilic absorbent cotton wool. Sourced from verified Nigerian suppliers (Dele, Steraid & other brands). Bulk pricing on request.', features: ['500g roll', 'Hydrophilic, BP grade', 'Assorted trusted brands'], bestSeller: true },
   { id: "p176", slug: 'apex-surgical-blades', name: 'Surgical Blades', category: 'consumables', image: p176img.url, description: 'Sterile carbon-steel surgical blades, individually foil-wrapped. Sourced from verified suppliers. Bulk pricing on request.', features: ['Assorted sizes (10, 11, 15, 20–24)', 'Sterile, single-use', 'Box of 100', 'CE 0197'] },
-  { id: "p177", slug: 'agary-sterile-surgical-gloves', name: 'Sterile Surgical Gloves', category: 'consumables', image: p177img.url, description: 'Sterile powdered latex surgical gloves, micro-roughened for grip. Sourced from verified suppliers. Bulk and institutional pricing on request.', features: ['50 pairs per box', 'Sizes 6.5 – 8.5', 'Sterile, pre-powdered', 'Latex, anatomically shaped'], bestSeller: true },
+  { id: "p178", slug: 'data-mining-warehousing-singh', name: 'Data Mining & Warehousing — Concepts and Techniques', category: 'books', image: p178img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Dr. Ikvinderpal Singh', 'AICTE Recommended Textbook', 'Khanna Publishing'] },
+  { id: "p179", slug: 'data-science-analytics-jain', name: 'Data Science and Analytics (with Python, R and SPSS Programming)', category: 'books', image: p179img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['V. K. Jain', 'AICTE Recommended Textbook', 'Khanna Publishing'] },
+  { id: "p180", slug: 'big-data-hadoop-jain', name: 'Big Data & Hadoop (2nd Edition)', category: 'books', image: p180img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['V. K. Jain', 'Covers Hive, Spark, Cassandra, MongoDB, HBase', 'Khanna Publishing'] },
+  { id: "p181", slug: 'cloud-computing-bhatnagar-sharma', name: 'Cloud Computing — Scope, Challenges and Solutions', category: 'books', image: p181img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ashish Bhatnagar & Shailza Sharma'] },
+  { id: "p182", slug: 'basic-econometrics-gujarati-5e', name: 'Basic Econometrics (5th Edition)', category: 'books', image: p182img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Gujarati, Porter & Gunasekar', 'McGraw Hill — Special Indian Edition'] },
+  { id: "p183", slug: 'economics-development-planning-jhingan', name: 'The Economics of Development and Planning (41st Edition)', category: 'books', image: p183img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['M. L. Jhingan', 'Vrinda Publications'] },
 ];
 
 // Deduplicate: keep the first occurrence per slug, name (case-insensitive) and image URL.
