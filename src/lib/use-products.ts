@@ -39,23 +39,32 @@ function mapRow(r: DBProductRow): Product {
  */
 export function useAllProducts() {
   const [dbProducts, setDbProducts] = useState<Product[]>([]);
+  const [priceMap, setPriceMap] = useState<Record<string, { price: number; currency: string }>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const { data, error } = await supabase
-        .from("products")
-        .select("id, slug, name, category, image, description, features, best_seller, price, currency, stock, track_stock")
-        .order("sort_order", { ascending: true })
-        .order("created_at", { ascending: false });
+      const [prodRes, priceRes] = await Promise.all([
+        supabase
+          .from("products")
+          .select("id, slug, name, category, image, description, features, best_seller, price, currency, stock, track_stock")
+          .order("sort_order", { ascending: true })
+          .order("created_at", { ascending: false }),
+        supabase.from("product_prices").select("slug, price, currency"),
+      ]);
       if (cancelled) return;
-      if (error) {
-        console.error("Failed to load DB products", error);
+      if (prodRes.error) {
+        console.error("Failed to load DB products", prodRes.error);
         setDbProducts([]);
       } else {
-        setDbProducts((data ?? []).map((r) => mapRow(r as DBProductRow)));
+        setDbProducts((prodRes.data ?? []).map((r) => mapRow(r as DBProductRow)));
       }
+      const map: Record<string, { price: number; currency: string }> = {};
+      for (const row of priceRes.data ?? []) {
+        map[row.slug] = { price: Number(row.price) || 0, currency: row.currency || "NGN" };
+      }
+      setPriceMap(map);
       setLoading(false);
     })();
     return () => { cancelled = true; };
@@ -66,7 +75,8 @@ export function useAllProducts() {
   for (const p of [...dbProducts, ...codeProducts]) {
     if (seen.has(p.slug)) continue;
     seen.add(p.slug);
-    merged.push(p);
+    const override = priceMap[p.slug];
+    merged.push(override ? { ...p, price: override.price, currency: override.currency } : p);
   }
 
   return { products: merged, loading };
