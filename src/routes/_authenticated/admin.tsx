@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { LogOut, Package, ShoppingBag, LayoutDashboard, Users, History } from "lucide-react";
+import { LogOut, Package, ShoppingBag, LayoutDashboard, Users, History, Tag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -63,6 +63,7 @@ function AdminLayout() {
       <nav className="flex flex-wrap gap-2 mb-8 border-b border-border">
         <AdminTab to="/admin" icon={<LayoutDashboard className="h-4 w-4" />} label="Overview" exact />
         <AdminTab to="/admin/products" icon={<Package className="h-4 w-4" />} label="Products" />
+        <AdminTab to="/admin/pricing" icon={<Tag className="h-4 w-4" />} label="Pricing" />
         <AdminTab to="/admin/orders" icon={<ShoppingBag className="h-4 w-4" />} label="Orders" />
         <AdminTab to="/admin/customers" icon={<Users className="h-4 w-4" />} label="Customers" />
         <AdminTab to="/admin/audit" icon={<History className="h-4 w-4" />} label="Audit Log" />

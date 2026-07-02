@@ -101,6 +101,27 @@ export type Database = {
         }
         Relationships: []
       }
+      product_prices: {
+        Row: {
+          currency: string
+          price: number
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          currency?: string
+          price?: number
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          currency?: string
+          price?: number
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           best_seller: boolean
