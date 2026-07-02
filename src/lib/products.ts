@@ -77,6 +77,10 @@ import p170img from "@/assets/products/disposable-surgical-gown.jpg.asset.json";
 import p171img from "@/assets/products/surgical-instruments-set.jpg.asset.json";
 import p172img from "@/assets/products/conforming-bandages.jpg.asset.json";
 import p173img from "@/assets/products/stainless-steel-instrument-set.jpg.asset.json";
+import p174img from "@/assets/products/tourniquet.jpg.asset.json";
+import p175img from "@/assets/products/absorbent-cotton-wool.jpg.asset.json";
+import p176img from "@/assets/products/surgical-blades.jpg.asset.json";
+import p177img from "@/assets/products/agary-surgical-gloves.jpg.asset.json";
 
 export type Category = {
   slug: string;
