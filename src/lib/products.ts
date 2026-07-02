@@ -88,6 +88,7 @@ import p187img from "@/assets/products/medical-surgical-nursing-basavanthappa.jp
 import p188img from "@/assets/products/richards-medical-surgical-nursing-ogunyemi.jpg.asset.json";
 import p189img from "@/assets/products/business-finance-accounting-stack.jpg.asset.json";
 import p190img from "@/assets/products/childrens-storybooks-stack.jpg.asset.json";
+import p198img from "@/assets/products/human-torso-anatomical-model.jpg.asset.json";
 import p191img from "@/assets/products/jawetz-medical-microbiology-27e.jpg.asset.json";
 import p192img from "@/assets/products/management-marketing-mis-stack.jpg.asset.json";
 import p193img from "@/assets/products/chaurasia-anatomy-stroud-maths-stack.jpg.asset.json";
