@@ -10,9 +10,7 @@ import p103img from "@/assets/products/lippincott-pharmacology-whalen.jpg.asset.
 import p104img from "@/assets/products/fundamentals-of-nursing-taylor.jpg.asset.json";
 import p105img from "@/assets/products/clinical-nursing-procedures-jacob.jpg.asset.json";
 import p106img from "@/assets/products/civil-litigation-adefope-okojie.jpg.asset.json";
-import p107img from "@/assets/products/high-court-civil-procedure-rules.jpg.asset.json";
 import p108img from "@/assets/products/compendium-clinical-medicine-falase.jpg.asset.json";
-import p109img from "@/assets/products/genetics-rastogi.jpg.asset.json";
 import p110img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
 import p111img from "@/assets/products/nigerian-legal-system-malemi.jpg.asset.json";
 import p112img from "@/assets/products/midwifery-gynae-nursing-jacob.jpg.asset.json";
@@ -34,7 +32,6 @@ import p127img from "@/assets/products/penal-code-northern-nigeria.jpg.asset.jso
 import p128img from "@/assets/products/cunningham-thorax-abdomen-koshi.jpg.asset.json";
 import p129img from "@/assets/products/brunner-medical-surgical-nursing.jpg.asset.json";
 import p130img from "@/assets/products/primary-health-care-developing-countries.jpg.asset.json";
-import p131img from "@/assets/products/digital-sat-study-guide-2026.jpg.asset.json";
 import p132img from "@/assets/products/kaplan-digital-sat-total-prep-2026.jpg.asset.json";
 import p133img from "@/assets/products/medical-lab-science-ochei-kolhatkar.jpg.asset.json";
 import p134img from "@/assets/products/bajas-principles-practice-surgery.jpg.asset.json";
@@ -47,9 +44,6 @@ import p140img from "@/assets/products/binocular-microscope-lcd.jpg.asset.json";
 import p141img from "@/assets/products/electrophoresis-machine-dy300.jpg.asset.json";
 import p142img from "@/assets/products/medical-suction-machine.jpg.asset.json";
 import p143img from "@/assets/products/ld3-electronic-centrifuge.jpg.asset.json";
-import p144img from "@/assets/products/user-wa0239.jpg.asset.json";
-import p145img from "@/assets/products/user-wa0034.jpg.asset.json";
-import p146img from "@/assets/products/user-wa0035.jpg.asset.json";
 import p147img from "@/assets/products/user-wa0021.jpg.asset.json";
 import p148img from "@/assets/products/user-wa0014.jpg.asset.json";
 import p149img from "@/assets/products/user-wa0010.jpg.asset.json";
@@ -128,9 +122,7 @@ const rawProducts: Product[] = [
   { id: "p104", slug: 'fundamentals-of-nursing-taylor', name: 'Fundamentals of Nursing (9th Edition)', category: 'books', image: p104img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Taylor, Lynn & Bartlett'], bestSeller: true },
   { id: "p105", slug: 'clinical-nursing-procedures-jacob', name: 'Clinical Nursing Procedures: The Art of Nursing Practice (4th Ed)', category: 'books', image: p105img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob, Rekha R. & Jadhav Sonali'] },
   { id: "p106", slug: 'civil-litigation-adefope-okojie', name: 'Civil Litigation (3rd Edition)', category: 'books', image: p106img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Quick reference to substantive law & procedure', 'Hon. Justice Adefope-Okojie'] },
-  { id: "p107", slug: 'high-court-civil-procedure-rules', name: 'High Court Civil Procedure Rules', category: 'books', image: p107img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Latest edition', 'Princeton & Associates'] },
   { id: "p108", slug: 'compendium-clinical-medicine-falase', name: 'A Compendium of Clinical Medicine (4th Edition)', category: 'books', image: p108img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe'], bestSeller: true },
-  { id: "p109", slug: 'genetics-rastogi', name: 'Genetics (4th Edition)', category: 'books', image: p109img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Veer Bala Rastogi'] },
   { id: "p110", slug: 'nigerian-constitutional-law-malemi', name: 'The Nigerian Constitutional Law', category: 'books', image: p110img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi'] },
   { id: "p111", slug: 'nigerian-legal-system-malemi', name: 'The Nigerian Legal System — Text and Cases', category: 'books', image: p111img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Revised 2021 Edition', 'Ese Malemi'], bestSeller: true },
   { id: "p112", slug: 'midwifery-gynae-nursing-jacob', name: 'A Comprehensive Textbook of Midwifery & Gynecological Nursing (6th Ed)', category: 'books', image: p112img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob'] },
@@ -152,7 +144,6 @@ const rawProducts: Product[] = [
   { id: "p128", slug: 'cunningham-thorax-abdomen-koshi', name: "Cunningham's Manual of Practical Anatomy — Thorax and Abdomen (17th Ed, Vol. 2)", category: 'books', image: p128img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Rachel Koshi', 'Oxford'] },
   { id: "p129", slug: 'brunner-medical-surgical-nursing', name: "Brunner & Suddarth's Textbook of Medical-Surgical Nursing (16th Ed)", category: 'books', image: p129img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Hinkle, Cheever, Overbaugh & Bradley', 'Wolters Kluwer'], bestSeller: true },
   { id: "p130", slug: 'primary-health-care-developing-countries', name: 'A Guide to Primary Health Care Practice in Developing Countries (7th Ed)', category: 'books', image: p130img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Funso Tope-Ajayi'] },
-  { id: "p131", slug: 'digital-sat-study-guide-2026', name: 'The Official Digital SAT Study Guide 2026', category: 'books', image: p131img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['College Board', 'Practice tests & sample questions'], bestSeller: true },
   { id: "p132", slug: 'kaplan-digital-sat-total-prep-2026', name: 'Kaplan Digital SAT Total Prep 2026', category: 'books', image: p132img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['1,000+ practice questions', '2 practice tests'] },
   { id: "p133", slug: 'medical-lab-science-ochei-kolhatkar', name: 'Medical Laboratory Science: Theory and Practice', category: 'books', image: p133img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['J. Ochei & A. Kolhatkar', 'CBSPD Edition'], bestSeller: true },
   { id: "p134", slug: 'bajas-principles-practice-surgery', name: "Baja's Principles and Practice of Surgery (5th Edition)", category: 'books', image: p134img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Including pathology in the tropics', 'Vol. 1'] },
@@ -165,9 +156,6 @@ const rawProducts: Product[] = [
   { id: "p141", slug: 'electrophoresis-machine-dy300', name: 'Electrophoresis Machine with Tank', category: 'laboratory', image: p141img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['EasyTechMed', 'Voltage & current display', 'Complete kit'] },
   { id: "p142", slug: 'medical-suction-machine', name: 'Medical Suction Machine', category: 'laboratory', image: p142img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['High vacuum', 'Mobile trolley', 'Hospital grade'] },
   { id: "p143", slug: 'ld3-electronic-centrifuge', name: 'Laboratory Centrifuge', category: 'laboratory', image: p143img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Up to 4000 rpm', 'Adjustable timer & speed', 'Benchtop design'], bestSeller: true },
-  { id: "p144", slug: 'advanced-engineering-mathematics-dass', name: 'Advanced Engineering Mathematics (International Edition)', category: 'books', image: p144img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['H. K. Dass', 'S. Chand', 'Includes free CD'], bestSeller: true },
-  { id: "p145", slug: 'aitbs-public-health-bundle', name: 'AITBS Public Health & Community Medicine Bundle (3 Titles)', category: 'books', image: p145img.url, description: 'Authentic copies supplied by Oriented Hub. Includes Primary Health Care (Banerjee), Community Medicine for PGMEE (Shaikh) and Basic & Clinical Epidemiology (Dhikav). Bulk pricing on request.', features: ['3-book set', 'AITBS Publishers, India', 'Available individually on request'] },
-  { id: "p146", slug: 'public-health-construction-who-bundle', name: 'Public Health, Construction Safety & WHO Water Quality Bundle (3 Titles)', category: 'books', image: p146img.url, description: 'Authentic copies supplied by Oriented Hub. Includes Safety & Occupational Health in Construction (Sharma), WHO Drinking-water Guidelines, and Public Health Management (Sunder Lal). Bulk pricing on request.', features: ['3-book set', 'CBS / Khanna / WHO', 'Available individually on request'] },
   { id: "p147", slug: 'respiratory-system-anatomical-model', name: 'Respiratory System Anatomical Model', category: 'laboratory', image: p147img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size teaching model', 'Includes larynx, trachea, lungs & heart', 'Mounted on base'] },
   { id: "p148", slug: 'student-monocular-binocular-microscope', name: 'Student Microscope Set', category: 'laboratory', image: p148img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Celestron Labs grade', '4x / 10x / 40x objectives', 'Ideal for schools & training labs'] },
   { id: "p149", slug: 'medical-equipment-educational-chart', name: 'Medical Equipment Educational Wall Chart', category: 'educational', image: p149img.url, description: 'Glossy laminated teaching aid sourced by Oriented Hub. Bulk pricing for schools and clinics.', features: ['30 labelled medical items', 'Ideal for classrooms & clinics', 'Durable laminate finish'] },
