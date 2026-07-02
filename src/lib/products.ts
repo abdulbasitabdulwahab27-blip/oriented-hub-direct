@@ -75,6 +75,12 @@ import p174img from "@/assets/products/tourniquet.jpg.asset.json";
 import p175img from "@/assets/products/absorbent-cotton-wool.jpg.asset.json";
 import p176img from "@/assets/products/surgical-blades.jpg.asset.json";
 import p177img from "@/assets/products/agary-surgical-gloves.jpg.asset.json";
+import p178img from "@/assets/products/data-mining-warehousing-singh.jpg.asset.json";
+import p179img from "@/assets/products/data-science-analytics-jain.jpg.asset.json";
+import p180img from "@/assets/products/big-data-hadoop-jain.jpg.asset.json";
+import p181img from "@/assets/products/cloud-computing-bhatnagar.jpg.asset.json";
+import p182img from "@/assets/products/basic-econometrics-gujarati.jpg.asset.json";
+import p183img from "@/assets/products/economics-development-planning-jhingan.jpg.asset.json";
 
 export type Category = {
   slug: string;
