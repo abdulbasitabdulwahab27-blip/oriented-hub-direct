@@ -77,6 +77,10 @@ import p170img from "@/assets/products/disposable-surgical-gown.jpg.asset.json";
 import p171img from "@/assets/products/surgical-instruments-set.jpg.asset.json";
 import p172img from "@/assets/products/conforming-bandages.jpg.asset.json";
 import p173img from "@/assets/products/stainless-steel-instrument-set.jpg.asset.json";
+import p174img from "@/assets/products/tourniquet.jpg.asset.json";
+import p175img from "@/assets/products/absorbent-cotton-wool.jpg.asset.json";
+import p176img from "@/assets/products/surgical-blades.jpg.asset.json";
+import p177img from "@/assets/products/agary-surgical-gloves.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -191,6 +195,10 @@ const rawProducts: Product[] = [
   { id: "p171", slug: 'surgical-instruments-set', name: 'General Surgical Instruments Set', category: 'consumables', image: p171img.url, description: 'Assorted stainless steel surgical instruments including forceps, scissors, needle holders and scalpel handles. Sourced from verified suppliers. Bulk pricing on request.', features: ['Stainless steel', 'Autoclavable', 'Configurable kit'] },
   { id: "p172", slug: 'conforming-bandages', name: 'Conforming Bandages (Assorted Widths)', category: 'consumables', image: p172img.url, description: 'Steroplast conforming bandages in multiple widths (5, 7.5, 10, 15cm × 4m). Sourced from verified suppliers. Bulk pricing on request.', features: ['CE marked', 'Widths 5–15cm × 4m', 'Individually wrapped'] },
   { id: "p173", slug: 'stainless-steel-instrument-set', name: 'Stainless Steel Hospital Instrument Set (Trays, Kidney Dish & Drums)', category: 'consumables', image: p173img.url, description: 'Autoclavable stainless steel hospital ware — kidney dish, instrument trays, dressing drums, gallipots and instrument cylinder. Sourced from verified suppliers. Bulk pricing on request.', features: ['Polished stainless steel', 'Autoclavable', 'Multiple pieces'] },
+  { id: "p174", slug: 'quick-release-tourniquet', name: 'Quick-Release Medical Tourniquet (Buckle Type)', category: 'consumables', image: p174img.url, description: 'Elastic quick-release tourniquet for venepuncture and IV cannulation. Sourced from verified suppliers. Bulk pricing on request.', features: ['One-hand quick-release buckle', 'Latex-free elastic strap', 'Reusable, easy to clean'] },
+  { id: "p175", slug: 'absorbent-cotton-wool-500g', name: 'Absorbent Cotton Wool BP (500g Roll)', category: 'consumables', image: p175img.url, description: 'Hospital-grade hydrophilic absorbent cotton wool. Sourced from verified Nigerian suppliers (Dele, Steraid & other brands). Bulk pricing on request.', features: ['500g roll', 'Hydrophilic, BP grade', 'Assorted trusted brands'], bestSeller: true },
+  { id: "p176", slug: 'apex-surgical-blades', name: 'Apex Sterile Surgical Blades (Box of 100)', category: 'consumables', image: p176img.url, description: 'Sterile carbon-steel surgical blades, individually foil-wrapped. Sourced from verified suppliers. Bulk pricing on request.', features: ['Assorted sizes (10, 11, 15, 20–24)', 'Sterile, single-use', 'Box of 100', 'CE 0197'] },
+  { id: "p177", slug: 'agary-sterile-surgical-gloves', name: 'Agary Sterile Latex Surgical Gloves (50 Pairs)', category: 'consumables', image: p177img.url, description: 'Sterile powdered latex surgical gloves, micro-roughened for grip. Sourced from verified suppliers. Bulk and institutional pricing on request.', features: ['50 pairs per box', 'Sizes 6.5 – 8.5', 'Sterile, pre-powdered', 'Latex, anatomically shaped'], bestSeller: true },
 ];
 
 // Deduplicate: keep the first occurrence per slug, name (case-insensitive) and image URL.
