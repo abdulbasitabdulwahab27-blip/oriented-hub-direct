@@ -135,6 +135,41 @@ export function formatPrice(amount: number, currency = "NGN") {
   }
 }
 
+export function normalizeProductKey(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\b(the|a|an|and|with|for|of|in|edition|ed|international|student|students|global|classic|regional|approach|volume|vol|set|kit|machine)\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function imageKey(image: string) {
+  return image.split("?")[0] || image;
+}
+
+function productKeys(product: Product) {
+  return [
+    `slug:${product.slug.trim().toLowerCase()}`,
+    `name:${normalizeProductKey(product.name)}`,
+    product.image ? `image:${imageKey(product.image)}` : "",
+  ].filter(Boolean);
+}
+
+export function dedupeProducts(list: Product[]) {
+  const seen = new Set<string>();
+  const out: Product[] = [];
+  for (const product of list) {
+    const keys = productKeys(product);
+    if (keys.some((key) => seen.has(key))) continue;
+    keys.forEach((key) => seen.add(key));
+    out.push(product);
+  }
+  return out;
+}
+
 const rawProducts: Product[] = [
   { id: "p100", slug: 'hutchison-clinical-methods', name: "Hutchison's Clinical Methods (25th Edition)", category: 'books', image: p100img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Glynn & Drake', 'Hardcover'], bestSeller: true },
   { id: "p101", slug: 'clinical-biochemistry-crook', name: 'Clinical Biochemistry and Metabolic Medicine', category: 'books', image: p101img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ["International Students' Edition", 'Martin A. Crook'] },
@@ -273,21 +308,23 @@ const rawProducts: Product[] = [
   { id: "p198", slug: 'human-torso-anatomical-model', name: 'Human Torso Anatomical Model', category: 'laboratory', image: p198img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size dual-view teaching model', 'Removable organs', 'Muscular & internal anatomy', 'Mounted on wooden base'] },
 ];
 
-// Deduplicate: keep the first occurrence per slug and name (case-insensitive).
-// Image URLs may repeat when several books are photographed together in one stack shot.
-export const products: Product[] = (() => {
-  const seenSlug = new Set<string>();
-  const seenName = new Set<string>();
-  const out: Product[] = [];
-  for (const p of rawProducts) {
-    const nameKey = p.name.trim().toLowerCase();
-    if (seenSlug.has(p.slug) || seenName.has(nameKey)) continue;
-    seenSlug.add(p.slug);
-    seenName.add(nameKey);
-    out.push(p);
+export const productSlugAliases: Record<string, string[]> = (() => {
+  const ownerByKey = new Map<string, string>();
+  const aliases: Record<string, Set<string>> = {};
+
+  for (const product of rawProducts) {
+    const keys = productKeys(product);
+    const canonical = keys.map((key) => ownerByKey.get(key)).find(Boolean) ?? product.slug;
+    aliases[canonical] ??= new Set([canonical]);
+    aliases[canonical].add(product.slug);
+    keys.forEach((key) => ownerByKey.set(key, canonical));
   }
-  return out;
+
+  return Object.fromEntries(Object.entries(aliases).map(([slug, values]) => [slug, [...values]]));
 })();
+
+// Deduplicate: keep one card for the same slug, same cleaned name, or same uploaded photo.
+export const products: Product[] = dedupeProducts(rawProducts);
 
 export function getProduct(id: string) {
   return products.find((p) => p.id === id || p.slug === id);
