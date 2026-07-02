@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { products, type Product } from "@/lib/products";
+import { productSlugAliases, products, type Product } from "@/lib/products";
 
 export type PriceRow = { slug: string; price: number; currency: string };
 
@@ -16,7 +16,9 @@ export async function fetchPriceMap(): Promise<Record<string, PriceRow>> {
 
 export function applyPrices(list: Product[], prices: Record<string, PriceRow>): Product[] {
   return list.map((p) => {
-    const override = prices[p.slug];
+    const override = [p.slug, ...(productSlugAliases[p.slug] ?? [])]
+      .map((slug) => prices[slug])
+      .find(Boolean);
     if (!override) return p;
     return { ...p, price: override.price, currency: override.currency };
   });
