@@ -67,6 +67,16 @@ import p160img from "@/assets/products/blacks-law-dictionary-12e.jpg.asset.json"
 import p161img from "@/assets/products/laboratory-heating-plate.jpg.asset.json";
 import p162img from "@/assets/products/cost-accounting-adeniji.jpg.asset.json";
 import p163img from "@/assets/products/economic-development-todaro.jpg.asset.json";
+import p164img from "@/assets/products/latex-exam-gloves.jpg.asset.json";
+import p165img from "@/assets/products/iv-cannula-set.jpg.asset.json";
+import p166img from "@/assets/products/disposable-syringes.jpg.asset.json";
+import p167img from "@/assets/products/disposable-apron.jpg.asset.json";
+import p168img from "@/assets/products/surgical-face-mask.jpg.asset.json";
+import p169img from "@/assets/products/disposable-bouffant-cap.jpg.asset.json";
+import p170img from "@/assets/products/disposable-surgical-gown.jpg.asset.json";
+import p171img from "@/assets/products/surgical-instruments-set.jpg.asset.json";
+import p172img from "@/assets/products/conforming-bandages.jpg.asset.json";
+import p173img from "@/assets/products/stainless-steel-instrument-set.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -171,6 +181,16 @@ const rawProducts: Product[] = [
   { id: "p161", slug: 'laboratory-heating-plate', name: 'Laboratory Heating Plate', category: 'laboratory', image: p161img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Adjustable temperature (0–100°C)', 'Heating & main indicators', 'Durable stainless plate'] },
   { id: "p162", slug: 'cost-accounting-adeniji-6e', name: 'Cost Accounting: A Managerial Approach (6th Edition)', category: 'books', image: p162img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. A. Adeniji', 'Illustrative & exam questions with solutions'] },
   { id: "p163", slug: 'economic-development-todaro-smith-12e', name: 'Economic Development (12th Edition)', category: 'books', image: p163img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Michael P. Todaro & Stephen C. Smith', 'Pearson'] },
+  { id: "p164", slug: 'latex-examination-gloves', name: 'Unicare Classic Latex Examination Gloves (Box of 100)', category: 'consumables', image: p164img.url, description: 'Non-sterile powdered single-use latex examination gloves. Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Natural latex, powdered', 'Non-sterile, single-use', 'Sizes S / M / L / XL', 'Box of 100'], bestSeller: true },
+  { id: "p165", slug: 'iv-cannula-set', name: 'IV Cannula with Injection Port (Assorted Sizes)', category: 'consumables', image: p165img.url, description: 'Sterile disposable intravenous cannulae with wings and injection port. Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Colour-coded sizes 14G–24G', 'Sterile, single-use', 'Radio-opaque catheter'] },
+  { id: "p166", slug: 'disposable-syringes', name: 'Disposable Syringes with Needle (2ml – 60ml)', category: 'consumables', image: p166img.url, description: 'Sterile single-use hypodermic syringes with attached needle. Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Sizes 2, 5, 10, 20, 30, 50, 60ml', 'Sterile, latex-free', 'Individually packed'], bestSeller: true },
+  { id: "p167", slug: 'disposable-apron', name: 'Disposable Polyethylene Apron (Blue)', category: 'consumables', image: p167img.url, description: 'Waterproof disposable protective apron for clinical use. Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Fluid-resistant', 'Neck loop, one-size', 'Pack sizes on request'] },
+  { id: "p168", slug: 'surgical-face-mask', name: '3-Ply Surgical Face Mask (Box of 50)', category: 'consumables', image: p168img.url, description: 'Disposable 3-ply surgical face masks with earloops. Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['3-ply non-woven', 'Elastic earloops', 'Box of 50'], bestSeller: true },
+  { id: "p169", slug: 'disposable-bouffant-cap', name: 'Disposable Bouffant / Surgical Cap', category: 'consumables', image: p169img.url, description: 'Non-woven disposable head cover for theatre and clinical settings. Sourced from verified suppliers. Bulk pricing on request.', features: ['Breathable non-woven', 'Elasticated edge', 'One-size'] },
+  { id: "p170", slug: 'disposable-surgical-gown', name: 'Disposable Surgical Gown (Non-Sterile)', category: 'consumables', image: p170img.url, description: 'Fluid-resistant disposable surgical gown with tie-back closure. Sourced from verified suppliers. Bulk pricing on request.', features: ['Non-woven, fluid-resistant', 'Tie-back closure', 'One-size'] },
+  { id: "p171", slug: 'surgical-instruments-set', name: 'General Surgical Instruments Set', category: 'consumables', image: p171img.url, description: 'Assorted stainless steel surgical instruments including forceps, scissors, needle holders and scalpel handles. Sourced from verified suppliers. Bulk pricing on request.', features: ['Stainless steel', 'Autoclavable', 'Configurable kit'] },
+  { id: "p172", slug: 'conforming-bandages', name: 'Conforming Bandages (Assorted Widths)', category: 'consumables', image: p172img.url, description: 'Steroplast conforming bandages in multiple widths (5, 7.5, 10, 15cm × 4m). Sourced from verified suppliers. Bulk pricing on request.', features: ['CE marked', 'Widths 5–15cm × 4m', 'Individually wrapped'] },
+  { id: "p173", slug: 'stainless-steel-instrument-set', name: 'Stainless Steel Hospital Instrument Set (Trays, Kidney Dish & Drums)', category: 'consumables', image: p173img.url, description: 'Autoclavable stainless steel hospital ware — kidney dish, instrument trays, dressing drums, gallipots and instrument cylinder. Sourced from verified suppliers. Bulk pricing on request.', features: ['Polished stainless steel', 'Autoclavable', 'Multiple pieces'] },
 ];
 
 // Deduplicate: keep the first occurrence per slug, name (case-insensitive) and image URL.
