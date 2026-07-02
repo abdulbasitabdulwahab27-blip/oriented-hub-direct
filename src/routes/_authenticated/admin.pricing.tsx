@@ -126,77 +126,75 @@ function AdminPricing() {
         </select>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-card">
-        <table className="w-full text-sm">
-          <thead className="bg-muted/50 text-left">
-            <tr>
-              <th className="px-3 py-3 font-semibold">Image</th>
-              <th className="px-3 py-3 font-semibold">Product</th>
-              <th className="px-3 py-3 font-semibold">Category</th>
-              <th className="px-3 py-3 font-semibold">Price</th>
-              <th className="px-3 py-3 font-semibold">Currency</th>
-              <th className="px-3 py-3 font-semibold">Preview</th>
-              <th className="px-3 py-3 font-semibold text-right">Save</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((p) => {
-              const d = drafts[p.slug] ?? { price: "", currency: "NGN", dirty: false };
-              const num = Number(d.price) || 0;
-              return (
-                <tr key={p.slug} className={`border-t border-border ${d.dirty ? "bg-amber-50/60" : ""}`}>
-                  <td className="px-3 py-2">
-                    <img src={p.image} alt="" className="h-10 w-10 rounded object-contain bg-white border border-border" />
-                  </td>
-                  <td className="px-3 py-2 font-medium max-w-xs">
-                    <div className="line-clamp-2">{p.name}</div>
-                    <div className="text-[11px] text-muted-foreground">{p.slug}</div>
-                  </td>
-                  <td className="px-3 py-2 text-muted-foreground text-xs">{categories.find((c) => c.slug === p.category)?.name ?? p.category}</td>
-                  <td className="px-3 py-2">
-                    <div className="relative">
-                      <DollarSign className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
-                      <input
-                        type="number"
-                        min={0}
-                        step="any"
-                        value={d.price}
-                        onChange={(e) => update(p.slug, { price: e.target.value })}
-                        placeholder="0"
-                        className="w-28 rounded-md border border-input bg-background pl-7 pr-2 py-1.5 text-sm"
-                      />
-                    </div>
-                  </td>
-                  <td className="px-3 py-2">
-                    <select
-                      value={d.currency}
-                      onChange={(e) => update(p.slug, { currency: e.target.value })}
-                      className="rounded-md border border-input bg-background px-2 py-1.5 text-sm"
-                    >
-                      {CURRENCIES.map((c) => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                  </td>
-                  <td className="px-3 py-2 text-primary font-semibold whitespace-nowrap">
-                    {num > 0 ? formatPrice(num, d.currency) : <span className="text-muted-foreground font-normal">Price on Request</span>}
-                  </td>
-                  <td className="px-3 py-2 text-right">
-                    <button
-                      onClick={() => saveOne(p.slug)}
-                      disabled={!d.dirty}
-                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-semibold text-primary hover:bg-primary/10 disabled:opacity-40 disabled:hover:bg-transparent"
-                    >
-                      <Save className="h-3.5 w-3.5" /> Save
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-            {filtered.length === 0 && (
-              <tr><td colSpan={7} className="px-3 py-12 text-center text-muted-foreground">No products match your filter.</td></tr>
-            )}
-          </tbody>
-        </table>
+      <div className="space-y-3">
+        {filtered.map((p) => {
+          const d = drafts[p.slug] ?? { price: "", currency: "NGN", dirty: false };
+          const num = Number(d.price) || 0;
+          const symbol = d.currency === "NGN" ? "₦" : d.currency === "USD" ? "$" : d.currency === "GBP" ? "£" : d.currency === "EUR" ? "€" : "";
+          return (
+            <div key={p.slug} className={`rounded-xl border border-border bg-card p-4 shadow-card ${d.dirty ? "ring-2 ring-amber-400" : ""}`}>
+              <div className="flex items-start gap-3">
+                <img src={p.image} alt="" className="h-16 w-16 shrink-0 rounded-md object-contain bg-white border border-border" />
+                <div className="min-w-0 flex-1">
+                  <div className="font-semibold text-base leading-snug">{p.name}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{categories.find((c) => c.slug === p.category)?.name ?? p.category}</div>
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_140px]">
+                <label className="block">
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Price</span>
+                  <div className="relative mt-1">
+                    <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xl font-bold text-primary">{symbol}</span>
+                    <input
+                      type="number"
+                      inputMode="decimal"
+                      min={0}
+                      step="any"
+                      value={d.price}
+                      onChange={(e) => update(p.slug, { price: e.target.value })}
+                      placeholder="0.00"
+                      className="w-full rounded-lg border-2 border-input bg-background pl-10 pr-3 py-3 text-2xl font-bold focus:border-primary focus:outline-none"
+                    />
+                  </div>
+                </label>
+                <label className="block">
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Currency</span>
+                  <select
+                    value={d.currency}
+                    onChange={(e) => update(p.slug, { currency: e.target.value })}
+                    className="mt-1 w-full rounded-lg border-2 border-input bg-background px-3 py-3 text-base font-semibold"
+                  >
+                    {CURRENCIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                </label>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <div className="text-sm">
+                  <span className="text-muted-foreground">Preview: </span>
+                  {num > 0
+                    ? <span className="text-primary font-bold">{formatPrice(num, d.currency)}</span>
+                    : <span className="text-muted-foreground italic">Price on Request</span>}
+                </div>
+                <button
+                  onClick={() => saveOne(p.slug)}
+                  disabled={!d.dirty}
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-soft disabled:opacity-40"
+                >
+                  <Save className="h-4 w-4" /> Save
+                </button>
+              </div>
+            </div>
+          );
+        })}
+        {filtered.length === 0 && (
+          <div className="rounded-xl border border-border bg-card p-10 text-center text-muted-foreground">
+            No products match your filter.
+          </div>
+        )}
       </div>
+
     </div>
   );
 }
