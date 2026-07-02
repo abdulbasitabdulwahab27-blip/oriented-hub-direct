@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { products as codeProducts, type Product } from "@/lib/products";
+import { dedupeProducts, productSlugAliases, products as codeProducts, type Product } from "@/lib/products";
 
 type DBProductRow = {
   id: string;
@@ -70,17 +70,12 @@ export function useAllProducts() {
     return () => { cancelled = true; };
   }, []);
 
-  const seenSlug = new Set<string>();
-  const seenName = new Set<string>();
-  const merged: Product[] = [];
-  for (const p of [...dbProducts, ...codeProducts]) {
-    const nameKey = p.name.trim().toLowerCase();
-    if (seenSlug.has(p.slug) || seenName.has(nameKey)) continue;
-    seenSlug.add(p.slug);
-    seenName.add(nameKey);
-    const override = priceMap[p.slug];
-    merged.push(override ? { ...p, price: override.price, currency: override.currency } : p);
-  }
+  const merged = dedupeProducts([...dbProducts, ...codeProducts].map((p) => {
+    const override = [p.slug, ...(productSlugAliases[p.slug] ?? [])]
+      .map((slug) => priceMap[slug])
+      .find(Boolean);
+    return override ? { ...p, price: override.price, currency: override.currency } : p;
+  }));
 
   return { products: merged, loading };
 }
