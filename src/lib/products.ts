@@ -102,6 +102,10 @@ import p201img from "@/assets/products/sanni-nigerian-legal-method.jpg.asset.jso
 import p202img from "@/assets/products/sembulingam-essentials-medical-physiology.jpg.asset.json";
 import p203img from "@/assets/products/vasudevan-biochemistry-medical-students.jpg.asset.json";
 import p204img from "@/assets/products/park-preventive-social-medicine.jpg.asset.json";
+import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.asset.json";
+import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
+import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
+import p208img from "@/assets/products/tropical-public-health-obionu.jpg.asset.json";
 
 export type Category = {
   slug: string;
