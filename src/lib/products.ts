@@ -96,6 +96,12 @@ import p194img from "@/assets/products/netter-atlas-anatomy-8e.jpg.asset.json";
 import p195img from "@/assets/products/engineering-textbooks-stack.jpg.asset.json";
 import p196img from "@/assets/products/childrens-books-collage.jpg.asset.json";
 import p197img from "@/assets/products/general-interest-books-collage.jpg.asset.json";
+import p199img from "@/assets/products/mowoe-constitutional-law-nigeria.jpg.asset.json";
+import p200img from "@/assets/products/malemi-nigerian-legal-method.jpg.asset.json";
+import p201img from "@/assets/products/sanni-nigerian-legal-method.jpg.asset.json";
+import p202img from "@/assets/products/sembulingam-essentials-medical-physiology.jpg.asset.json";
+import p203img from "@/assets/products/vasudevan-biochemistry-medical-students.jpg.asset.json";
+import p204img from "@/assets/products/park-preventive-social-medicine.jpg.asset.json";
 
 export type Category = {
   slug: string;
