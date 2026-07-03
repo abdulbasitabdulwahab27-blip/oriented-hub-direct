@@ -96,6 +96,12 @@ import p194img from "@/assets/products/netter-atlas-anatomy-8e.jpg.asset.json";
 import p195img from "@/assets/products/engineering-textbooks-stack.jpg.asset.json";
 import p196img from "@/assets/products/childrens-books-collage.jpg.asset.json";
 import p197img from "@/assets/products/general-interest-books-collage.jpg.asset.json";
+import p199img from "@/assets/products/mowoe-constitutional-law-nigeria.jpg.asset.json";
+import p200img from "@/assets/products/malemi-nigerian-legal-method.jpg.asset.json";
+import p201img from "@/assets/products/sanni-nigerian-legal-method.jpg.asset.json";
+import p202img from "@/assets/products/sembulingam-essentials-medical-physiology.jpg.asset.json";
+import p203img from "@/assets/products/vasudevan-biochemistry-medical-students.jpg.asset.json";
+import p204img from "@/assets/products/park-preventive-social-medicine.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -306,6 +312,12 @@ const rawProducts: Product[] = [
   { id: "p197i", slug: 'boxing-fitness-ian-oliver', name: 'Boxing Fitness — A Guide to Get Fighting Fit', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ian Oliver'] },
   { id: "p197j", slug: 'bob-marley-the-untold-story-salewicz', name: 'Bob Marley: The Untold Story', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Chris Salewicz'] },
   { id: "p198", slug: 'human-torso-anatomical-model', name: 'Human Torso Anatomical Model', category: 'laboratory', image: p198img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size dual-view teaching model', 'Removable organs', 'Muscular & internal anatomy', 'Mounted on wooden base'] },
+  { id: "p199", slug: 'mowoe-constitutional-law-nigeria', name: 'Constitutional Law in Nigeria', category: 'books', image: p199img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Kehinde M. Mowoe', 'Malthouse Law Books'] },
+  { id: "p200", slug: 'malemi-nigerian-legal-method', name: 'The Nigerian Legal Method', category: 'books', image: p200img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'Revised by Eni Eja Alobo', '2021 Revised Edition', 'Princeton'] },
+  { id: "p201", slug: 'sanni-nigerian-legal-method', name: 'Introduction to Nigerian Legal Method', category: 'books', image: p201img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Edited by Abiola Sanni'] },
+  { id: "p202", slug: 'sembulingam-essentials-medical-physiology', name: 'Essentials of Medical Physiology (10th Edition)', category: 'books', image: p202img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request. Free companion Review of Medical Physiology included.', features: ['K Sembulingam & Prema Sembulingam', 'Silver Jubilee Edition', 'JAYPEE'], bestSeller: true },
+  { id: "p203", slug: 'vasudevan-biochemistry-medical-students', name: 'Textbook of Biochemistry for Medical Students (10th Edition)', category: 'books', image: p203img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['DM Vasudevan, Sreekumari S & Kannan Vaidyanathan', 'Clinically Integrated Approach', 'JAYPEE'], bestSeller: true },
+  { id: "p204", slug: 'park-preventive-social-medicine', name: "Park's Textbook of Preventive and Social Medicine (28th Edition)", category: 'books', image: p204img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['K. Park', 'Bhanot Publishers'], bestSeller: true },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
