@@ -13,8 +13,8 @@ export function ProductCard({ product }: { product: Product }) {
       params={{ id: product.slug }}
       className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-card transition-all hover:shadow-elevated hover:-translate-y-0.5"
     >
-      <div className="relative aspect-square overflow-hidden bg-white p-2">
-        <img src={product.image} alt={product.name} loading="lazy" width={600} height={600} className={`h-full w-full object-contain transition-transform duration-500 group-hover:scale-105 ${outOfStock ? "opacity-60" : ""}`} />
+      <div className="relative aspect-square overflow-hidden bg-white p-3">
+        <img src={product.image} alt={product.name} loading="lazy" decoding="async" width={800} height={800} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw" className={`h-full w-full object-contain [image-rendering:auto] transition-transform duration-500 group-hover:scale-105 ${outOfStock ? "opacity-60" : ""}`} />
         {outOfStock && (
           <span className="absolute top-2 left-2 rounded-full bg-destructive px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-destructive-foreground shadow-soft">Out of stock</span>
         )}
@@ -22,16 +22,16 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="absolute top-2 right-2 rounded-full bg-amber-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-soft">Only {product.stock} left</span>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-2.5">
-        <div className="text-[9px] uppercase tracking-wider text-muted-foreground line-clamp-1">{cat?.name}</div>
-        <h3 className="mt-0.5 font-display text-[13px] font-semibold leading-tight line-clamp-2 group-hover:text-primary transition-colors">{product.name}</h3>
-        <div className="mt-auto pt-2 flex items-center justify-between gap-2">
+      <div className="flex flex-1 flex-col p-3.5">
+        <div className="text-[10px] uppercase tracking-wider text-muted-foreground line-clamp-1">{cat?.name}</div>
+        <h3 className="mt-1 font-display text-[15px] font-semibold leading-snug line-clamp-2 group-hover:text-primary transition-colors">{product.name}</h3>
+        <div className="mt-auto pt-3 flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <div className="text-[11px] font-semibold text-primary truncate">
+            <div className="text-sm font-bold text-primary truncate">
               {hasPrice ? formatPrice(product.price!, product.currency) : "Price on Request"}
             </div>
           </div>
-          <span className="shrink-0 inline-flex h-6 items-center rounded bg-primary/10 px-2 text-[10px] font-semibold text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">View</span>
+          <span className="shrink-0 inline-flex h-7 items-center rounded bg-primary/10 px-2.5 text-[11px] font-semibold text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">View</span>
         </div>
       </div>
     </Link>
