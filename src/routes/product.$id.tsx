@@ -43,8 +43,8 @@ function ProductPage() {
         <Link to="/" className="hover:text-primary">Home</Link> / <Link to="/shop" className="hover:text-primary">Shop</Link> / <Link to="/category/$slug" params={{ slug: cat.slug }} className="hover:text-primary">{cat.name}</Link>
       </nav>
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
-        <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
-          <img src={product.image} alt={product.name} width={800} height={800} className="w-full aspect-square object-cover" />
+        <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-card p-4 sm:p-6">
+          <img src={product.image} alt={product.name} width={1600} height={1600} sizes="(min-width: 1024px) 50vw, 100vw" decoding="async" className="w-full aspect-square object-contain [image-rendering:auto]" />
         </div>
         <div>
           <div className="text-xs uppercase tracking-widest text-primary font-semibold">{cat.name}</div>
