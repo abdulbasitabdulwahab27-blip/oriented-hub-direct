@@ -106,6 +106,10 @@ import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.ass
 import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
 import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
 import p208img from "@/assets/products/tropical-public-health-obionu.jpg.asset.json";
+import p209img from "@/assets/products/standard-wheelchair.jpg.asset.json";
+import p210img from "@/assets/products/mobility-aids-set.jpg.asset.json";
+import p211img from "@/assets/products/workplace-first-aid-kit.jpg.asset.json";
+import p212img from "@/assets/products/first-aid-box-metal.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -326,6 +330,10 @@ const rawProducts: Product[] = [
   { id: "p206", slug: 'oxford-handbook-clinical-medicine', name: 'Oxford Handbook of Clinical Medicine (11th Edition)', category: 'books', image: p206img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Wilkinson, Raine, Wiles et al.', 'Oxford University Press'], bestSeller: true },
   { id: "p207", slug: 'macleods-clinical-diagnosis', name: "Macleod's Clinical Diagnosis (3rd Edition)", category: 'books', image: p207img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Sandilands, Morrison & Merriman', 'Elsevier'] },
   { id: "p208", slug: 'tropical-public-health-obionu', name: 'Guide to Tropical Public Health & Community Medicine', category: 'books', image: p208img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['First Edition', 'Edited by Christopher Obionu'] },
+  { id: "p209", slug: 'standard-wheelchair', name: 'Standard Manual Wheelchair', category: 'medical-equipment', image: p209img.url, description: 'Sturdy chrome-frame wheelchair sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Reinforced chrome frame', 'Padded armrests & seat', 'Swing-away footrests', 'Foldable for easy transport'] },
+  { id: "p210", slug: 'mobility-aids-set', name: 'Mobility Aids — Crutches, Walker & Walking Canes', category: 'medical-equipment', image: p210img.url, description: 'Full range of walking aids sourced from verified suppliers. Individual items and bulk pricing available on request.', features: ['Underarm & elbow crutches', 'Folding walker with wheels', 'Single, tripod & quadripod canes', 'Adjustable height'] },
+  { id: "p211", slug: 'workplace-first-aid-kit', name: 'Workplace First Aid Kit (Up to 50 Persons)', category: 'consumables', image: p211img.url, description: 'HSE-style workplace first aid kit supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Triangular & medium dressings', 'Large dressings & eye pads', 'Wound cleansing wipes', 'Waterproof plasters & safety pins', 'Guidance leaflet included'] },
+  { id: "p212", slug: 'first-aid-box-metal', name: 'Metal First Aid Box (Green, Wall-Mountable)', category: 'medical-equipment', image: p212img.url, description: 'Durable metal first aid storage box supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Reinforced metal casing', 'Twin lockable latches', 'Carry handle', 'Wall-mount ready'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
