@@ -106,6 +106,10 @@ import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.ass
 import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
 import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
 import p208img from "@/assets/products/tropical-public-health-obionu.jpg.asset.json";
+import p209img from "@/assets/products/standard-wheelchair.jpg.asset.json";
+import p210img from "@/assets/products/mobility-aids-set.jpg.asset.json";
+import p211img from "@/assets/products/workplace-first-aid-kit.jpg.asset.json";
+import p212img from "@/assets/products/first-aid-box-metal.jpg.asset.json";
 
 export type Category = {
   slug: string;
