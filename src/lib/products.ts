@@ -116,6 +116,16 @@ import p215img from "@/assets/products/skeletal-system-chart.jpg.asset.json";
 import p216img from "@/assets/products/digestive-system-chart.jpg.asset.json";
 import p217img from "@/assets/products/the-liver-anatomical-chart.jpg.asset.json";
 import p218img from "@/assets/products/the-heart-anatomical-chart.jpg.asset.json";
+import p219img from "@/assets/products/lifewrap-nasg-anti-shock-garment.jpg.asset.json";
+import p220img from "@/assets/products/childbirth-simulator-pro.jpg.asset.json";
+import p221img from "@/assets/products/full-size-human-skeleton-model.jpg.asset.json";
+import p222img from "@/assets/products/fetal-presentation-birthing-model.jpg.asset.json";
+import p223img from "@/assets/products/advanced-nursing-patient-simulator.jpg.asset.json";
+import p224img from "@/assets/products/unisex-torso-85cm-23parts.jpg.asset.json";
+import p225img from "@/assets/products/iv-venipuncture-training-arm.jpg.asset.json";
+import p226img from "@/assets/products/lymphatic-immune-system-chart.jpg.asset.json";
+import p227img from "@/assets/products/giant-kidney-anatomical-model.jpg.asset.json";
+import p228img from "@/assets/products/liver-pancreas-duodenum-model.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -346,6 +356,16 @@ const rawProducts: Product[] = [
   { id: "p216", slug: 'digestive-system-chart', name: 'The Digestive System Anatomical Chart', category: 'medical-equipment', image: p216img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Oral cavity to large intestine', 'Liver, pancreas & duodenum', 'Detailed wall cross-sections'] },
   { id: "p217", slug: 'the-liver-anatomical-chart', name: 'The Liver Anatomical Chart', category: 'medical-equipment', image: p217img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Vessels, ducts & segments', 'Portal system & liver lobule', 'Gallstones & cirrhosis views'] },
   { id: "p218", slug: 'the-heart-anatomical-chart', name: 'The Heart Anatomical Chart', category: 'medical-equipment', image: p218img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Anterior & posterior views', 'Valves, sounds & circulation', 'Cardiac cycle & ECG diagrams'] },
+  { id: "p219", slug: 'lifewrap-nasg-anti-shock-garment', name: 'LifeWrap NASG — Non-Pneumatic Anti-Shock Garment', category: 'medical-equipment', image: p219img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['First-aid device for obstetric haemorrhage & shock', 'Size: Medium/Large', 'Numbered panels for correct application', 'Reusable — used under trained supervision'] },
+  { id: "p220", slug: 'childbirth-simulator-pro', name: 'Advanced Childbirth Simulator with Newborn & Placenta', category: 'medical-equipment', image: p220img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size delivery training pelvis', 'Articulated newborn manikin', 'Placenta & umbilical cord', 'Ideal for midwifery & obstetrics training'] },
+  { id: "p221", slug: 'full-size-human-skeleton-model', name: 'Full-Size Human Skeleton Model (180cm) with Stand', category: 'medical-equipment', image: p221img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size 180cm skeleton', 'Fully articulated joints', 'Rolling stand included', 'Anatomy teaching & clinical training'] },
+  { id: "p222", slug: 'fetal-presentation-birthing-model', name: 'Fetal Presentation & Birthing Pelvis Model', category: 'medical-equipment', image: p222img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Cutaway pelvis with foetus in utero', 'Teaches foetal position & delivery mechanics', 'Midwifery & obstetrics training aid'] },
+  { id: "p223", slug: 'advanced-nursing-patient-simulator', name: 'Advanced Full-Body Nursing & Obstetric Patient Simulator', category: 'medical-equipment', image: p223img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Full-body female manikin', 'Nursing, catheterization & delivery training', 'Interactive control panel', 'Multi-scenario clinical simulation'] },
+  { id: "p224", slug: 'unisex-torso-85cm-23parts', name: '85cm Unisex Anatomical Torso — 23 Parts (XC-204)', category: 'medical-equipment', image: p224img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['85cm life-size torso', '23 removable anatomical parts', 'Muscles, organs & vessels detailed', 'Medical & nursing teaching model'] },
+  { id: "p225", slug: 'iv-venipuncture-training-arm', name: 'IV Venipuncture & Injection Training Arm', category: 'medical-equipment', image: p225img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Realistic skin & palpable veins', 'Simulated blood reservoir & pump', 'Practice IV cannulation & phlebotomy', 'Ideal for nursing skills labs'] },
+  { id: "p226", slug: 'lymphatic-immune-system-chart', name: 'The Lymphatic / Immune System Anatomical Chart', category: 'medical-equipment', image: p226img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Human Body Chart 19', 'Thymus, spleen & lymph nodes', 'Lymphocytes & antibody defense', 'Ideal for clinics & classrooms'] },
+  { id: "p227", slug: 'giant-kidney-anatomical-model', name: 'Giant Kidney Anatomical Model with Stand', category: 'medical-equipment', image: p227img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Oversized teaching kidney', 'Cortex, medulla & renal vessels', 'Mounted on stable base', 'Urology & anatomy training aid'] },
+  { id: "p228", slug: 'liver-pancreas-duodenum-model', name: 'Liver, Pancreas & Duodenum Anatomical Model (XC-311)', category: 'medical-equipment', image: p228img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Hepatobiliary system teaching model', 'Liver with gallbladder & ducts', 'Pancreas & duodenum detailed', 'Ideal for medical schools'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
