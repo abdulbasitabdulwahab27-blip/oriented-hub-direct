@@ -106,6 +106,16 @@ import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.ass
 import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
 import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
 import p208img from "@/assets/products/tropical-public-health-obionu.jpg.asset.json";
+import p209img from "@/assets/products/anatomy-of-the-teeth-chart.jpg.asset.json";
+import p210img from "@/assets/products/the-eye-anatomical-chart.jpg.asset.json";
+import p211img from "@/assets/products/skin-anatomy-chart.jpg.asset.json";
+import p212img from "@/assets/products/dna-educational-chart.jpg.asset.json";
+import p213img from "@/assets/products/cell-organelles-chart.jpg.asset.json";
+import p214img from "@/assets/products/hand-wrist-anatomy-chart.jpg.asset.json";
+import p215img from "@/assets/products/skeletal-system-chart.jpg.asset.json";
+import p216img from "@/assets/products/digestive-system-chart.jpg.asset.json";
+import p217img from "@/assets/products/the-liver-anatomical-chart.jpg.asset.json";
+import p218img from "@/assets/products/the-heart-anatomical-chart.jpg.asset.json";
 
 export type Category = {
   slug: string;
