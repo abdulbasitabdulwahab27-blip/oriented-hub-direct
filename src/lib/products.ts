@@ -106,6 +106,16 @@ import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.ass
 import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
 import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
 import p208img from "@/assets/products/tropical-public-health-obionu.jpg.asset.json";
+import p209img from "@/assets/products/anatomy-of-the-teeth-chart.jpg.asset.json";
+import p210img from "@/assets/products/the-eye-anatomical-chart.jpg.asset.json";
+import p211img from "@/assets/products/skin-anatomy-chart.jpg.asset.json";
+import p212img from "@/assets/products/dna-educational-chart.jpg.asset.json";
+import p213img from "@/assets/products/cell-organelles-chart.jpg.asset.json";
+import p214img from "@/assets/products/hand-wrist-anatomy-chart.jpg.asset.json";
+import p215img from "@/assets/products/skeletal-system-chart.jpg.asset.json";
+import p216img from "@/assets/products/digestive-system-chart.jpg.asset.json";
+import p217img from "@/assets/products/the-liver-anatomical-chart.jpg.asset.json";
+import p218img from "@/assets/products/the-heart-anatomical-chart.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -326,6 +336,16 @@ const rawProducts: Product[] = [
   { id: "p206", slug: 'oxford-handbook-clinical-medicine', name: 'Oxford Handbook of Clinical Medicine (11th Edition)', category: 'books', image: p206img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Wilkinson, Raine, Wiles et al.', 'Oxford University Press'], bestSeller: true },
   { id: "p207", slug: 'macleods-clinical-diagnosis', name: "Macleod's Clinical Diagnosis (3rd Edition)", category: 'books', image: p207img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Sandilands, Morrison & Merriman', 'Elsevier'] },
   { id: "p208", slug: 'tropical-public-health-obionu', name: 'Guide to Tropical Public Health & Community Medicine', category: 'books', image: p208img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['First Edition', 'Edited by Christopher Obionu'] },
+  { id: "p209", slug: 'anatomy-of-the-teeth-chart', name: 'Anatomy of the Teeth Anatomical Chart', category: 'medical-equipment', image: p209img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Detailed dental anatomy poster', 'Primary & permanent teeth', 'Oral cavity, function & tooth decay', 'Ideal for clinics & classrooms'] },
+  { id: "p210", slug: 'the-eye-anatomical-chart', name: 'The Eye Anatomical Chart', category: 'medical-equipment', image: p210img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Detailed ocular anatomy', 'Lateral, top & visual field views', 'Retina, lens, fundus & macula lutea', 'Ideal for clinics & classrooms'] },
+  { id: "p211", slug: 'skin-anatomy-chart', name: 'Skin Anatomy Anatomical Chart', category: 'medical-equipment', image: p211img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Epidermis, dermis & fat layers', 'Hair follicle, glands & nerves', 'Labeled teaching poster'] },
+  { id: "p212", slug: 'dna-educational-chart', name: 'DNA Educational Anatomical Chart', category: 'medical-equipment', image: p212img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Deoxyribonucleic acid structure', 'Nucleotides & chromosomes', 'Great for biology classrooms'] },
+  { id: "p213", slug: 'cell-organelles-chart', name: 'Cell Organelles Anatomical Chart', category: 'medical-equipment', image: p213img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Nucleus, mitochondria, ribosomes', 'Golgi apparatus & ER', 'Detailed labeled diagram'] },
+  { id: "p214", slug: 'hand-wrist-anatomy-chart', name: 'Hand & Wrist Anatomy Chart', category: 'medical-equipment', image: p214img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Bones, muscles & ligaments', 'Palmar & dorsal views', 'Range-of-motion illustrations'] },
+  { id: "p215", slug: 'skeletal-system-chart', name: 'The Skeletal System Anatomical Chart', category: 'medical-equipment', image: p215img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Anterior, lateral & posterior views', 'Fully labeled bones', 'Hand, foot & femur cross section'] },
+  { id: "p216", slug: 'digestive-system-chart', name: 'The Digestive System Anatomical Chart', category: 'medical-equipment', image: p216img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Oral cavity to large intestine', 'Liver, pancreas & duodenum', 'Detailed wall cross-sections'] },
+  { id: "p217", slug: 'the-liver-anatomical-chart', name: 'The Liver Anatomical Chart', category: 'medical-equipment', image: p217img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Vessels, ducts & segments', 'Portal system & liver lobule', 'Gallstones & cirrhosis views'] },
+  { id: "p218", slug: 'the-heart-anatomical-chart', name: 'The Heart Anatomical Chart', category: 'medical-equipment', image: p218img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Anterior & posterior views', 'Valves, sounds & circulation', 'Cardiac cycle & ECG diagrams'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
