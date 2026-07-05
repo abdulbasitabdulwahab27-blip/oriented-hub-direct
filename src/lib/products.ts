@@ -116,6 +116,16 @@ import p215img from "@/assets/products/skeletal-system-chart.jpg.asset.json";
 import p216img from "@/assets/products/digestive-system-chart.jpg.asset.json";
 import p217img from "@/assets/products/the-liver-anatomical-chart.jpg.asset.json";
 import p218img from "@/assets/products/the-heart-anatomical-chart.jpg.asset.json";
+import p219img from "@/assets/products/lifewrap-nasg-anti-shock-garment.jpg.asset.json";
+import p220img from "@/assets/products/childbirth-simulator-pro.jpg.asset.json";
+import p221img from "@/assets/products/full-size-human-skeleton-model.jpg.asset.json";
+import p222img from "@/assets/products/fetal-presentation-birthing-model.jpg.asset.json";
+import p223img from "@/assets/products/advanced-nursing-patient-simulator.jpg.asset.json";
+import p224img from "@/assets/products/unisex-torso-85cm-23parts.jpg.asset.json";
+import p225img from "@/assets/products/iv-venipuncture-training-arm.jpg.asset.json";
+import p226img from "@/assets/products/lymphatic-immune-system-chart.jpg.asset.json";
+import p227img from "@/assets/products/giant-kidney-anatomical-model.jpg.asset.json";
+import p228img from "@/assets/products/liver-pancreas-duodenum-model.jpg.asset.json";
 
 export type Category = {
   slug: string;
