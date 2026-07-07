@@ -36,7 +36,7 @@ import p132img from "@/assets/products/kaplan-digital-sat-total-prep-2026.jpg.as
 import p133img from "@/assets/products/medical-lab-science-ochei-kolhatkar.jpg.asset.json";
 import p134img from "@/assets/products/bajas-principles-practice-surgery.jpg.asset.json";
 import p135img from "@/assets/products/cpr-manikin-adult.jpg.asset.json";
-import p136img from "@/assets/products/infant-incubator.jpg.asset.json";
+
 import p137img from "@/assets/products/anatomical-trauma-model.jpg.asset.json";
 import p138img from "@/assets/products/patient-care-manikin.jpg.asset.json";
 import p139img from "@/assets/products/pelvic-pregnancy-model.jpg.asset.json";
