@@ -36,7 +36,7 @@ import p132img from "@/assets/products/kaplan-digital-sat-total-prep-2026.jpg.as
 import p133img from "@/assets/products/medical-lab-science-ochei-kolhatkar.jpg.asset.json";
 import p134img from "@/assets/products/bajas-principles-practice-surgery.jpg.asset.json";
 import p135img from "@/assets/products/cpr-manikin-adult.jpg.asset.json";
-import p136img from "@/assets/products/infant-incubator.jpg.asset.json";
+
 import p137img from "@/assets/products/anatomical-trauma-model.jpg.asset.json";
 import p138img from "@/assets/products/patient-care-manikin.jpg.asset.json";
 import p139img from "@/assets/products/pelvic-pregnancy-model.jpg.asset.json";
@@ -238,7 +238,7 @@ const rawProducts: Product[] = [
   { id: "p133", slug: 'medical-lab-science-ochei-kolhatkar', name: 'Medical Laboratory Science: Theory and Practice', category: 'books', image: p133img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['J. Ochei & A. Kolhatkar', 'CBSPD Edition'], bestSeller: true },
   { id: "p134", slug: 'bajas-principles-practice-surgery', name: "Baja's Principles and Practice of Surgery (5th Edition)", category: 'books', image: p134img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Including pathology in the tropics', 'Vol. 1'] },
   { id: "p135", slug: 'cpr-manikin-adult', name: 'CPR Training Manikin', category: 'medical-equipment', image: p135img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['BLS / ACLS training', 'Electronic feedback monitor included'], bestSeller: true },
-  { id: "p136", slug: 'infant-incubator', name: 'Infant Incubator', category: 'medical-equipment', image: p136img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Temperature & humidity control', 'Mobile base', 'Hospital grade'], bestSeller: true },
+  
   { id: "p137", slug: 'anatomical-trauma-model', name: 'Trauma Care Anatomical Model', category: 'medical-equipment', image: p137img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['First-aid and emergency training manikin'] },
   { id: "p138", slug: 'patient-care-manikin', name: 'Patient Care Manikin', category: 'medical-equipment', image: p138img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Articulated joints', 'Nursing skills training'] },
   { id: "p139", slug: 'pelvic-pregnancy-model', name: 'Pelvic & Pregnancy Anatomical Model', category: 'medical-equipment', image: p139img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Teaching aid for midwifery & obstetrics students'] },
