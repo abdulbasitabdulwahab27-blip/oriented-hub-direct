@@ -126,6 +126,10 @@ import p225img from "@/assets/products/iv-venipuncture-training-arm.jpg.asset.js
 import p226img from "@/assets/products/lymphatic-immune-system-chart.jpg.asset.json";
 import p227img from "@/assets/products/giant-kidney-anatomical-model.jpg.asset.json";
 import p228img from "@/assets/products/liver-pancreas-duodenum-model.jpg.asset.json";
+import p229img from "@/assets/products/first-aid-box-metal.jpg.asset.json";
+import p230img from "@/assets/products/workplace-first-aid-kit.jpg.asset.json";
+import p231img from "@/assets/products/mobility-aids-collection.jpg.asset.json";
+import p232img from "@/assets/products/standard-wheelchair.jpg.asset.json";
 
 export type Category = {
   slug: string;
