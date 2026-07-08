@@ -4,6 +4,16 @@ import catLab from "@/assets/cat-lab.jpg";
 import catConsumables from "@/assets/cat-consumables.jpg";
 import catEducation from "@/assets/cat-education.jpg";
 import p122img from "@/assets/products/medical-law-ethics-nigeria-emiri.jpg.asset.json";
+import p300img from "@/assets/products/chatterjea-medical-biochemistry-11e.jpg.asset.json";
+import p301img from "@/assets/products/satyanarayana-biochemistry-6e.jpg.asset.json";
+import p302img from "@/assets/products/chaurasia-human-anatomy-9e-4vols.jpg.asset.json";
+import p303img from "@/assets/products/obstetrics-gynaecology-ten-teachers-21e.jpg.asset.json";
+import p304img from "@/assets/products/crook-clinical-biochemistry-8e.jpg.asset.json";
+import p305img from "@/assets/products/robbins-pathologic-basis-disease-11e.jpg.asset.json";
+import p306img from "@/assets/products/obionu-tropical-public-health-community-medicine.jpg.asset.json";
+import p307img from "@/assets/products/taylor-fundamentals-nursing-10e.jpg.asset.json";
+import p308img from "@/assets/products/lippincott-pharmacology-8e-whalen.jpg.asset.json";
+import p309img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
 import p123img from "@/assets/products/constitution-frn-1999-amended-2023.jpg.asset.json";
 import p124img from "@/assets/products/principles-civil-procedure-efevwerhan.jpg.asset.json";
 import p125img from "@/assets/products/criminal-code-efcc.jpg.asset.json";
@@ -334,6 +344,16 @@ const rawProducts: Product[] = [
   { id: "p230", slug: 'workplace-first-aid-kit', name: 'Workplace First Aid Kit (HSE Compliant)', category: 'medical-equipment', image: p230img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Fully stocked kit in wall-mountable case', 'Triangular bandages, dressings, eye pads', 'Wound cleansing wipes & plasters', 'HSE workplace standard — up to 20 persons'] },
   { id: "p231", slug: 'mobility-aids-collection', name: 'Mobility Aids — Walking Sticks, Crutches & Walker', category: 'medical-equipment', image: p231img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request. Individual items available.', features: ['Underarm & elbow crutches', 'Single & quad-base walking sticks', 'Folding walking frame', 'Height-adjustable, ergonomic grips'] },
   { id: "p232", slug: 'standard-wheelchair-roma', name: 'Standard Self-Propelled Wheelchair', category: 'medical-equipment', image: p232img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Chrome steel folding frame', 'Self-propelling rear wheels', 'Detachable footrests & padded armrests', 'Puncture-proof tyres'], bestSeller: true },
+  { id: "p300", slug: 'chatterjea-medical-biochemistry-11e', name: 'Textbook of Medical Biochemistry (11th Edition)', category: 'books', image: p300img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['MN Chatterjea & Rana Shinde', 'Jaypee Brothers'], bestSeller: true },
+  { id: "p301", slug: 'satyanarayana-biochemistry-6e', name: 'Biochemistry (6th Edition)', category: 'books', image: p301img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['U. Satyanarayana & U. Chakrapani', 'Elsevier', 'MCI/NMC competency-based curriculum'], bestSeller: true },
+  { id: "p302", slug: 'chaurasia-human-anatomy-9e-4vols', name: "BD Chaurasia's Human Anatomy — 4 Volume Set (9th Edition)", category: 'books', image: p302img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Regional & Applied — Dissection and Clinical', 'Vol 1: Upper Limb & Thorax', 'Vol 2, 3, 4 included', 'CBS Publishers'], bestSeller: true },
+  { id: "p303", slug: 'obstetrics-gynaecology-ten-teachers-21e', name: 'Obstetrics & Gynaecology by Ten Teachers — 2 Volume Set (21st Edition)', category: 'books', image: p303img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Kenny, McCarthy & Crosbie', '21st Edition', 'CRC Press'], bestSeller: true },
+  { id: "p304", slug: 'crook-clinical-biochemistry-8e', name: 'Clinical Biochemistry and Metabolic Medicine (8th Edition)', category: 'books', image: p304img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Martin A. Crook', 'Hodder Arnold', 'Free web resources'] },
+  { id: "p305", slug: 'robbins-pathologic-basis-disease-11e', name: 'Robbins, Cotran & Kumar — Pathologic Basis of Disease (11th Edition)', category: 'books', image: p305img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Aster, Kumar, Abbas, Debnath & Das', 'Elsevier', 'Includes digital version'], bestSeller: true },
+  { id: "p306", slug: 'obionu-tropical-public-health-community-medicine', name: 'Guide to Tropical Public Health & Community Medicine (1st Edition)', category: 'books', image: p306img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Edited by Christopher Obionu'] },
+  { id: "p307", slug: 'taylor-fundamentals-nursing-10e', name: 'Fundamentals of Nursing — The Art and Science of Person-Centered Care (10th Edition)', category: 'books', image: p307img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Taylor, Lynn & Bartlett', '10th Anniversary Edition', 'Wolters Kluwer'], bestSeller: true },
+  { id: "p308", slug: 'lippincott-pharmacology-8e-whalen', name: 'Lippincott Illustrated Reviews: Pharmacology (8th Edition)', category: 'books', image: p308img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Karen Whalen', 'Lerchenfeldt & Giordano', 'Wolters Kluwer'], bestSeller: true },
+  { id: "p309", slug: 'falase-compendium-clinical-medicine', name: 'A Compendium of Clinical Medicine (New Edition — Enhanced with Colour)', category: 'books', image: p309img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe', 'Spectrum'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
