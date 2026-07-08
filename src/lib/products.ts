@@ -14,6 +14,7 @@ import p306img from "@/assets/products/obionu-tropical-public-health-community-m
 import p307img from "@/assets/products/taylor-fundamentals-nursing-10e.jpg.asset.json";
 import p308img from "@/assets/products/lippincott-pharmacology-8e-whalen.jpg.asset.json";
 import p309img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
+import p310img from "@/assets/products/jacob-clinical-nursing-procedures-5e.jpg.asset.json";
 import p123img from "@/assets/products/constitution-frn-1999-amended-2023.jpg.asset.json";
 import p124img from "@/assets/products/principles-civil-procedure-efevwerhan.jpg.asset.json";
 import p125img from "@/assets/products/criminal-code-efcc.jpg.asset.json";
@@ -354,6 +355,7 @@ const rawProducts: Product[] = [
   { id: "p307", slug: 'taylor-fundamentals-nursing-10e', name: 'Fundamentals of Nursing — The Art and Science of Person-Centered Care (10th Edition)', category: 'books', image: p307img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Taylor, Lynn & Bartlett', '10th Anniversary Edition', 'Wolters Kluwer'], bestSeller: true },
   { id: "p308", slug: 'lippincott-pharmacology-8e-whalen', name: 'Lippincott Illustrated Reviews: Pharmacology (8th Edition)', category: 'books', image: p308img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Karen Whalen', 'Lerchenfeldt & Giordano', 'Wolters Kluwer'], bestSeller: true },
   { id: "p309", slug: 'falase-compendium-clinical-medicine', name: 'A Compendium of Clinical Medicine (New Edition — Enhanced with Colour)', category: 'books', image: p309img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe', 'Spectrum'] },
+  { id: "p310", slug: 'jacob-clinical-nursing-procedures-5e', name: 'Clinical Nursing Procedures — The Art of Nursing Practice (5th Edition)', category: 'books', image: p310img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob, Rekha R & Jadhav Sonali Tarachand', '5th Edition', 'Jaypee Brothers'], bestSeller: true },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
