@@ -3,26 +3,6 @@ import catMedical from "@/assets/cat-medical.jpg";
 import catLab from "@/assets/cat-lab.jpg";
 import catConsumables from "@/assets/cat-consumables.jpg";
 import catEducation from "@/assets/cat-education.jpg";
-import p100img from "@/assets/products/hutchison-clinical-methods.jpg.asset.json";
-import p101img from "@/assets/products/clinical-biochemistry-crook.jpg.asset.json";
-import p102img from "@/assets/products/public-health-tropics-lucas.jpg.asset.json";
-import p103img from "@/assets/products/lippincott-pharmacology-whalen.jpg.asset.json";
-import p104img from "@/assets/products/fundamentals-of-nursing-taylor.jpg.asset.json";
-import p105img from "@/assets/products/clinical-nursing-procedures-jacob.jpg.asset.json";
-import p106img from "@/assets/products/civil-litigation-adefope-okojie.jpg.asset.json";
-import p108img from "@/assets/products/compendium-clinical-medicine-falase.jpg.asset.json";
-import p110img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
-import p111img from "@/assets/products/nigerian-legal-system-malemi.jpg.asset.json";
-import p112img from "@/assets/products/midwifery-gynae-nursing-jacob.jpg.asset.json";
-import p113img from "@/assets/products/midwifery-for-nurses-elizabeth.jpg.asset.json";
-import p114img from "@/assets/products/general-nursing-midwifery-clement.jpg.asset.json";
-import p115img from "@/assets/products/islamic-law-of-evidence-hammed.jpg.asset.json";
-import p116img from "@/assets/products/adr-arbitration-nigeria-ajetunmobi.jpg.asset.json";
-import p117img from "@/assets/products/evidence-act-2011-amended-2023.jpg.asset.json";
-import p118img from "@/assets/products/aguda-law-of-evidence.jpg.asset.json";
-import p119img from "@/assets/products/paediatrics-tropical-azubuike.jpg.asset.json";
-import p120img from "@/assets/products/obstetrics-by-ten-teachers.jpg.asset.json";
-import p121img from "@/assets/products/cunningham-anatomy-limbs-koshi.jpg.asset.json";
 import p122img from "@/assets/products/medical-law-ethics-nigeria-emiri.jpg.asset.json";
 import p123img from "@/assets/products/constitution-frn-1999-amended-2023.jpg.asset.json";
 import p124img from "@/assets/products/principles-civil-procedure-efevwerhan.jpg.asset.json";
@@ -205,26 +185,6 @@ export function dedupeProducts(list: Product[]) {
 }
 
 const rawProducts: Product[] = [
-  { id: "p100", slug: 'hutchison-clinical-methods', name: "Hutchison's Clinical Methods (25th Edition)", category: 'books', image: p100img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Glynn & Drake', 'Hardcover'], bestSeller: true },
-  { id: "p101", slug: 'clinical-biochemistry-crook', name: 'Clinical Biochemistry and Metabolic Medicine', category: 'books', image: p101img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ["International Students' Edition", 'Martin A. Crook'] },
-  { id: "p102", slug: 'public-health-tropics-lucas', name: 'Short Textbook of Public Health Medicine for the Tropics', category: 'books', image: p102img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Revised 4th Edition', 'Lucas & Gilles'] },
-  { id: "p103", slug: 'lippincott-pharmacology-whalen', name: 'Lippincott Illustrated Reviews: Pharmacology (8th Edition)', category: 'books', image: p103img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Karen Whalen', 'Wolters Kluwer'], bestSeller: true },
-  { id: "p104", slug: 'fundamentals-of-nursing-taylor', name: 'Fundamentals of Nursing (9th Edition)', category: 'books', image: p104img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Taylor, Lynn & Bartlett'], bestSeller: true },
-  { id: "p105", slug: 'clinical-nursing-procedures-jacob', name: 'Clinical Nursing Procedures: The Art of Nursing Practice (4th Ed)', category: 'books', image: p105img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob, Rekha R. & Jadhav Sonali'] },
-  { id: "p106", slug: 'civil-litigation-adefope-okojie', name: 'Civil Litigation (3rd Edition)', category: 'books', image: p106img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Quick reference to substantive law & procedure', 'Hon. Justice Adefope-Okojie'] },
-  { id: "p108", slug: 'compendium-clinical-medicine-falase', name: 'A Compendium of Clinical Medicine (4th Edition)', category: 'books', image: p108img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe'], bestSeller: true },
-  { id: "p110", slug: 'nigerian-constitutional-law-malemi', name: 'The Nigerian Constitutional Law', category: 'books', image: p110img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi'] },
-  { id: "p111", slug: 'nigerian-legal-system-malemi', name: 'The Nigerian Legal System — Text and Cases', category: 'books', image: p111img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Revised 2021 Edition', 'Ese Malemi'], bestSeller: true },
-  { id: "p112", slug: 'midwifery-gynae-nursing-jacob', name: 'A Comprehensive Textbook of Midwifery & Gynecological Nursing (6th Ed)', category: 'books', image: p112img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob'] },
-  { id: "p113", slug: 'midwifery-for-nurses-elizabeth', name: 'Midwifery for Nurses (2nd Edition)', category: 'books', image: p113img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Marie Elizabeth', 'CBS Publishers'] },
-  { id: "p114", slug: 'general-nursing-midwifery-clement', name: 'Internship Textbook for General Nursing and Midwifery (3rd Ed)', category: 'books', image: p114img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['I. Clement', 'INC syllabus'] },
-  { id: "p115", slug: 'islamic-law-of-evidence-hammed', name: 'Islamic Law of Evidence and Administration of Justice in Nigeria', category: 'books', image: p115img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Hanafi A. Hammed'] },
-  { id: "p116", slug: 'adr-arbitration-nigeria-ajetunmobi', name: 'Alternative Dispute Resolution & Arbitration in Nigeria', category: 'books', image: p116img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Law, Theory and Practice', 'Abdulsalam O. Ajetunmobi'] },
-  { id: "p117", slug: 'evidence-act-2011-amended-2023', name: 'Evidence Act 2011 (As Amended 2023)', category: 'books', image: p117img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['With Supreme Court authorities & Notaries Public Act 2023'] },
-  { id: "p118", slug: 'aguda-law-of-evidence', name: 'Aguda: The Law of Evidence', category: 'books', image: p118img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Revised edition'] },
-  { id: "p119", slug: 'paediatrics-tropical-azubuike', name: 'Paediatrics and Child Health in a Tropical Region (3rd Edition)', category: 'books', image: p119img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Azubuike & Nkanginieme'] },
-  { id: "p120", slug: 'obstetrics-by-ten-teachers', name: 'Obstetrics by Ten Teachers (20th Edition)', category: 'books', image: p120img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Student Edition', 'Kenny & Myers', 'CRC Press'], bestSeller: true },
-  { id: "p121", slug: 'cunningham-anatomy-limbs-koshi', name: "Cunningham's Manual of Practical Anatomy — Upper and Lower Limbs (17th Ed, Vol. 1)", category: 'books', image: p121img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Rachel Koshi', 'Oxford'] },
   { id: "p122", slug: 'medical-law-ethics-nigeria-emiri', name: 'Medical Law and Ethics in Nigeria', category: 'books', image: p122img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Festus O. Emiri', 'Malthouse Law Books'] },
   { id: "p123", slug: 'constitution-frn-1999-amended-2023', name: 'Constitution of the Federal Republic of Nigeria 1999 (As Amended 2023)', category: 'books', image: p123img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['With Fundamental Rights (Enforcement Procedure) Rules 2009'], bestSeller: true },
   { id: "p124", slug: 'principles-civil-procedure-efevwerhan', name: 'Principles of Civil Procedure in Nigeria (3rd Edition)', category: 'books', image: p124img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['D. I. Efevwerhan'] },
