@@ -21,7 +21,6 @@ import p125img from "@/assets/products/criminal-code-efcc.jpg.asset.json";
 import p126img from "@/assets/products/law-of-tort-malemi.jpg.asset.json";
 import p127img from "@/assets/products/penal-code-northern-nigeria.jpg.asset.json";
 import p128img from "@/assets/products/cunningham-thorax-abdomen-koshi.jpg.asset.json";
-import p129img from "@/assets/products/brunner-medical-surgical-nursing.jpg.asset.json";
 import p130img from "@/assets/products/primary-health-care-developing-countries.jpg.asset.json";
 import p132img from "@/assets/products/kaplan-digital-sat-total-prep-2026.jpg.asset.json";
 import p133img from "@/assets/products/medical-lab-science-ochei-kolhatkar.jpg.asset.json";
@@ -87,8 +86,6 @@ import p194img from "@/assets/products/netter-atlas-anatomy-8e.jpg.asset.json";
 import p195img from "@/assets/products/engineering-textbooks-stack.jpg.asset.json";
 import p196img from "@/assets/products/childrens-books-collage.jpg.asset.json";
 import p197img from "@/assets/products/general-interest-books-collage.jpg.asset.json";
-import p199img from "@/assets/products/mowoe-constitutional-law-nigeria.jpg.asset.json";
-import p200img from "@/assets/products/malemi-nigerian-legal-method.jpg.asset.json";
 import p201img from "@/assets/products/sanni-nigerian-legal-method.jpg.asset.json";
 import p202img from "@/assets/products/sembulingam-essentials-medical-physiology.jpg.asset.json";
 import p203img from "@/assets/products/vasudevan-biochemistry-medical-students.jpg.asset.json";
@@ -96,7 +93,6 @@ import p204img from "@/assets/products/park-preventive-social-medicine.jpg.asset
 import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.asset.json";
 import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
 import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
-import p208img from "@/assets/products/tropical-public-health-obionu.jpg.asset.json";
 import p209img from "@/assets/products/anatomy-of-the-teeth-chart.jpg.asset.json";
 import p210img from "@/assets/products/the-eye-anatomical-chart.jpg.asset.json";
 import p211img from "@/assets/products/skin-anatomy-chart.jpg.asset.json";
@@ -203,7 +199,6 @@ const rawProducts: Product[] = [
   { id: "p126", slug: 'law-of-tort-malemi', name: 'Law of Tort (2nd Edition)', category: 'books', image: p126img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'Princeton'] },
   { id: "p127", slug: 'penal-code-northern-nigeria', name: 'Penal Code (Cap 89) — With Shariah Penal Code', category: 'books', image: p127img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Northern States Federal Provision Act Cap 345'] },
   { id: "p128", slug: 'cunningham-thorax-abdomen-koshi', name: "Cunningham's Manual of Practical Anatomy — Thorax and Abdomen (17th Ed, Vol. 2)", category: 'books', image: p128img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Rachel Koshi', 'Oxford'] },
-  { id: "p129", slug: 'brunner-medical-surgical-nursing', name: "Brunner & Suddarth's Textbook of Medical-Surgical Nursing (16th Ed)", category: 'books', image: p129img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Hinkle, Cheever, Overbaugh & Bradley', 'Wolters Kluwer'], bestSeller: true },
   { id: "p130", slug: 'primary-health-care-developing-countries', name: 'A Guide to Primary Health Care Practice in Developing Countries (7th Ed)', category: 'books', image: p130img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Funso Tope-Ajayi'] },
   { id: "p132", slug: 'kaplan-digital-sat-total-prep-2026', name: 'Kaplan Digital SAT Total Prep 2026', category: 'books', image: p132img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['1,000+ practice questions', '2 practice tests'] },
   { id: "p133", slug: 'medical-lab-science-ochei-kolhatkar', name: 'Medical Laboratory Science: Theory and Practice', category: 'books', image: p133img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['J. Ochei & A. Kolhatkar', 'CBSPD Edition'], bestSeller: true },
@@ -311,8 +306,6 @@ const rawProducts: Product[] = [
   { id: "p197i", slug: 'boxing-fitness-ian-oliver', name: 'Boxing Fitness — A Guide to Get Fighting Fit', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ian Oliver'] },
   { id: "p197j", slug: 'bob-marley-the-untold-story-salewicz', name: 'Bob Marley: The Untold Story', category: 'books', image: p197img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Chris Salewicz'] },
   { id: "p198", slug: 'human-torso-anatomical-model', name: 'Human Torso Anatomical Model', category: 'laboratory', image: p198img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Life-size dual-view teaching model', 'Removable organs', 'Muscular & internal anatomy', 'Mounted on wooden base'] },
-  { id: "p199", slug: 'mowoe-constitutional-law-nigeria', name: 'Constitutional Law in Nigeria', category: 'books', image: p199img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Kehinde M. Mowoe', 'Malthouse Law Books'] },
-  { id: "p200", slug: 'malemi-nigerian-legal-method', name: 'The Nigerian Legal Method', category: 'books', image: p200img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'Revised by Eni Eja Alobo', '2021 Revised Edition', 'Princeton'] },
   { id: "p201", slug: 'sanni-nigerian-legal-method', name: 'Introduction to Nigerian Legal Method', category: 'books', image: p201img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Edited by Abiola Sanni'] },
   { id: "p202", slug: 'sembulingam-essentials-medical-physiology', name: 'Essentials of Medical Physiology (10th Edition)', category: 'books', image: p202img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request. Free companion Review of Medical Physiology included.', features: ['K Sembulingam & Prema Sembulingam', 'Silver Jubilee Edition', 'JAYPEE'], bestSeller: true },
   { id: "p203", slug: 'vasudevan-biochemistry-medical-students', name: 'Textbook of Biochemistry for Medical Students (10th Edition)', category: 'books', image: p203img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['DM Vasudevan, Sreekumari S & Kannan Vaidyanathan', 'Clinically Integrated Approach', 'JAYPEE'], bestSeller: true },
@@ -320,7 +313,6 @@ const rawProducts: Product[] = [
   { id: "p205", slug: 'clinical-diagnosis-tropics-falase', name: 'An Introduction to Clinical Diagnosis in the Tropics', category: 'books', image: p205img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase', 'New Edition'] },
   { id: "p206", slug: 'oxford-handbook-clinical-medicine', name: 'Oxford Handbook of Clinical Medicine (11th Edition)', category: 'books', image: p206img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Wilkinson, Raine, Wiles et al.', 'Oxford University Press'], bestSeller: true },
   { id: "p207", slug: 'macleods-clinical-diagnosis', name: "Macleod's Clinical Diagnosis (3rd Edition)", category: 'books', image: p207img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['International Edition', 'Sandilands, Morrison & Merriman', 'Elsevier'] },
-  { id: "p208", slug: 'tropical-public-health-obionu', name: 'Guide to Tropical Public Health & Community Medicine', category: 'books', image: p208img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['First Edition', 'Edited by Christopher Obionu'] },
   { id: "p209", slug: 'anatomy-of-the-teeth-chart', name: 'Anatomy of the Teeth Anatomical Chart', category: 'medical-equipment', image: p209img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Detailed dental anatomy poster', 'Primary & permanent teeth', 'Oral cavity, function & tooth decay', 'Ideal for clinics & classrooms'] },
   { id: "p210", slug: 'the-eye-anatomical-chart', name: 'The Eye Anatomical Chart', category: 'medical-equipment', image: p210img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Detailed ocular anatomy', 'Lateral, top & visual field views', 'Retina, lens, fundus & macula lutea', 'Ideal for clinics & classrooms'] },
   { id: "p211", slug: 'skin-anatomy-chart', name: 'Skin Anatomy Anatomical Chart', category: 'medical-equipment', image: p211img.url, description: 'Sourced from verified suppliers. Bulk and institutional pricing available on request.', features: ['Epidermis, dermis & fat layers', 'Hair follicle, glands & nerves', 'Labeled teaching poster'] },
