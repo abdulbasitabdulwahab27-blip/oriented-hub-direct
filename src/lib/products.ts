@@ -111,6 +111,13 @@ import p229img from "@/assets/products/first-aid-box-metal.jpg.asset.json";
 import p230img from "@/assets/products/workplace-first-aid-kit.jpg.asset.json";
 import p231img from "@/assets/products/mobility-aids-collection.jpg.asset.json";
 import p232img from "@/assets/products/standard-wheelchair.jpg.asset.json";
+import p310img from "@/assets/products/ross-wilson-anatomy-physiology-14e.jpg.asset.json";
+import p311img from "@/assets/products/brunner-suddarth-medsurg-nursing-16e.jpg.asset.json";
+import p312img from "@/assets/products/azubuike-paediatrics-child-health-tropical-3e.jpg.asset.json";
+import p313img from "@/assets/products/malemi-nigerian-legal-system-2021.jpg.asset.json";
+import p314img from "@/assets/products/midwifery-for-nurses-2e-marie-elizabeth.jpg.asset.json";
+import p315img from "@/assets/products/jacob-midwifery-gynae-nursing-6e.jpg.asset.json";
+import p316img from "@/assets/products/hutchisons-clinical-methods-25e.jpg.asset.json";
 
 export type Category = {
   slug: string;
