@@ -118,6 +118,13 @@ import p313img from "@/assets/products/malemi-nigerian-legal-system-2021.jpg.ass
 import p314img from "@/assets/products/midwifery-for-nurses-2e-marie-elizabeth.jpg.asset.json";
 import p315img from "@/assets/products/jacob-midwifery-gynae-nursing-6e.jpg.asset.json";
 import p316img from "@/assets/products/hutchisons-clinical-methods-25e.jpg.asset.json";
+import p317img from "@/assets/products/obstetrics-gynaecology-ten-teachers-21e.jpg.asset.json";
+import p318img from "@/assets/products/crook-clinical-biochemistry-8e.jpg.asset.json";
+import p319img from "@/assets/products/taylor-fundamentals-nursing-10e.jpg.asset.json";
+import p320img from "@/assets/products/lippincott-pharmacology-8e-whalen.jpg.asset.json";
+import p321img from "@/assets/products/public-health-tropics-lucas.jpg.asset.json";
+import p322img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
+import p323img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -350,6 +357,13 @@ const rawProducts: Product[] = [
   { id: "p314", slug: 'midwifery-for-nurses-2e-marie-elizabeth', name: 'Midwifery for Nurses (2nd Edition)', category: 'books', image: p314img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Marie Elizabeth', 'CBS Publishers & Distributors'] },
   { id: "p315", slug: 'jacob-midwifery-gynae-nursing-6e', name: 'A Comprehensive Textbook of Midwifery & Gynecological Nursing (6th Edition)', category: 'books', image: p315img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob', 'BSc Nursing Revised Syllabus', 'Jaypee'], bestSeller: true },
   { id: "p316", slug: 'hutchisons-clinical-methods-25e', name: "Hutchison's Clinical Methods: An Integrated Approach to Clinical Practice (25th Edition)", category: 'books', image: p316img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Michael Glynn & William M. Drake', 'International Edition', 'Elsevier'], bestSeller: true },
+  { id: "p317", slug: 'obstetrics-gynaecology-ten-teachers-21e', name: 'Obstetrics & Gynaecology by Ten Teachers (21st Edition) — 2 Book Set', category: 'books', image: p317img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Louise C Kenny, Fergus McCarthy & Emma J Crosbie', 'CRC Press', 'Includes both Obstetrics and Gynaecology volumes'], bestSeller: true },
+  { id: "p318", slug: 'crook-clinical-biochemistry-metabolic-medicine-8e', name: 'Clinical Biochemistry and Metabolic Medicine (8th Edition)', category: 'books', image: p318img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Martin A. Crook', 'Hodder Arnold', 'Includes free web resources'] },
+  { id: "p319", slug: 'taylor-fundamentals-of-nursing-10e', name: 'Fundamentals of Nursing: The Art and Science of Person-Centered Care (10th Edition)', category: 'books', image: p319img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Carol Taylor, Pamela Lynn & Jennifer L. Bartlett', '10th Anniversary Edition', 'Wolters Kluwer'], bestSeller: true },
+  { id: "p320", slug: 'lippincott-illustrated-reviews-pharmacology-8e', name: 'Lippincott Illustrated Reviews: Pharmacology (8th Edition)', category: 'books', image: p320img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Karen Whalen', 'International Edition', 'Wolters Kluwer'], bestSeller: true },
+  { id: "p321", slug: 'lucas-short-textbook-public-health-tropics-4e', name: 'Short Textbook of Public Health Medicine for the Tropics (Revised 4th Edition)', category: 'books', image: p321img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Adetokunbo O. Lucas & Herbert M. Gilles', 'CRC Press / Taylor & Francis'] },
+  { id: "p322", slug: 'falase-akinkugbe-compendium-clinical-medicine', name: 'A Compendium of Clinical Medicine (New Edition, Enhanced with Colour)', category: 'books', image: p322img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe', 'Spectrum Books'] },
+  { id: "p323", slug: 'malemi-nigerian-constitutional-law-3e', name: 'The Nigerian Constitutional Law (3rd Edition, 2017)', category: 'books', image: p323img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'With Fundamental Rights (Enforcement Procedure) Rules 2009'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
