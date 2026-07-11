@@ -75,7 +75,7 @@ import p190img from "@/assets/products/childrens-storybooks-stack.jpg.asset.json
 import p198img from "@/assets/products/human-torso-anatomical-model.jpg.asset.json";
 import p191img from "@/assets/products/jawetz-medical-microbiology-27e.jpg.asset.json";
 import p192img from "@/assets/products/management-marketing-mis-stack.jpg.asset.json";
-import p193img from "@/assets/products/chaurasia-anatomy-stroud-maths-stack.jpg.asset.json";
+
 import p194img from "@/assets/products/netter-atlas-anatomy-8e.jpg.asset.json";
 import p195img from "@/assets/products/engineering-textbooks-stack.jpg.asset.json";
 import p196img from "@/assets/products/childrens-books-collage.jpg.asset.json";
@@ -289,7 +289,7 @@ const rawProducts: Product[] = [
   { id: "p192g", slug: 'human-communication-pearson-5e', name: 'Human Communication (5th Edition)', category: 'books', image: p192img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Pearson, Nelson, Titsworth & Harter', 'McGraw Hill'] },
   { id: "p192h", slug: 'services-marketing-zeithaml-6e', name: 'Services Marketing — Integrating Customer Focus Across the Firm (6th Edition)', category: 'books', image: p192img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Zeithaml, Bitner & Gremler', 'McGraw Hill'] },
   { id: "p192i", slug: 'contemporary-management-jones-george', name: 'Contemporary Management', category: 'books', image: p192img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Jones, George & Belkhodja', 'McGraw Hill'] },
-  { id: "p193", slug: 'chaurasias-human-anatomy-8e', name: "Chaurasia's Human Anatomy (8th Edition) — Volume 1", category: 'books', image: p193img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['B. D. Chaurasia', 'CBS Publishers', 'Volumes available on request'], bestSeller: true },
+  
   { id: "p194", slug: 'netter-atlas-human-anatomy-8e', name: 'Netter Atlas of Human Anatomy — Classic Regional Approach (8th Edition)', category: 'books', image: p194img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Frank H. Netter, MD', 'International Edition', 'Elsevier'], bestSeller: true },
   { id: "p195a", slug: 'engineering-mechanics-dynamics-meriam-6e', name: 'Engineering Mechanics: Dynamics (6th Edition)', category: 'books', image: p195img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Meriam & Kraige', 'Wiley'] },
   { id: "p195b", slug: 'modern-control-systems-dorf-11e', name: 'Modern Control Systems (11th Edition)', category: 'books', image: p195img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Dorf & Bishop', 'Pearson Education'] },
