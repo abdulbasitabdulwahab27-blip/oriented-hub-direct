@@ -125,6 +125,7 @@ import p320img from "@/assets/products/lippincott-pharmacology-8e-whalen.jpg.ass
 import p321img from "@/assets/products/public-health-tropics-lucas.jpg.asset.json";
 import p322img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
 import p323img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
+import p324img from "@/assets/products/malemi-nigerian-legal-method-2021.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -364,6 +365,7 @@ const rawProducts: Product[] = [
   { id: "p321", slug: 'lucas-short-textbook-public-health-tropics-4e', name: 'Short Textbook of Public Health Medicine for the Tropics (Revised 4th Edition)', category: 'books', image: p321img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Adetokunbo O. Lucas & Herbert M. Gilles', 'CRC Press / Taylor & Francis'] },
   { id: "p322", slug: 'falase-akinkugbe-compendium-clinical-medicine', name: 'A Compendium of Clinical Medicine (New Edition, Enhanced with Colour)', category: 'books', image: p322img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe', 'Spectrum Books'] },
   { id: "p323", slug: 'malemi-nigerian-constitutional-law-3e', name: 'The Nigerian Constitutional Law (3rd Edition, 2017)', category: 'books', image: p323img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'With Fundamental Rights (Enforcement Procedure) Rules 2009'] },
+  { id: "p324", slug: 'malemi-nigerian-legal-method-2021', name: 'The Nigerian Legal Method (2021 Revised Edition)', category: 'books', image: p324img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'Revised by Eni Eja Alobo', 'Princeton Publishing'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
