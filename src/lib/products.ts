@@ -125,6 +125,7 @@ import p320img from "@/assets/products/lippincott-pharmacology-8e-whalen.jpg.ass
 import p321img from "@/assets/products/public-health-tropics-lucas.jpg.asset.json";
 import p322img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
 import p323img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
+import p324img from "@/assets/products/malemi-nigerian-legal-method-2021.jpg.asset.json";
 
 export type Category = {
   slug: string;
