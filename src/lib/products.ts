@@ -118,6 +118,8 @@ import p313img from "@/assets/products/malemi-nigerian-legal-system-2021.jpg.ass
 import p314img from "@/assets/products/midwifery-for-nurses-2e-marie-elizabeth.jpg.asset.json";
 import p315img from "@/assets/products/jacob-midwifery-gynae-nursing-6e.jpg.asset.json";
 import p316img from "@/assets/products/hutchisons-clinical-methods-25e.jpg.asset.json";
+import p326img from "@/assets/products/eja-law-of-contract-2e.jpg.asset.json";
+
 import p317img from "@/assets/products/obstetrics-gynaecology-ten-teachers-21e.jpg.asset.json";
 import p318img from "@/assets/products/crook-clinical-biochemistry-8e.jpg.asset.json";
 import p319img from "@/assets/products/taylor-fundamentals-nursing-10e.jpg.asset.json";
