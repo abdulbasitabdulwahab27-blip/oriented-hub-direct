@@ -126,6 +126,7 @@ import p321img from "@/assets/products/public-health-tropics-lucas.jpg.asset.jso
 import p322img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
 import p323img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
 import p324img from "@/assets/products/malemi-nigerian-legal-method-2021.jpg.asset.json";
+import p325img from "@/assets/products/jacob-clinical-nursing-procedures-5e.jpg.asset.json";
 
 export type Category = {
   slug: string;
