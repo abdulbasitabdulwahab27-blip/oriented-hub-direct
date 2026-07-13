@@ -86,7 +86,7 @@ import p203img from "@/assets/products/vasudevan-biochemistry-medical-students.j
 import p204img from "@/assets/products/park-preventive-social-medicine.jpg.asset.json";
 import p205img from "@/assets/products/clinical-diagnosis-tropics-falase.jpg.asset.json";
 import p206img from "@/assets/products/oxford-handbook-clinical-medicine.jpg.asset.json";
-import p207img from "@/assets/products/macleods-clinical-diagnosis.jpg.asset.json";
+import p207img from "@/assets/products/macleods-clinical-diagnosis-3e.jpg.asset.json";
 import p209img from "@/assets/products/anatomy-of-the-teeth-chart.jpg.asset.json";
 import p210img from "@/assets/products/the-eye-anatomical-chart.jpg.asset.json";
 import p211img from "@/assets/products/skin-anatomy-chart.jpg.asset.json";
