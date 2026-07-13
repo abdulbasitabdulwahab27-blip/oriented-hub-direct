@@ -126,6 +126,7 @@ import p321img from "@/assets/products/public-health-tropics-lucas.jpg.asset.jso
 import p322img from "@/assets/products/falase-compendium-clinical-medicine.jpg.asset.json";
 import p323img from "@/assets/products/nigerian-constitutional-law-malemi.jpg.asset.json";
 import p324img from "@/assets/products/malemi-nigerian-legal-method-2021.jpg.asset.json";
+import p325img from "@/assets/products/jacob-clinical-nursing-procedures-5e.jpg.asset.json";
 
 export type Category = {
   slug: string;
@@ -366,6 +367,7 @@ const rawProducts: Product[] = [
   { id: "p322", slug: 'falase-akinkugbe-compendium-clinical-medicine', name: 'A Compendium of Clinical Medicine (New Edition, Enhanced with Colour)', category: 'books', image: p322img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['A. O. Falase & O. O. Akinkugbe', 'Spectrum Books'] },
   { id: "p323", slug: 'malemi-nigerian-constitutional-law-3e', name: 'The Nigerian Constitutional Law (3rd Edition, 2017)', category: 'books', image: p323img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'With Fundamental Rights (Enforcement Procedure) Rules 2009'] },
   { id: "p324", slug: 'malemi-nigerian-legal-method-2021', name: 'The Nigerian Legal Method (2021 Revised Edition)', category: 'books', image: p324img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'Revised by Eni Eja Alobo', 'Princeton Publishing'] },
+  { id: "p325", slug: 'jacob-clinical-nursing-procedures-5e', name: 'Clinical Nursing Procedures: The Art of Nursing Practice (5th Edition)', category: 'books', image: p325img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob, Rekha R & Jadhav Sonali Tarachand', 'Jaypee Brothers'], bestSeller: true },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
