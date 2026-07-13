@@ -370,6 +370,7 @@ const rawProducts: Product[] = [
   { id: "p323", slug: 'malemi-nigerian-constitutional-law-3e', name: 'The Nigerian Constitutional Law (3rd Edition, 2017)', category: 'books', image: p323img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'With Fundamental Rights (Enforcement Procedure) Rules 2009'] },
   { id: "p324", slug: 'malemi-nigerian-legal-method-2021', name: 'The Nigerian Legal Method (2021 Revised Edition)', category: 'books', image: p324img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Ese Malemi', 'Revised by Eni Eja Alobo', 'Princeton Publishing'] },
   { id: "p325", slug: 'jacob-clinical-nursing-procedures-5e', name: 'Clinical Nursing Procedures: The Art of Nursing Practice (5th Edition)', category: 'books', image: p325img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Annamma Jacob, Rekha R & Jadhav Sonali Tarachand', 'Jaypee Brothers'], bestSeller: true },
+  { id: "p326", slug: 'eja-law-of-contract-2e', name: 'Law of Contract (2nd Edition)', category: 'books', image: p326img.url, description: 'Authentic copy supplied by Oriented Hub. Bulk and institutional pricing available on request.', features: ['Alobo Eni Eja', 'Second Edition 2016'] },
 ];
 
 export const productSlugAliases: Record<string, string[]> = (() => {
