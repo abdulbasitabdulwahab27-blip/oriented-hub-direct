@@ -25,7 +25,6 @@ function Home() {
   return (
     <>
       <Hero />
-      <ProductOrbit />
       <FeaturedCategories />
       <FeaturedProducts />
       
