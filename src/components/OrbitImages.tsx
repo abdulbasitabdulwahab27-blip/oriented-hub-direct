@@ -112,7 +112,7 @@ export default function OrbitImages({
   paused = false,
   centerContent,
   responsive = false,
-}) {
+}: any) {
   const containerRef = useRef(null);
   const [scale, setScale] = useState(null);
 
