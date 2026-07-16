@@ -3,6 +3,7 @@ import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star
 import { categories, bestSellers, products } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
+import OrbitImages from "@/components/OrbitImages";
 import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -24,6 +25,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <ProductOrbit />
       <FeaturedCategories />
       <FeaturedProducts />
       
@@ -108,6 +110,40 @@ function FeaturedCategories() {
             </div>
           </Link>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ProductOrbit() {
+  const { products: all } = useAllProducts();
+  const source = all.length ? all : products;
+  const images = source
+    .filter((p) => !!p.image)
+    .slice(0, 12)
+    .map((p) => p.image);
+  if (images.length === 0) return null;
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-background to-secondary/30 py-16 md:py-24">
+      <div className="container-page">
+        <SectionHeading eyebrow="A universe of products" title="Everything you need — in orbit" subtitle="A rotating showcase of what we supply, from textbooks to medical essentials." center />
+        <div className="mt-10">
+          <OrbitImages
+            images={images}
+            shape="ellipse"
+            radiusX={600}
+            radiusY={160}
+            rotation={-8}
+            duration={35}
+            itemSize={110}
+            responsive={true}
+            centerContent={
+              <Link to="/shop" className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elevated hover:opacity-95 transition">
+                Browse Shop <ArrowRight className="h-4 w-4" />
+              </Link>
+            }
+          />
+        </div>
       </div>
     </section>
   );
