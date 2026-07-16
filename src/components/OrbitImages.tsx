@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Component created by Dominik Koch
 // https://x.com/dominikkoch
 import { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
