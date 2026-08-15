@@ -16,6 +16,7 @@ import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
 import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
+import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -69,6 +70,12 @@ const LaboratoryEquipmentSupplierRoute =
   LaboratoryEquipmentSupplierRouteImport.update({
     id: '/laboratory-equipment-supplier',
     path: '/laboratory-equipment-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HospitalConsumablesAndStationeriesRoute =
+  HospitalConsumablesAndStationeriesRouteImport.update({
+    id: '/hospital-consumables-and-stationeries',
+    path: '/hospital-consumables-and-stationeries',
     getParentRoute: () => rootRouteImport,
   } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -168,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/privacy': typeof PrivacyRoute
@@ -193,6 +201,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/privacy': typeof PrivacyRoute
@@ -219,6 +228,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/privacy': typeof PrivacyRoute
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/hospital-consumables-and-stationeries'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/privacy'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/hospital-consumables-and-stationeries'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/privacy'
@@ -296,6 +308,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/hospital-consumables-and-stationeries'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/privacy'
@@ -323,6 +336,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  HospitalConsumablesAndStationeriesRoute: typeof HospitalConsumablesAndStationeriesRoute
   LaboratoryEquipmentSupplierRoute: typeof LaboratoryEquipmentSupplierRoute
   MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -383,6 +397,13 @@ declare module '@tanstack/react-router' {
       path: '/laboratory-equipment-supplier'
       fullPath: '/laboratory-equipment-supplier'
       preLoaderRoute: typeof LaboratoryEquipmentSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hospital-consumables-and-stationeries': {
+      id: '/hospital-consumables-and-stationeries'
+      path: '/hospital-consumables-and-stationeries'
+      fullPath: '/hospital-consumables-and-stationeries'
+      preLoaderRoute: typeof HospitalConsumablesAndStationeriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -548,6 +569,8 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  HospitalConsumablesAndStationeriesRoute:
+    HospitalConsumablesAndStationeriesRoute,
   LaboratoryEquipmentSupplierRoute: LaboratoryEquipmentSupplierRoute,
   MedicalEquipmentSupplierRoute: MedicalEquipmentSupplierRoute,
   PrivacyRoute: PrivacyRoute,
