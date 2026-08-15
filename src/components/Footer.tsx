@@ -34,6 +34,12 @@ export function Footer() {
             <li><Link to="/sales-rep" className="hover:text-primary">Become a Sales Rep</Link></li>
             
             <li><Link to="/faq" className="hover:text-primary">FAQ</Link></li>
+            <li><Link to="/medical-equipment-supplier" className="hover:text-primary">Medical Equipment Supplier</Link></li>
+            <li><Link to="/laboratory-equipment-supplier" className="hover:text-primary">Laboratory Equipment Supplier</Link></li>
+            <li><Link to="/hospital-consumables-and-stationeries" className="hover:text-primary">Hospital Consumables and Stationeries</Link></li>
+            <li><Link to="/medical-textbooks-supplier" className="hover:text-primary">Medical Textbooks Supplier</Link></li>
+            <li><Link to="/nuc-accreditation-textbooks-supplier" className="hover:text-primary">NUC Accreditation Textbooks Supplier</Link></li>
+            <li><Link to="/international-book-seller" className="hover:text-primary">International Book Seller</Link></li>
             <li><Link to="/privacy" className="hover:text-primary">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-primary">Terms & Conditions</Link></li>
           </ul>
