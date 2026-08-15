@@ -47,7 +47,7 @@ export function Footer() {
         <div>
           <h4 className="font-display text-base font-semibold mb-3">Reach us</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-primary" /><div><div>+{WHATSAPP_PRIMARY}</div><div className="text-xs">Alt: +{WHATSAPP_ALT}</div></div></li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-primary" /><div><div>+{WHATSAPP_PRIMARY}</div><div className="text-xs">Alt: +{WHATSAPP_ALT}</div><div className="text-xs">UK: +{WHATSAPP_UK}</div></div></li>
             <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-primary" /><a href={`mailto:${EMAIL}`} className="hover:text-primary">{EMAIL}</a></li>
             <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 text-primary" /><span>{ADDRESS}</span></li>
           </ul>
