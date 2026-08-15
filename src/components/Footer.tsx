@@ -20,10 +20,12 @@ export function Footer() {
           <h4 className="font-display text-base font-semibold mb-3">Shop</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li><Link to="/shop" className="hover:text-primary">All Products</Link></li>
-            <li><Link to="/category/$slug" params={{ slug: "books" }} className="hover:text-primary">Books</Link></li>
-            <li><Link to="/category/$slug" params={{ slug: "medical-equipment" }} className="hover:text-primary">Medical Equipment</Link></li>
-            <li><Link to="/category/$slug" params={{ slug: "laboratory" }} className="hover:text-primary">Laboratory</Link></li>
-            <li><Link to="/category/$slug" params={{ slug: "consumables" }} className="hover:text-primary">Consumables</Link></li>
+            <li><Link to="/books" className="hover:text-primary">Books</Link></li>
+            <li><Link to="/medical-equipment" className="hover:text-primary">Medical Equipment</Link></li>
+            <li><Link to="/laboratory-equipment" className="hover:text-primary">Laboratory</Link></li>
+            <li><Link to="/hospital-consumables" className="hover:text-primary">Consumables</Link></li>
+            <li><Link to="/educational-materials" className="hover:text-primary">Educational Materials</Link></li>
+            <li><Link to="/business-solutions" className="hover:text-primary">Business Solutions</Link></li>
           </ul>
         </div>
         <div>
