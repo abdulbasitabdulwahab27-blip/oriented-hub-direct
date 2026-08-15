@@ -25,6 +25,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <WelcomeIntro />
       <FeaturedCategories />
       <FeaturedProducts />
       
