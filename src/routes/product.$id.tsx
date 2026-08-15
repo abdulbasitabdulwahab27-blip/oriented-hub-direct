@@ -1,18 +1,64 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Minus, Plus, ShoppingCart, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
-import { categories, formatPrice } from "@/lib/products";
+import { categories, formatPrice, products as staticProducts } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useCart } from "@/lib/cart";
 import { productOrderMessage, waLink } from "@/lib/whatsapp";
+import { breadcrumbSchema, canonical, canonicalLink, categoryUrl, pageMeta, SITE_NAME } from "@/lib/seo";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/product/$id")({
-  head: () => ({ meta: [{ title: "Product — Oriented Hub" }] }),
+  head: ({ params }) => {
+    const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
+    if (!product) return { meta: [{ title: "Product — The Oriented Hub" }] };
+    const cat = categories.find((c) => c.slug === product.category);
+    const path = `/product/${product.slug}`;
+    const description = `${product.name} — supplied by The Oriented Hub. ${product.description}`.slice(0, 158);
+    return {
+      meta: pageMeta({ title: `${product.name} | ${SITE_NAME}`, description, path, type: "product" }),
+      links: canonicalLink(path),
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            description: product.description,
+            category: cat?.name ?? product.category,
+            brand: { "@type": "Brand", name: SITE_NAME },
+            url: canonical(path),
+            offers: {
+              "@type": "Offer",
+              url: canonical(path),
+              priceCurrency: product.currency ?? "NGN",
+              ...(product.price && product.price > 0 ? { price: String(product.price) } : {}),
+              availability: "https://schema.org/InStock",
+              seller: { "@type": "Organization", name: SITE_NAME },
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Shop", path: "/shop" },
+              { name: cat?.name ?? product.category, path: categoryUrl(product.category) },
+              { name: product.name, path },
+            ]),
+          ),
+        },
+      ],
+    };
+  },
   errorComponent: () => <div className="container-page py-20 text-center text-muted-foreground">Failed to load product.</div>,
   component: ProductPage,
 });
+
 
 function ProductPage() {
   const { id } = Route.useParams();

@@ -8,14 +8,23 @@ import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/wh
 import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "The Oriented Hub | Medical Equipment, Lab Equipment & NUC Textbooks | Worldwide Shipping" },
-      { name: "description", content: "The Oriented Hub: Global Supplier of Medical Equipment, Laboratory Equipment, Hospital Consumables & NUC Accreditation Textbooks. Worldwide Shipping Available. Trusted Quality Delivered. Call +234 813 654 8965" },
-      { property: "og:title", content: "Oriented Hub — Quality Products. Better Care. Total Solutions." },
-      { property: "og:description", content: "Premium procurement for healthcare and education across Nigeria." },
+    meta: pageMeta({
+      title: "The Oriented Hub | Books, Medical Equipment & Laboratory Supplies in Nigeria",
+      description:
+        "The Oriented Hub supplies academic books, medical equipment, laboratory equipment, hospital consumables and educational materials across Nigeria with reliable nationwide delivery.",
+      path: "/",
+    }),
+    links: canonicalLink("/"),
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }])),
+      },
     ],
   }),
   component: Home,
@@ -26,6 +35,7 @@ function Home() {
     <>
       <Hero />
       <WelcomeIntro />
+      <AboutAnswers />
       <FeaturedCategories />
       <FeaturedProducts />
       
@@ -42,6 +52,53 @@ function Home() {
     </>
   );
 }
+
+const aiAnswers = [
+  {
+    q: "What is The Oriented Hub?",
+    a: "The Oriented Hub is a Nigerian supplier of academic books, medical equipment, laboratory equipment, hospital consumables and educational materials. We serve students, schools, universities, hospitals, clinics and procurement officers, with a head office at 5 Oke-Fia Street, Opposite Zenith Bank, Osogbo.",
+  },
+  {
+    q: "Does The Oriented Hub deliver across Nigeria?",
+    a: "Yes. The Oriented Hub delivers across Nigeria — all 36 states and the FCT — and also ships worldwide on request to the USA, Canada, UK, Europe, Africa and Asia.",
+  },
+  {
+    q: "What products does The Oriented Hub sell?",
+    a: "WAEC textbooks, JAMB textbooks, university textbooks, medical books, nursing books, science, management and social science books, plus laboratory equipment, medical equipment, hospital consumables and educational materials. All products are real physical items.",
+  },
+  {
+    q: "Does The Oriented Hub sell PDF books?",
+    a: "No. The Oriented Hub sells physical books only. We do not sell PDFs, ebooks or scanned copies.",
+  },
+];
+
+function AboutAnswers() {
+  return (
+    <section className="container-page pb-4">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="font-display text-2xl sm:text-3xl font-semibold">About The Oriented Hub — quick answers</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {aiAnswers.map((item) => (
+            <div key={item.q} className="rounded-xl border border-border bg-card p-6 shadow-card">
+              <h3 className="font-display text-lg font-semibold">{item.q}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-3 text-sm">
+          <Link to="/books" className="rounded-md border border-border px-4 py-2 hover:text-primary">Academic Books</Link>
+          <Link to="/medical-equipment" className="rounded-md border border-border px-4 py-2 hover:text-primary">Medical Equipment</Link>
+          <Link to="/laboratory-equipment" className="rounded-md border border-border px-4 py-2 hover:text-primary">Laboratory Equipment</Link>
+          <Link to="/hospital-consumables" className="rounded-md border border-border px-4 py-2 hover:text-primary">Hospital Consumables</Link>
+          <Link to="/educational-materials" className="rounded-md border border-border px-4 py-2 hover:text-primary">Educational Materials</Link>
+          <Link to="/delivery-information" className="rounded-md border border-border px-4 py-2 hover:text-primary">Delivery Information</Link>
+          <Link to="/blog" className="rounded-md border border-border px-4 py-2 hover:text-primary">Blog</Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 function WelcomeIntro() {
   return (
@@ -86,6 +143,22 @@ const homeFaqs = [
     q: "How do I place an international order?",
     a: "Contact us via WhatsApp +234 813 654 8965. We process orders and ship worldwide. Trusted Quality Delivered.",
   },
+  {
+    q: "Do you deliver nationwide?",
+    a: "Yes. The Oriented Hub delivers across Nigeria.",
+  },
+  {
+    q: "Do you sell PDF books?",
+    a: "No. We sell physical books only.",
+  },
+  {
+    q: "How do I place an order?",
+    a: "Customers can place orders through our website or contact us directly.",
+  },
+  {
+    q: "What products do you sell?",
+    a: "Academic books, medical equipment, laboratory equipment, hospital consumables and educational materials.",
+  },
 ];
 
 function HomeFaq() {
@@ -113,9 +186,12 @@ function Hero() {
             <Sparkles className="h-3.5 w-3.5" /> Trusted procurement partner since day one
           </div>
           <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Quality Products.<br />
-            <span className="text-primary">Better Care.</span> Total Solutions.
+            Books, Medical Equipment &amp;<br />
+            <span className="text-primary">Laboratory Supplies</span> in Nigeria
           </h1>
+          <p className="mt-3 font-display text-lg font-semibold text-foreground/80">
+            Quality Products. Better Care. Total Solutions.
+          </p>
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
             Oriented Hub supplies authentic books, medical equipment, laboratory equipment, hospital consumables and educational materials — delivered to institutions and individuals nationwide.
           </p>

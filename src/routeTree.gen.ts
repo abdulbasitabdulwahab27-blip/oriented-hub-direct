@@ -17,19 +17,27 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NucAccreditationTextbooksSupplierRouteImport } from './routes/nuc-accreditation-textbooks-supplier'
 import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
 import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
+import { Route as MedicalEquipmentRouteImport } from './routes/medical-equipment'
 import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
+import { Route as LaboratoryEquipmentRouteImport } from './routes/laboratory-equipment'
 import { Route as InternationalBookSellerRouteImport } from './routes/international-book-seller'
 import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
+import { Route as HospitalConsumablesRouteImport } from './routes/hospital-consumables'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as EducationalMaterialsRouteImport } from './routes/educational-materials'
+import { Route as DeliveryInformationRouteImport } from './routes/delivery-information'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
+import { Route as BooksRouteImport } from './routes/books'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
 import { Route as CategorySlugRouteImport } from './routes/category.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
@@ -81,12 +89,22 @@ const MedicalEquipmentSupplierRoute =
     path: '/medical-equipment-supplier',
     getParentRoute: () => rootRouteImport,
   } as any)
+const MedicalEquipmentRoute = MedicalEquipmentRouteImport.update({
+  id: '/medical-equipment',
+  path: '/medical-equipment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaboratoryEquipmentSupplierRoute =
   LaboratoryEquipmentSupplierRouteImport.update({
     id: '/laboratory-equipment-supplier',
     path: '/laboratory-equipment-supplier',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LaboratoryEquipmentRoute = LaboratoryEquipmentRouteImport.update({
+  id: '/laboratory-equipment',
+  path: '/laboratory-equipment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InternationalBookSellerRoute = InternationalBookSellerRouteImport.update({
   id: '/international-book-seller',
   path: '/international-book-seller',
@@ -98,9 +116,24 @@ const HospitalConsumablesAndStationeriesRoute =
     path: '/hospital-consumables-and-stationeries',
     getParentRoute: () => rootRouteImport,
   } as any)
+const HospitalConsumablesRoute = HospitalConsumablesRouteImport.update({
+  id: '/hospital-consumables',
+  path: '/hospital-consumables',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EducationalMaterialsRoute = EducationalMaterialsRouteImport.update({
+  id: '/educational-materials',
+  path: '/educational-materials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliveryInformationRoute = DeliveryInformationRouteImport.update({
+  id: '/delivery-information',
+  path: '/delivery-information',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -116,6 +149,11 @@ const CheckoutRoute = CheckoutRouteImport.update({
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BooksRoute = BooksRouteImport.update({
+  id: '/books',
+  path: '/books',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -137,6 +175,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductIdRoute = ProductIdRouteImport.update({
   id: '/product/$id',
   path: '/product/$id',
@@ -145,6 +188,11 @@ const ProductIdRoute = ProductIdRouteImport.update({
 const CategorySlugRoute = CategorySlugRouteImport.update({
   id: '/category/$slug',
   path: '/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
@@ -191,13 +239,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/books': typeof BooksRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/delivery-information': typeof DeliveryInformationRoute
+  '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
+  '/hospital-consumables': typeof HospitalConsumablesRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/international-book-seller': typeof InternationalBookSellerRoute
+  '/laboratory-equipment': typeof LaboratoryEquipmentRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
+  '/medical-equipment': typeof MedicalEquipmentRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
@@ -207,8 +261,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
   '/product/$id': typeof ProductIdRoute
+  '/blog/': typeof BlogIndexRoute
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/customers': typeof AuthenticatedAdminCustomersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
@@ -220,13 +276,19 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/books': typeof BooksRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/delivery-information': typeof DeliveryInformationRoute
+  '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
+  '/hospital-consumables': typeof HospitalConsumablesRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/international-book-seller': typeof InternationalBookSellerRoute
+  '/laboratory-equipment': typeof LaboratoryEquipmentRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
+  '/medical-equipment': typeof MedicalEquipmentRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
@@ -235,8 +297,10 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
   '/product/$id': typeof ProductIdRoute
+  '/blog': typeof BlogIndexRoute
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/customers': typeof AuthenticatedAdminCustomersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
@@ -250,13 +314,19 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/books': typeof BooksRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/delivery-information': typeof DeliveryInformationRoute
+  '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
+  '/hospital-consumables': typeof HospitalConsumablesRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/international-book-seller': typeof InternationalBookSellerRoute
+  '/laboratory-equipment': typeof LaboratoryEquipmentRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
+  '/medical-equipment': typeof MedicalEquipmentRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
@@ -266,8 +336,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
   '/product/$id': typeof ProductIdRoute
+  '/blog/': typeof BlogIndexRoute
   '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/_authenticated/admin/customers': typeof AuthenticatedAdminCustomersRoute
   '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRoute
@@ -281,13 +353,19 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/books'
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/delivery-information'
+    | '/educational-materials'
     | '/faq'
+    | '/hospital-consumables'
     | '/hospital-consumables-and-stationeries'
     | '/international-book-seller'
+    | '/laboratory-equipment'
     | '/laboratory-equipment-supplier'
+    | '/medical-equipment'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
     | '/nuc-accreditation-textbooks-supplier'
@@ -297,8 +375,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/admin'
+    | '/blog/$slug'
     | '/category/$slug'
     | '/product/$id'
+    | '/blog/'
     | '/admin/audit'
     | '/admin/customers'
     | '/admin/orders'
@@ -310,13 +390,19 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/books'
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/delivery-information'
+    | '/educational-materials'
     | '/faq'
+    | '/hospital-consumables'
     | '/hospital-consumables-and-stationeries'
     | '/international-book-seller'
+    | '/laboratory-equipment'
     | '/laboratory-equipment-supplier'
+    | '/medical-equipment'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
     | '/nuc-accreditation-textbooks-supplier'
@@ -325,8 +411,10 @@ export interface FileRouteTypes {
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
+    | '/blog/$slug'
     | '/category/$slug'
     | '/product/$id'
+    | '/blog'
     | '/admin/audit'
     | '/admin/customers'
     | '/admin/orders'
@@ -339,13 +427,19 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/about'
     | '/auth'
+    | '/books'
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/delivery-information'
+    | '/educational-materials'
     | '/faq'
+    | '/hospital-consumables'
     | '/hospital-consumables-and-stationeries'
     | '/international-book-seller'
+    | '/laboratory-equipment'
     | '/laboratory-equipment-supplier'
+    | '/medical-equipment'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
     | '/nuc-accreditation-textbooks-supplier'
@@ -355,8 +449,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/_authenticated/admin'
+    | '/blog/$slug'
     | '/category/$slug'
     | '/product/$id'
+    | '/blog/'
     | '/_authenticated/admin/audit'
     | '/_authenticated/admin/customers'
     | '/_authenticated/admin/orders'
@@ -370,13 +466,19 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  BooksRoute: typeof BooksRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  DeliveryInformationRoute: typeof DeliveryInformationRoute
+  EducationalMaterialsRoute: typeof EducationalMaterialsRoute
   FaqRoute: typeof FaqRoute
+  HospitalConsumablesRoute: typeof HospitalConsumablesRoute
   HospitalConsumablesAndStationeriesRoute: typeof HospitalConsumablesAndStationeriesRoute
   InternationalBookSellerRoute: typeof InternationalBookSellerRoute
+  LaboratoryEquipmentRoute: typeof LaboratoryEquipmentRoute
   LaboratoryEquipmentSupplierRoute: typeof LaboratoryEquipmentSupplierRoute
+  MedicalEquipmentRoute: typeof MedicalEquipmentRoute
   MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
   MedicalTextbooksSupplierRoute: typeof MedicalTextbooksSupplierRoute
   NucAccreditationTextbooksSupplierRoute: typeof NucAccreditationTextbooksSupplierRoute
@@ -385,8 +487,10 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
   ProductIdRoute: typeof ProductIdRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -447,11 +551,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MedicalEquipmentSupplierRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/medical-equipment': {
+      id: '/medical-equipment'
+      path: '/medical-equipment'
+      fullPath: '/medical-equipment'
+      preLoaderRoute: typeof MedicalEquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/laboratory-equipment-supplier': {
       id: '/laboratory-equipment-supplier'
       path: '/laboratory-equipment-supplier'
       fullPath: '/laboratory-equipment-supplier'
       preLoaderRoute: typeof LaboratoryEquipmentSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laboratory-equipment': {
+      id: '/laboratory-equipment'
+      path: '/laboratory-equipment'
+      fullPath: '/laboratory-equipment'
+      preLoaderRoute: typeof LaboratoryEquipmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/international-book-seller': {
@@ -468,11 +586,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HospitalConsumablesAndStationeriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hospital-consumables': {
+      id: '/hospital-consumables'
+      path: '/hospital-consumables'
+      fullPath: '/hospital-consumables'
+      preLoaderRoute: typeof HospitalConsumablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/educational-materials': {
+      id: '/educational-materials'
+      path: '/educational-materials'
+      fullPath: '/educational-materials'
+      preLoaderRoute: typeof EducationalMaterialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delivery-information': {
+      id: '/delivery-information'
+      path: '/delivery-information'
+      fullPath: '/delivery-information'
+      preLoaderRoute: typeof DeliveryInformationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -494,6 +633,13 @@ declare module '@tanstack/react-router' {
       path: '/cart'
       fullPath: '/cart'
       preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/books': {
+      id: '/books'
+      path: '/books'
+      fullPath: '/books'
+      preLoaderRoute: typeof BooksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -524,6 +670,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$id': {
       id: '/product/$id'
       path: '/product/$id'
@@ -536,6 +689,13 @@ declare module '@tanstack/react-router' {
       path: '/category/$slug'
       fullPath: '/category/$slug'
       preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -627,14 +787,20 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  BooksRoute: BooksRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  DeliveryInformationRoute: DeliveryInformationRoute,
+  EducationalMaterialsRoute: EducationalMaterialsRoute,
   FaqRoute: FaqRoute,
+  HospitalConsumablesRoute: HospitalConsumablesRoute,
   HospitalConsumablesAndStationeriesRoute:
     HospitalConsumablesAndStationeriesRoute,
   InternationalBookSellerRoute: InternationalBookSellerRoute,
+  LaboratoryEquipmentRoute: LaboratoryEquipmentRoute,
   LaboratoryEquipmentSupplierRoute: LaboratoryEquipmentSupplierRoute,
+  MedicalEquipmentRoute: MedicalEquipmentRoute,
   MedicalEquipmentSupplierRoute: MedicalEquipmentSupplierRoute,
   MedicalTextbooksSupplierRoute: MedicalTextbooksSupplierRoute,
   NucAccreditationTextbooksSupplierRoute:
@@ -644,8 +810,10 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,
   ProductIdRoute: ProductIdRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

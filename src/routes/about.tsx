@@ -1,13 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Award, Heart, ShieldCheck, Target } from "lucide-react";
+import { canonicalLink, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({ meta: [
-    { title: "About Us — Oriented Hub" },
-    { name: "description", content: "Oriented Hub is a procurement-based platform supplying quality books, medical equipment, lab equipment and educational materials across Nigeria." },
-    { property: "og:title", content: "About Oriented Hub" },
-    { property: "og:description", content: "Quality Products. Better Care. Total Solutions." },
-  ] }),
+  head: () => ({
+    meta: pageMeta({
+      title: "About The Oriented Hub | Book & Medical Equipment Supplier in Nigeria",
+      description: "The Oriented Hub is a Nigerian procurement platform supplying academic books, medical equipment, laboratory equipment, hospital consumables and educational materials nationwide.",
+      path: "/about",
+    }),
+    links: canonicalLink("/about"),
+  }),
   component: About,
 });
 

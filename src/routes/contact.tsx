@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { canonicalLink, pageMeta } from "@/lib/seo";
 import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink } from "@/lib/whatsapp";
 
 const schema = z.object({
@@ -12,12 +13,14 @@ const schema = z.object({
 });
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({ meta: [
-    { title: "Contact Us — Oriented Hub" },
-    { name: "description", content: "Reach Oriented Hub via WhatsApp, email or visit our Osogbo office. Procurement and bulk orders welcome." },
-    { property: "og:title", content: "Contact — Oriented Hub" },
-    { property: "og:description", content: "Talk to our procurement team." },
-  ] }),
+  head: () => ({
+    meta: pageMeta({
+      title: "Contact The Oriented Hub | Osogbo, Nigeria",
+      description: "Contact The Oriented Hub via WhatsApp +234 813 654 8965, email or visit 5 Oke-Fia Street, Opposite Zenith Bank, Osogbo. Bulk and institutional orders welcome.",
+      path: "/contact",
+    }),
+    links: canonicalLink("/contact"),
+  }),
   component: Contact,
 });
 
