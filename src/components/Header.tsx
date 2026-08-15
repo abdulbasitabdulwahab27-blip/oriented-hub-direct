@@ -52,6 +52,18 @@ export function Header() {
               {n.label}
             </Link>
           ))}
+          <div className="relative group">
+            <button className="inline-flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+              Supplies <ChevronDown className="h-3.5 w-3.5" />
+            </button>
+            <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity absolute right-0 top-full z-50 w-72 rounded-md border border-border bg-background p-2 shadow-elevated">
+              {supplyNav.map((n) => (
+                <Link key={n.to} to={n.to} activeProps={{ className: "text-primary" }} className="block rounded px-3 py-2 text-sm text-foreground/80 hover:bg-muted hover:text-primary">
+                  {n.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <div className="flex items-center gap-2">
