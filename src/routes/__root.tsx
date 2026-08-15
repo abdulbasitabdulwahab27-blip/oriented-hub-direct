@@ -79,6 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               url: "https://www.theorientedhub.com",
               logo: "https://www.theorientedhub.com/favicon.ico",
               email: "Orientedbanque@outlook.com",
+              telephone: ["+2348136548965", "+2349064007879", "+447587869499"],
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "5, Oke-Fia Street, Opposite Zenith Bank",
@@ -86,6 +87,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 addressCountry: "NG",
               },
               sameAs: [],
+            },
+            {
+              "@type": "LocalBusiness",
+              "@id": "https://www.theorientedhub.com/#localbusiness",
+              name: "The Oriented Hub",
+              image: "https://www.theorientedhub.com/favicon.ico",
+              url: "https://www.theorientedhub.com",
+              email: "Orientedbanque@outlook.com",
+              telephone: "+2348136548965",
+              priceRange: "$$",
+              description:
+                "The Oriented Hub supplies academic books, medical equipment, laboratory equipment, hospital consumables and educational materials across Nigeria.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "5, Oke-Fia Street, Opposite Zenith Bank",
+                addressLocality: "Osogbo",
+                addressRegion: "Osun State",
+                addressCountry: "NG",
+              },
+              areaServed: [
+                { "@type": "Country", name: "Nigeria" },
+                { "@type": "Place", name: "Worldwide" },
+              ],
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  opens: "08:00",
+                  closes: "18:00",
+                },
+              ],
+              parentOrganization: { "@id": "https://www.theorientedhub.com/#organization" },
             },
             {
               "@type": "WebSite",
