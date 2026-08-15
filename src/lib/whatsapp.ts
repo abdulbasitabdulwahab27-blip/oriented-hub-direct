@@ -1,5 +1,6 @@
 export const WHATSAPP_PRIMARY = "2348136548965";
 export const WHATSAPP_ALT = "2349064007879";
+export const WHATSAPP_UK = "447587869499";
 export const EMAIL = "Orientedbanque@outlook.com";
 export const ADDRESS = "5, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Nigeria";
 
