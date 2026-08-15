@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { getCategory } from "@/lib/products";
-import { useAllProducts } from "@/lib/use-products";
-import { ProductCard } from "@/components/ProductCard";
+import { CategoryView } from "@/components/CategoryView";
+import { breadcrumbSchema, canonicalLink, categoryUrl, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/category/$slug")({
   loader: ({ params }) => {
@@ -9,15 +9,23 @@ export const Route = createFileRoute("/category/$slug")({
     if (!cat) throw notFound();
     return { cat };
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? [
-      { title: `${loaderData.cat.name} — Oriented Hub` },
-      { name: "description", content: `Shop ${loaderData.cat.name.toLowerCase()} at Oriented Hub. ${loaderData.cat.tagline}.` },
-      { property: "og:title", content: `${loaderData.cat.name} — Oriented Hub` },
-      { property: "og:description", content: loaderData.cat.tagline },
-      { property: "og:image", content: loaderData.cat.image },
-    ] : [],
-  }),
+  head: ({ params, loaderData }) => {
+    if (!loaderData) return { meta: [{ title: "Category not found — The Oriented Hub" }, { name: "robots", content: "noindex" }] };
+    const { cat } = loaderData;
+    const url = categoryUrl(params.slug);
+    return {
+      meta: pageMeta({
+        title: `${cat.name} in Nigeria | The Oriented Hub`,
+        description: `Shop ${cat.name.toLowerCase()} at The Oriented Hub. ${cat.tagline}. Nationwide delivery across Nigeria.`,
+        path: url,
+      }),
+      // Canonical points at the keyword-friendly URL for this category.
+      links: canonicalLink(url),
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: cat.name, path: url }])) },
+      ],
+    };
+  },
   notFoundComponent: () => (
     <div className="container-page py-20 text-center">
       <h1 className="font-display text-3xl font-semibold">Category not found</h1>
@@ -30,30 +38,5 @@ export const Route = createFileRoute("/category/$slug")({
 
 function CategoryPage() {
   const { cat } = Route.useLoaderData();
-  const { products } = useAllProducts();
-  const items = products.filter((p) => p.category === cat.slug);
-
-  return (
-    <>
-      <section className="relative overflow-hidden bg-gradient-hero">
-        <div className="container-page py-12 md:py-16 grid gap-8 md:grid-cols-2 md:items-center">
-          <div>
-            <Link to="/shop" className="text-xs uppercase tracking-widest text-primary font-semibold">← All categories</Link>
-            <h1 className="mt-3 font-display text-4xl sm:text-5xl font-semibold">{cat.name}</h1>
-            <p className="mt-2 text-muted-foreground max-w-md">{cat.tagline}</p>
-          </div>
-          <img src={cat.image} alt={cat.name} loading="lazy" width={800} height={800} className="rounded-2xl shadow-elevated object-cover aspect-[4/3]" />
-        </div>
-      </section>
-      <div className="container-page py-10 md:py-14">
-        {items.length === 0 ? (
-          <p className="text-muted-foreground">No items yet — please <Link to="/contact" className="text-primary font-semibold">contact us</Link> for procurement.</p>
-        ) : (
-          <div className="grid gap-4 sm:gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            {items.map((p) => (<ProductCard key={p.id} product={p} />))}
-          </div>
-        )}
-      </div>
-    </>
-  );
+  return <CategoryView slug={cat.slug} heading={cat.name} summary={cat.tagline} />;
 }

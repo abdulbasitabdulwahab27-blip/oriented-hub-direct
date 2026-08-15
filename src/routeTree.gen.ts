@@ -25,6 +25,7 @@ import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes
 import { Route as HospitalConsumablesRouteImport } from './routes/hospital-consumables'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EducationalMaterialsRouteImport } from './routes/educational-materials'
+import { Route as DeliveryInformationRouteImport } from './routes/delivery-information'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
@@ -33,8 +34,10 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
 import { Route as CategorySlugRouteImport } from './routes/category.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
@@ -128,6 +131,11 @@ const EducationalMaterialsRoute = EducationalMaterialsRouteImport.update({
   path: '/educational-materials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeliveryInformationRoute = DeliveryInformationRouteImport.update({
+  id: '/delivery-information',
+  path: '/delivery-information',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -167,6 +175,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductIdRoute = ProductIdRouteImport.update({
   id: '/product/$id',
   path: '/product/$id',
@@ -175,6 +188,11 @@ const ProductIdRoute = ProductIdRouteImport.update({
 const CategorySlugRoute = CategorySlugRouteImport.update({
   id: '/category/$slug',
   path: '/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
@@ -225,6 +243,7 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/delivery-information': typeof DeliveryInformationRoute
   '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
   '/hospital-consumables': typeof HospitalConsumablesRoute
@@ -242,8 +261,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
   '/product/$id': typeof ProductIdRoute
+  '/blog/': typeof BlogIndexRoute
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/customers': typeof AuthenticatedAdminCustomersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
@@ -259,6 +280,7 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/delivery-information': typeof DeliveryInformationRoute
   '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
   '/hospital-consumables': typeof HospitalConsumablesRoute
@@ -275,8 +297,10 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
   '/product/$id': typeof ProductIdRoute
+  '/blog': typeof BlogIndexRoute
   '/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/admin/customers': typeof AuthenticatedAdminCustomersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
@@ -294,6 +318,7 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/delivery-information': typeof DeliveryInformationRoute
   '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
   '/hospital-consumables': typeof HospitalConsumablesRoute
@@ -311,8 +336,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
   '/product/$id': typeof ProductIdRoute
+  '/blog/': typeof BlogIndexRoute
   '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
   '/_authenticated/admin/customers': typeof AuthenticatedAdminCustomersRoute
   '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRoute
@@ -330,6 +357,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/delivery-information'
     | '/educational-materials'
     | '/faq'
     | '/hospital-consumables'
@@ -347,8 +375,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/admin'
+    | '/blog/$slug'
     | '/category/$slug'
     | '/product/$id'
+    | '/blog/'
     | '/admin/audit'
     | '/admin/customers'
     | '/admin/orders'
@@ -364,6 +394,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/delivery-information'
     | '/educational-materials'
     | '/faq'
     | '/hospital-consumables'
@@ -380,8 +411,10 @@ export interface FileRouteTypes {
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
+    | '/blog/$slug'
     | '/category/$slug'
     | '/product/$id'
+    | '/blog'
     | '/admin/audit'
     | '/admin/customers'
     | '/admin/orders'
@@ -398,6 +431,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
+    | '/delivery-information'
     | '/educational-materials'
     | '/faq'
     | '/hospital-consumables'
@@ -415,8 +449,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/_authenticated/admin'
+    | '/blog/$slug'
     | '/category/$slug'
     | '/product/$id'
+    | '/blog/'
     | '/_authenticated/admin/audit'
     | '/_authenticated/admin/customers'
     | '/_authenticated/admin/orders'
@@ -434,6 +470,7 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  DeliveryInformationRoute: typeof DeliveryInformationRoute
   EducationalMaterialsRoute: typeof EducationalMaterialsRoute
   FaqRoute: typeof FaqRoute
   HospitalConsumablesRoute: typeof HospitalConsumablesRoute
@@ -450,8 +487,10 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
   ProductIdRoute: typeof ProductIdRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -568,6 +607,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EducationalMaterialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/delivery-information': {
+      id: '/delivery-information'
+      path: '/delivery-information'
+      fullPath: '/delivery-information'
+      preLoaderRoute: typeof DeliveryInformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -624,6 +670,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$id': {
       id: '/product/$id'
       path: '/product/$id'
@@ -636,6 +689,13 @@ declare module '@tanstack/react-router' {
       path: '/category/$slug'
       fullPath: '/category/$slug'
       preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -731,6 +791,7 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  DeliveryInformationRoute: DeliveryInformationRoute,
   EducationalMaterialsRoute: EducationalMaterialsRoute,
   FaqRoute: FaqRoute,
   HospitalConsumablesRoute: HospitalConsumablesRoute,
@@ -749,8 +810,10 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,
   ProductIdRoute: ProductIdRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
