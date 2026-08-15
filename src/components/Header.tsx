@@ -92,6 +92,11 @@ export function Header() {
         <div className="md:hidden border-t border-border bg-background">
           <div className="container-page flex flex-col py-2">
             {nav.map((n) => (
+              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-3 text-sm font-medium border-b border-border/50">
+                {n.label}
+              </Link>
+            ))}
+            {supplyNav.map((n) => (
               <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-3 text-sm font-medium border-b border-border/50 last:border-0">
                 {n.label}
               </Link>
