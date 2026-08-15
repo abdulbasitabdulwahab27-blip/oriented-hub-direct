@@ -18,6 +18,7 @@ import { Route as NucAccreditationTextbooksSupplierRouteImport } from './routes/
 import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
 import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
 import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
+import { Route as InternationalBookSellerRouteImport } from './routes/international-book-seller'
 import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -86,6 +87,11 @@ const LaboratoryEquipmentSupplierRoute =
     path: '/laboratory-equipment-supplier',
     getParentRoute: () => rootRouteImport,
   } as any)
+const InternationalBookSellerRoute = InternationalBookSellerRouteImport.update({
+  id: '/international-book-seller',
+  path: '/international-book-seller',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HospitalConsumablesAndStationeriesRoute =
   HospitalConsumablesAndStationeriesRouteImport.update({
     id: '/hospital-consumables-and-stationeries',
@@ -190,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
+  '/international-book-seller': typeof InternationalBookSellerRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
@@ -218,6 +225,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
+  '/international-book-seller': typeof InternationalBookSellerRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
@@ -247,6 +255,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
+  '/international-book-seller': typeof InternationalBookSellerRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
@@ -277,6 +286,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hospital-consumables-and-stationeries'
+    | '/international-book-seller'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
@@ -305,6 +315,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hospital-consumables-and-stationeries'
+    | '/international-book-seller'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
@@ -333,6 +344,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hospital-consumables-and-stationeries'
+    | '/international-book-seller'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
@@ -363,6 +375,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   HospitalConsumablesAndStationeriesRoute: typeof HospitalConsumablesAndStationeriesRoute
+  InternationalBookSellerRoute: typeof InternationalBookSellerRoute
   LaboratoryEquipmentSupplierRoute: typeof LaboratoryEquipmentSupplierRoute
   MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
   MedicalTextbooksSupplierRoute: typeof MedicalTextbooksSupplierRoute
@@ -439,6 +452,13 @@ declare module '@tanstack/react-router' {
       path: '/laboratory-equipment-supplier'
       fullPath: '/laboratory-equipment-supplier'
       preLoaderRoute: typeof LaboratoryEquipmentSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/international-book-seller': {
+      id: '/international-book-seller'
+      path: '/international-book-seller'
+      fullPath: '/international-book-seller'
+      preLoaderRoute: typeof InternationalBookSellerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hospital-consumables-and-stationeries': {
@@ -613,6 +633,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   HospitalConsumablesAndStationeriesRoute:
     HospitalConsumablesAndStationeriesRoute,
+  InternationalBookSellerRoute: InternationalBookSellerRoute,
   LaboratoryEquipmentSupplierRoute: LaboratoryEquipmentSupplierRoute,
   MedicalEquipmentSupplierRoute: MedicalEquipmentSupplierRoute,
   MedicalTextbooksSupplierRoute: MedicalTextbooksSupplierRoute,

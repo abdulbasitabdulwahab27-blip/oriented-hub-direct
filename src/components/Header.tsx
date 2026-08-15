@@ -14,6 +14,15 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const supplyNav = [
+  { to: "/medical-equipment-supplier", label: "Medical Equipment Supplier" },
+  { to: "/laboratory-equipment-supplier", label: "Laboratory Equipment Supplier" },
+  { to: "/hospital-consumables-and-stationeries", label: "Hospital Consumables and Stationeries" },
+  { to: "/medical-textbooks-supplier", label: "Medical Textbooks Supplier" },
+  { to: "/nuc-accreditation-textbooks-supplier", label: "NUC Accreditation Textbooks Supplier" },
+  { to: "/international-book-seller", label: "International Book Seller" },
+] as const;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const { count } = useCart();
