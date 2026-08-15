@@ -85,6 +85,7 @@ export function CategoryView({
           <Link to="/laboratory-equipment" className="rounded-md border border-border px-4 py-2 hover:text-primary">Laboratory Equipment</Link>
           <Link to="/hospital-consumables" className="rounded-md border border-border px-4 py-2 hover:text-primary">Hospital Consumables</Link>
           <Link to="/educational-materials" className="rounded-md border border-border px-4 py-2 hover:text-primary">Educational Materials</Link>
+          <Link to="/business-solutions" className="rounded-md border border-border px-4 py-2 hover:text-primary">Business Solutions</Link>
           <Link to="/delivery-information" className="rounded-md border border-border px-4 py-2 hover:text-primary">Delivery Information</Link>
         </div>
       </section>

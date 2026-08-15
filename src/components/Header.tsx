@@ -29,6 +29,7 @@ const categoryNav = [
   { to: "/laboratory-equipment", label: "Laboratory Equipment" },
   { to: "/hospital-consumables", label: "Hospital Consumables" },
   { to: "/educational-materials", label: "Educational Materials" },
+  { to: "/business-solutions", label: "Business Solutions" },
   { to: "/delivery-information", label: "Delivery Information" },
   { to: "/blog", label: "Blog" },
 ] as const;
