@@ -57,6 +57,7 @@ export function Footer() {
         <div className="container-page py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Oriented Hub. All rights reserved.</div>
           <div>Quality Products. Better Care. Total Solutions.</div>
+          <div>Worldwide Shipping Available | The Oriented Hub</div>
         </div>
       </div>
     </footer>
