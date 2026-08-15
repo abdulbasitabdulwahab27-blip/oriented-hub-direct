@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
 import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
 import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
 import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
@@ -60,6 +61,12 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MedicalTextbooksSupplierRoute =
+  MedicalTextbooksSupplierRouteImport.update({
+    id: '/medical-textbooks-supplier',
+    path: '/medical-textbooks-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const MedicalEquipmentSupplierRoute =
   MedicalEquipmentSupplierRouteImport.update({
     id: '/medical-equipment-supplier',
@@ -178,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
+  '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -204,6 +212,7 @@ export interface FileRoutesByTo {
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
+  '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -231,6 +240,7 @@ export interface FileRoutesById {
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
+  '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -259,6 +269,7 @@ export interface FileRouteTypes {
     | '/hospital-consumables-and-stationeries'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
+    | '/medical-textbooks-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -285,6 +296,7 @@ export interface FileRouteTypes {
     | '/hospital-consumables-and-stationeries'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
+    | '/medical-textbooks-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -311,6 +323,7 @@ export interface FileRouteTypes {
     | '/hospital-consumables-and-stationeries'
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
+    | '/medical-textbooks-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -339,6 +352,7 @@ export interface RootRouteChildren {
   HospitalConsumablesAndStationeriesRoute: typeof HospitalConsumablesAndStationeriesRoute
   LaboratoryEquipmentSupplierRoute: typeof LaboratoryEquipmentSupplierRoute
   MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
+  MedicalTextbooksSupplierRoute: typeof MedicalTextbooksSupplierRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesRepRoute: typeof SalesRepRoute
   ShopRoute: typeof ShopRoute
@@ -383,6 +397,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-textbooks-supplier': {
+      id: '/medical-textbooks-supplier'
+      path: '/medical-textbooks-supplier'
+      fullPath: '/medical-textbooks-supplier'
+      preLoaderRoute: typeof MedicalTextbooksSupplierRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/medical-equipment-supplier': {
@@ -573,6 +594,7 @@ const rootRouteChildren: RootRouteChildren = {
     HospitalConsumablesAndStationeriesRoute,
   LaboratoryEquipmentSupplierRoute: LaboratoryEquipmentSupplierRoute,
   MedicalEquipmentSupplierRoute: MedicalEquipmentSupplierRoute,
+  MedicalTextbooksSupplierRoute: MedicalTextbooksSupplierRoute,
   PrivacyRoute: PrivacyRoute,
   SalesRepRoute: SalesRepRoute,
   ShopRoute: ShopRoute,
