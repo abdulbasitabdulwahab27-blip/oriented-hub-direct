@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -57,6 +58,12 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MedicalEquipmentSupplierRoute =
+  MedicalEquipmentSupplierRouteImport.update({
+    id: '/medical-equipment-supplier',
+    path: '/medical-equipment-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -154,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -177,6 +185,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -201,6 +210,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/medical-equipment-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -249,6 +260,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/medical-equipment-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -272,6 +284,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/faq'
+    | '/medical-equipment-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -297,6 +310,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesRepRoute: typeof SalesRepRoute
   ShopRoute: typeof ShopRoute
@@ -341,6 +355,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-equipment-supplier': {
+      id: '/medical-equipment-supplier'
+      path: '/medical-equipment-supplier'
+      fullPath: '/medical-equipment-supplier'
+      preLoaderRoute: typeof MedicalEquipmentSupplierRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -506,6 +527,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  MedicalEquipmentSupplierRoute: MedicalEquipmentSupplierRoute,
   PrivacyRoute: PrivacyRoute,
   SalesRepRoute: SalesRepRoute,
   ShopRoute: ShopRoute,
