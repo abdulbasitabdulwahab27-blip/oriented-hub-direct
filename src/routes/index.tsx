@@ -8,6 +8,7 @@ import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/wh
 import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -142,6 +143,22 @@ const homeFaqs = [
     q: "How do I place an international order?",
     a: "Contact us via WhatsApp +234 813 654 8965. We process orders and ship worldwide. Trusted Quality Delivered.",
   },
+  {
+    q: "Do you deliver nationwide?",
+    a: "Yes. The Oriented Hub delivers across Nigeria.",
+  },
+  {
+    q: "Do you sell PDF books?",
+    a: "No. We sell physical books only.",
+  },
+  {
+    q: "How do I place an order?",
+    a: "Customers can place orders through our website or contact us directly.",
+  },
+  {
+    q: "What products do you sell?",
+    a: "Academic books, medical equipment, laboratory equipment, hospital consumables and educational materials.",
+  },
 ];
 
 function HomeFaq() {
@@ -169,9 +186,12 @@ function Hero() {
             <Sparkles className="h-3.5 w-3.5" /> Trusted procurement partner since day one
           </div>
           <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Quality Products.<br />
-            <span className="text-primary">Better Care.</span> Total Solutions.
+            Books, Medical Equipment &amp;<br />
+            <span className="text-primary">Laboratory Supplies</span> in Nigeria
           </h1>
+          <p className="mt-3 font-display text-lg font-semibold text-foreground/80">
+            Quality Products. Better Care. Total Solutions.
+          </p>
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
             Oriented Hub supplies authentic books, medical equipment, laboratory equipment, hospital consumables and educational materials — delivered to institutions and individuals nationwide.
           </p>
