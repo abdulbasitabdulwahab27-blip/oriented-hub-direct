@@ -37,8 +37,70 @@ function Home() {
       <SalesRepBanner />
       <DeliveryBanner />
       <WhatsAppSection />
+      <HomeFaq />
       <Newsletter />
     </>
+  );
+}
+
+function WelcomeIntro() {
+  return (
+    <section className="container-page py-12 md:py-16">
+      <div className="rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-card max-w-4xl mx-auto">
+        <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+          Welcome to The Oriented Hub — Your One Stop Solution for Knowledge &amp; Healthcare Needs.
+        </h2>
+        <div className="mt-4 space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            We are global suppliers of Medical Equipment, Laboratory Equipment, Hospital Consumables, Medical Textbooks, and NUC Accreditation Textbooks.
+          </p>
+          <p>
+            We ship WORLDWIDE. To USA, Canada, UK, Europe, Africa, Asia and everywhere.<br />
+            PLACE YOUR ORDER. INTERNATIONAL DELIVERY AVAILABLE.<br />
+            <span className="font-semibold text-primary">Fast. Reliable. Trusted Quality Delivered.</span>
+          </p>
+          <p className="text-sm">
+            Head Office: 5, Oke-Fia Street, Opposite Zenith Bank, Osogbo<br />
+            Call/WhatsApp: +234 813 654 8965 | +234 906 400 7879 | +44 7587 869499
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const homeFaqs = [
+  {
+    q: "Do you ship medical equipment internationally?",
+    a: "Yes. The Oriented Hub offers worldwide shipping of medical equipment and laboratory equipment to USA, Canada, UK, Europe, Africa, Asia and globally.",
+  },
+  {
+    q: "Are you an international book seller for NUC textbooks?",
+    a: "Yes. The Oriented Hub is a global supplier of NUC accreditation textbooks and medical textbooks. We ship worldwide to institutions and individuals.",
+  },
+  {
+    q: "Where is The Oriented Hub located?",
+    a: "Our head office is at 5 Oke-Fia Street, Osogbo. We serve customers worldwide with international shipping available.",
+  },
+  {
+    q: "How do I place an international order?",
+    a: "Contact us via WhatsApp +234 813 654 8965. We process orders and ship worldwide. Trusted Quality Delivered.",
+  },
+];
+
+function HomeFaq() {
+  return (
+    <section className="container-page pb-6">
+      <SectionHeading eyebrow="Answers" title="Frequently Asked Questions" center />
+      <div className="mt-10 grid gap-4 md:grid-cols-2 max-w-5xl mx-auto">
+        {homeFaqs.map((f) => (
+          <div key={f.q} className="rounded-xl border border-border bg-card p-6 shadow-card">
+            <h3 className="font-display text-lg font-semibold">{f.q}</h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
