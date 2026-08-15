@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY } from "@/lib/whatsapp";
+import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, WHATSAPP_UK } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
