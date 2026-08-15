@@ -8,7 +8,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const staticPaths = ["/", "/shop", "/about", "/contact", "/faq", "/cart", "/checkout", "/privacy", "/terms"];
+        const staticPaths = ["/", "/shop", "/about", "/contact", "/faq", "/cart", "/checkout", "/privacy", "/terms", "/medical-equipment-supplier", "/laboratory-equipment-supplier", "/hospital-consumables-and-stationeries", "/medical-textbooks-supplier", "/nuc-accreditation-textbooks-supplier", "/international-book-seller"];
         const catPaths = categories.map((c) => `/category/${c.slug}`);
         const productPaths = products.map((p) => `/product/${p.slug}`);
         const all = [...staticPaths, ...catPaths, ...productPaths];
