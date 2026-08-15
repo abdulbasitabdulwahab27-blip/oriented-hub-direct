@@ -10,7 +10,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
             {i === items.length - 1 ? (
               <span aria-current="page" className="text-foreground/80">{it.name}</span>
             ) : (
-              <Link to={it.path} className="hover:text-primary">{it.name}</Link>
+              <Link to={it.path as never} className="hover:text-primary">{it.name}</Link>
             )}
           </li>
         ))}
