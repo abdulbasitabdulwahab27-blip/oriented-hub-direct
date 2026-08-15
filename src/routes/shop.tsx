@@ -4,15 +4,16 @@ import { Search } from "lucide-react";
 import { categories } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
+import { canonicalLink, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/shop")({
   head: () => ({
-    meta: [
-      { title: "Shop — Oriented Hub" },
-      { name: "description", content: "Browse books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
-      { property: "og:title", content: "Shop — Oriented Hub" },
-      { property: "og:description", content: "Browse our full procurement catalogue." },
-    ],
+    meta: pageMeta({
+      title: "Shop Books, Medical & Laboratory Equipment | The Oriented Hub",
+      description: "Browse academic books, medical equipment, laboratory equipment, hospital consumables and educational materials. Nationwide delivery across Nigeria.",
+      path: "/shop",
+    }),
+    links: canonicalLink("/shop"),
   }),
   component: Shop,
 });

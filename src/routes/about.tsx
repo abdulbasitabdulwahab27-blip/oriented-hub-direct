@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Award, Heart, ShieldCheck, Target } from "lucide-react";
+import { canonicalLink, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
