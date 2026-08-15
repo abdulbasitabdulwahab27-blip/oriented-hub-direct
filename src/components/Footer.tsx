@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY } from "@/lib/whatsapp";
+import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, WHATSAPP_UK } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
@@ -34,6 +34,12 @@ export function Footer() {
             <li><Link to="/sales-rep" className="hover:text-primary">Become a Sales Rep</Link></li>
             
             <li><Link to="/faq" className="hover:text-primary">FAQ</Link></li>
+            <li><Link to="/medical-equipment-supplier" className="hover:text-primary">Medical Equipment Supplier</Link></li>
+            <li><Link to="/laboratory-equipment-supplier" className="hover:text-primary">Laboratory Equipment Supplier</Link></li>
+            <li><Link to="/hospital-consumables-and-stationeries" className="hover:text-primary">Hospital Consumables and Stationeries</Link></li>
+            <li><Link to="/medical-textbooks-supplier" className="hover:text-primary">Medical Textbooks Supplier</Link></li>
+            <li><Link to="/nuc-accreditation-textbooks-supplier" className="hover:text-primary">NUC Accreditation Textbooks Supplier</Link></li>
+            <li><Link to="/international-book-seller" className="hover:text-primary">International Book Seller</Link></li>
             <li><Link to="/privacy" className="hover:text-primary">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-primary">Terms & Conditions</Link></li>
           </ul>
@@ -41,7 +47,7 @@ export function Footer() {
         <div>
           <h4 className="font-display text-base font-semibold mb-3">Reach us</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-primary" /><div><div>+{WHATSAPP_PRIMARY}</div><div className="text-xs">Alt: +{WHATSAPP_ALT}</div></div></li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 text-primary" /><div><div>+{WHATSAPP_PRIMARY}</div><div className="text-xs">Alt: +{WHATSAPP_ALT}</div><div className="text-xs">UK: +{WHATSAPP_UK}</div></div></li>
             <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 text-primary" /><a href={`mailto:${EMAIL}`} className="hover:text-primary">{EMAIL}</a></li>
             <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 text-primary" /><span>{ADDRESS}</span></li>
           </ul>
@@ -51,6 +57,7 @@ export function Footer() {
         <div className="container-page py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Oriented Hub. All rights reserved.</div>
           <div>Quality Products. Better Care. Total Solutions.</div>
+          <div>Worldwide Shipping Available | The Oriented Hub</div>
         </div>
       </div>
     </footer>

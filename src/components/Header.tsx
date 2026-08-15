@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, ShoppingCart, X, Search, Shield } from "lucide-react";
+import { Menu, ShoppingCart, X, Search, Shield, ChevronDown } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { useCurrentUser } from "@/lib/auth-hook";
 
@@ -12,6 +12,15 @@ const nav = [
   
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
+] as const;
+
+const supplyNav = [
+  { to: "/medical-equipment-supplier", label: "Medical Equipment Supplier" },
+  { to: "/laboratory-equipment-supplier", label: "Laboratory Equipment Supplier" },
+  { to: "/hospital-consumables-and-stationeries", label: "Hospital Consumables and Stationeries" },
+  { to: "/medical-textbooks-supplier", label: "Medical Textbooks Supplier" },
+  { to: "/nuc-accreditation-textbooks-supplier", label: "NUC Accreditation Textbooks Supplier" },
+  { to: "/international-book-seller", label: "International Book Seller" },
 ] as const;
 
 export function Header() {
@@ -43,6 +52,18 @@ export function Header() {
               {n.label}
             </Link>
           ))}
+          <div className="relative group">
+            <button className="inline-flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+              Supplies <ChevronDown className="h-3.5 w-3.5" />
+            </button>
+            <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity absolute right-0 top-full z-50 w-72 rounded-md border border-border bg-background p-2 shadow-elevated">
+              {supplyNav.map((n) => (
+                <Link key={n.to} to={n.to} activeProps={{ className: "text-primary" }} className="block rounded px-3 py-2 text-sm text-foreground/80 hover:bg-muted hover:text-primary">
+                  {n.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -71,6 +92,11 @@ export function Header() {
         <div className="md:hidden border-t border-border bg-background">
           <div className="container-page flex flex-col py-2">
             {nav.map((n) => (
+              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-3 text-sm font-medium border-b border-border/50">
+                {n.label}
+              </Link>
+            ))}
+            {supplyNav.map((n) => (
               <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-3 text-sm font-medium border-b border-border/50 last:border-0">
                 {n.label}
               </Link>
