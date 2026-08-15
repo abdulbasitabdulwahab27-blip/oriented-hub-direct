@@ -12,8 +12,8 @@ import heroImg from "@/assets/hero.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Oriented Hub — Books, Medical & Lab Procurement in Nigeria" },
-      { name: "description", content: "Oriented Hub supplies books, medical equipment, laboratory equipment, hospital consumables and educational materials to institutions and individuals nationwide." },
+      { title: "The Oriented Hub | Medical Equipment, Lab Equipment & NUC Textbooks | Worldwide Shipping" },
+      { name: "description", content: "The Oriented Hub: Global Supplier of Medical Equipment, Laboratory Equipment, Hospital Consumables & NUC Accreditation Textbooks. Worldwide Shipping Available. Trusted Quality Delivered. Call +234 813 654 8965" },
       { property: "og:title", content: "Oriented Hub — Quality Products. Better Care. Total Solutions." },
       { property: "og:description", content: "Premium procurement for healthcare and education across Nigeria." },
     ],
