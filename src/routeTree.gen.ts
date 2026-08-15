@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as NucAccreditationTextbooksSupplierRouteImport } from './routes/nuc-accreditation-textbooks-supplier'
 import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
 import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
 import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
@@ -61,6 +62,12 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NucAccreditationTextbooksSupplierRoute =
+  NucAccreditationTextbooksSupplierRouteImport.update({
+    id: '/nuc-accreditation-textbooks-supplier',
+    path: '/nuc-accreditation-textbooks-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const MedicalTextbooksSupplierRoute =
   MedicalTextbooksSupplierRouteImport.update({
     id: '/medical-textbooks-supplier',
@@ -186,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
+  '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -213,6 +221,7 @@ export interface FileRoutesByTo {
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
+  '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -241,6 +250,7 @@ export interface FileRoutesById {
   '/laboratory-equipment-supplier': typeof LaboratoryEquipmentSupplierRoute
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
+  '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
@@ -270,6 +280,7 @@ export interface FileRouteTypes {
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
+    | '/nuc-accreditation-textbooks-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -297,6 +308,7 @@ export interface FileRouteTypes {
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
+    | '/nuc-accreditation-textbooks-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -324,6 +336,7 @@ export interface FileRouteTypes {
     | '/laboratory-equipment-supplier'
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
+    | '/nuc-accreditation-textbooks-supplier'
     | '/privacy'
     | '/sales-rep'
     | '/shop'
@@ -353,6 +366,7 @@ export interface RootRouteChildren {
   LaboratoryEquipmentSupplierRoute: typeof LaboratoryEquipmentSupplierRoute
   MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
   MedicalTextbooksSupplierRoute: typeof MedicalTextbooksSupplierRoute
+  NucAccreditationTextbooksSupplierRoute: typeof NucAccreditationTextbooksSupplierRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesRepRoute: typeof SalesRepRoute
   ShopRoute: typeof ShopRoute
@@ -397,6 +411,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nuc-accreditation-textbooks-supplier': {
+      id: '/nuc-accreditation-textbooks-supplier'
+      path: '/nuc-accreditation-textbooks-supplier'
+      fullPath: '/nuc-accreditation-textbooks-supplier'
+      preLoaderRoute: typeof NucAccreditationTextbooksSupplierRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/medical-textbooks-supplier': {
@@ -595,6 +616,8 @@ const rootRouteChildren: RootRouteChildren = {
   LaboratoryEquipmentSupplierRoute: LaboratoryEquipmentSupplierRoute,
   MedicalEquipmentSupplierRoute: MedicalEquipmentSupplierRoute,
   MedicalTextbooksSupplierRoute: MedicalTextbooksSupplierRoute,
+  NucAccreditationTextbooksSupplierRoute:
+    NucAccreditationTextbooksSupplierRoute,
   PrivacyRoute: PrivacyRoute,
   SalesRepRoute: SalesRepRoute,
   ShopRoute: ShopRoute,
