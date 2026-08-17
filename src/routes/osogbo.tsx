@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Phone, Clock, Navigation } from "lucide-react";
 import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink } from "@/lib/whatsapp";
 import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
-import { GEO, GOOGLE_MAPS_PLACE_URL, GOOGLE_MAPS_DIRECTIONS_URL, localBusinessSchema } from "@/lib/local-seo";
+import { GEO, GOOGLE_MAPS_PLACE_URL, GOOGLE_MAPS_DIRECTIONS_URL } from "@/lib/local-seo";
 
 const faqs = [
   {
@@ -39,7 +39,6 @@ export const Route = createFileRoute("/osogbo")({
     ],
     links: canonicalLink("/osogbo"),
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify(localBusinessSchema) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
       {
         type: "application/ld+json",
