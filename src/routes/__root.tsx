@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { CartProvider } from "@/lib/cart";
+import { GEO, GOOGLE_MAPS_PLACE_URL, localBusinessSchema } from "@/lib/local-seo";
 
 function NotFoundComponent() {
   return (
