@@ -12,12 +12,20 @@ import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo"
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: pageMeta({
-      title: "The Oriented Hub | Books, Medical Equipment & Laboratory Supplies in Nigeria",
-      description:
-        "The Oriented Hub supplies academic books, medical equipment, laboratory equipment, hospital consumables and educational materials across Nigeria with reliable nationwide delivery.",
-      path: "/",
-    }),
+    meta: [
+      ...pageMeta({
+        title: "Medical Equipment, Laboratory Equipment & NUC Textbooks Supplier in Nigeria | The Oriented Hub",
+        description:
+          "The Oriented Hub is a leading supplier of Medical Equipment, Laboratory Equipment, Scientific Instruments, Surgical Instruments, Hospital Consumables and NUC Accreditation Textbooks in Nigeria. Nationwide delivery available.",
+        path: "/",
+      }),
+      {
+        name: "keywords",
+        content:
+          "Medical Equipment Nigeria, Laboratory Equipment Nigeria, Scientific Equipment Nigeria, Hospital Equipment Supplier Nigeria, Surgical Instruments Nigeria, Medical Supplies Nigeria, Medical Books Nigeria, NUC Accreditation Textbooks Nigeria, Laboratory Consumables Nigeria, Medical Equipment Osogbo, Medical Equipment Lagos, Medical Equipment Abuja, Educational Materials Nigeria, Healthcare Equipment Procurement Nigeria",
+      },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+    ],
     links: canonicalLink("/"),
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
@@ -25,10 +33,42 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }])),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalBusiness",
+          name: "The Oriented Hub",
+          url: "https://www.theorientedhub.com",
+          telephone: "+2348136548965",
+          description:
+            "Supplier of medical equipment, laboratory equipment, scientific equipment, surgical instruments, hospital consumables and NUC accreditation textbooks in Nigeria.",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "5 Oke Fia Street, Opposite Zenith Bank",
+            addressLocality: "Osogbo",
+            addressRegion: "Osun State",
+            postalCode: "230001",
+            addressCountry: "NG",
+          },
+          areaServed: "Nigeria",
+          priceRange: "₦₦",
+          serviceType: [
+            "Medical Equipment",
+            "Laboratory Equipment",
+            "Scientific Equipment",
+            "Hospital Consumables",
+            "NUC Accreditation Textbooks",
+            "Medical Books",
+            "Educational Materials",
+          ],
+        }),
+      },
     ],
   }),
   component: Home,
 });
+
 
 function Home() {
   return (
@@ -41,6 +81,7 @@ function Home() {
       
       
       <WhyChooseUs />
+      <SupplyOverview />
       <Procurement />
       <QuotationListBanner />
       <Testimonials />
@@ -52,6 +93,87 @@ function Home() {
     </>
   );
 }
+
+function SupplyOverview() {
+  return (
+    <section className="container-page py-14 md:py-20">
+      <div className="max-w-4xl mx-auto space-y-10">
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Leading Medical Equipment, Laboratory Equipment &amp; NUC Textbook Supplier in Nigeria
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            The Oriented Hub is a trusted Nigerian supplier of high-quality Medical Equipment, Laboratory Equipment,
+            Scientific Instruments, Surgical Instruments, Hospital Consumables, Educational Materials, Medical Books and
+            NUC Accreditation Textbooks.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            We provide reliable solutions for hospitals, clinics, laboratories, universities, polytechnics, colleges of
+            education, research institutions and healthcare organizations across Nigeria with nationwide delivery and
+            professional customer support.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+            <h3 className="font-display text-lg font-semibold">Our Core Products &amp; Services</h3>
+            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground list-disc pl-5">
+              <li>Medical Equipment Supply in Nigeria</li>
+              <li>Laboratory Equipment Supply in Nigeria</li>
+              <li>Surgical Instruments Supply</li>
+              <li>Hospital Consumables Supply</li>
+              <li>Scientific Equipment Supply</li>
+              <li>Healthcare Equipment Procurement</li>
+              <li>Medical Books Supply</li>
+              <li>NUC Accreditation Textbooks</li>
+              <li>Educational Materials for Schools and Universities</li>
+              <li>General Merchandise Supply</li>
+            </ul>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+            <h3 className="font-display text-lg font-semibold">Why Choose The Oriented Hub?</h3>
+            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground list-disc pl-5">
+              <li>Quality-Assured Products</li>
+              <li>Competitive Pricing</li>
+              <li>Nationwide Delivery Across Nigeria</li>
+              <li>Trusted by Hospitals, Schools and Laboratories</li>
+              <li>Professional Customer Support</li>
+              <li>Reliable Procurement Services</li>
+              <li>Fast Order Processing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-display text-xl font-semibold">Medical Equipment We Supply</h3>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            We supply hospital beds, patient monitors, blood pressure monitors, pulse oximeters, thermometers,
+            stethoscopes, weighing scales, microscopes, centrifuges, autoclaves, laboratory glassware, laboratory
+            reagents, laboratory consumables and scientific instruments.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-display text-xl font-semibold">NUC Accreditation Textbooks &amp; Academic Books</h3>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            The Oriented Hub supplies NUC accreditation textbooks, medical books, engineering books, management science
+            books, social science books and educational materials for universities, polytechnics, colleges of education
+            and research institutions.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-display text-xl font-semibold">Areas We Serve</h3>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            Lagos, Abuja, Port Harcourt, Kano, Ibadan, Osogbo, Abeokuta, Akure, Ilorin, Benin City, Enugu, Owerri,
+            Kaduna, Jos, Uyo, Calabar and all states across Nigeria.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 const aiAnswers = [
   {
@@ -127,6 +249,19 @@ function WelcomeIntro() {
 }
 
 const homeFaqs = [
+  {
+    q: "Where can I buy quality medical equipment in Nigeria?",
+    a: "The Oriented Hub supplies quality medical equipment and hospital supplies across Nigeria.",
+  },
+  {
+    q: "Do you deliver laboratory equipment nationwide?",
+    a: "Yes. We deliver laboratory equipment, scientific instruments and medical supplies to all states in Nigeria.",
+  },
+  {
+    q: "Do you supply NUC accreditation textbooks?",
+    a: "Yes. We provide NUC accreditation textbooks and academic books for universities, polytechnics and colleges.",
+  },
+
   {
     q: "Do you ship medical equipment internationally?",
     a: "Yes. The Oriented Hub offers worldwide shipping of medical equipment and laboratory equipment to USA, Canada, UK, Europe, Africa, Asia and globally.",
