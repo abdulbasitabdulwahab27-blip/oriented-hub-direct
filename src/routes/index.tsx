@@ -12,12 +12,20 @@ import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo"
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: pageMeta({
-      title: "The Oriented Hub | Books, Medical Equipment & Laboratory Supplies in Nigeria",
-      description:
-        "The Oriented Hub supplies academic books, medical equipment, laboratory equipment, hospital consumables and educational materials across Nigeria with reliable nationwide delivery.",
-      path: "/",
-    }),
+    meta: [
+      ...pageMeta({
+        title: "Medical Equipment, Laboratory Equipment & NUC Textbooks Supplier in Nigeria | The Oriented Hub",
+        description:
+          "The Oriented Hub is a leading supplier of Medical Equipment, Laboratory Equipment, Scientific Instruments, Surgical Instruments, Hospital Consumables and NUC Accreditation Textbooks in Nigeria. Nationwide delivery available.",
+        path: "/",
+      }),
+      {
+        name: "keywords",
+        content:
+          "Medical Equipment Nigeria, Laboratory Equipment Nigeria, Scientific Equipment Nigeria, Hospital Equipment Supplier Nigeria, Surgical Instruments Nigeria, Medical Supplies Nigeria, Medical Books Nigeria, NUC Accreditation Textbooks Nigeria, Laboratory Consumables Nigeria, Medical Equipment Osogbo, Medical Equipment Lagos, Medical Equipment Abuja, Educational Materials Nigeria, Healthcare Equipment Procurement Nigeria",
+      },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+    ],
     links: canonicalLink("/"),
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
@@ -25,10 +33,42 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }])),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalBusiness",
+          name: "The Oriented Hub",
+          url: "https://www.theorientedhub.com",
+          telephone: "+2348136548965",
+          description:
+            "Supplier of medical equipment, laboratory equipment, scientific equipment, surgical instruments, hospital consumables and NUC accreditation textbooks in Nigeria.",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "5 Oke Fia Street, Opposite Zenith Bank",
+            addressLocality: "Osogbo",
+            addressRegion: "Osun State",
+            postalCode: "230001",
+            addressCountry: "NG",
+          },
+          areaServed: "Nigeria",
+          priceRange: "₦₦",
+          serviceType: [
+            "Medical Equipment",
+            "Laboratory Equipment",
+            "Scientific Equipment",
+            "Hospital Consumables",
+            "NUC Accreditation Textbooks",
+            "Medical Books",
+            "Educational Materials",
+          ],
+        }),
+      },
     ],
   }),
   component: Home,
 });
+
 
 function Home() {
   return (
