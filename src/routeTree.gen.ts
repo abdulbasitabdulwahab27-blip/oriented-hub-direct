@@ -15,6 +15,7 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OsogboRouteImport } from './routes/osogbo'
+import { Route as OrderRouteImport } from './routes/order'
 import { Route as NucAccreditationTextbooksSupplierRouteImport } from './routes/nuc-accreditation-textbooks-supplier'
 import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
 import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
@@ -76,6 +77,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const OsogboRoute = OsogboRouteImport.update({
   id: '/osogbo',
   path: '/osogbo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderRoute = OrderRouteImport.update({
+  id: '/order',
+  path: '/order',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NucAccreditationTextbooksSupplierRoute =
@@ -268,6 +274,7 @@ export interface FileRoutesByFullPath {
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
+  '/order': typeof OrderRoute
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
@@ -307,6 +314,7 @@ export interface FileRoutesByTo {
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
+  '/order': typeof OrderRoute
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
@@ -347,6 +355,7 @@ export interface FileRoutesById {
   '/medical-equipment-supplier': typeof MedicalEquipmentSupplierRoute
   '/medical-textbooks-supplier': typeof MedicalTextbooksSupplierRoute
   '/nuc-accreditation-textbooks-supplier': typeof NucAccreditationTextbooksSupplierRoute
+  '/order': typeof OrderRoute
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/sales-rep': typeof SalesRepRoute
@@ -388,6 +397,7 @@ export interface FileRouteTypes {
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
     | '/nuc-accreditation-textbooks-supplier'
+    | '/order'
     | '/osogbo'
     | '/privacy'
     | '/sales-rep'
@@ -427,6 +437,7 @@ export interface FileRouteTypes {
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
     | '/nuc-accreditation-textbooks-supplier'
+    | '/order'
     | '/osogbo'
     | '/privacy'
     | '/sales-rep'
@@ -466,6 +477,7 @@ export interface FileRouteTypes {
     | '/medical-equipment-supplier'
     | '/medical-textbooks-supplier'
     | '/nuc-accreditation-textbooks-supplier'
+    | '/order'
     | '/osogbo'
     | '/privacy'
     | '/sales-rep'
@@ -507,6 +519,7 @@ export interface RootRouteChildren {
   MedicalEquipmentSupplierRoute: typeof MedicalEquipmentSupplierRoute
   MedicalTextbooksSupplierRoute: typeof MedicalTextbooksSupplierRoute
   NucAccreditationTextbooksSupplierRoute: typeof NucAccreditationTextbooksSupplierRoute
+  OrderRoute: typeof OrderRoute
   OsogboRoute: typeof OsogboRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesRepRoute: typeof SalesRepRoute
@@ -561,6 +574,13 @@ declare module '@tanstack/react-router' {
       path: '/osogbo'
       fullPath: '/osogbo'
       preLoaderRoute: typeof OsogboRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nuc-accreditation-textbooks-supplier': {
@@ -846,6 +866,7 @@ const rootRouteChildren: RootRouteChildren = {
   MedicalTextbooksSupplierRoute: MedicalTextbooksSupplierRoute,
   NucAccreditationTextbooksSupplierRoute:
     NucAccreditationTextbooksSupplierRoute,
+  OrderRoute: OrderRoute,
   OsogboRoute: OsogboRoute,
   PrivacyRoute: PrivacyRoute,
   SalesRepRoute: SalesRepRoute,
