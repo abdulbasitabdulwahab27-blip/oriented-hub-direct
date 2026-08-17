@@ -250,6 +250,19 @@ function WelcomeIntro() {
 
 const homeFaqs = [
   {
+    q: "Where can I buy quality medical equipment in Nigeria?",
+    a: "The Oriented Hub supplies quality medical equipment and hospital supplies across Nigeria.",
+  },
+  {
+    q: "Do you deliver laboratory equipment nationwide?",
+    a: "Yes. We deliver laboratory equipment, scientific instruments and medical supplies to all states in Nigeria.",
+  },
+  {
+    q: "Do you supply NUC accreditation textbooks?",
+    a: "Yes. We provide NUC accreditation textbooks and academic books for universities, polytechnics and colleges.",
+  },
+
+  {
     q: "Do you ship medical equipment internationally?",
     a: "Yes. The Oriented Hub offers worldwide shipping of medical equipment and laboratory equipment to USA, Canada, UK, Europe, Africa, Asia and globally.",
   },
