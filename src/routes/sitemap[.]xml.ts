@@ -9,7 +9,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const staticPaths = ["/", "/shop", "/about", "/contact", "/faq", "/privacy", "/terms", "/sales-rep", "/books", "/medical-equipment", "/laboratory-equipment", "/hospital-consumables", "/educational-materials", "/business-solutions", "/delivery-information", "/blog", "/medical-equipment-supplier", "/laboratory-equipment-supplier", "/hospital-consumables-and-stationeries", "/medical-textbooks-supplier", "/nuc-accreditation-textbooks-supplier", "/international-book-seller"];
+        const staticPaths = ["/", "/shop", "/about", "/contact", "/faq", "/privacy", "/terms", "/sales-rep", "/books", "/medical-equipment", "/laboratory-equipment", "/hospital-consumables", "/educational-materials", "/business-solutions", "/osogbo", "/delivery-information", "/blog", "/medical-equipment-supplier", "/laboratory-equipment-supplier", "/hospital-consumables-and-stationeries", "/medical-textbooks-supplier", "/nuc-accreditation-textbooks-supplier", "/international-book-seller"];
         const catPaths = blogPosts.map((b) => `/blog/${b.slug}`);
         const productPaths = products.map((p) => `/product/${p.slug}`);
         const all = [...staticPaths, ...catPaths, ...productPaths];

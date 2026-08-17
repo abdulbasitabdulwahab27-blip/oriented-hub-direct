@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { CartProvider } from "@/lib/cart";
+import { GEO, GOOGLE_MAPS_PLACE_URL, localBusinessSchema } from "@/lib/local-seo";
 
 function NotFoundComponent() {
   return (
@@ -49,6 +50,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Oriented Hub — Quality Products. Better Care. Total Solutions." },
       { name: "description", content: "Nigeria's premium procurement platform for books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
       { name: "author", content: "Oriented Hub" },
+      { name: "geo.region", content: "NG-OS" },
+      { name: "geo.placename", content: "Osogbo, Osun State, Nigeria" },
+      { name: "geo.position", content: `${GEO.latitude};${GEO.longitude}` },
+      { name: "ICBM", content: `${GEO.latitude}, ${GEO.longitude}` },
       { property: "og:title", content: "Oriented Hub — Quality Products. Better Care. Total Solutions." },
       { property: "og:description", content: "Nigeria's premium procurement platform for books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
       { property: "og:type", content: "website" },
@@ -85,39 +90,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 addressLocality: "Osogbo",
                 addressCountry: "NG",
               },
-              sameAs: [],
+              sameAs: [GOOGLE_MAPS_PLACE_URL],
             },
             {
-              "@type": "LocalBusiness",
-              "@id": "https://www.theorientedhub.com/#localbusiness",
-              name: "The Oriented Hub",
-              image: "https://www.theorientedhub.com/favicon.ico",
-              url: "https://www.theorientedhub.com",
-              email: "Orientedbanque@outlook.com",
-              telephone: "+2348136548965",
-              priceRange: "$$",
-              description:
-                "The Oriented Hub supplies academic books, medical equipment, laboratory equipment, hospital consumables and educational materials across Nigeria.",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "5, Oke-Fia Street, Opposite Zenith Bank",
-                addressLocality: "Osogbo",
-                addressRegion: "Osun State",
-                addressCountry: "NG",
-              },
-              areaServed: [
-                { "@type": "Country", name: "Nigeria" },
-                { "@type": "Place", name: "Worldwide" },
-              ],
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                  opens: "08:00",
-                  closes: "18:00",
-                },
-              ],
-              parentOrganization: { "@id": "https://www.theorientedhub.com/#organization" },
+              ...localBusinessSchema,
+              "@context": undefined,
             },
             {
               "@type": "WebSite",
