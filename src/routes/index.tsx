@@ -81,6 +81,7 @@ function Home() {
       
       
       <WhyChooseUs />
+      <SupplyOverview />
       <Procurement />
       <QuotationListBanner />
       <Testimonials />
@@ -92,6 +93,87 @@ function Home() {
     </>
   );
 }
+
+function SupplyOverview() {
+  return (
+    <section className="container-page py-14 md:py-20">
+      <div className="max-w-4xl mx-auto space-y-10">
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Leading Medical Equipment, Laboratory Equipment &amp; NUC Textbook Supplier in Nigeria
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            The Oriented Hub is a trusted Nigerian supplier of high-quality Medical Equipment, Laboratory Equipment,
+            Scientific Instruments, Surgical Instruments, Hospital Consumables, Educational Materials, Medical Books and
+            NUC Accreditation Textbooks.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            We provide reliable solutions for hospitals, clinics, laboratories, universities, polytechnics, colleges of
+            education, research institutions and healthcare organizations across Nigeria with nationwide delivery and
+            professional customer support.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+            <h3 className="font-display text-lg font-semibold">Our Core Products &amp; Services</h3>
+            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground list-disc pl-5">
+              <li>Medical Equipment Supply in Nigeria</li>
+              <li>Laboratory Equipment Supply in Nigeria</li>
+              <li>Surgical Instruments Supply</li>
+              <li>Hospital Consumables Supply</li>
+              <li>Scientific Equipment Supply</li>
+              <li>Healthcare Equipment Procurement</li>
+              <li>Medical Books Supply</li>
+              <li>NUC Accreditation Textbooks</li>
+              <li>Educational Materials for Schools and Universities</li>
+              <li>General Merchandise Supply</li>
+            </ul>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+            <h3 className="font-display text-lg font-semibold">Why Choose The Oriented Hub?</h3>
+            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground list-disc pl-5">
+              <li>Quality-Assured Products</li>
+              <li>Competitive Pricing</li>
+              <li>Nationwide Delivery Across Nigeria</li>
+              <li>Trusted by Hospitals, Schools and Laboratories</li>
+              <li>Professional Customer Support</li>
+              <li>Reliable Procurement Services</li>
+              <li>Fast Order Processing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-display text-xl font-semibold">Medical Equipment We Supply</h3>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            We supply hospital beds, patient monitors, blood pressure monitors, pulse oximeters, thermometers,
+            stethoscopes, weighing scales, microscopes, centrifuges, autoclaves, laboratory glassware, laboratory
+            reagents, laboratory consumables and scientific instruments.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-display text-xl font-semibold">NUC Accreditation Textbooks &amp; Academic Books</h3>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            The Oriented Hub supplies NUC accreditation textbooks, medical books, engineering books, management science
+            books, social science books and educational materials for universities, polytechnics, colleges of education
+            and research institutions.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-display text-xl font-semibold">Areas We Serve</h3>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            Lagos, Abuja, Port Harcourt, Kano, Ibadan, Osogbo, Abeokuta, Akure, Ilorin, Benin City, Enugu, Owerri,
+            Kaduna, Jos, Uyo, Calabar and all states across Nigeria.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 const aiAnswers = [
   {
