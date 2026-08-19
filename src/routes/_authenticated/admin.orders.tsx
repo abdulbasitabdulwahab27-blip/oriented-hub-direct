@@ -67,9 +67,12 @@ function AdminOrders() {
 
   const updateStatus = async (id: string, status: string) => {
     const stampField = workflow.find((w) => w.key === status)?.stampField;
-    const patch: Record<string, unknown> = { status };
-    if (stampField && stampField !== "created_at") patch[stampField as string] = new Date().toISOString();
+    const patch: { status: string } & Partial<Record<"received_at" | "preparing_at" | "quoted_at" | "delivered_at", string>> = { status };
+    if (stampField && stampField !== "created_at") {
+      patch[stampField as "received_at" | "preparing_at" | "quoted_at" | "delivered_at"] = new Date().toISOString();
+    }
     const { error } = await supabase.from("orders").update(patch).eq("id", id);
+
     if (error) toast.error(error.message);
     else { toast.success(`Marked as ${status}.`); load(); }
   };
