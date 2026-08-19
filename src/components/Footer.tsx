@@ -35,6 +35,7 @@ export function Footer() {
             <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
             <li><Link to="/osogbo" className="hover:text-primary">Visit Us in Osogbo</Link></li>
             <li><Link to="/order" className="hover:text-primary">Place an Order</Link></li>
+            <li><Link to="/track" className="hover:text-primary">Track Your Order</Link></li>
             <li><Link to="/sales-rep" className="hover:text-primary">Become a Sales Rep</Link></li>
             
             <li><Link to="/faq" className="hover:text-primary">FAQ</Link></li>
