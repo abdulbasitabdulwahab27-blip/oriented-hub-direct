@@ -4,10 +4,12 @@ import { SeoInfoPage } from "@/components/SeoInfoPage";
 export const Route = createFileRoute("/nuc-accreditation-textbooks-supplier")({
   head: () => ({
     meta: [
-      { title: "NUC Accreditation Textbooks Supplier | The Oriented Hub | Worldwide Shipping" },
-      { name: "description", content: "Supplier of NUC accreditation textbooks for all courses — programme-based booklists for universities, polytechnics and colleges. Worldwide shipping. Call +234 813 654 8965." },
-      { property: "og:title", content: "NUC Accreditation Textbooks Supplier | The Oriented Hub" },
-      { property: "og:description", content: "Complete NUC accreditation booklists supplied to universities and colleges worldwide." },
+      { title: "NUC Accreditation Textbooks Supplier in Nigeria | The Oriented Hub" },
+      { name: "description", content: "Leading supplier of NUC approved accreditation textbooks for Nigerian universities, colleges of health and polytechnics. Full BMAS compliance, bulk supply, nationwide delivery. Call 08136548965." },
+      { name: "keywords", content: "NUC accreditation textbooks, NUC BMAS books, Nigerian university accreditation books, college of health accreditation, polytechnic accreditation textbooks, textbook supplier Nigeria, Osogbo textbook supplier" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "NUC Accreditation Textbooks Supplier in Nigeria | The Oriented Hub" },
+      { property: "og:description", content: "NUC approved accreditation textbooks for Nigerian universities, colleges and polytechnics. Full BMAS compliance, nationwide delivery." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.theorientedhub.com/nuc-accreditation-textbooks-supplier" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -20,13 +22,14 @@ export const Route = createFileRoute("/nuc-accreditation-textbooks-supplier")({
 function Page() {
   return (
     <SeoInfoPage
-      eyebrow="NUC accreditation"
-      title="NUC Accreditation Textbooks Supplier"
-      intro="Complete, programme-specific booklists that help universities, polytechnics and colleges meet accreditation library requirements on time."
+      eyebrow="NUC accreditation textbooks Nigeria"
+      title="NUC Accreditation Textbooks Supplier in Nigeria"
+      intro="The Oriented Hub is a leading supplier of NUC Approved Accreditation Textbooks for Nigerian Universities, Colleges of Health, and Polytechnics. Based in Osogbo, Osun State, we provide comprehensive textbook solutions to meet NUC BMAS requirements across all faculties with reliable nationwide delivery."
       paragraphs={[
-        "The Oriented Hub supplies NUC accreditation textbooks for all courses and faculties. Accreditation panels expect current-edition, discipline-specific titles in adequate copies, and we help departments meet that standard for Medicine and Surgery, Nursing Science, Pharmacy, Medical Laboratory Science, Physiotherapy, Public Health, Anatomy and Physiology, Law, Education, Engineering, Sciences, Agriculture, Management and the Social Sciences.",
-        "Send us your departmental booklist or NUC benchmark document and our team returns an itemised quotation showing title, author, edition, ISBN, quantity, unit price and delivery timeline. Where a listed edition is out of print, we advise on the accepted current edition so your submission is not queried. We can also supply accession-ready copies with invoices and delivery notes formatted for library and bursary records.",
-        "We understand accreditation deadlines. Our procurement desk prioritises accreditation orders, tracks each title to delivery and keeps your contact person updated throughout. Institutional discounts apply on multi-copy and multi-department orders, and part-supply schedules can be arranged where budgets are released in tranches.",
+        "The Oriented Hub is a leading supplier of NUC Approved Accreditation Textbooks for Nigerian Universities, Colleges of Health, and Polytechnics. Based in Osogbo, Osun State, we provide comprehensive textbook solutions to meet NUC BMAS requirements across all faculties with reliable nationwide delivery.",
+        "Programs covered: Health Sciences — Medicine & Surgery, Nursing Science, Pharmacy, Medical Laboratory Science, Public Health; Engineering — Civil, Mechanical, Electrical/Electronics, Chemical, Computer Engineering; Natural Sciences — Biology, Chemistry, Physics, Biochemistry, Microbiology; Management & Social Sciences — Accounting, Business Administration, Economics, Mass Communication, Political Science.",
+        "Why institutions choose us: full compliance — all textbooks meet current NUC BMAS standards; bulk supply — trusted for university accreditation and resource verification; competitive pricing — institutional and student discounts available; nationwide logistics — fast delivery to all 36 states and FCT; expert support — dedicated assistance for procurement officers.",
+        "Serving universities and colleges across Osogbo, Osun State and Nigeria. Contact our procurement team: Phone 08136548965, 09064007879; Email Orientedbanque@outlook.com; Address 5, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State; Website www.theorientedhub.com.",
       ]}
     />
   );
