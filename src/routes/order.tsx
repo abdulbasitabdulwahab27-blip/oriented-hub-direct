@@ -142,6 +142,14 @@ function OrderPage() {
             </Link>{" "}
             using this code and your WhatsApp number.
           </p>
+          {emailFallback && (
+            <a
+              href={emailFallback}
+              className="mt-3 inline-flex items-center gap-2 rounded-md border border-primary/40 px-3 py-1.5 text-xs font-semibold text-primary hover:bg-primary/10"
+            >
+              Also email this order to {EMAIL}
+            </a>
+          )}
         </div>
       )}
 
