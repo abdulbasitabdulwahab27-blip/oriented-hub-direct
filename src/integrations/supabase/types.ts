@@ -220,20 +220,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      track_order: {
-        Args: { _code: string; _phone: string }
-        Returns: {
-          created_at: string
-          customer_name: string
-          delivered_at: string
-          items: Json
-          preparing_at: string
-          quoted_at: string
-          received_at: string
-          status: string
-          tracking_code: string
-        }[]
-      }
+      [_ in never]: never
     }
     Enums: {
       app_role: "admin" | "user"
