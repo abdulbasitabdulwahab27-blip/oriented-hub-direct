@@ -14,15 +14,15 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       ...pageMeta({
-        title: "Medical Equipment, Laboratory Equipment & NUC Textbooks Supplier in Nigeria | The Oriented Hub",
+        title: "Where to Buy Hospital Equipment & NUC Textbooks in Nigeria | The Oriented Hub",
         description:
-          "The Oriented Hub is a leading supplier of Medical Equipment, Laboratory Equipment, Scientific Instruments, Surgical Instruments, Hospital Consumables and NUC Accreditation Textbooks in Nigeria. Nationwide delivery available.",
+          "Wondering where can I buy hospital equipment or NUC textbooks in Nigeria? The Oriented Hub supplies medical equipment, lab tools & BMAS books nationwide. Call 08136548965. Located in Osogbo.",
         path: "/",
       }),
       {
         name: "keywords",
         content:
-          "Medical Equipment Nigeria, Laboratory Equipment Nigeria, Scientific Equipment Nigeria, Hospital Equipment Supplier Nigeria, Surgical Instruments Nigeria, Medical Supplies Nigeria, Medical Books Nigeria, NUC Accreditation Textbooks Nigeria, Laboratory Consumables Nigeria, Medical Equipment Osogbo, Medical Equipment Lagos, Medical Equipment Abuja, Educational Materials Nigeria, Healthcare Equipment Procurement Nigeria",
+          "where to buy hospital equipment Nigeria, where can I buy NUC textbooks, buy medical equipment Osogbo, buy laboratory equipment Nigeria, NUC accreditation books supplier, hospital supplies near me, Medical Equipment Nigeria, Laboratory Equipment Nigeria, Scientific Equipment Nigeria, Hospital Equipment Supplier Nigeria, Surgical Instruments Nigeria, Medical Supplies Nigeria, Medical Books Nigeria, NUC Accreditation Textbooks Nigeria, Laboratory Consumables Nigeria, Medical Equipment Osogbo, Medical Equipment Lagos, Medical Equipment Abuja, Educational Materials Nigeria, Healthcare Equipment Procurement Nigeria",
       },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
             "Supplier of medical equipment, laboratory equipment, scientific equipment, surgical instruments, hospital consumables and NUC accreditation textbooks in Nigeria.",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "5 Oke Fia Street, Opposite Zenith Bank",
+            streetAddress: "15 Oke Fia Street, Opposite Zenith Bank",
             addressLocality: "Osogbo",
             addressRegion: "Osun State",
             postalCode: "230001",
