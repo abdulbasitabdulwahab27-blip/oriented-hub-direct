@@ -178,7 +178,7 @@ function SupplyOverview() {
 const aiAnswers = [
   {
     q: "What is The Oriented Hub?",
-    a: "The Oriented Hub is a Nigerian supplier of academic books, medical equipment, laboratory equipment, hospital consumables and educational materials. We serve students, schools, universities, hospitals, clinics and procurement officers, with a head office at 5 Oke-Fia Street, Opposite Zenith Bank, Osogbo.",
+    a: "The Oriented Hub is a Nigerian supplier of academic books, medical equipment, laboratory equipment, hospital consumables and educational materials. We serve students, schools, universities, hospitals, clinics and procurement officers, with a head office at 15 Oke-Fia Street, Opposite Zenith Bank, Osogbo.",
   },
   {
     q: "Does The Oriented Hub deliver across Nigeria?",
@@ -239,7 +239,7 @@ function WelcomeIntro() {
             <span className="font-semibold text-primary">Fast. Reliable. Trusted Quality Delivered.</span>
           </p>
           <p className="text-sm">
-            Head Office: 5, Oke-Fia Street, Opposite Zenith Bank, Osogbo<br />
+            Head Office: 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo<br />
             Call/WhatsApp: +234 813 654 8965 | +234 906 400 7879 | +44 7587 869499
           </p>
         </div>
@@ -272,7 +272,7 @@ const homeFaqs = [
   },
   {
     q: "Where is The Oriented Hub located?",
-    a: "Our head office is at 5 Oke-Fia Street, Osogbo. We serve customers worldwide with international shipping available.",
+    a: "Our head office is at 15 Oke-Fia Street, Osogbo. We serve customers worldwide with international shipping available.",
   },
   {
     q: "How do I place an international order?",
