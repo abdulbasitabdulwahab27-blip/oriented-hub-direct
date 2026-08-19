@@ -320,15 +320,14 @@ function Hero() {
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-primary backdrop-blur">
             <Sparkles className="h-3.5 w-3.5" /> Trusted procurement partner since day one
           </div>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Books, Medical Equipment &amp;<br />
-            <span className="text-primary">Laboratory Supplies</span> in Nigeria
+          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl uppercase">
+            Where to Buy Hospital Equipment, NUC Textbooks &amp; Medical Supplies in Nigeria
           </h1>
           <p className="mt-3 font-display text-lg font-semibold text-foreground/80">
-            Quality Products. Better Care. Total Solutions.
+            Welcome to The Oriented Hub - Nigeria's trusted supplier for hospitals, universities, colleges, and laboratories.
           </p>
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Oriented Hub supplies authentic books, medical equipment, laboratory equipment, hospital consumables and educational materials — delivered to institutions and individuals nationwide.
+            If you are asking "where can I buy hospital equipment in Osogbo?" or "where to buy NUC accreditation textbooks in Nigeria?" — You are in the right place. We deliver quality medical equipment and NUC approved textbooks to all 36 states + FCT with bulk discounts.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link to="/shop" className="inline-flex items-center gap-2 rounded-md bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft hover:opacity-95 transition">
