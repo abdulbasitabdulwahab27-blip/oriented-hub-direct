@@ -95,6 +95,24 @@ function OrderPage() {
       .join("\n");
 
     window.open(waLink(message), "_blank");
+
+    // Email a copy of the order to the shop inbox (never blocks the customer).
+    emailOrder({
+      data: {
+        trackingCode: code,
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+        fulfilment: fulfilment === "pickup" ? "Pickup in Osogbo" : "Delivery / shipping",
+        order: data.order,
+        notes: data.notes || null,
+        source: "order page",
+      },
+    }).catch(() => {});
+
+    setEmailFallback(
+      `mailto:${EMAIL}?subject=${encodeURIComponent(`New order ${code} — ${data.name}`)}&body=${encodeURIComponent(message)}`,
+    );
     setTracking(code);
     toast.success("Order submitted — we'll confirm on WhatsApp shortly.");
     setForm({ name: "", phone: "", address: "", order: "", notes: "" });
