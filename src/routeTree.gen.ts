@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ProcurementRouteImport } from './routes/procurement'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OsogboRouteImport } from './routes/osogbo'
@@ -74,6 +75,11 @@ const ShopRoute = ShopRouteImport.update({
 const SalesRepRoute = SalesRepRouteImport.update({
   id: '/sales-rep',
   path: '/sales-rep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProcurementRoute = ProcurementRouteImport.update({
@@ -290,6 +296,7 @@ export interface FileRoutesByFullPath {
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/procurement': typeof ProcurementRoute
+  '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -332,6 +339,7 @@ export interface FileRoutesByTo {
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/procurement': typeof ProcurementRoute
+  '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -375,6 +383,7 @@ export interface FileRoutesById {
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/procurement': typeof ProcurementRoute
+  '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -419,6 +428,7 @@ export interface FileRouteTypes {
     | '/osogbo'
     | '/privacy'
     | '/procurement'
+    | '/reviews'
     | '/sales-rep'
     | '/shop'
     | '/sitemap.xml'
@@ -461,6 +471,7 @@ export interface FileRouteTypes {
     | '/osogbo'
     | '/privacy'
     | '/procurement'
+    | '/reviews'
     | '/sales-rep'
     | '/shop'
     | '/sitemap.xml'
@@ -503,6 +514,7 @@ export interface FileRouteTypes {
     | '/osogbo'
     | '/privacy'
     | '/procurement'
+    | '/reviews'
     | '/sales-rep'
     | '/shop'
     | '/sitemap.xml'
@@ -547,6 +559,7 @@ export interface RootRouteChildren {
   OsogboRoute: typeof OsogboRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcurementRoute: typeof ProcurementRoute
+  ReviewsRoute: typeof ReviewsRoute
   SalesRepRoute: typeof SalesRepRoute
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -593,6 +606,13 @@ declare module '@tanstack/react-router' {
       path: '/sales-rep'
       fullPath: '/sales-rep'
       preLoaderRoute: typeof SalesRepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/procurement': {
@@ -910,6 +930,7 @@ const rootRouteChildren: RootRouteChildren = {
   OsogboRoute: OsogboRoute,
   PrivacyRoute: PrivacyRoute,
   ProcurementRoute: ProcurementRoute,
+  ReviewsRoute: ReviewsRoute,
   SalesRepRoute: SalesRepRoute,
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
