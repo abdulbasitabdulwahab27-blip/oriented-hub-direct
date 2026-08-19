@@ -34,10 +34,18 @@ export const Route = createFileRoute("/order")({
 
 type Fulfilment = "delivery" | "pickup";
 
+function makeTrackingCode() {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = new Uint8Array(8);
+  crypto.getRandomValues(bytes);
+  return "OH-" + Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("");
+}
+
 function OrderPage() {
   const [form, setForm] = useState({ name: "", phone: "", address: "", order: "", notes: "" });
   const [fulfilment, setFulfilment] = useState<Fulfilment>("delivery");
   const [submitting, setSubmitting] = useState(false);
+  const [tracking, setTracking] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +56,7 @@ function OrderPage() {
     }
     const data = parsed.data;
     setSubmitting(true);
+    const code = makeTrackingCode();
 
     try {
       const { supabase } = await import("@/integrations/supabase/client");
@@ -59,6 +68,7 @@ function OrderPage() {
         notes: data.notes || null,
         items: [{ name: data.order, category: "custom-order", quantity: 1 }],
         user_id: u.user?.id ?? null,
+        tracking_code: code,
       });
     } catch (err) {
       console.error("Order save failed");
@@ -67,6 +77,8 @@ function OrderPage() {
     const message = [
       "Hello Oriented Hub,",
       "I would like to place an order.",
+      "",
+      `Tracking code: ${code}`,
       "",
       "Order details:",
       data.order,
@@ -82,10 +94,12 @@ function OrderPage() {
       .join("\n");
 
     window.open(waLink(message), "_blank");
+    setTracking(code);
     toast.success("Order submitted — we'll confirm on WhatsApp shortly.");
     setForm({ name: "", phone: "", address: "", order: "", notes: "" });
     setSubmitting(false);
   };
+
 
   return (
     <div className="container-page py-10 md:py-14">
@@ -96,6 +110,22 @@ function OrderPage() {
           pricing, availability and dispatch — nationwide delivery and worldwide shipping available.
         </p>
       </div>
+
+      {tracking && (
+        <div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
+          <p className="text-sm font-semibold">Your tracking code</p>
+          <p className="mt-1 font-display text-2xl tracking-wide">{tracking}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Save this code. Check your order status any time on the{" "}
+            <Link to="/track" className="font-semibold text-primary underline">
+              order tracking page
+            </Link>{" "}
+            using this code and your WhatsApp number.
+          </p>
+        </div>
+      )}
+
+
 
       <form onSubmit={onSubmit} className="mt-8 grid gap-6 lg:grid-cols-[1fr_340px] items-start">
         <div className="space-y-5 rounded-xl border border-border bg-card p-6 shadow-card">

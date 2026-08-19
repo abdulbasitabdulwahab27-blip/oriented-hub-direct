@@ -67,6 +67,7 @@ export type Database = {
           quoted_at: string | null
           received_at: string | null
           status: string
+          tracking_code: string | null
           user_id: string | null
         }
         Insert: {
@@ -82,6 +83,7 @@ export type Database = {
           quoted_at?: string | null
           received_at?: string | null
           status?: string
+          tracking_code?: string | null
           user_id?: string | null
         }
         Update: {
@@ -97,6 +99,7 @@ export type Database = {
           quoted_at?: string | null
           received_at?: string | null
           status?: string
+          tracking_code?: string | null
           user_id?: string | null
         }
         Relationships: []
@@ -217,7 +220,20 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      track_order: {
+        Args: { _code: string; _phone: string }
+        Returns: {
+          created_at: string
+          customer_name: string
+          delivered_at: string
+          items: Json
+          preparing_at: string
+          quoted_at: string
+          received_at: string
+          status: string
+          tracking_code: string
+        }[]
+      }
     }
     Enums: {
       app_role: "admin" | "user"

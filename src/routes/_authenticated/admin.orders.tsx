@@ -66,10 +66,17 @@ function AdminOrders() {
   useEffect(() => { load(); }, []);
 
   const updateStatus = async (id: string, status: string) => {
-    const { error } = await supabase.from("orders").update({ status }).eq("id", id);
+    const stampField = workflow.find((w) => w.key === status)?.stampField;
+    const patch: { status: string } & Partial<Record<"received_at" | "preparing_at" | "quoted_at" | "delivered_at", string>> = { status };
+    if (stampField && stampField !== "created_at") {
+      patch[stampField as "received_at" | "preparing_at" | "quoted_at" | "delivered_at"] = new Date().toISOString();
+    }
+    const { error } = await supabase.from("orders").update(patch).eq("id", id);
+
     if (error) toast.error(error.message);
     else { toast.success(`Marked as ${status}.`); load(); }
   };
+
 
   const remove = async (id: string) => {
     if (!confirm("Delete this order?")) return;
