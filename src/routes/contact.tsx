@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: pageMeta({
       title: "Contact The Oriented Hub | Osogbo, Nigeria",
-      description: "Contact The Oriented Hub via WhatsApp +234 813 654 8965, email or visit 5 Oke-Fia Street, Opposite Zenith Bank, Osogbo. Bulk and institutional orders welcome.",
+      description: "Contact The Oriented Hub via WhatsApp +234 813 654 8965, email or visit 15 Oke-Fia Street, Opposite Zenith Bank, Osogbo. Bulk and institutional orders welcome.",
       path: "/contact",
     }),
     links: canonicalLink("/contact"),

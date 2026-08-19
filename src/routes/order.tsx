@@ -208,7 +208,7 @@ function OrderPage() {
               {(
                 [
                   { key: "delivery" as const, icon: Truck, title: "Ship to me", text: "Nationwide & worldwide" },
-                  { key: "pickup" as const, icon: Store, title: "Pickup in Osogbo", text: "5 Oke-Fia Street" },
+                  { key: "pickup" as const, icon: Store, title: "Pickup in Osogbo", text: "15 Oke-Fia Street" },
                 ]
               ).map((opt) => (
                 <button

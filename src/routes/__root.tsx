@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               telephone: ["+2348136548965", "+2349064007879", "+447587869499"],
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "5, Oke-Fia Street, Opposite Zenith Bank",
+                streetAddress: "15, Oke-Fia Street, Opposite Zenith Bank",
                 addressLocality: "Osogbo",
                 addressCountry: "NG",
               },
