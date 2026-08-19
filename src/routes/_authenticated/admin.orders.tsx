@@ -214,6 +214,14 @@ function AdminOrders() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
+                    <a
+                      href={`https://wa.me/${o.customer_phone.replace(/[^0-9]/g, "").replace(/^0/, "234")}?text=${encodeURIComponent(`Hello ${o.customer_name}, this is The Oriented Hub replying about your order.`)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 rounded border border-border px-2 py-1 text-xs hover:bg-muted"
+                    >
+                      <Phone className="h-3 w-3" /> Reply
+                    </a>
                     <select value={o.status} onChange={(e) => updateStatus(o.id, e.target.value)} className="rounded border border-border bg-background px-2 py-1 text-xs">
                       {allStatuses.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
