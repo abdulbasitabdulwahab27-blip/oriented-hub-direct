@@ -75,6 +75,7 @@ function Home() {
     <>
       <Hero />
       <WelcomeIntro />
+      <WhereToBuySeo />
       <AboutAnswers />
       <FeaturedCategories />
       <FeaturedProducts />
