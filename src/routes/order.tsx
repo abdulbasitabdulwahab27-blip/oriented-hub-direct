@@ -111,6 +111,22 @@ function OrderPage() {
         </p>
       </div>
 
+      {tracking && (
+        <div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
+          <p className="text-sm font-semibold">Your tracking code</p>
+          <p className="mt-1 font-display text-2xl tracking-wide">{tracking}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Save this code. Check your order status any time on the{" "}
+            <Link to="/track" className="font-semibold text-primary underline">
+              order tracking page
+            </Link>{" "}
+            using this code and your WhatsApp number.
+          </p>
+        </div>
+      )}
+
+
+
       <form onSubmit={onSubmit} className="mt-8 grid gap-6 lg:grid-cols-[1fr_340px] items-start">
         <div className="space-y-5 rounded-xl border border-border bg-card p-6 shadow-card">
           <label className="block">
