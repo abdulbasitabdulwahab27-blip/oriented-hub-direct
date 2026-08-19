@@ -47,6 +47,7 @@ function OrderPage() {
   const [fulfilment, setFulfilment] = useState<Fulfilment>("delivery");
   const [submitting, setSubmitting] = useState(false);
   const [tracking, setTracking] = useState<string | null>(null);
+  const [emailFallback, setEmailFallback] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
