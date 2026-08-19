@@ -1,0 +1,1 @@
+DELETE FROM public.orders WHERE customer_name = 'Playwright Tester' AND customer_phone = '08136548965';
