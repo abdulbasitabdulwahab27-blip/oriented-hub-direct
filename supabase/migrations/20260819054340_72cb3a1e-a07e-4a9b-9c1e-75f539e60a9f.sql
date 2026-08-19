@@ -1,0 +1,1 @@
+GRANT UPDATE, DELETE ON public.reviews TO authenticated;
