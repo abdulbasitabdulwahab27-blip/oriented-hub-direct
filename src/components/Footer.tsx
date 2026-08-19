@@ -37,6 +37,8 @@ export function Footer() {
             <li><Link to="/order" className="hover:text-primary">Place an Order</Link></li>
             <li><Link to="/track" className="hover:text-primary">Track Your Order</Link></li>
             <li><Link to="/sales-rep" className="hover:text-primary">Become a Sales Rep</Link></li>
+            <li><Link to="/blog" className="hover:text-primary">Blog &amp; Guides</Link></li>
+            <li><Link to="/reviews" className="hover:text-primary">Customer Reviews &amp; Testimonials</Link></li>
             
             <li><Link to="/faq" className="hover:text-primary">FAQ</Link></li>
             <li><Link to="/medical-equipment-supplier" className="hover:text-primary">Medical Equipment Supplier</Link></li>

@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ProcurementRouteImport } from './routes/procurement'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OsogboRouteImport } from './routes/osogbo'
@@ -45,6 +46,7 @@ import { Route as CategorySlugRouteImport } from './routes/category.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminReviewsRouteImport } from './routes/_authenticated/admin.reviews'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
 import { Route as AuthenticatedAdminPricingRouteImport } from './routes/_authenticated/admin.pricing'
 import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
@@ -74,6 +76,11 @@ const ShopRoute = ShopRouteImport.update({
 const SalesRepRoute = SalesRepRouteImport.update({
   id: '/sales-rep',
   path: '/sales-rep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProcurementRoute = ProcurementRouteImport.update({
@@ -235,6 +242,12 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminReviewsRoute =
+  AuthenticatedAdminReviewsRouteImport.update({
+    id: '/reviews',
+    path: '/reviews',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminProductsRoute =
   AuthenticatedAdminProductsRouteImport.update({
     id: '/products',
@@ -290,6 +303,7 @@ export interface FileRoutesByFullPath {
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/procurement': typeof ProcurementRoute
+  '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -305,6 +319,7 @@ export interface FileRoutesByFullPath {
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
   '/admin/pricing': typeof AuthenticatedAdminPricingRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
+  '/admin/reviews': typeof AuthenticatedAdminReviewsRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -332,6 +347,7 @@ export interface FileRoutesByTo {
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/procurement': typeof ProcurementRoute
+  '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -346,6 +362,7 @@ export interface FileRoutesByTo {
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
   '/admin/pricing': typeof AuthenticatedAdminPricingRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
+  '/admin/reviews': typeof AuthenticatedAdminReviewsRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -375,6 +392,7 @@ export interface FileRoutesById {
   '/osogbo': typeof OsogboRoute
   '/privacy': typeof PrivacyRoute
   '/procurement': typeof ProcurementRoute
+  '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -390,6 +408,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRoute
   '/_authenticated/admin/pricing': typeof AuthenticatedAdminPricingRoute
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
+  '/_authenticated/admin/reviews': typeof AuthenticatedAdminReviewsRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -419,6 +438,7 @@ export interface FileRouteTypes {
     | '/osogbo'
     | '/privacy'
     | '/procurement'
+    | '/reviews'
     | '/sales-rep'
     | '/shop'
     | '/sitemap.xml'
@@ -434,6 +454,7 @@ export interface FileRouteTypes {
     | '/admin/orders'
     | '/admin/pricing'
     | '/admin/products'
+    | '/admin/reviews'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -461,6 +482,7 @@ export interface FileRouteTypes {
     | '/osogbo'
     | '/privacy'
     | '/procurement'
+    | '/reviews'
     | '/sales-rep'
     | '/shop'
     | '/sitemap.xml'
@@ -475,6 +497,7 @@ export interface FileRouteTypes {
     | '/admin/orders'
     | '/admin/pricing'
     | '/admin/products'
+    | '/admin/reviews'
     | '/admin'
   id:
     | '__root__'
@@ -503,6 +526,7 @@ export interface FileRouteTypes {
     | '/osogbo'
     | '/privacy'
     | '/procurement'
+    | '/reviews'
     | '/sales-rep'
     | '/shop'
     | '/sitemap.xml'
@@ -518,6 +542,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/orders'
     | '/_authenticated/admin/pricing'
     | '/_authenticated/admin/products'
+    | '/_authenticated/admin/reviews'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -547,6 +572,7 @@ export interface RootRouteChildren {
   OsogboRoute: typeof OsogboRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcurementRoute: typeof ProcurementRoute
+  ReviewsRoute: typeof ReviewsRoute
   SalesRepRoute: typeof SalesRepRoute
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -593,6 +619,13 @@ declare module '@tanstack/react-router' {
       path: '/sales-rep'
       fullPath: '/sales-rep'
       preLoaderRoute: typeof SalesRepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/procurement': {
@@ -812,6 +845,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/reviews': {
+      id: '/_authenticated/admin/reviews'
+      path: '/reviews'
+      fullPath: '/admin/reviews'
+      preLoaderRoute: typeof AuthenticatedAdminReviewsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/products': {
       id: '/_authenticated/admin/products'
       path: '/products'
@@ -856,6 +896,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminOrdersRoute: typeof AuthenticatedAdminOrdersRoute
   AuthenticatedAdminPricingRoute: typeof AuthenticatedAdminPricingRoute
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
+  AuthenticatedAdminReviewsRoute: typeof AuthenticatedAdminReviewsRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
@@ -865,6 +906,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminOrdersRoute: AuthenticatedAdminOrdersRoute,
   AuthenticatedAdminPricingRoute: AuthenticatedAdminPricingRoute,
   AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
+  AuthenticatedAdminReviewsRoute: AuthenticatedAdminReviewsRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
@@ -910,6 +952,7 @@ const rootRouteChildren: RootRouteChildren = {
   OsogboRoute: OsogboRoute,
   PrivacyRoute: PrivacyRoute,
   ProcurementRoute: ProcurementRoute,
+  ReviewsRoute: ReviewsRoute,
   SalesRepRoute: SalesRepRoute,
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
