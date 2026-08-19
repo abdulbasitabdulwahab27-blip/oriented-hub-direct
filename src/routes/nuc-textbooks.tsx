@@ -34,7 +34,7 @@ function Page() {
         "Natural Sciences: Biology, Chemistry, Physics, Biochemistry, Microbiology.",
         "Management & Social Sciences: Accounting, Business Administration, Economics.",
         "Why institutions choose us: Full Compliance — all textbooks meet current NUC BMAS standards; Bulk Supply — trusted for university accreditation and resource verification; Nationwide Logistics — fast delivery to all 36 states and FCT.",
-        "Serving universities and colleges across Osogbo, Osun State and Nigeria. Contact our procurement team: Phone 08136548965, 09064007879; Email Orientedbanque@outlook.com; Address 5, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State; Website www.theorientedhub.com.",
+        "Serving universities and colleges across Osogbo, Osun State and Nigeria. Contact our procurement team: Phone 08136548965, 09064007879; Email Orientedbanque@outlook.com; Address 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State; Website www.theorientedhub.com.",
       ]}
     />
   );
