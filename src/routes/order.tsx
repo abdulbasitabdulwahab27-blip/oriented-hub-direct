@@ -34,10 +34,18 @@ export const Route = createFileRoute("/order")({
 
 type Fulfilment = "delivery" | "pickup";
 
+function makeTrackingCode() {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = new Uint8Array(8);
+  crypto.getRandomValues(bytes);
+  return "OH-" + Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("");
+}
+
 function OrderPage() {
   const [form, setForm] = useState({ name: "", phone: "", address: "", order: "", notes: "" });
   const [fulfilment, setFulfilment] = useState<Fulfilment>("delivery");
   const [submitting, setSubmitting] = useState(false);
+  const [tracking, setTracking] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +56,7 @@ function OrderPage() {
     }
     const data = parsed.data;
     setSubmitting(true);
+    const code = makeTrackingCode();
 
     try {
       const { supabase } = await import("@/integrations/supabase/client");
@@ -59,6 +68,7 @@ function OrderPage() {
         notes: data.notes || null,
         items: [{ name: data.order, category: "custom-order", quantity: 1 }],
         user_id: u.user?.id ?? null,
+        tracking_code: code,
       });
     } catch (err) {
       console.error("Order save failed");
@@ -67,6 +77,8 @@ function OrderPage() {
     const message = [
       "Hello Oriented Hub,",
       "I would like to place an order.",
+      "",
+      `Tracking code: ${code}`,
       "",
       "Order details:",
       data.order,
@@ -82,10 +94,12 @@ function OrderPage() {
       .join("\n");
 
     window.open(waLink(message), "_blank");
+    setTracking(code);
     toast.success("Order submitted — we'll confirm on WhatsApp shortly.");
     setForm({ name: "", phone: "", address: "", order: "", notes: "" });
     setSubmitting(false);
   };
+
 
   return (
     <div className="container-page py-10 md:py-14">
