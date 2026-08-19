@@ -249,6 +249,93 @@ function WelcomeIntro() {
   );
 }
 
+function WhereToBuySeo() {
+  return (
+    <section className="container-page py-12 md:py-16">
+      <div className="max-w-4xl mx-auto space-y-10">
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Where Can I Buy Hospital Equipment in Nigeria?
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            The Oriented Hub is your #1 answer for where to buy hospital equipment in Nigeria.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            Based in Osogbo, Osun State, we supply:
+          </p>
+          <ul className="mt-3 space-y-1.5 text-muted-foreground list-disc pl-5">
+            <li><strong>Hospital Furniture:</strong> Hospital beds, patient trolleys, examination couches, IV stands</li>
+            <li><strong>Laboratory Equipment:</strong> Microscopes, centrifuges, autoclaves, incubators</li>
+            <li><strong>Diagnostic Equipment:</strong> BP monitors, ECG machines, pulse oximeters, stethoscopes</li>
+            <li><strong>Surgical Instruments:</strong> Theatre tables, surgical lights, instrument sets</li>
+          </ul>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Serving: Hospitals, Clinics, Diagnostic Centers, Health Centers across Osun State and Nigeria.
+            Contact us today for where to buy medical equipment near you: <a href={`tel:+${WHATSAPP_PRIMARY}`} className="text-primary font-semibold">08136548965</a>
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Where to Buy NUC Accreditation Textbooks in Nigeria?
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Looking for where to buy NUC approved textbooks? We supply all BMAS accredited textbooks for NUC accreditation and resource verification.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed"><strong>Programs Covered:</strong></p>
+          <ul className="mt-3 space-y-1.5 text-muted-foreground list-disc pl-5">
+            <li>Medicine &amp; Surgery, Nursing Science, Pharmacy, Medical Lab Science</li>
+            <li>Engineering: Civil, Mechanical, Electrical, Computer</li>
+            <li>Sciences: Biology, Chemistry, Physics, Biochemistry</li>
+            <li>Management: Accounting, Business Administration, Economics</li>
+          </ul>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            We are the trusted supplier for Universities, Colleges of Health, and Polytechnics undergoing accreditation. Bulk orders available.
+            Call now for where to buy NUC textbooks: <a href={`tel:+${WHATSAPP_ALT}`} className="text-primary font-semibold">09064007879</a>
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Where Can I Buy Medical Consumables &amp; Laboratory Supplies?
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Need to buy medical consumables in bulk? We supply gloves, syringes, reagents, test kits, and all hospital consumables with fast delivery nationwide.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Why Choose The Oriented Hub for Your Purchases?
+          </h2>
+          <ul className="mt-4 space-y-2 text-muted-foreground list-none pl-0">
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> #1 Supplier in Osun State for Hospital Equipment and NUC Books</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Nationwide Delivery: We ship to Lagos, Abuja, Port Harcourt, Kano, and all states</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Bulk &amp; Institutional Orders: Special pricing for schools and hospitals</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Quality Guaranteed: All products meet Nigerian healthcare and NUC standards</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Fast Response: Call 08136548965, 09064007879 for instant quotation</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Located in Osun State - Delivering Across Nigeria
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            <strong>Address:</strong> 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            <strong>Serving:</strong> Osogbo, Ilesa, Ile-Ife, Ede + All states in Nigeria
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            If you searched "where can I buy..." and found us, let's talk. Get your quote today.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const homeFaqs = [
   {
     q: "Where can I buy quality medical equipment in Nigeria?",
