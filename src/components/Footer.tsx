@@ -45,6 +45,7 @@ export function Footer() {
             <li><Link to="/medical-textbooks-supplier" className="hover:text-primary">Medical Textbooks Supplier</Link></li>
             <li><Link to="/nuc-accreditation-textbooks-supplier" className="hover:text-primary">NUC Accreditation Textbooks Supplier</Link></li>
             <li><Link to="/international-book-seller" className="hover:text-primary">International Book Seller</Link></li>
+            <li><Link to="/procurement" className="hover:text-primary">Institutional Procurement & Bulk Orders</Link></li>
             <li><Link to="/privacy" className="hover:text-primary">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-primary">Terms & Conditions</Link></li>
           </ul>

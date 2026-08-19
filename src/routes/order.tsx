@@ -4,6 +4,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { CheckCircle2, Package, Truck, Store } from "lucide-react";
 import { waLink, EMAIL, ADDRESS } from "@/lib/whatsapp";
+import { emailOrder } from "@/lib/order-email.functions";
 import { canonicalLink, pageMeta } from "@/lib/seo";
 
 const schema = z.object({
@@ -46,6 +47,7 @@ function OrderPage() {
   const [fulfilment, setFulfilment] = useState<Fulfilment>("delivery");
   const [submitting, setSubmitting] = useState(false);
   const [tracking, setTracking] = useState<string | null>(null);
+  const [emailFallback, setEmailFallback] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,6 +96,24 @@ function OrderPage() {
       .join("\n");
 
     window.open(waLink(message), "_blank");
+
+    // Email a copy of the order to the shop inbox (never blocks the customer).
+    emailOrder({
+      data: {
+        trackingCode: code,
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+        fulfilment: fulfilment === "pickup" ? "Pickup in Osogbo" : "Delivery / shipping",
+        order: data.order,
+        notes: data.notes || null,
+        source: "order page",
+      },
+    }).catch(() => {});
+
+    setEmailFallback(
+      `mailto:${EMAIL}?subject=${encodeURIComponent(`New order ${code} — ${data.name}`)}&body=${encodeURIComponent(message)}`,
+    );
     setTracking(code);
     toast.success("Order submitted — we'll confirm on WhatsApp shortly.");
     setForm({ name: "", phone: "", address: "", order: "", notes: "" });
@@ -122,6 +142,14 @@ function OrderPage() {
             </Link>{" "}
             using this code and your WhatsApp number.
           </p>
+          {emailFallback && (
+            <a
+              href={emailFallback}
+              className="mt-3 inline-flex items-center gap-2 rounded-md border border-primary/40 px-3 py-1.5 text-xs font-semibold text-primary hover:bg-primary/10"
+            >
+              Also email this order to {EMAIL}
+            </a>
+          )}
         </div>
       )}
 

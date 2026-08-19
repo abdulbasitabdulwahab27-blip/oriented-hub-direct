@@ -23,6 +23,7 @@ const supplyNav = [
   { to: "/medical-textbooks-supplier", label: "Medical Textbooks Supplier" },
   { to: "/nuc-accreditation-textbooks-supplier", label: "NUC Accreditation Textbooks Supplier" },
   { to: "/international-book-seller", label: "International Book Seller" },
+  { to: "/procurement", label: "Institutional Procurement & Bulk Orders" },
 ] as const;
 
 const categoryNav = [
