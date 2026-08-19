@@ -58,13 +58,9 @@ function TrackPage() {
     setNotFound(false);
     setOrder(null);
     try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      const { data, error } = await supabase.rpc("track_order", {
-        _code: code.trim(),
-        _phone: phone.trim(),
-      });
-      if (error) throw error;
-      const row = Array.isArray(data) ? (data[0] as TrackedOrder | undefined) : undefined;
+      const { trackOrder } = await import("@/lib/track.functions");
+      const res = await trackOrder({ data: { code: code.trim(), phone: phone.trim() } });
+      const row = (res?.order ?? null) as TrackedOrder | null;
       if (!row) setNotFound(true);
       else setOrder(row);
     } catch {
