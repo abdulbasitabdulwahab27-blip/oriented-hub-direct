@@ -67,6 +67,9 @@ export function Footer() {
           <div>Quality Products. Better Care. Total Solutions.</div>
           <div>Worldwide Shipping Available | The Oriented Hub</div>
         </div>
+        <div className="container-page pb-5 text-[10px] text-muted-foreground/60 text-center sm:text-left">
+          Popular searches: where to buy hospital equipment Nigeria, where can I buy NUC textbooks, buy medical equipment Osogbo, buy laboratory equipment Nigeria, NUC accreditation books supplier, hospital supplies near me.
+        </div>
       </div>
     </footer>
   );

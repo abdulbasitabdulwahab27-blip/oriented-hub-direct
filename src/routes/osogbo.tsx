@@ -7,7 +7,7 @@ import { GEO, GOOGLE_MAPS_PLACE_URL, GOOGLE_MAPS_DIRECTIONS_URL } from "@/lib/lo
 const faqs = [
   {
     q: "Where is The Oriented Hub located in Osogbo?",
-    a: "The Oriented Hub (Oriented Book Banque) is at 5, Oke-Fia Street, Opposite Zenith Bank, Oke-Fia, Osogbo, Osun State, Nigeria. You can open our Google Maps listing for turn-by-turn directions.",
+    a: "The Oriented Hub (Oriented Book Banque) is at 15, Oke-Fia Street, Opposite Zenith Bank, Oke-Fia, Osogbo, Osun State, Nigeria. You can open our Google Maps listing for turn-by-turn directions.",
   },
   {
     q: "What are your opening hours in Osogbo?",
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/osogbo")({
       ...pageMeta({
         title: "Bookshop & Medical Equipment Supplier in Osogbo, Osun State | The Oriented Hub",
         description:
-          "Visit The Oriented Hub (Oriented Book Banque) at 5 Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State — books, medical equipment, laboratory equipment and hospital consumables. Call +234 813 654 8965.",
+          "Visit The Oriented Hub (Oriented Book Banque) at 15 Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State — books, medical equipment, laboratory equipment and hospital consumables. Call +234 813 654 8965.",
         path: "/osogbo",
       }),
       { name: "geo.region", content: "NG-OS" },
@@ -100,7 +100,7 @@ function Page() {
         <div className="lg:col-span-2 space-y-5 text-base leading-relaxed text-foreground/90">
           <h2 className="font-display text-2xl font-semibold">Visit our Osogbo store</h2>
           <p>
-            Our shop sits at 5, Oke-Fia Street, directly opposite Zenith Bank on Oke-Fia Road, one of the busiest
+            Our shop sits at 15, Oke-Fia Street, directly opposite Zenith Bank on Oke-Fia Road, one of the busiest
             commercial corridors in Osogbo. Students from Osun State University, Ladoke Akintola University Teaching
             Hospital, the College of Health Sciences, schools of nursing and midwifery, and nearby polytechnics buy
             their required textbooks from us, while hospitals, primary health centres, diagnostic laboratories and

@@ -4,7 +4,7 @@ import { categories, bestSellers, products } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 
-import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
+import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
 import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
@@ -14,15 +14,15 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       ...pageMeta({
-        title: "Medical Equipment, Laboratory Equipment & NUC Textbooks Supplier in Nigeria | The Oriented Hub",
+        title: "Where to Buy Hospital Equipment & NUC Textbooks in Nigeria | The Oriented Hub",
         description:
-          "The Oriented Hub is a leading supplier of Medical Equipment, Laboratory Equipment, Scientific Instruments, Surgical Instruments, Hospital Consumables and NUC Accreditation Textbooks in Nigeria. Nationwide delivery available.",
+          "Wondering where can I buy hospital equipment or NUC textbooks in Nigeria? The Oriented Hub supplies medical equipment, lab tools & BMAS books nationwide. Call 08136548965. Located in Osogbo.",
         path: "/",
       }),
       {
         name: "keywords",
         content:
-          "Medical Equipment Nigeria, Laboratory Equipment Nigeria, Scientific Equipment Nigeria, Hospital Equipment Supplier Nigeria, Surgical Instruments Nigeria, Medical Supplies Nigeria, Medical Books Nigeria, NUC Accreditation Textbooks Nigeria, Laboratory Consumables Nigeria, Medical Equipment Osogbo, Medical Equipment Lagos, Medical Equipment Abuja, Educational Materials Nigeria, Healthcare Equipment Procurement Nigeria",
+          "where to buy hospital equipment Nigeria, where can I buy NUC textbooks, buy medical equipment Osogbo, buy laboratory equipment Nigeria, NUC accreditation books supplier, hospital supplies near me, Medical Equipment Nigeria, Laboratory Equipment Nigeria, Scientific Equipment Nigeria, Hospital Equipment Supplier Nigeria, Surgical Instruments Nigeria, Medical Supplies Nigeria, Medical Books Nigeria, NUC Accreditation Textbooks Nigeria, Laboratory Consumables Nigeria, Medical Equipment Osogbo, Medical Equipment Lagos, Medical Equipment Abuja, Educational Materials Nigeria, Healthcare Equipment Procurement Nigeria",
       },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
             "Supplier of medical equipment, laboratory equipment, scientific equipment, surgical instruments, hospital consumables and NUC accreditation textbooks in Nigeria.",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "5 Oke Fia Street, Opposite Zenith Bank",
+            streetAddress: "15 Oke Fia Street, Opposite Zenith Bank",
             addressLocality: "Osogbo",
             addressRegion: "Osun State",
             postalCode: "230001",
@@ -75,6 +75,7 @@ function Home() {
     <>
       <Hero />
       <WelcomeIntro />
+      <WhereToBuySeo />
       <AboutAnswers />
       <FeaturedCategories />
       <FeaturedProducts />
@@ -178,7 +179,7 @@ function SupplyOverview() {
 const aiAnswers = [
   {
     q: "What is The Oriented Hub?",
-    a: "The Oriented Hub is a Nigerian supplier of academic books, medical equipment, laboratory equipment, hospital consumables and educational materials. We serve students, schools, universities, hospitals, clinics and procurement officers, with a head office at 5 Oke-Fia Street, Opposite Zenith Bank, Osogbo.",
+    a: "The Oriented Hub is a Nigerian supplier of academic books, medical equipment, laboratory equipment, hospital consumables and educational materials. We serve students, schools, universities, hospitals, clinics and procurement officers, with a head office at 15 Oke-Fia Street, Opposite Zenith Bank, Osogbo.",
   },
   {
     q: "Does The Oriented Hub deliver across Nigeria?",
@@ -239,8 +240,95 @@ function WelcomeIntro() {
             <span className="font-semibold text-primary">Fast. Reliable. Trusted Quality Delivered.</span>
           </p>
           <p className="text-sm">
-            Head Office: 5, Oke-Fia Street, Opposite Zenith Bank, Osogbo<br />
+            Head Office: 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo<br />
             Call/WhatsApp: +234 813 654 8965 | +234 906 400 7879 | +44 7587 869499
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhereToBuySeo() {
+  return (
+    <section className="container-page py-12 md:py-16">
+      <div className="max-w-4xl mx-auto space-y-10">
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Where Can I Buy Hospital Equipment in Nigeria?
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            The Oriented Hub is your #1 answer for where to buy hospital equipment in Nigeria.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            Based in Osogbo, Osun State, we supply:
+          </p>
+          <ul className="mt-3 space-y-1.5 text-muted-foreground list-disc pl-5">
+            <li><strong>Hospital Furniture:</strong> Hospital beds, patient trolleys, examination couches, IV stands</li>
+            <li><strong>Laboratory Equipment:</strong> Microscopes, centrifuges, autoclaves, incubators</li>
+            <li><strong>Diagnostic Equipment:</strong> BP monitors, ECG machines, pulse oximeters, stethoscopes</li>
+            <li><strong>Surgical Instruments:</strong> Theatre tables, surgical lights, instrument sets</li>
+          </ul>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Serving: Hospitals, Clinics, Diagnostic Centers, Health Centers across Osun State and Nigeria.
+            Contact us today for where to buy medical equipment near you: <a href={`tel:+${WHATSAPP_PRIMARY}`} className="text-primary font-semibold">08136548965</a>
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Where to Buy NUC Accreditation Textbooks in Nigeria?
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Looking for where to buy NUC approved textbooks? We supply all BMAS accredited textbooks for NUC accreditation and resource verification.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed"><strong>Programs Covered:</strong></p>
+          <ul className="mt-3 space-y-1.5 text-muted-foreground list-disc pl-5">
+            <li>Medicine &amp; Surgery, Nursing Science, Pharmacy, Medical Lab Science</li>
+            <li>Engineering: Civil, Mechanical, Electrical, Computer</li>
+            <li>Sciences: Biology, Chemistry, Physics, Biochemistry</li>
+            <li>Management: Accounting, Business Administration, Economics</li>
+          </ul>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            We are the trusted supplier for Universities, Colleges of Health, and Polytechnics undergoing accreditation. Bulk orders available.
+            Call now for where to buy NUC textbooks: <a href={`tel:+${WHATSAPP_ALT}`} className="text-primary font-semibold">09064007879</a>
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Where Can I Buy Medical Consumables &amp; Laboratory Supplies?
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Need to buy medical consumables in bulk? We supply gloves, syringes, reagents, test kits, and all hospital consumables with fast delivery nationwide.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Why Choose The Oriented Hub for Your Purchases?
+          </h2>
+          <ul className="mt-4 space-y-2 text-muted-foreground list-none pl-0">
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> #1 Supplier in Osun State for Hospital Equipment and NUC Books</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Nationwide Delivery: We ship to Lagos, Abuja, Port Harcourt, Kano, and all states</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Bulk &amp; Institutional Orders: Special pricing for schools and hospitals</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Quality Guaranteed: All products meet Nigerian healthcare and NUC standards</li>
+            <li className="flex items-start gap-2"><span className="text-success">✅</span> Fast Response: Call 08136548965, 09064007879 for instant quotation</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold">
+            Located in Osun State - Delivering Across Nigeria
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            <strong>Address:</strong> 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            <strong>Serving:</strong> Osogbo, Ilesa, Ile-Ife, Ede + All states in Nigeria
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            If you searched "where can I buy..." and found us, let's talk. Get your quote today.
           </p>
         </div>
       </div>
@@ -272,7 +360,7 @@ const homeFaqs = [
   },
   {
     q: "Where is The Oriented Hub located?",
-    a: "Our head office is at 5 Oke-Fia Street, Osogbo. We serve customers worldwide with international shipping available.",
+    a: "Our head office is at 15 Oke-Fia Street, Osogbo. We serve customers worldwide with international shipping available.",
   },
   {
     q: "How do I place an international order?",
@@ -320,15 +408,14 @@ function Hero() {
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-primary backdrop-blur">
             <Sparkles className="h-3.5 w-3.5" /> Trusted procurement partner since day one
           </div>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
-            Books, Medical Equipment &amp;<br />
-            <span className="text-primary">Laboratory Supplies</span> in Nigeria
+          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl uppercase">
+            Where to Buy Hospital Equipment, NUC Textbooks &amp; Medical Supplies in Nigeria
           </h1>
           <p className="mt-3 font-display text-lg font-semibold text-foreground/80">
-            Quality Products. Better Care. Total Solutions.
+            Welcome to The Oriented Hub - Nigeria's trusted supplier for hospitals, universities, colleges, and laboratories.
           </p>
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Oriented Hub supplies authentic books, medical equipment, laboratory equipment, hospital consumables and educational materials — delivered to institutions and individuals nationwide.
+            If you are asking "where can I buy hospital equipment in Osogbo?" or "where to buy NUC accreditation textbooks in Nigeria?" — You are in the right place. We deliver quality medical equipment and NUC approved textbooks to all 36 states + FCT with bulk discounts.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link to="/shop" className="inline-flex items-center gap-2 rounded-md bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft hover:opacity-95 transition">

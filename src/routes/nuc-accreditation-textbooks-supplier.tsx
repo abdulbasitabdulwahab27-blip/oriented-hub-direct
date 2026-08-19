@@ -29,7 +29,7 @@ function Page() {
         "The Oriented Hub is a leading supplier of NUC Approved Accreditation Textbooks for Nigerian Universities, Colleges of Health, and Polytechnics. Based in Osogbo, Osun State, we provide comprehensive textbook solutions to meet NUC BMAS requirements across all faculties with reliable nationwide delivery.",
         "Programs covered: Health Sciences — Medicine & Surgery, Nursing Science, Pharmacy, Medical Laboratory Science, Public Health; Engineering — Civil, Mechanical, Electrical/Electronics, Chemical, Computer Engineering; Natural Sciences — Biology, Chemistry, Physics, Biochemistry, Microbiology; Management & Social Sciences — Accounting, Business Administration, Economics, Mass Communication, Political Science.",
         "Why institutions choose us: full compliance — all textbooks meet current NUC BMAS standards; bulk supply — trusted for university accreditation and resource verification; competitive pricing — institutional and student discounts available; nationwide logistics — fast delivery to all 36 states and FCT; expert support — dedicated assistance for procurement officers.",
-        "Serving universities and colleges across Osogbo, Osun State and Nigeria. Contact our procurement team: Phone 08136548965, 09064007879; Email Orientedbanque@outlook.com; Address 5, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State; Website www.theorientedhub.com.",
+        "Serving universities and colleges across Osogbo, Osun State and Nigeria. Contact our procurement team: Phone 08136548965, 09064007879; Email Orientedbanque@outlook.com; Address 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State; Website www.theorientedhub.com.",
       ]}
     />
   );

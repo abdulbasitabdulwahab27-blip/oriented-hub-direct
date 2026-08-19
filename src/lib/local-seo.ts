@@ -9,7 +9,7 @@ export const GEO = { latitude: 7.77104, longitude: 4.55698 };
 
 export const POSTAL_ADDRESS = {
   "@type": "PostalAddress",
-  streetAddress: "5, Oke-Fia Street, Opposite Zenith Bank",
+  streetAddress: "15, Oke-Fia Street, Opposite Zenith Bank",
   addressLocality: "Osogbo",
   addressRegion: "Osun State",
   addressCountry: "NG",
