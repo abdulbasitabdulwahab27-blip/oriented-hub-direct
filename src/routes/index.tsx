@@ -4,7 +4,7 @@ import { categories, bestSellers, products } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 
-import { ADDRESS, EMAIL, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
+import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
 import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
