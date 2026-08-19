@@ -4,6 +4,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { CheckCircle2, Package, Truck, Store } from "lucide-react";
 import { waLink, EMAIL, ADDRESS } from "@/lib/whatsapp";
+import { emailOrder } from "@/lib/order-email.functions";
 import { canonicalLink, pageMeta } from "@/lib/seo";
 
 const schema = z.object({
