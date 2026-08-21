@@ -3,6 +3,7 @@ import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star
 import { categories, bestSellers, products } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
+import { HomeCatalogBulkOrder } from "@/components/HomeCatalogBulkOrder";
 
 import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
 import { useState } from "react";
@@ -79,6 +80,7 @@ function Home() {
       <AboutAnswers />
       <FeaturedCategories />
       <FeaturedProducts />
+      <HomeCatalogBulkOrder />
       
       
       <WhyChooseUs />
