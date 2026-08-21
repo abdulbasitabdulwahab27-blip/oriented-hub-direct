@@ -55,8 +55,10 @@ function validateSchema(page, raw) {
     return list.flatMap((n) => (n && n["@graph"] ? flatten(n["@graph"]) : [n]));
   };
   const nodes = flatten(data);
+  const roots = Array.isArray(data) ? data : [data];
+  for (const r of roots) if (!r["@context"]) fail(page, `JSON-LD ${r["@type"] ?? "block"} missing @context`);
   for (const node of nodes) {
-    if (!node["@context"]) fail(page, `JSON-LD ${node["@type"] ?? "node"} missing @context`);
+
     if (!node["@type"]) fail(page, "JSON-LD node missing @type");
     const type = node["@type"];
     if (type === "Product") {
