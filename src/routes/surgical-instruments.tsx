@@ -1,6 +1,7 @@
+import { gbpProfileFor } from "@/lib/gbp";
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoLandingPage } from "@/components/SeoLandingPage";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   {
@@ -31,6 +32,21 @@ export const Route = createFileRoute("/surgical-instruments")({
     }),
     links: canonicalLink("/surgical-instruments"),
     scripts: [
+      ...(gbpProfileFor("/surgical-instruments")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/surgical-instruments")!.label,
+                  description: gbpProfileFor("/surgical-instruments")!.description,
+                  path: "/surgical-instruments",
+                  services: gbpProfileFor("/surgical-instruments")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       {
         type: "application/ld+json",
         children: JSON.stringify(
