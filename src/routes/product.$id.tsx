@@ -4,42 +4,50 @@ import { Minus, Plus, ShoppingCart, ShieldCheck, Truck, CheckCircle2 } from "luc
 import { categories, formatPrice, products as staticProducts } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductReviews } from "@/components/ProductReviews";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useCart } from "@/lib/cart";
 import { productOrderMessage, waLink } from "@/lib/whatsapp";
-import { breadcrumbSchema, canonical, canonicalLink, categoryUrl, pageMeta, SITE_NAME } from "@/lib/seo";
+import { fetchApprovedReviews, type PublicReview } from "@/lib/reviews";
+import { breadcrumbSchema, canonicalLink, categoryUrl, pageMeta, productSchema, SITE_NAME } from "@/lib/seo";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/product/$id")({
-  head: ({ params }) => {
+  loader: async ({ params }) => {
     const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
-    if (!product) return { meta: [{ title: "Product — The Oriented Hub" }] };
+    const reviews = product ? await fetchApprovedReviews({ productSlug: product.slug, limit: 20 }) : [];
+    return { reviews };
+  },
+  head: ({ params, loaderData }) => {
+    const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
+    if (!product) return { meta: [{ title: "Product — The Oriented Hub" }, { name: "robots", content: "noindex" }] };
     const cat = categories.find((c) => c.slug === product.category);
     const path = `/product/${product.slug}`;
     const description = `${product.name} — supplied by The Oriented Hub. ${product.description}`.slice(0, 158);
+    const reviews = (loaderData?.reviews ?? []) as PublicReview[];
     return {
-      meta: pageMeta({ title: `${product.name} | ${SITE_NAME}`, description, path, type: "product" }),
+      meta: pageMeta({
+        title: `${product.name} | ${SITE_NAME}`,
+        description,
+        path,
+        type: "product",
+        image: product.image,
+      }),
       links: canonicalLink(path),
       scripts: [
         {
           type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: product.name,
-            description: product.description,
-            category: cat?.name ?? product.category,
-            brand: { "@type": "Brand", name: SITE_NAME },
-            url: canonical(path),
-            offers: {
-              "@type": "Offer",
-              url: canonical(path),
-              priceCurrency: product.currency ?? "NGN",
-              ...(product.price && product.price > 0 ? { price: String(product.price) } : {}),
-              availability: "https://schema.org/InStock",
-              seller: { "@type": "Organization", name: SITE_NAME },
-            },
-          }),
+          children: JSON.stringify(
+            productSchema(product, {
+              categoryName: cat?.name ?? product.category,
+              reviews: reviews.map((r) => ({
+                author: r.customer_name,
+                rating: r.rating,
+                body: r.body,
+                date: r.created_at,
+              })),
+            }),
+          ),
         },
         {
           type: "application/ld+json",
@@ -58,6 +66,7 @@ export const Route = createFileRoute("/product/$id")({
   errorComponent: () => <div className="container-page py-20 text-center text-muted-foreground">Failed to load product.</div>,
   component: ProductPage,
 });
+
 
 
 function ProductPage() {
