@@ -50,7 +50,11 @@ function validateSchema(page, raw) {
     fail(page, "JSON-LD block is not valid JSON");
     return;
   }
-  const nodes = Array.isArray(data) ? data : [data];
+  const flatten = (d) => {
+    const list = Array.isArray(d) ? d : [d];
+    return list.flatMap((n) => (n && n["@graph"] ? flatten(n["@graph"]) : [n]));
+  };
+  const nodes = flatten(data);
   for (const node of nodes) {
     if (!node["@context"]) fail(page, `JSON-LD ${node["@type"] ?? "node"} missing @context`);
     if (!node["@type"]) fail(page, "JSON-LD node missing @type");
