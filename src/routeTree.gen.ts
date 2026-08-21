@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrackRouteImport } from './routes/track'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SurgicalInstrumentsRouteImport } from './routes/surgical-instruments'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ScientificInstrumentsRouteImport } from './routes/scientific-instruments'
@@ -64,6 +65,11 @@ const TrackRoute = TrackRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SurgicalInstrumentsRoute = SurgicalInstrumentsRouteImport.update({
+  id: '/surgical-instruments',
+  path: '/surgical-instruments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -328,6 +334,7 @@ export interface FileRoutesByFullPath {
   '/scientific-instruments': typeof ScientificInstrumentsRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/surgical-instruments': typeof SurgicalInstrumentsRoute
   '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
@@ -375,6 +382,7 @@ export interface FileRoutesByTo {
   '/scientific-instruments': typeof ScientificInstrumentsRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/surgical-instruments': typeof SurgicalInstrumentsRoute
   '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -423,6 +431,7 @@ export interface FileRoutesById {
   '/scientific-instruments': typeof ScientificInstrumentsRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/surgical-instruments': typeof SurgicalInstrumentsRoute
   '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
@@ -472,6 +481,7 @@ export interface FileRouteTypes {
     | '/scientific-instruments'
     | '/shop'
     | '/sitemap.xml'
+    | '/surgical-instruments'
     | '/terms'
     | '/track'
     | '/admin'
@@ -519,6 +529,7 @@ export interface FileRouteTypes {
     | '/scientific-instruments'
     | '/shop'
     | '/sitemap.xml'
+    | '/surgical-instruments'
     | '/terms'
     | '/track'
     | '/blog/$slug'
@@ -566,6 +577,7 @@ export interface FileRouteTypes {
     | '/scientific-instruments'
     | '/shop'
     | '/sitemap.xml'
+    | '/surgical-instruments'
     | '/terms'
     | '/track'
     | '/_authenticated/admin'
@@ -615,6 +627,7 @@ export interface RootRouteChildren {
   ScientificInstrumentsRoute: typeof ScientificInstrumentsRoute
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SurgicalInstrumentsRoute: typeof SurgicalInstrumentsRoute
   TermsRoute: typeof TermsRoute
   TrackRoute: typeof TrackRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -637,6 +650,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/surgical-instruments': {
+      id: '/surgical-instruments'
+      path: '/surgical-instruments'
+      fullPath: '/surgical-instruments'
+      preLoaderRoute: typeof SurgicalInstrumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -1019,6 +1039,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScientificInstrumentsRoute: ScientificInstrumentsRoute,
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SurgicalInstrumentsRoute: SurgicalInstrumentsRoute,
   TermsRoute: TermsRoute,
   TrackRoute: TrackRoute,
   BlogSlugRoute: BlogSlugRoute,
