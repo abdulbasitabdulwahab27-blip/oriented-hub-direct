@@ -66,9 +66,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: import.meta.env.VITE_SUPABASE_URL ?? "", crossOrigin: "anonymous" },
+      { rel: "dns-prefetch", href: import.meta.env.VITE_SUPABASE_URL ?? "" },
       { rel: "preload", href: "/fonts/Inter-400-latin.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       { rel: "preload", href: "/fonts/PlayfairDisplay-600-latin.woff2", as: "font", type: "font/woff2", crossOrigin: "anonymous" },
     ],
+
     scripts: [
       {
         type: "application/ld+json",
