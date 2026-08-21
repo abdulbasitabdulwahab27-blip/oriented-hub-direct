@@ -13,6 +13,7 @@ import { Route as TrackRouteImport } from './routes/track'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ScientificInstrumentsRouteImport } from './routes/scientific-instruments'
 import { Route as SalesRepRouteImport } from './routes/sales-rep'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ProcurementRouteImport } from './routes/procurement'
@@ -73,6 +74,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScientificInstrumentsRoute = ScientificInstrumentsRouteImport.update({
+  id: '/scientific-instruments',
+  path: '/scientific-instruments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalesRepRoute = SalesRepRouteImport.update({
@@ -319,6 +325,7 @@ export interface FileRoutesByFullPath {
   '/procurement': typeof ProcurementRoute
   '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
+  '/scientific-instruments': typeof ScientificInstrumentsRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -365,6 +372,7 @@ export interface FileRoutesByTo {
   '/procurement': typeof ProcurementRoute
   '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
+  '/scientific-instruments': typeof ScientificInstrumentsRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -412,6 +420,7 @@ export interface FileRoutesById {
   '/procurement': typeof ProcurementRoute
   '/reviews': typeof ReviewsRoute
   '/sales-rep': typeof SalesRepRoute
+  '/scientific-instruments': typeof ScientificInstrumentsRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -460,6 +469,7 @@ export interface FileRouteTypes {
     | '/procurement'
     | '/reviews'
     | '/sales-rep'
+    | '/scientific-instruments'
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
@@ -506,6 +516,7 @@ export interface FileRouteTypes {
     | '/procurement'
     | '/reviews'
     | '/sales-rep'
+    | '/scientific-instruments'
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
@@ -552,6 +563,7 @@ export interface FileRouteTypes {
     | '/procurement'
     | '/reviews'
     | '/sales-rep'
+    | '/scientific-instruments'
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
@@ -600,6 +612,7 @@ export interface RootRouteChildren {
   ProcurementRoute: typeof ProcurementRoute
   ReviewsRoute: typeof ReviewsRoute
   SalesRepRoute: typeof SalesRepRoute
+  ScientificInstrumentsRoute: typeof ScientificInstrumentsRoute
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
@@ -638,6 +651,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scientific-instruments': {
+      id: '/scientific-instruments'
+      path: '/scientific-instruments'
+      fullPath: '/scientific-instruments'
+      preLoaderRoute: typeof ScientificInstrumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sales-rep': {
@@ -996,6 +1016,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProcurementRoute: ProcurementRoute,
   ReviewsRoute: ReviewsRoute,
   SalesRepRoute: SalesRepRoute,
+  ScientificInstrumentsRoute: ScientificInstrumentsRoute,
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
