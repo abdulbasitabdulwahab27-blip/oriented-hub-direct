@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { products as staticProducts } from "@/lib/products";
+import { gbpProfileFor } from "@/lib/gbp";
 import { CategoryView } from "@/components/CategoryView";
 import { CatalogCta } from "@/components/CatalogCta";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, productListSchema, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   { q: "What medical equipment do you supply in Osun State?", a: "Hospital beds, patient trolleys, examination couches, IV stands, microscopes, centrifuges, autoclaves, incubators, BP monitors, stethoscopes, ECG machines, theatre tables, surgical lights and instrument sets." },
@@ -19,6 +21,27 @@ export const Route = createFileRoute("/medical-equipment")({
     }),
     links: canonicalLink("/medical-equipment"),
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          productListSchema("Medical Equipment", "/medical-equipment", staticProducts.filter((p) => p.category === "medical-equipment"), "Medical Equipment"),
+        ),
+      },
+      ...(gbpProfileFor("/medical-equipment")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/medical-equipment")!.label,
+                  description: gbpProfileFor("/medical-equipment")!.description,
+                  path: "/medical-equipment",
+                  services: gbpProfileFor("/medical-equipment")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: "Medical Equipment", path: "/medical-equipment" }])) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
     ],

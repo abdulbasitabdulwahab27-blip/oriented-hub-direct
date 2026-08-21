@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { products as staticProducts } from "@/lib/products";
+import { gbpProfileFor } from "@/lib/gbp";
 import { CategoryView } from "@/components/CategoryView";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, productListSchema, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   { q: "What hospital consumables do you supply?", a: "Gloves, syringes and needles, dressings, cotton wool, antiseptics, IV sets, sample containers, PPE, sharps disposal and hospital stationeries." },
@@ -18,6 +20,27 @@ export const Route = createFileRoute("/hospital-consumables")({
     }),
     links: canonicalLink("/hospital-consumables"),
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          productListSchema("Hospital Consumables", "/hospital-consumables", staticProducts.filter((p) => p.category === "consumables"), "Hospital Consumables"),
+        ),
+      },
+      ...(gbpProfileFor("/hospital-consumables")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/hospital-consumables")!.label,
+                  description: gbpProfileFor("/hospital-consumables")!.description,
+                  path: "/hospital-consumables",
+                  services: gbpProfileFor("/hospital-consumables")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: "Hospital Consumables", path: "/hospital-consumables" }])) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
     ],

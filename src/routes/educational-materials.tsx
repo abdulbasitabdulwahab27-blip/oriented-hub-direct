@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { products as staticProducts } from "@/lib/products";
+import { gbpProfileFor } from "@/lib/gbp";
 import { CategoryView } from "@/components/CategoryView";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, productListSchema, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   { q: "What educational materials do you supply?", a: "Stationery, teaching aids, learning charts, classroom resources and school supplies for schools, colleges and universities." },
@@ -18,6 +20,27 @@ export const Route = createFileRoute("/educational-materials")({
     }),
     links: canonicalLink("/educational-materials"),
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          productListSchema("Educational Materials", "/educational-materials", staticProducts.filter((p) => p.category === "educational"), "Educational Materials"),
+        ),
+      },
+      ...(gbpProfileFor("/educational-materials")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/educational-materials")!.label,
+                  description: gbpProfileFor("/educational-materials")!.description,
+                  path: "/educational-materials",
+                  services: gbpProfileFor("/educational-materials")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: "Educational Materials", path: "/educational-materials" }])) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
     ],
