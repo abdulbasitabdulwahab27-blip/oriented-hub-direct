@@ -9,7 +9,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const staticPaths = ["/", "/shop", "/order", "/track", "/procurement", "/about", "/contact", "/faq", "/privacy", "/terms", "/sales-rep", "/books", "/medical-equipment", "/laboratory-equipment", "/hospital-consumables", "/educational-materials", "/business-solutions", "/osogbo", "/delivery-information", "/blog", "/reviews", "/medical-equipment-supplier", "/laboratory-equipment-supplier", "/hospital-consumables-and-stationeries", "/medical-textbooks-supplier", "/nuc-accreditation-textbooks-supplier", "/nuc-textbooks", "/international-book-seller"];
+        const staticPaths = ["/", "/shop", "/order", "/track", "/procurement", "/about", "/contact", "/faq", "/privacy", "/terms", "/sales-rep", "/books", "/medical-equipment", "/laboratory-equipment", "/hospital-consumables", "/educational-materials", "/business-solutions", "/osogbo", "/delivery-information", "/blog", "/reviews", "/medical-equipment-supplier", "/laboratory-equipment-supplier", "/hospital-consumables-and-stationeries", "/medical-textbooks-supplier", "/nuc-accreditation-textbooks-supplier", "/nuc-textbooks", "/nuc-accreditation-books", "/scientific-instruments", "/surgical-instruments", "/international-book-seller"];
         const catPaths = blogPosts.map((b) => `/blog/${b.slug}`);
         const productPaths = products.map((p) => `/product/${p.slug}`);
         const all = [...staticPaths, ...catPaths, ...productPaths];
