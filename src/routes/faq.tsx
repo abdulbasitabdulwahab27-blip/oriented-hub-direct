@@ -15,6 +15,16 @@ const faqs = [
   { q: "Do you sell PDF books?", a: "No. We sell physical books only." },
   { q: "What products do you sell?", a: "Academic books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
   { q: "What is The Oriented Hub?", a: "The Oriented Hub is a Nigerian supplier of academic books, medical equipment, laboratory equipment, hospital consumables and educational materials, delivering across Nigeria." },
+  { q: "Where can I buy books in Nigeria?", a: "You can buy authentic physical books from The Oriented Hub at 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State, or order online for delivery to any of the 36 states and the FCT. Call or WhatsApp 08136548965 with your title list." },
+  { q: "Where can I buy books online in Nigeria?", a: "Order online through theorientedhub.com — browse the shop, place an order on the order page, or send your list on WhatsApp. We confirm edition, availability and price in writing before dispatch." },
+  { q: "Where can I buy NUC accreditation textbooks?", a: "The Oriented Hub supplies NUC, NBTE and NCCE accreditation textbooks nationwide. Send your BMAS departmental booklist and we quote title by title, then deliver in one consolidated shipment with an institutional invoice." },
+  { q: "Where can I buy medical equipment in Nigeria?", a: "The Oriented Hub supplies medical equipment to hospitals, clinics, laboratories and health centres nationwide from Osogbo, Osun State — hospital furniture, diagnostic equipment, patient monitoring devices, anatomical models and clinical simulators." },
+  { q: "Where can I buy laboratory equipment in Nigeria?", a: "We supply microscopes, balances, centrifuges, autoclaves, incubators, meters, glassware and reagents, including complete accreditation-ready laboratory setups, delivered across Nigeria." },
+  { q: "Where can I buy hospital consumables?", a: "The Oriented Hub supplies hospital consumables and clinical stationeries in bulk — gloves, syringes, dressings, antiseptics, IV sets, catheters, sample containers and PPE — with nationwide delivery." },
+  { q: "Who supplies educational materials in Nigeria?", a: "The Oriented Hub supplies educational materials to schools, colleges and universities across Nigeria: stationery, teaching aids, learning charts, classroom resources and examination materials." },
+  { q: "Who supplies scientific instruments in Nigeria?", a: "The Oriented Hub supplies scientific instruments nationwide, including microscopes, balances, pH and conductivity meters, spectrophotometers, centrifuges and physics and chemistry teaching kits." },
+  { q: "Who supplies books and equipment nationwide?", a: "The Oriented Hub is a one-stop supplier of books, medical equipment, laboratory equipment, hospital consumables and educational materials, delivering to all 36 states and the FCT and shipping worldwide on request." },
+  { q: "Do you ship outside Nigeria?", a: "Yes. We ship worldwide, including to the USA, Canada, UK, Europe, Africa and Asia. Contact +234 813 654 8965 for international shipping rates and timelines." },
 ];
 
 export const Route = createFileRoute("/faq")({
