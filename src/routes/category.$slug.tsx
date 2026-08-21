@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { getCategory } from "@/lib/products";
+import { getCategory, products as staticProducts } from "@/lib/products";
 import { CategoryView } from "@/components/CategoryView";
-import { breadcrumbSchema, canonicalLink, categoryUrl, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, categoryUrl, pageMeta, productListSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/category/$slug")({
   loader: ({ params }) => {
@@ -22,6 +22,12 @@ export const Route = createFileRoute("/category/$slug")({
       // Canonical points at the keyword-friendly URL for this category.
       links: canonicalLink(url),
       scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            productListSchema(cat.name, url, staticProducts.filter((p) => p.category === params.slug), cat.name),
+          ),
+        },
         { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: cat.name, path: url }])) },
       ],
     };

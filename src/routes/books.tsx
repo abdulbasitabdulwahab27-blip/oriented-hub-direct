@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { products as staticProducts } from "@/lib/products";
+import { gbpProfileFor } from "@/lib/gbp";
 import { CategoryView } from "@/components/CategoryView";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, productListSchema, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   { q: "Do you sell PDF books?", a: "No. The Oriented Hub sells physical printed books only. We do not sell PDFs or ebooks." },
@@ -19,6 +21,27 @@ export const Route = createFileRoute("/books")({
     }),
     links: canonicalLink("/books"),
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          productListSchema("Academic Books", "/books", staticProducts.filter((p) => p.category === "books"), "Academic Books"),
+        ),
+      },
+      ...(gbpProfileFor("/books")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/books")!.label,
+                  description: gbpProfileFor("/books")!.description,
+                  path: "/books",
+                  services: gbpProfileFor("/books")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: "Books", path: "/books" }])) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
     ],

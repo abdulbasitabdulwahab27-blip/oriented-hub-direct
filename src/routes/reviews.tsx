@@ -6,7 +6,14 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { breadcrumbSchema, canonical, canonicalLink, pageMeta } from "@/lib/seo";
 import { supabase } from "@/integrations/supabase/client";
 
+type ReviewSearch = { order?: string; product?: string; slug?: string };
+
 export const Route = createFileRoute("/reviews")({
+  validateSearch: (search: Record<string, unknown>): ReviewSearch => ({
+    ...(typeof search.order === "string" ? { order: search.order } : {}),
+    ...(typeof search.product === "string" ? { product: search.product } : {}),
+    ...(typeof search.slug === "string" ? { slug: search.slug } : {}),
+  }),
   head: () => ({
     meta: pageMeta({
       title: "Customer Reviews & Testimonials | The Oriented Hub",
@@ -69,12 +76,13 @@ function Stars({ value, onChange }: { value: number; onChange?: (v: number) => v
 }
 
 function ReviewsPage() {
+  const search = Route.useSearch();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState(search.product ?? "");
   const [rating, setRating] = useState(5);
   const [body, setBody] = useState("");
 
@@ -102,6 +110,9 @@ function ReviewsPage() {
       customer_name: name.trim(),
       city: city.trim() || null,
       product: product.trim() || null,
+      product_slug: search.slug ?? null,
+      order_code: search.order ?? null,
+      verified: false,
       rating,
       body: body.trim(),
       approved: false,
@@ -173,6 +184,12 @@ function ReviewsPage() {
         <div>
           <form onSubmit={submit} className="rounded-xl border border-border bg-card p-6 shadow-card">
             <h2 className="font-display text-xl font-semibold">Leave a review</h2>
+            {search.order && (
+              <p className="mt-2 rounded-md bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700">
+                Reviewing order {search.order}
+                {search.product ? ` — ${search.product}` : ""}. We'll mark it as a verified purchase once approved.
+              </p>
+            )}
             <p className="mt-1 text-sm text-muted-foreground">
               Tell others about the product you bought and how the delivery went. Reviews appear after approval.
             </p>

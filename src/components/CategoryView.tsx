@@ -4,6 +4,7 @@ import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { categoryUrl } from "@/lib/seo";
+import { ServicesAndProducts } from "@/components/ServicesAndProducts";
 
 export function CategoryView({
   slug,
@@ -76,6 +77,8 @@ export function CategoryView({
           </div>
         </section>
       )}
+
+      <ServicesAndProducts path={categoryUrl(slug)} />
 
       <section className="container-page pb-16">
         <h2 className="font-display text-xl font-semibold">Explore other categories</h2>

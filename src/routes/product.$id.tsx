@@ -4,42 +4,50 @@ import { Minus, Plus, ShoppingCart, ShieldCheck, Truck, CheckCircle2 } from "luc
 import { categories, formatPrice, products as staticProducts } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductReviews } from "@/components/ProductReviews";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useCart } from "@/lib/cart";
 import { productOrderMessage, waLink } from "@/lib/whatsapp";
-import { breadcrumbSchema, canonical, canonicalLink, categoryUrl, pageMeta, SITE_NAME } from "@/lib/seo";
+import { fetchApprovedReviews, type PublicReview } from "@/lib/reviews";
+import { breadcrumbSchema, canonicalLink, categoryUrl, pageMeta, productSchema, SITE_NAME } from "@/lib/seo";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/product/$id")({
-  head: ({ params }) => {
+  loader: async ({ params }) => {
     const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
-    if (!product) return { meta: [{ title: "Product — The Oriented Hub" }] };
+    const reviews = product ? await fetchApprovedReviews({ productSlug: product.slug, limit: 20 }) : [];
+    return { reviews };
+  },
+  head: ({ params, loaderData }) => {
+    const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
+    if (!product) return { meta: [{ title: "Product — The Oriented Hub" }, { name: "robots", content: "noindex" }] };
     const cat = categories.find((c) => c.slug === product.category);
     const path = `/product/${product.slug}`;
     const description = `${product.name} — supplied by The Oriented Hub. ${product.description}`.slice(0, 158);
+    const reviews = (loaderData?.reviews ?? []) as PublicReview[];
     return {
-      meta: pageMeta({ title: `${product.name} | ${SITE_NAME}`, description, path, type: "product" }),
+      meta: pageMeta({
+        title: `${product.name} | ${SITE_NAME}`,
+        description,
+        path,
+        type: "product",
+        image: product.image,
+      }),
       links: canonicalLink(path),
       scripts: [
         {
           type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: product.name,
-            description: product.description,
-            category: cat?.name ?? product.category,
-            brand: { "@type": "Brand", name: SITE_NAME },
-            url: canonical(path),
-            offers: {
-              "@type": "Offer",
-              url: canonical(path),
-              priceCurrency: product.currency ?? "NGN",
-              ...(product.price && product.price > 0 ? { price: String(product.price) } : {}),
-              availability: "https://schema.org/InStock",
-              seller: { "@type": "Organization", name: SITE_NAME },
-            },
-          }),
+          children: JSON.stringify(
+            productSchema(product, {
+              categoryName: cat?.name ?? product.category,
+              reviews: reviews.map((r) => ({
+                author: r.customer_name,
+                rating: r.rating,
+                body: r.body,
+                date: r.created_at,
+              })),
+            }),
+          ),
         },
         {
           type: "application/ld+json",
@@ -60,17 +68,22 @@ export const Route = createFileRoute("/product/$id")({
 });
 
 
+
 function ProductPage() {
   const { id } = Route.useParams();
   const { products, loading } = useAllProducts();
+  const { reviews } = Route.useLoaderData();
   const [qty, setQty] = useState(1);
   const { add } = useCart();
 
-  if (loading) {
+  // Code-bundled products render immediately (server-side too) so crawlers and
+  // first paint get real content; only unknown slugs wait for the DB fetch.
+  const product = products.find((p) => p.id === id || p.slug === id);
+
+  if (!product && loading) {
     return <div className="container-page py-20 text-center text-muted-foreground">Loading…</div>;
   }
 
-  const product = products.find((p) => p.id === id || p.slug === id);
   if (!product) {
     return (
       <div className="container-page py-20 text-center">
@@ -80,17 +93,23 @@ function ProductPage() {
     );
   }
 
+
   const cat = categories.find((c) => c.slug === product.category) ?? { slug: product.category, name: product.category };
   const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   return (
     <div className="container-page py-8 md:py-12">
-      <nav className="text-xs text-muted-foreground">
-        <Link to="/" className="hover:text-primary">Home</Link> / <Link to="/shop" className="hover:text-primary">Shop</Link> / <Link to="/category/$slug" params={{ slug: cat.slug }} className="hover:text-primary">{cat.name}</Link>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Shop", path: "/shop" },
+          { name: cat.name, path: categoryUrl(cat.slug) },
+          { name: product.name, path: `/product/${product.slug}` },
+        ]}
+      />
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-card p-4 sm:p-6">
-          <img src={product.image} alt={product.name} width={1600} height={1600} sizes="(min-width: 1024px) 50vw, 100vw" decoding="async" className="w-full aspect-square object-contain [image-rendering:auto]" />
+          <img src={product.image} alt={product.name} fetchPriority="high" width={1600} height={1600} sizes="(min-width: 1024px) 50vw, 100vw" decoding="async" className="w-full aspect-square object-contain [image-rendering:auto]" />
         </div>
         <div>
           <div className="text-xs uppercase tracking-widest text-primary font-semibold">{cat.name}</div>
@@ -140,6 +159,8 @@ function ProductPage() {
           </div>
         </div>
       </div>
+
+      <ProductReviews reviews={reviews} productName={product.name} productSlug={product.slug} />
 
       {related.length > 0 && (
         <section className="mt-16">

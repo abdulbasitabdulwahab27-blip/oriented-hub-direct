@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ServicesAndProducts } from "@/components/ServicesAndProducts";
 import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, WHATSAPP_UK, waLink } from "@/lib/whatsapp";
 
 export interface SeoLandingSection {
@@ -56,6 +57,8 @@ export function SeoLandingPage({
           </div>
         </div>
       </section>
+
+      <ServicesAndProducts path={breadcrumb[breadcrumb.length - 1]?.path ?? ""} />
 
       <section className="container-page py-12 md:py-16">
         <div className="max-w-3xl space-y-9">

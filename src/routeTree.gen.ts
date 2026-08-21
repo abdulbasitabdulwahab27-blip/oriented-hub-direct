@@ -32,6 +32,7 @@ import { Route as LaboratoryEquipmentRouteImport } from './routes/laboratory-equ
 import { Route as InternationalBookSellerRouteImport } from './routes/international-book-seller'
 import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
 import { Route as HospitalConsumablesRouteImport } from './routes/hospital-consumables'
+import { Route as GoogleBusinessProfileRouteImport } from './routes/google-business-profile'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EducationalMaterialsRouteImport } from './routes/educational-materials'
 import { Route as DeliveryInformationRouteImport } from './routes/delivery-information'
@@ -177,6 +178,11 @@ const HospitalConsumablesRoute = HospitalConsumablesRouteImport.update({
   path: '/hospital-consumables',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoogleBusinessProfileRoute = GoogleBusinessProfileRouteImport.update({
+  id: '/google-business-profile',
+  path: '/google-business-profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -314,6 +320,7 @@ export interface FileRoutesByFullPath {
   '/delivery-information': typeof DeliveryInformationRoute
   '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
+  '/google-business-profile': typeof GoogleBusinessProfileRoute
   '/hospital-consumables': typeof HospitalConsumablesRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/international-book-seller': typeof InternationalBookSellerRoute
@@ -362,6 +369,7 @@ export interface FileRoutesByTo {
   '/delivery-information': typeof DeliveryInformationRoute
   '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
+  '/google-business-profile': typeof GoogleBusinessProfileRoute
   '/hospital-consumables': typeof HospitalConsumablesRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/international-book-seller': typeof InternationalBookSellerRoute
@@ -411,6 +419,7 @@ export interface FileRoutesById {
   '/delivery-information': typeof DeliveryInformationRoute
   '/educational-materials': typeof EducationalMaterialsRoute
   '/faq': typeof FaqRoute
+  '/google-business-profile': typeof GoogleBusinessProfileRoute
   '/hospital-consumables': typeof HospitalConsumablesRoute
   '/hospital-consumables-and-stationeries': typeof HospitalConsumablesAndStationeriesRoute
   '/international-book-seller': typeof InternationalBookSellerRoute
@@ -461,6 +470,7 @@ export interface FileRouteTypes {
     | '/delivery-information'
     | '/educational-materials'
     | '/faq'
+    | '/google-business-profile'
     | '/hospital-consumables'
     | '/hospital-consumables-and-stationeries'
     | '/international-book-seller'
@@ -509,6 +519,7 @@ export interface FileRouteTypes {
     | '/delivery-information'
     | '/educational-materials'
     | '/faq'
+    | '/google-business-profile'
     | '/hospital-consumables'
     | '/hospital-consumables-and-stationeries'
     | '/international-book-seller'
@@ -557,6 +568,7 @@ export interface FileRouteTypes {
     | '/delivery-information'
     | '/educational-materials'
     | '/faq'
+    | '/google-business-profile'
     | '/hospital-consumables'
     | '/hospital-consumables-and-stationeries'
     | '/international-book-seller'
@@ -607,6 +619,7 @@ export interface RootRouteChildren {
   DeliveryInformationRoute: typeof DeliveryInformationRoute
   EducationalMaterialsRoute: typeof EducationalMaterialsRoute
   FaqRoute: typeof FaqRoute
+  GoogleBusinessProfileRoute: typeof GoogleBusinessProfileRoute
   HospitalConsumablesRoute: typeof HospitalConsumablesRoute
   HospitalConsumablesAndStationeriesRoute: typeof HospitalConsumablesAndStationeriesRoute
   InternationalBookSellerRoute: typeof InternationalBookSellerRoute
@@ -797,6 +810,13 @@ declare module '@tanstack/react-router' {
       path: '/hospital-consumables'
       fullPath: '/hospital-consumables'
       preLoaderRoute: typeof HospitalConsumablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/google-business-profile': {
+      id: '/google-business-profile'
+      path: '/google-business-profile'
+      fullPath: '/google-business-profile'
+      preLoaderRoute: typeof GoogleBusinessProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -1017,6 +1037,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeliveryInformationRoute: DeliveryInformationRoute,
   EducationalMaterialsRoute: EducationalMaterialsRoute,
   FaqRoute: FaqRoute,
+  GoogleBusinessProfileRoute: GoogleBusinessProfileRoute,
   HospitalConsumablesRoute: HospitalConsumablesRoute,
   HospitalConsumablesAndStationeriesRoute:
     HospitalConsumablesAndStationeriesRoute,

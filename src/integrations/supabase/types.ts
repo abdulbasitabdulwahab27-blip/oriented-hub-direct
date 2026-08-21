@@ -205,8 +205,11 @@ export type Database = {
           created_at: string
           customer_name: string
           id: string
+          order_code: string | null
           product: string | null
+          product_slug: string | null
           rating: number
+          verified: boolean
         }
         Insert: {
           approved?: boolean
@@ -215,8 +218,11 @@ export type Database = {
           created_at?: string
           customer_name: string
           id?: string
+          order_code?: string | null
           product?: string | null
+          product_slug?: string | null
           rating?: number
+          verified?: boolean
         }
         Update: {
           approved?: boolean
@@ -225,8 +231,11 @@ export type Database = {
           created_at?: string
           customer_name?: string
           id?: string
+          order_code?: string | null
           product?: string | null
+          product_slug?: string | null
           rating?: number
+          verified?: boolean
         }
         Relationships: []
       }

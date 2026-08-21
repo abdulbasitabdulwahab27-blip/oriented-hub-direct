@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { products as staticProducts } from "@/lib/products";
+import { gbpProfileFor } from "@/lib/gbp";
 import { CategoryView } from "@/components/CategoryView";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, productListSchema, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   { q: "What laboratory equipment do you supply?", a: "Microscopes, laboratory glassware, measuring instruments, reagents, safety equipment and complete laboratory setups for schools, colleges and universities." },
@@ -18,6 +20,27 @@ export const Route = createFileRoute("/laboratory-equipment")({
     }),
     links: canonicalLink("/laboratory-equipment"),
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          productListSchema("Laboratory Equipment", "/laboratory-equipment", staticProducts.filter((p) => p.category === "laboratory"), "Laboratory Equipment"),
+        ),
+      },
+      ...(gbpProfileFor("/laboratory-equipment")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/laboratory-equipment")!.label,
+                  description: gbpProfileFor("/laboratory-equipment")!.description,
+                  path: "/laboratory-equipment",
+                  services: gbpProfileFor("/laboratory-equipment")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Shop", path: "/shop" }, { name: "Laboratory Equipment", path: "/laboratory-equipment" }])) },
       { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
     ],

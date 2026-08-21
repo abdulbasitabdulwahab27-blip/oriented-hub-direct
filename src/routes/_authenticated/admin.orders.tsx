@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Trash2, Phone, MapPin, Inbox, Package, FileText, Truck, CheckCircle2, XCircle, Search, X, Download } from "lucide-react";
+import { Trash2, Phone, MapPin, Inbox, Package, FileText, Truck, CheckCircle2, XCircle, Search, X, Download, Star } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { reviewRequestMessage } from "@/lib/reviews";
+import { SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   component: AdminOrders,
@@ -221,6 +223,14 @@ function AdminOrders() {
                       className="inline-flex items-center gap-1 rounded border border-border px-2 py-1 text-xs hover:bg-muted"
                     >
                       <Phone className="h-3 w-3" /> Reply
+                    </a>
+                    <a
+                      href={`https://wa.me/${o.customer_phone.replace(/[^0-9]/g, "").replace(/^0/, "234")}?text=${encodeURIComponent(reviewRequestMessage({ customerName: o.customer_name, orderCode: (o as { tracking_code?: string }).tracking_code, siteUrl: SITE_URL }))}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 rounded border border-border px-2 py-1 text-xs hover:bg-muted"
+                    >
+                      <Star className="h-3 w-3" /> Ask for review
                     </a>
                     <select value={o.status} onChange={(e) => updateStatus(o.id, e.target.value)} className="rounded border border-border bg-background px-2 py-1 text-xs">
                       {allStatuses.map((s) => <option key={s} value={s}>{s}</option>)}

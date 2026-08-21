@@ -1,6 +1,7 @@
+import { gbpProfileFor } from "@/lib/gbp";
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoLandingPage } from "@/components/SeoLandingPage";
-import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta, serviceSchema } from "@/lib/seo";
 
 const faqs = [
   {
@@ -35,6 +36,21 @@ export const Route = createFileRoute("/nuc-accreditation-books")({
     }),
     links: canonicalLink("/nuc-accreditation-books"),
     scripts: [
+      ...(gbpProfileFor("/nuc-accreditation-books")
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify(
+                serviceSchema({
+                  name: gbpProfileFor("/nuc-accreditation-books")!.label,
+                  description: gbpProfileFor("/nuc-accreditation-books")!.description,
+                  path: "/nuc-accreditation-books",
+                  services: gbpProfileFor("/nuc-accreditation-books")!.services,
+                }),
+              ),
+            },
+          ]
+        : []),
       {
         type: "application/ld+json",
         children: JSON.stringify(
