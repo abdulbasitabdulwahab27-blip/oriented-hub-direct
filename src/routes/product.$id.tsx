@@ -72,6 +72,7 @@ export const Route = createFileRoute("/product/$id")({
 function ProductPage() {
   const { id } = Route.useParams();
   const { products, loading } = useAllProducts();
+  const { reviews } = Route.useLoaderData();
   const [qty, setQty] = useState(1);
   const { add } = useCart();
 
@@ -94,12 +95,17 @@ function ProductPage() {
 
   return (
     <div className="container-page py-8 md:py-12">
-      <nav className="text-xs text-muted-foreground">
-        <Link to="/" className="hover:text-primary">Home</Link> / <Link to="/shop" className="hover:text-primary">Shop</Link> / <Link to="/category/$slug" params={{ slug: cat.slug }} className="hover:text-primary">{cat.name}</Link>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Shop", path: "/shop" },
+          { name: cat.name, path: categoryUrl(cat.slug) },
+          { name: product.name, path: `/product/${product.slug}` },
+        ]}
+      />
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-card p-4 sm:p-6">
-          <img src={product.image} alt={product.name} width={1600} height={1600} sizes="(min-width: 1024px) 50vw, 100vw" decoding="async" className="w-full aspect-square object-contain [image-rendering:auto]" />
+          <img src={product.image} alt={product.name} fetchPriority="high" width={1600} height={1600} sizes="(min-width: 1024px) 50vw, 100vw" decoding="async" className="w-full aspect-square object-contain [image-rendering:auto]" />
         </div>
         <div>
           <div className="text-xs uppercase tracking-widest text-primary font-semibold">{cat.name}</div>
@@ -149,6 +155,8 @@ function ProductPage() {
           </div>
         </div>
       </div>
+
+      <ProductReviews reviews={reviews} productName={product.name} productSlug={product.slug} />
 
       {related.length > 0 && (
         <section className="mt-16">

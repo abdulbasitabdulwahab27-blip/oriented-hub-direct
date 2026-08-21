@@ -65,9 +65,11 @@ export function pageMeta({
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
   ];
-  if (image && image.startsWith("http")) {
-    meta.push({ property: "og:image", content: image });
-    meta.push({ name: "twitter:image", content: image });
+  const absImage = absUrl(image);
+  if (absImage) {
+    meta.push({ property: "og:image", content: absImage });
+    meta.push({ name: "twitter:image", content: absImage });
+    meta.push({ name: "twitter:image:alt", content: title });
   }
   return meta;
 }
