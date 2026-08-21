@@ -25,6 +25,9 @@ export function Footer() {
             <li><Link to="/laboratory-equipment" className="hover:text-primary">Laboratory</Link></li>
             <li><Link to="/hospital-consumables" className="hover:text-primary">Consumables</Link></li>
             <li><Link to="/educational-materials" className="hover:text-primary">Educational Materials</Link></li>
+            <li><Link to="/scientific-instruments" className="hover:text-primary">Scientific Instruments</Link></li>
+            <li><Link to="/surgical-instruments" className="hover:text-primary">Surgical Instruments</Link></li>
+            <li><Link to="/nuc-accreditation-books" className="hover:text-primary">NUC Accreditation Books</Link></li>
             <li><Link to="/business-solutions" className="hover:text-primary">Business Solutions</Link></li>
           </ul>
         </div>
