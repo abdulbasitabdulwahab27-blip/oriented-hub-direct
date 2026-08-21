@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CategoryView } from "@/components/CategoryView";
+import { CatalogCta } from "@/components/CatalogCta";
 import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
 
 const faqs = [
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/medical-equipment")({
 
 function MedicalEquipmentPage() {
   return (
+    <>
     <CategoryView
       slug="medical-equipment"
       heading="Medical Equipment Supplier in Osun State, Nigeria"
@@ -42,5 +44,7 @@ function MedicalEquipmentPage() {
       ]}
       faqs={faqs}
     />
+    <CatalogCta title="Medical equipment catalog — photos, prices and bulk orders" />
+    </>
   );
 }

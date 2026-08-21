@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SeoInfoPage } from "@/components/SeoInfoPage";
+import { CatalogCta } from "@/components/CatalogCta";
 
 export const Route = createFileRoute("/nuc-textbooks")({
   head: () => ({
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/nuc-textbooks")({
 
 function Page() {
   return (
+    <>
     <SeoInfoPage
       eyebrow="NUC accreditation textbooks Nigeria"
       title="NUC Accreditation Textbooks Supplier in Nigeria"
@@ -37,5 +39,7 @@ function Page() {
         "Serving universities and colleges across Osogbo, Osun State and Nigeria. Contact our procurement team: Phone 08136548965, 09064007879; Email Orientedbanque@outlook.com; Address 15, Oke-Fia Street, Opposite Zenith Bank, Osogbo, Osun State; Website www.theorientedhub.com.",
       ]}
     />
+    <CatalogCta title="NUC accreditation textbook catalog — photos, prices and bulk orders" />
+    </>
   );
 }
