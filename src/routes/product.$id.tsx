@@ -76,11 +76,14 @@ function ProductPage() {
   const [qty, setQty] = useState(1);
   const { add } = useCart();
 
-  if (loading) {
+  // Code-bundled products render immediately (server-side too) so crawlers and
+  // first paint get real content; only unknown slugs wait for the DB fetch.
+  const product = products.find((p) => p.id === id || p.slug === id);
+
+  if (!product && loading) {
     return <div className="container-page py-20 text-center text-muted-foreground">Loading…</div>;
   }
 
-  const product = products.find((p) => p.id === id || p.slug === id);
   if (!product) {
     return (
       <div className="container-page py-20 text-center">
@@ -89,6 +92,7 @@ function ProductPage() {
       </div>
     );
   }
+
 
   const cat = categories.find((c) => c.slug === product.category) ?? { slug: product.category, name: product.category };
   const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
