@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import { CheckCircle2, Circle, Package, Search } from "lucide-react";
+import { CheckCircle2, Circle, Package, Search, Star } from "lucide-react";
+import { reviewRequestPath } from "@/lib/reviews";
 import { canonicalLink, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/track")({
@@ -170,6 +171,21 @@ function TrackPage() {
               );
             })}
           </ol>
+
+          {order.delivered_at && (
+            <div className="mt-6 rounded-lg border border-primary/20 bg-primary/5 p-4">
+              <p className="text-sm font-semibold">How did we do?</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Your order is complete — a short review helps other customers and takes under a minute.
+              </p>
+              <Link
+                to={reviewRequestPath({ orderCode: order.tracking_code })}
+                className="mt-3 inline-flex items-center gap-2 rounded-md bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft hover:opacity-95"
+              >
+                <Star className="h-4 w-4" /> Leave a review
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>

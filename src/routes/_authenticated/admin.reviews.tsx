@@ -16,6 +16,9 @@ type Review = {
   rating: number;
   body: string;
   approved: boolean;
+  verified: boolean | null;
+  order_code: string | null;
+  product_slug: string | null;
   created_at: string;
 };
 
@@ -40,10 +43,13 @@ function AdminReviews() {
   }, []);
 
   const setApproved = async (id: string, approved: boolean) => {
-    const { error } = await supabase.from("reviews").update({ approved }).eq("id", id);
+    const row = reviews.find((r) => r.id === id);
+    // Reviews submitted from an order-tracking link are published as verified purchases.
+    const verified = approved ? Boolean(row?.order_code) : false;
+    const { error } = await supabase.from("reviews").update({ approved, verified }).eq("id", id);
     if (error) return toast.error("Update failed.");
     toast.success(approved ? "Review published." : "Review unpublished.");
-    setReviews((prev) => prev.map((r) => (r.id === id ? { ...r, approved } : r)));
+    setReviews((prev) => prev.map((r) => (r.id === id ? { ...r, approved, verified } : r)));
   };
 
   const remove = async (id: string) => {
