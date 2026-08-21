@@ -6,11 +6,13 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { breadcrumbSchema, canonical, canonicalLink, pageMeta } from "@/lib/seo";
 import { supabase } from "@/integrations/supabase/client";
 
+type ReviewSearch = { order?: string; product?: string; slug?: string };
+
 export const Route = createFileRoute("/reviews")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    order: typeof search.order === "string" ? search.order : undefined,
-    product: typeof search.product === "string" ? search.product : undefined,
-    slug: typeof search.slug === "string" ? search.slug : undefined,
+  validateSearch: (search: Record<string, unknown>): ReviewSearch => ({
+    ...(typeof search.order === "string" ? { order: search.order } : {}),
+    ...(typeof search.product === "string" ? { product: search.product } : {}),
+    ...(typeof search.slug === "string" ? { slug: search.slug } : {}),
   }),
   head: () => ({
     meta: pageMeta({
