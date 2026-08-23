@@ -83,24 +83,24 @@ function Home() {
       <Hero />
       <WelcomeIntro />
       <WhereToBuySeo />
-      <AboutAnswers />
-      <FeaturedCategories />
-      <FeaturedProducts />
+      <div className="cv-auto"><AboutAnswers /></div>
+      <div className="cv-auto"><FeaturedCategories /></div>
+      <div className="cv-auto"><FeaturedProducts /></div>
       <DeferUntilVisible minHeight={900}>
         <HomeCatalogBulkOrder />
       </DeferUntilVisible>
-      
-      
-      <WhyChooseUs />
-      <SupplyOverview />
-      <Procurement />
-      <QuotationListBanner />
-      <Testimonials />
-      <SalesRepBanner />
-      <DeliveryBanner />
-      <WhatsAppSection />
-      <HomeFaq />
-      <Newsletter />
+      <div className="cv-auto">
+        <WhyChooseUs />
+        <SupplyOverview />
+        <Procurement />
+        <QuotationListBanner />
+        <Testimonials />
+        <SalesRepBanner />
+        <DeliveryBanner />
+        <WhatsAppSection />
+        <HomeFaq />
+        <Newsletter />
+      </div>
     </>
   );
 }
