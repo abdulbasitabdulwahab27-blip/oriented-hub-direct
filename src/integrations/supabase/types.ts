@@ -257,6 +257,39 @@ export type Database = {
         }
         Relationships: []
       }
+      web_vitals: {
+        Row: {
+          created_at: string
+          device: string
+          id: string
+          metric: string
+          navigation_type: string | null
+          path: string
+          rating: string
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          device?: string
+          id?: string
+          metric: string
+          navigation_type?: string | null
+          path: string
+          rating: string
+          value: number
+        }
+        Update: {
+          created_at?: string
+          device?: string
+          id?: string
+          metric?: string
+          navigation_type?: string | null
+          path?: string
+          rating?: string
+          value?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

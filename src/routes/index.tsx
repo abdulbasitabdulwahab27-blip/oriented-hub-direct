@@ -3,16 +3,25 @@ import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star
 import { categories, bestSellers, products } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
-import { HomeCatalogBulkOrder } from "@/components/HomeCatalogBulkOrder";
-
+import { lazy, Suspense, useState } from "react";
 import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
-import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
+import hero480 from "@/assets/hero-480.webp";
 import hero800 from "@/assets/hero-800.webp";
+import hero1200 from "@/assets/hero-1200.webp";
 import hero1600 from "@/assets/hero-1600.webp";
+import heroAvif480 from "@/assets/hero-480.avif";
+import heroAvif800 from "@/assets/hero-800.avif";
+import heroAvif1200 from "@/assets/hero-1200.avif";
+import heroAvif1600 from "@/assets/hero-1600.avif";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { DeferUntilVisible } from "@/components/DeferUntilVisible";
 import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
+
+const HomeCatalogBulkOrder = lazy(() =>
+  import("@/components/HomeCatalogBulkOrder").then((m) => ({ default: m.HomeCatalogBulkOrder })),
+);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,7 +41,15 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       ...canonicalLink("/"),
-      { rel: "preload", as: "image", href: hero800, type: "image/webp", fetchpriority: "high" } as unknown as Record<string, string>,
+      {
+        rel: "preload",
+        as: "image",
+        href: heroAvif480,
+        type: "image/avif",
+        imageSrcSet: `${heroAvif480} 480w, ${heroAvif800} 800w, ${heroAvif1200} 1200w, ${heroAvif1600} 1600w`,
+        imageSizes: "(min-width: 1024px) 50vw, 100vw",
+        fetchPriority: "high",
+      } as unknown as Record<string, string>,
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
@@ -87,7 +104,9 @@ function Home() {
       <div className="cv-auto"><FeaturedCategories /></div>
       <div className="cv-auto"><FeaturedProducts /></div>
       <DeferUntilVisible minHeight={900}>
-        <HomeCatalogBulkOrder />
+        <Suspense fallback={<div style={{ minHeight: 900 }} aria-hidden />}>
+          <HomeCatalogBulkOrder />
+        </Suspense>
       </DeferUntilVisible>
       <div className="cv-auto">
         <WhyChooseUs />
@@ -450,18 +469,27 @@ function Hero() {
         </div>
         <div className="relative">
           <div className="absolute -inset-4 rounded-3xl bg-gradient-gold opacity-10 blur-3xl" aria-hidden />
-          <picture>
-            <source type="image/webp" srcSet={`${hero800} 800w, ${hero1600} 1600w`} sizes="(min-width: 1024px) 50vw, 100vw" />
-            <img
-              src={heroImg}
-              alt="Books, medical and laboratory products from Oriented Hub"
-              width={1600}
-              height={1100}
-              fetchPriority="high"
-              decoding="async"
-              className="relative rounded-2xl shadow-elevated object-cover w-full aspect-[4/3]"
-            />
-          </picture>
+          <ResponsiveImage
+            avif={[
+              { src: heroAvif480, width: 480 },
+              { src: heroAvif800, width: 800 },
+              { src: heroAvif1200, width: 1200 },
+              { src: heroAvif1600, width: 1600 },
+            ]}
+            webp={[
+              { src: hero480, width: 480 },
+              { src: hero800, width: 800 },
+              { src: hero1200, width: 1200 },
+              { src: hero1600, width: 1600 },
+            ]}
+            fallback={heroImg}
+            alt="Books, medical and laboratory products from Oriented Hub"
+            width={1600}
+            height={1100}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            priority
+            className="relative rounded-2xl shadow-elevated object-cover w-full aspect-[4/3]"
+          />
           <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 rounded-xl bg-background p-3 pr-5 shadow-elevated border border-border">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-success/10 text-success"><CheckCircle2 className="h-5 w-5" /></div>
             <div>
