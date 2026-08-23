@@ -3,14 +3,8 @@ import { ArrowRight, Truck, ShieldCheck, Award, Users, Phone, Mail, MapPin, Star
 import { categories, bestSellers, products } from "@/lib/products";
 import { useAllProducts } from "@/lib/use-products";
 import { ProductCard } from "@/components/ProductCard";
-import { lazy, Suspense } from "react";
-
-const HomeCatalogBulkOrder = lazy(() =>
-  import("@/components/HomeCatalogBulkOrder").then((m) => ({ default: m.HomeCatalogBulkOrder })),
-);
-
+import { lazy, Suspense, useState } from "react";
 import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink, quoteMessage } from "@/lib/whatsapp";
-import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
 import hero480 from "@/assets/hero-480.webp";
