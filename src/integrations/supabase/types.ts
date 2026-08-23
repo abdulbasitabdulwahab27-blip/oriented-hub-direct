@@ -257,8 +257,63 @@ export type Database = {
         }
         Relationships: []
       }
+      vitals_alerts: {
+        Row: {
+          acknowledged: boolean
+          build_version: string | null
+          created_at: string
+          device: string
+          id: string
+          message: string | null
+          metric: string
+          notified: boolean
+          path: string
+          samples: number
+          severity: string
+          source: string
+          threshold: number
+          updated_at: string
+          value: number
+        }
+        Insert: {
+          acknowledged?: boolean
+          build_version?: string | null
+          created_at?: string
+          device?: string
+          id?: string
+          message?: string | null
+          metric: string
+          notified?: boolean
+          path: string
+          samples?: number
+          severity?: string
+          source?: string
+          threshold: number
+          updated_at?: string
+          value: number
+        }
+        Update: {
+          acknowledged?: boolean
+          build_version?: string | null
+          created_at?: string
+          device?: string
+          id?: string
+          message?: string | null
+          metric?: string
+          notified?: boolean
+          path?: string
+          samples?: number
+          severity?: string
+          source?: string
+          threshold?: number
+          updated_at?: string
+          value?: number
+        }
+        Relationships: []
+      }
       web_vitals: {
         Row: {
+          build_version: string | null
           created_at: string
           device: string
           id: string
@@ -269,6 +324,7 @@ export type Database = {
           value: number
         }
         Insert: {
+          build_version?: string | null
           created_at?: string
           device?: string
           id?: string
@@ -279,6 +335,7 @@ export type Database = {
           value: number
         }
         Update: {
+          build_version?: string | null
           created_at?: string
           device?: string
           id?: string
