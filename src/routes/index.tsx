@@ -19,6 +19,10 @@ import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { DeferUntilVisible } from "@/components/DeferUntilVisible";
 import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
 
+const HomeCatalogBulkOrder = lazy(() =>
+  import("@/components/HomeCatalogBulkOrder").then((m) => ({ default: m.HomeCatalogBulkOrder })),
+);
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
