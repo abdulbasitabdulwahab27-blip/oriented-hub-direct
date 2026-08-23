@@ -218,3 +218,8 @@
   .container-page { width: 100%; margin-inline: auto; max-width: 1280px; padding-inline: 1rem; }
   @media (min-width: 768px) { .container-page { padding-inline: 2rem; } }
 }
+
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}

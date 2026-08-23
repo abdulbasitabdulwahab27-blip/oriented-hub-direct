@@ -83,24 +83,24 @@ function Home() {
       <Hero />
       <WelcomeIntro />
       <WhereToBuySeo />
-      <AboutAnswers />
-      <FeaturedCategories />
-      <FeaturedProducts />
+      <div className="cv-auto"><AboutAnswers /></div>
+      <div className="cv-auto"><FeaturedCategories /></div>
+      <div className="cv-auto"><FeaturedProducts /></div>
       <DeferUntilVisible minHeight={900}>
         <HomeCatalogBulkOrder />
       </DeferUntilVisible>
-      
-      
-      <WhyChooseUs />
-      <SupplyOverview />
-      <Procurement />
-      <QuotationListBanner />
-      <Testimonials />
-      <SalesRepBanner />
-      <DeliveryBanner />
-      <WhatsAppSection />
-      <HomeFaq />
-      <Newsletter />
+      <div className="cv-auto">
+        <WhyChooseUs />
+        <SupplyOverview />
+        <Procurement />
+        <QuotationListBanner />
+        <Testimonials />
+        <SalesRepBanner />
+        <DeliveryBanner />
+        <WhatsAppSection />
+        <HomeFaq />
+        <Newsletter />
+      </div>
     </>
   );
 }
@@ -627,7 +627,7 @@ function QuotationListBanner() {
             </div>
           </div>
           <div className="flex flex-col gap-2 sm:items-end">
-            <a href={waLink(msg)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95 whitespace-nowrap">
+            <a href={waLink(msg)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-[#0B7A45] px-6 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95 whitespace-nowrap">
               <FileText className="h-4 w-4" /> Send Your List on WhatsApp
             </a>
             <a href={`mailto:${EMAIL}?subject=Quotation%20Request%20-%20Item%20List`} className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-6 py-3 text-sm font-semibold hover:bg-muted whitespace-nowrap">
@@ -693,7 +693,7 @@ function WhatsAppSection() {
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Order in seconds on WhatsApp</h2>
           <p className="text-muted-foreground">Send us the item, quantity and your location — we'll confirm price, availability and delivery details in minutes.</p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <a href={waLink("Hello Oriented Hub, I'd like to enquire about a product.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">Chat on WhatsApp</a>
+            <a href={waLink("Hello Oriented Hub, I'd like to enquire about a product.")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-[#0B7A45] px-6 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">Chat on WhatsApp</a>
             <a href={`tel:+${WHATSAPP_PRIMARY}`} className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-6 py-3 text-sm font-semibold hover:bg-muted">Call us</a>
           </div>
         </div>

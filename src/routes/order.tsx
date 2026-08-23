@@ -272,7 +272,7 @@ function OrderPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95 disabled:opacity-60"
+            className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#0B7A45] px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95 disabled:opacity-60"
           >
             <Package className="h-4 w-4" /> {submitting ? "Submitting…" : "Submit Order"}
           </button>
