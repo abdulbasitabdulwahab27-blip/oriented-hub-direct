@@ -134,6 +134,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => {
+    void import("@/lib/vitals").then((m) => m.initWebVitals());
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
