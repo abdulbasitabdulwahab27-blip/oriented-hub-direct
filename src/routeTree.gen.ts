@@ -51,6 +51,7 @@ import { Route as CategorySlugRouteImport } from './routes/category.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as ApiPublicVitalsAlertsRouteImport } from './routes/api/public/vitals-alerts'
 import { Route as AuthenticatedAdminVitalsRouteImport } from './routes/_authenticated/admin.vitals'
 import { Route as AuthenticatedAdminReviewsRouteImport } from './routes/_authenticated/admin.reviews'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
@@ -273,6 +274,11 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const ApiPublicVitalsAlertsRoute = ApiPublicVitalsAlertsRouteImport.update({
+  id: '/api/public/vitals-alerts',
+  path: '/api/public/vitals-alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminVitalsRoute =
   AuthenticatedAdminVitalsRouteImport.update({
     id: '/vitals',
@@ -363,6 +369,7 @@ export interface FileRoutesByFullPath {
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/reviews': typeof AuthenticatedAdminReviewsRoute
   '/admin/vitals': typeof AuthenticatedAdminVitalsRoute
+  '/api/public/vitals-alerts': typeof ApiPublicVitalsAlertsRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -412,6 +419,7 @@ export interface FileRoutesByTo {
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/reviews': typeof AuthenticatedAdminReviewsRoute
   '/admin/vitals': typeof AuthenticatedAdminVitalsRoute
+  '/api/public/vitals-alerts': typeof ApiPublicVitalsAlertsRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -464,6 +472,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
   '/_authenticated/admin/reviews': typeof AuthenticatedAdminReviewsRoute
   '/_authenticated/admin/vitals': typeof AuthenticatedAdminVitalsRoute
+  '/api/public/vitals-alerts': typeof ApiPublicVitalsAlertsRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -516,6 +525,7 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/reviews'
     | '/admin/vitals'
+    | '/api/public/vitals-alerts'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -565,6 +575,7 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/reviews'
     | '/admin/vitals'
+    | '/api/public/vitals-alerts'
     | '/admin'
   id:
     | '__root__'
@@ -616,6 +627,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/products'
     | '/_authenticated/admin/reviews'
     | '/_authenticated/admin/vitals'
+    | '/api/public/vitals-alerts'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -660,6 +672,7 @@ export interface RootRouteChildren {
   CategorySlugRoute: typeof CategorySlugRoute
   ProductIdRoute: typeof ProductIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  ApiPublicVitalsAlertsRoute: typeof ApiPublicVitalsAlertsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -958,6 +971,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/api/public/vitals-alerts': {
+      id: '/api/public/vitals-alerts'
+      path: '/api/public/vitals-alerts'
+      fullPath: '/api/public/vitals-alerts'
+      preLoaderRoute: typeof ApiPublicVitalsAlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin/vitals': {
       id: '/_authenticated/admin/vitals'
       path: '/vitals'
@@ -1089,6 +1109,7 @@ const rootRouteChildren: RootRouteChildren = {
   CategorySlugRoute: CategorySlugRoute,
   ProductIdRoute: ProductIdRoute,
   BlogIndexRoute: BlogIndexRoute,
+  ApiPublicVitalsAlertsRoute: ApiPublicVitalsAlertsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

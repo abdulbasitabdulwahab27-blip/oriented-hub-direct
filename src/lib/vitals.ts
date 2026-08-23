@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { BUILD_VERSION } from "@/lib/build-version";
 
 /**
  * Core Web Vitals field monitoring.
@@ -56,6 +57,7 @@ export async function initWebVitals() {
         rating: rateMetric(metric, value),
         device,
         navigation_type: m.navigationType ?? null,
+        build_version: BUILD_VERSION,
       })
       .then(() => undefined, () => undefined);
   };
