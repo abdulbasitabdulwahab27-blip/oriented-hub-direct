@@ -93,7 +93,7 @@ function Checkout() {
             <span className="text-muted-foreground">Pricing</span>
             <span className="font-semibold text-primary">On Request</span>
           </div>
-          <button type="submit" className="mt-5 w-full inline-flex items-center justify-center rounded-md bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">Submit Order via WhatsApp</button>
+          <button type="submit" className="mt-5 w-full inline-flex items-center justify-center rounded-md bg-[#0B7A45] px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">Submit Order via WhatsApp</button>
           <p className="mt-3 text-xs text-muted-foreground text-center">Your order will be confirmed by our team with pricing and delivery details.</p>
         </aside>
       </form>

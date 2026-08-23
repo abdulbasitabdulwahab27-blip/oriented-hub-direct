@@ -148,7 +148,7 @@ function ProductPage() {
           <a
             href={waLink(productOrderMessage({ name: product.name, category: cat.name, quantity: qty }))}
             target="_blank" rel="noopener noreferrer"
-            className="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95"
+            className="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#0B7A45] px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95"
           >
             Order on WhatsApp
           </a>
