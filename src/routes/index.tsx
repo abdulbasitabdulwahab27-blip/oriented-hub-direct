@@ -9,6 +9,9 @@ import { ADDRESS, EMAIL, WHATSAPP_ALT, WHATSAPP_PRIMARY, waLink, quoteMessage } 
 import { useState } from "react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
+import hero800 from "@/assets/hero-800.webp";
+import hero1600 from "@/assets/hero-1600.webp";
+import { DeferUntilVisible } from "@/components/DeferUntilVisible";
 import { breadcrumbSchema, canonicalLink, faqSchema, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -27,7 +30,10 @@ export const Route = createFileRoute("/")({
       },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
-    links: canonicalLink("/"),
+    links: [
+      ...canonicalLink("/"),
+      { rel: "preload", as: "image", href: hero800, type: "image/webp", fetchpriority: "high" } as unknown as Record<string, string>,
+    ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
       {
@@ -80,7 +86,9 @@ function Home() {
       <AboutAnswers />
       <FeaturedCategories />
       <FeaturedProducts />
-      <HomeCatalogBulkOrder />
+      <DeferUntilVisible minHeight={900}>
+        <HomeCatalogBulkOrder />
+      </DeferUntilVisible>
       
       
       <WhyChooseUs />
@@ -442,7 +450,18 @@ function Hero() {
         </div>
         <div className="relative">
           <div className="absolute -inset-4 rounded-3xl bg-gradient-gold opacity-10 blur-3xl" aria-hidden />
-          <img src={heroImg} alt="Books, medical and laboratory products from Oriented Hub" width={1600} height={1100} className="relative rounded-2xl shadow-elevated object-cover w-full aspect-[4/3]" />
+          <picture>
+            <source type="image/webp" srcSet={`${hero800} 800w, ${hero1600} 1600w`} sizes="(min-width: 1024px) 50vw, 100vw" />
+            <img
+              src={heroImg}
+              alt="Books, medical and laboratory products from Oriented Hub"
+              width={1600}
+              height={1100}
+              fetchPriority="high"
+              decoding="async"
+              className="relative rounded-2xl shadow-elevated object-cover w-full aspect-[4/3]"
+            />
+          </picture>
           <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 rounded-xl bg-background p-3 pr-5 shadow-elevated border border-border">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-success/10 text-success"><CheckCircle2 className="h-5 w-5" /></div>
             <div>
