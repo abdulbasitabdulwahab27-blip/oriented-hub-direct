@@ -58,6 +58,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Nigeria's premium procurement platform for books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
       { property: "og:type", content: "website" },
       { name: "google-site-verification", content: "9GA-6YkFI2lSzCaBfVTMxhwGD9TI2bIOd6IDvpjnAEY" },
+      { name: "google-site-verification", content: "tNdwChcpfjN5jkPb50x_C9QHFEQMowxB07TZkMv0Awo" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Oriented Hub — Quality Products. Better Care. Total Solutions." },
       { name: "twitter:description", content: "Nigeria's premium procurement platform for books, medical equipment, laboratory equipment, hospital consumables and educational materials." },
