@@ -104,6 +104,39 @@ export type Database = {
         }
         Relationships: []
       }
+      policy_snapshots: {
+        Row: {
+          captured_by: string | null
+          captured_by_email: string | null
+          changes: Json
+          created_at: string
+          digest: string
+          id: string
+          policies: Json
+          policy_count: number
+        }
+        Insert: {
+          captured_by?: string | null
+          captured_by_email?: string | null
+          changes?: Json
+          created_at?: string
+          digest: string
+          id?: string
+          policies: Json
+          policy_count?: number
+        }
+        Update: {
+          captured_by?: string | null
+          captured_by_email?: string | null
+          changes?: Json
+          created_at?: string
+          digest?: string
+          id?: string
+          policies?: Json
+          policy_count?: number
+        }
+        Relationships: []
+      }
       product_prices: {
         Row: {
           currency: string
@@ -352,7 +385,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      rls_policy_inventory: { Args: never; Returns: Json }
     }
     Enums: {
       app_role: "admin" | "user"
