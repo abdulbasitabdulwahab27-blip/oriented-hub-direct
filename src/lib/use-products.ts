@@ -69,9 +69,15 @@ export function useAllProducts() {
       }
       setPriceMap(map);
       setLoading(false);
-    })();
+    };
+    const idle = (cb: () => void) =>
+      typeof window !== "undefined" && "requestIdleCallback" in window
+        ? (window as any).requestIdleCallback(cb, { timeout: 2000 })
+        : setTimeout(cb, 200);
+    idle(() => { void run(); });
     return () => { cancelled = true; };
   }, []);
+
 
   const merged = dedupeProducts([...dbProducts, ...codeProducts].map((p) => {
     const override = [p.slug, ...(productSlugAliases[p.slug] ?? [])]
