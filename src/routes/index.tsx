@@ -44,12 +44,14 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: heroAvif480,
+        href: heroAvif1200,
         type: "image/avif",
-        imageSrcSet: `${heroAvif480} 480w, ${heroAvif800} 800w, ${heroAvif1200} 1200w, ${heroAvif1600} 1600w`,
-        imageSizes: "(min-width: 1024px) 50vw, 100vw",
+        imageSrcSet: `${heroAvif1200} 1200w, ${heroAvif1600} 1600w`,
+        imageSizes: "50vw",
+        media: "(min-width: 1024px)",
         fetchPriority: "high",
       } as unknown as Record<string, string>,
+
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
@@ -437,7 +439,7 @@ function Hero() {
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-primary backdrop-blur">
             <Sparkles className="h-3.5 w-3.5" /> Trusted procurement partner since day one
           </div>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl uppercase">
+          <h1 className="mt-5 font-display text-[1.75rem] font-semibold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl uppercase">
             Where to Buy Hospital Equipment, NUC Textbooks &amp; Medical Supplies in Nigeria
           </h1>
           <p className="mt-3 font-display text-lg font-semibold text-foreground/80">
@@ -487,7 +489,6 @@ function Hero() {
             width={1600}
             height={1100}
             sizes="(min-width: 1024px) 50vw, 100vw"
-            priority
             className="relative rounded-2xl shadow-elevated object-cover w-full aspect-[4/3]"
           />
           <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 rounded-xl bg-background p-3 pr-5 shadow-elevated border border-border">

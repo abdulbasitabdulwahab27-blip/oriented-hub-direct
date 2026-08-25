@@ -135,8 +135,11 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   useEffect(() => {
-    void import("@/lib/vitals").then((m) => m.initWebVitals());
+    const start = () => void import("@/lib/vitals").then((m) => m.initWebVitals());
+    if ("requestIdleCallback" in window) (window as any).requestIdleCallback(start, { timeout: 4000 });
+    else setTimeout(start, 2500);
   }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
