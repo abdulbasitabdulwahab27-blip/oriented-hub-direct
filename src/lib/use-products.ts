@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { dedupeProducts, productSlugAliases, products as codeProducts, type Product } from "@/lib/products";
+
 
 type DBProductRow = {
   id: string;
