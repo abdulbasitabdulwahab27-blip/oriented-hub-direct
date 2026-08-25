@@ -44,7 +44,9 @@ export function useAllProducts() {
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
+    const run = async () => {
+      // Loaded lazily so the database client stays out of the first-paint bundle.
+      const { supabase } = await import("@/integrations/supabase/client");
       const [prodRes, priceRes] = await Promise.all([
         supabase
           .from("products")
@@ -58,8 +60,9 @@ export function useAllProducts() {
         console.error("Failed to load DB products", prodRes.error);
         setDbProducts([]);
       } else {
-        setDbProducts((prodRes.data ?? []).map((r) => mapRow(r as DBProductRow)));
+        setDbProducts((prodRes.data ?? []).map((r: unknown) => mapRow(r as DBProductRow)));
       }
+
       const map: Record<string, { price: number; currency: string }> = {};
       for (const row of priceRes.data ?? []) {
         map[row.slug] = { price: Number(row.price) || 0, currency: row.currency || "NGN" };
