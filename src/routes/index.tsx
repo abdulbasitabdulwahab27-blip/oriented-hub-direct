@@ -44,12 +44,14 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: heroAvif480,
+        href: heroAvif1200,
         type: "image/avif",
-        imageSrcSet: `${heroAvif480} 480w, ${heroAvif800} 800w, ${heroAvif1200} 1200w, ${heroAvif1600} 1600w`,
-        imageSizes: "(min-width: 1024px) 50vw, 100vw",
+        imageSrcSet: `${heroAvif1200} 1200w, ${heroAvif1600} 1600w`,
+        imageSizes: "50vw",
+        media: "(min-width: 1024px)",
         fetchPriority: "high",
       } as unknown as Record<string, string>,
+
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqSchema(homeFaqs)) },
