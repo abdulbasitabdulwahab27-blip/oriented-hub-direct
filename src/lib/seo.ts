@@ -96,12 +96,9 @@ export type SchemaProduct = {
   trackStock?: boolean;
 };
 
+/** Google Merchant listings only accept InStock / OutOfStock here. */
 const availabilityOf = (p: SchemaProduct) =>
-  p.trackStock && (p.stock ?? 0) <= 0
-    ? "https://schema.org/OutOfStock"
-    : (p.price ?? 0) > 0
-      ? "https://schema.org/InStock"
-      : "https://schema.org/PreOrder";
+  p.trackStock && (p.stock ?? 0) <= 0 ? "https://schema.org/OutOfStock" : "https://schema.org/InStock";
 
 /** Price validity: rolling one year from build so Google never sees a stale offer. */
 export const priceValidUntil = () => {
@@ -133,19 +130,41 @@ export function productSchema(
     brand: { "@type": "Brand", name: SITE_NAME },
     url: canonical(path),
     itemCondition: "https://schema.org/NewCondition",
-    offers: {
+  };
+  // Google rejects an Offer without a price — omit the whole block when unpriced.
+  if (hasPrice) {
+    schema.offers = {
       "@type": "Offer",
       url: canonical(path),
       priceCurrency: p.currency ?? "NGN",
-      ...(hasPrice ? { price: String(p.price), priceValidUntil: priceValidUntil() } : {}),
+      price: Number(p.price).toFixed(2),
+      priceValidUntil: priceValidUntil(),
       availability: availabilityOf(p),
       itemCondition: "https://schema.org/NewCondition",
       areaServed: { "@type": "Country", name: "Nigeria" },
       seller: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-    },
-  };
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "NG",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 7,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "NG" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 2, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 5, unitCode: "DAY" },
+        },
+      },
+    };
+  }
   const img = absUrl(p.image);
   if (img) schema.image = [img];
+
   if (reviews.length) {
     schema.aggregateRating = {
       "@type": "AggregateRating",
