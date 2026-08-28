@@ -53,6 +53,7 @@ import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as ApiPublicVitalsAlertsRouteImport } from './routes/api/public/vitals-alerts'
 import { Route as AuthenticatedAdminVitalsRouteImport } from './routes/_authenticated/admin.vitals'
+import { Route as AuthenticatedAdminSecurityRouteImport } from './routes/_authenticated/admin.security'
 import { Route as AuthenticatedAdminReviewsRouteImport } from './routes/_authenticated/admin.reviews'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
 import { Route as AuthenticatedAdminPricingRouteImport } from './routes/_authenticated/admin.pricing'
@@ -285,6 +286,12 @@ const AuthenticatedAdminVitalsRoute =
     path: '/vitals',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminSecurityRoute =
+  AuthenticatedAdminSecurityRouteImport.update({
+    id: '/security',
+    path: '/security',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminReviewsRoute =
   AuthenticatedAdminReviewsRouteImport.update({
     id: '/reviews',
@@ -368,6 +375,7 @@ export interface FileRoutesByFullPath {
   '/admin/pricing': typeof AuthenticatedAdminPricingRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/reviews': typeof AuthenticatedAdminReviewsRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
   '/admin/vitals': typeof AuthenticatedAdminVitalsRoute
   '/api/public/vitals-alerts': typeof ApiPublicVitalsAlertsRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -418,6 +426,7 @@ export interface FileRoutesByTo {
   '/admin/pricing': typeof AuthenticatedAdminPricingRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/reviews': typeof AuthenticatedAdminReviewsRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
   '/admin/vitals': typeof AuthenticatedAdminVitalsRoute
   '/api/public/vitals-alerts': typeof ApiPublicVitalsAlertsRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -471,6 +480,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/pricing': typeof AuthenticatedAdminPricingRoute
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
   '/_authenticated/admin/reviews': typeof AuthenticatedAdminReviewsRoute
+  '/_authenticated/admin/security': typeof AuthenticatedAdminSecurityRoute
   '/_authenticated/admin/vitals': typeof AuthenticatedAdminVitalsRoute
   '/api/public/vitals-alerts': typeof ApiPublicVitalsAlertsRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -524,6 +534,7 @@ export interface FileRouteTypes {
     | '/admin/pricing'
     | '/admin/products'
     | '/admin/reviews'
+    | '/admin/security'
     | '/admin/vitals'
     | '/api/public/vitals-alerts'
     | '/admin/'
@@ -574,6 +585,7 @@ export interface FileRouteTypes {
     | '/admin/pricing'
     | '/admin/products'
     | '/admin/reviews'
+    | '/admin/security'
     | '/admin/vitals'
     | '/api/public/vitals-alerts'
     | '/admin'
@@ -626,6 +638,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/pricing'
     | '/_authenticated/admin/products'
     | '/_authenticated/admin/reviews'
+    | '/_authenticated/admin/security'
     | '/_authenticated/admin/vitals'
     | '/api/public/vitals-alerts'
     | '/_authenticated/admin/'
@@ -985,6 +998,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminVitalsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/security': {
+      id: '/_authenticated/admin/security'
+      path: '/security'
+      fullPath: '/admin/security'
+      preLoaderRoute: typeof AuthenticatedAdminSecurityRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/reviews': {
       id: '/_authenticated/admin/reviews'
       path: '/reviews'
@@ -1037,6 +1057,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminPricingRoute: typeof AuthenticatedAdminPricingRoute
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
   AuthenticatedAdminReviewsRoute: typeof AuthenticatedAdminReviewsRoute
+  AuthenticatedAdminSecurityRoute: typeof AuthenticatedAdminSecurityRoute
   AuthenticatedAdminVitalsRoute: typeof AuthenticatedAdminVitalsRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
@@ -1048,6 +1069,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminPricingRoute: AuthenticatedAdminPricingRoute,
   AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
   AuthenticatedAdminReviewsRoute: AuthenticatedAdminReviewsRoute,
+  AuthenticatedAdminSecurityRoute: AuthenticatedAdminSecurityRoute,
   AuthenticatedAdminVitalsRoute: AuthenticatedAdminVitalsRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }

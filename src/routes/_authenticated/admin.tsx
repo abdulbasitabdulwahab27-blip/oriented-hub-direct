@@ -69,6 +69,7 @@ function AdminLayout() {
         <AdminTab to="/admin/reviews" icon={<Star className="h-4 w-4" />} label="Reviews" />
         <AdminTab to="/admin/vitals" icon={<Gauge className="h-4 w-4" />} label="Speed" />
         <AdminTab to="/admin/audit" icon={<History className="h-4 w-4" />} label="Audit Log" />
+        <AdminTab to="/admin/security" icon={<ShieldCheck className="h-4 w-4" />} label="Security" />
       </nav>
 
       <Outlet />
