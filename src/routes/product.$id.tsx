@@ -15,12 +15,23 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/product/$id")({
   loader: async ({ params }) => {
     const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
-    const reviews = product ? await fetchApprovedReviews({ productSlug: product.slug, limit: 20 }) : [];
-    return { reviews };
+    if (!product) return { reviews: [], price: null as null | { price: number; currency: string } };
+    const [reviews, prices] = await Promise.all([
+      fetchApprovedReviews({ productSlug: product.slug, limit: 20 }),
+      fetchPriceMap(),
+    ]);
+    // Live database price so the Product JSON-LD offer is never stale or hardcoded.
+    const priced = applyPrices([product], prices)[0];
+    return {
+      reviews,
+      price: (priced?.price ?? 0) > 0 ? { price: priced!.price!, currency: priced!.currency ?? "NGN" } : null,
+    };
   },
   head: ({ params, loaderData }) => {
-    const product = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
-    if (!product) return { meta: [{ title: "Product — The Oriented Hub" }, { name: "robots", content: "noindex" }] };
+    const base = staticProducts.find((p) => p.id === params.id || p.slug === params.id);
+    if (!base) return { meta: [{ title: "Product — The Oriented Hub" }, { name: "robots", content: "noindex" }] };
+    const livePrice = loaderData?.price ?? null;
+    const product = livePrice ? { ...base, price: livePrice.price, currency: livePrice.currency } : base;
     const cat = categories.find((c) => c.slug === product.category);
     const path = `/product/${product.slug}`;
     const description = `${product.name} — supplied by The Oriented Hub. ${product.description}`.slice(0, 158);
@@ -40,6 +51,7 @@ export const Route = createFileRoute("/product/$id")({
           children: JSON.stringify(
             productSchema(product, {
               categoryName: cat?.name ?? product.category,
+
               reviews: reviews.map((r) => ({
                 author: r.customer_name,
                 rating: r.rating,
