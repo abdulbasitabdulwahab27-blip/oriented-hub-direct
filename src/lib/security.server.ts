@@ -66,7 +66,7 @@ export async function computeSnapshot(actorId: string, actorEmail: string | null
     .limit(1)
     .maybeSingle();
 
-  const previous = ((last?.policies ?? []) as unknown as PolicyEntry[]) ?? [];
+  const previous = (last?.policies ?? []) as unknown as PolicyEntry[];
   const changes = diffPolicies(previous, policies);
   const digest = digestOf(policies);
 
