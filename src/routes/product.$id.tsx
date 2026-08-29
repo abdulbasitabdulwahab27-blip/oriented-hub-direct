@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useCart } from "@/lib/cart";
 import { productOrderMessage, waLink } from "@/lib/whatsapp";
 import { fetchApprovedReviews, type PublicReview } from "@/lib/reviews";
+import { applyPrices, fetchPriceMap } from "@/lib/product-prices";
 import { breadcrumbSchema, canonicalLink, categoryUrl, pageMeta, productSchema, SITE_NAME } from "@/lib/seo";
 import { toast } from "sonner";
 
