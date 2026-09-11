@@ -1,0 +1,42 @@
+# The Oriented Hub
+
+> Supplier of medical equipment, laboratory equipment, hospital consumables, academic textbooks and educational materials in Osogbo, Osun State and across Nigeria.
+
+## Pages
+
+- [Home](/): Who we are and what we supply.
+- [Shop](/shop): Full product catalogue with prices.
+- [Order](/order): Submit an order with delivery details.
+- [Track order](/track): Check the status of an order.
+- [Procurement](/procurement): Bulk supply for universities, colleges and hospitals.
+- [About](/about): Company background.
+- [Contact](/contact): Phone, WhatsApp and address.
+- [FAQ](/faq): Common questions on ordering, pricing and delivery.
+- [Delivery information](/delivery-information): Nationwide and international delivery.
+- [Reviews](/reviews): Customer reviews and testimonials.
+- [Blog](/blog): Guides on procurement, accreditation and equipment.
+
+## Categories
+
+- [Books](/books): Academic, medical, nursing and law textbooks.
+- [Medical equipment](/medical-equipment): Diagnostic and clinical equipment.
+- [Laboratory equipment](/laboratory-equipment): Lab instruments and apparatus.
+- [Hospital consumables](/hospital-consumables): Disposables and consumables.
+- [Educational materials](/educational-materials): Teaching aids and models.
+
+## Supplier pages
+
+- [Medical equipment supplier](/medical-equipment-supplier): Supply across Nigeria.
+- [Laboratory equipment supplier](/laboratory-equipment-supplier): Lab supply services.
+- [Hospital consumables and stationeries](/hospital-consumables-and-stationeries): Hospital supply.
+- [Medical textbooks supplier](/medical-textbooks-supplier): Medical and nursing texts.
+- [NUC accreditation textbooks](/nuc-accreditation-textbooks-supplier): Accreditation book supply.
+- [Scientific instruments](/scientific-instruments): Scientific instrument supply.
+- [Surgical instruments](/surgical-instruments): Surgical instrument supply.
+- [International book seller](/international-book-seller): Worldwide book sourcing.
+- [Osogbo](/osogbo): Local supply in Osogbo, Osun State.
+
+## Optional
+
+- [Privacy policy](/privacy)
+- [Terms](/terms)
