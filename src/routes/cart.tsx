@@ -33,9 +33,9 @@ function CartPage() {
                   <div className="text-sm font-semibold text-primary mt-1">Price on Request</div>
                   <div className="mt-3 flex items-center gap-3">
                     <div className="inline-flex items-center rounded-md border border-input">
-                      <button onClick={() => setQty(it.id, it.quantity - 1)} className="p-2 hover:bg-muted"><Minus className="h-3 w-3" /></button>
+                      <button aria-label={`Decrease quantity of ${it.name}`} onClick={() => setQty(it.id, it.quantity - 1)} className="p-2 hover:bg-muted"><Minus className="h-3 w-3" /></button>
                       <span className="w-8 text-center text-sm font-semibold">{it.quantity}</span>
-                      <button onClick={() => setQty(it.id, it.quantity + 1)} className="p-2 hover:bg-muted"><Plus className="h-3 w-3" /></button>
+                      <button aria-label={`Increase quantity of ${it.name}`} onClick={() => setQty(it.id, it.quantity + 1)} className="p-2 hover:bg-muted"><Plus className="h-3 w-3" /></button>
                     </div>
                     <button onClick={() => remove(it.id)} className="inline-flex items-center gap-1 text-xs text-destructive hover:underline"><Trash2 className="h-3.5 w-3.5" /> Remove</button>
                   </div>
