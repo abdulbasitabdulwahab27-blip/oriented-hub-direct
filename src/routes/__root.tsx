@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { Outlet, createRootRouteWithContext, useRouter, useRouterState, HeadContent, Scripts, type ErrorComponentProps } from "@tanstack/react-router";
+import { lazy, useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
@@ -24,10 +24,12 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => { reportLovableError(error, { boundary: "tanstack_root_error_component" }); }, [error]);
+  useEffect(() => {
+    reportLovableError(error instanceof Error ? error : new Error(String(error)), { boundary: "tanstack_root_error_component" });
+  }, [error]);
   return (
     <div className="flex min-h-[60vh] items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -41,6 +43,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     </div>
   );
 }
+
+const LazyErrorComponent = lazy(() => Promise.resolve({ default: ErrorComponent }));
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -120,7 +124,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: LazyErrorComponent,
 });
 
 function RootShell({ children }: { children: ReactNode }) {
@@ -134,6 +138,35 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const currentUrl = useRouterState({ select: (state) => state.location.href });
+
+  useEffect(() => {
+    const measurementId = "G-9N5H2DNVPJ";
+    const analyticsWindow = window as Window & {
+      dataLayer?: unknown[][];
+      __orientedAnalyticsInitialized?: boolean;
+    };
+    analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+    const gtag = (...args: unknown[]) => analyticsWindow.dataLayer?.push(args);
+
+    if (!document.querySelector(`script[src="https://www.googletagmanager.com/gtag/js?id=${measurementId}"]`)) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.appendChild(script);
+    }
+
+    if (!analyticsWindow.__orientedAnalyticsInitialized) {
+      gtag("js", new Date());
+      gtag("config", measurementId, { send_page_view: false });
+      analyticsWindow.__orientedAnalyticsInitialized = true;
+    }
+
+    const pageUrl = new URL(currentUrl, window.location.origin);
+    const pagePath = `${pageUrl.pathname}${pageUrl.search}`;
+    gtag("event", "page_view", { page_path: pagePath });
+  }, [currentUrl]);
+
   useEffect(() => {
     const start = () => void import("@/lib/vitals").then((m) => m.initWebVitals());
     if ("requestIdleCallback" in window) (window as any).requestIdleCallback(start, { timeout: 4000 });

@@ -9,165 +9,125 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TrackRouteImport } from './routes/track'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SurgicalInstrumentsRouteImport } from './routes/surgical-instruments'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ShopRouteImport } from './routes/shop'
-import { Route as ScientificInstrumentsRouteImport } from './routes/scientific-instruments'
-import { Route as SalesRepRouteImport } from './routes/sales-rep'
-import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as ProcurementRouteImport } from './routes/procurement'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as OsogboRouteImport } from './routes/osogbo'
-import { Route as OrderRouteImport } from './routes/order'
-import { Route as NucTextbooksRouteImport } from './routes/nuc-textbooks'
-import { Route as NucAccreditationTextbooksSupplierRouteImport } from './routes/nuc-accreditation-textbooks-supplier'
-import { Route as NucAccreditationBooksRouteImport } from './routes/nuc-accreditation-books'
-import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
-import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
-import { Route as MedicalEquipmentRouteImport } from './routes/medical-equipment'
-import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
-import { Route as LaboratoryEquipmentRouteImport } from './routes/laboratory-equipment'
-import { Route as InternationalBookSellerRouteImport } from './routes/international-book-seller'
-import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
-import { Route as HospitalConsumablesRouteImport } from './routes/hospital-consumables'
-import { Route as GoogleBusinessProfileRouteImport } from './routes/google-business-profile'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as EducationalMaterialsRouteImport } from './routes/educational-materials'
-import { Route as DeliveryInformationRouteImport } from './routes/delivery-information'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CheckoutRouteImport } from './routes/checkout'
-import { Route as CartRouteImport } from './routes/cart'
-import { Route as BusinessSolutionsRouteImport } from './routes/business-solutions'
-import { Route as BooksRouteImport } from './routes/books'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as ProductIdRouteImport } from './routes/product.$id'
-import { Route as CategorySlugRouteImport } from './routes/category.$slug'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BooksRouteImport } from './routes/books'
+import { Route as BusinessSolutionsRouteImport } from './routes/business-solutions'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DeliveryInformationRouteImport } from './routes/delivery-information'
+import { Route as EducationalMaterialsRouteImport } from './routes/educational-materials'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GoogleBusinessProfileRouteImport } from './routes/google-business-profile'
+import { Route as HospitalConsumablesRouteImport } from './routes/hospital-consumables'
+import { Route as HospitalConsumablesAndStationeriesRouteImport } from './routes/hospital-consumables-and-stationeries'
+import { Route as InternationalBookSellerRouteImport } from './routes/international-book-seller'
+import { Route as LaboratoryEquipmentRouteImport } from './routes/laboratory-equipment'
+import { Route as LaboratoryEquipmentSupplierRouteImport } from './routes/laboratory-equipment-supplier'
+import { Route as MedicalEquipmentRouteImport } from './routes/medical-equipment'
+import { Route as MedicalEquipmentSupplierRouteImport } from './routes/medical-equipment-supplier'
+import { Route as MedicalTextbooksSupplierRouteImport } from './routes/medical-textbooks-supplier'
+import { Route as NucAccreditationBooksRouteImport } from './routes/nuc-accreditation-books'
+import { Route as NucAccreditationTextbooksSupplierRouteImport } from './routes/nuc-accreditation-textbooks-supplier'
+import { Route as NucTextbooksRouteImport } from './routes/nuc-textbooks'
+import { Route as OrderRouteImport } from './routes/order'
+import { Route as OsogboRouteImport } from './routes/osogbo'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProcurementRouteImport } from './routes/procurement'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as SalesRepRouteImport } from './routes/sales-rep'
+import { Route as ScientificInstrumentsRouteImport } from './routes/scientific-instruments'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SurgicalInstrumentsRouteImport } from './routes/surgical-instruments'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TrackRouteImport } from './routes/track'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CategorySlugRouteImport } from './routes/category.$slug'
+import { Route as ProductIdRouteImport } from './routes/product.$id'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
-import { Route as ApiPublicVitalsAlertsRouteImport } from './routes/api/public/vitals-alerts'
-import { Route as AuthenticatedAdminVitalsRouteImport } from './routes/_authenticated/admin.vitals'
-import { Route as AuthenticatedAdminSecurityRouteImport } from './routes/_authenticated/admin.security'
-import { Route as AuthenticatedAdminReviewsRouteImport } from './routes/_authenticated/admin.reviews'
-import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
-import { Route as AuthenticatedAdminPricingRouteImport } from './routes/_authenticated/admin.pricing'
-import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
-import { Route as AuthenticatedAdminCustomersRouteImport } from './routes/_authenticated/admin.customers'
 import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin.audit'
+import { Route as AuthenticatedAdminCustomersRouteImport } from './routes/_authenticated/admin.customers'
+import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
+import { Route as AuthenticatedAdminPricingRouteImport } from './routes/_authenticated/admin.pricing'
+import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
+import { Route as AuthenticatedAdminReviewsRouteImport } from './routes/_authenticated/admin.reviews'
+import { Route as AuthenticatedAdminSecurityRouteImport } from './routes/_authenticated/admin.security'
+import { Route as AuthenticatedAdminVitalsRouteImport } from './routes/_authenticated/admin.vitals'
+import { Route as ApiPublicVitalsAlertsRouteImport } from './routes/api/public/vitals-alerts'
 
-const TrackRoute = TrackRouteImport.update({
-  id: '/track',
-  path: '/track',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SurgicalInstrumentsRoute = SurgicalInstrumentsRouteImport.update({
-  id: '/surgical-instruments',
-  path: '/surgical-instruments',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShopRoute = ShopRouteImport.update({
-  id: '/shop',
-  path: '/shop',
+const BooksRoute = BooksRouteImport.update({
+  id: '/books',
+  path: '/books',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ScientificInstrumentsRoute = ScientificInstrumentsRouteImport.update({
-  id: '/scientific-instruments',
-  path: '/scientific-instruments',
+const BusinessSolutionsRoute = BusinessSolutionsRouteImport.update({
+  id: '/business-solutions',
+  path: '/business-solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SalesRepRoute = SalesRepRouteImport.update({
-  id: '/sales-rep',
-  path: '/sales-rep',
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProcurementRoute = ProcurementRouteImport.update({
-  id: '/procurement',
-  path: '/procurement',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
+const DeliveryInformationRoute = DeliveryInformationRouteImport.update({
+  id: '/delivery-information',
+  path: '/delivery-information',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OsogboRoute = OsogboRouteImport.update({
-  id: '/osogbo',
-  path: '/osogbo',
+const EducationalMaterialsRoute = EducationalMaterialsRouteImport.update({
+  id: '/educational-materials',
+  path: '/educational-materials',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OrderRoute = OrderRouteImport.update({
-  id: '/order',
-  path: '/order',
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NucTextbooksRoute = NucTextbooksRouteImport.update({
-  id: '/nuc-textbooks',
-  path: '/nuc-textbooks',
+const GoogleBusinessProfileRoute = GoogleBusinessProfileRouteImport.update({
+  id: '/google-business-profile',
+  path: '/google-business-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NucAccreditationTextbooksSupplierRoute =
-  NucAccreditationTextbooksSupplierRouteImport.update({
-    id: '/nuc-accreditation-textbooks-supplier',
-    path: '/nuc-accreditation-textbooks-supplier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const NucAccreditationBooksRoute = NucAccreditationBooksRouteImport.update({
-  id: '/nuc-accreditation-books',
-  path: '/nuc-accreditation-books',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MedicalTextbooksSupplierRoute =
-  MedicalTextbooksSupplierRouteImport.update({
-    id: '/medical-textbooks-supplier',
-    path: '/medical-textbooks-supplier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MedicalEquipmentSupplierRoute =
-  MedicalEquipmentSupplierRouteImport.update({
-    id: '/medical-equipment-supplier',
-    path: '/medical-equipment-supplier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const MedicalEquipmentRoute = MedicalEquipmentRouteImport.update({
-  id: '/medical-equipment',
-  path: '/medical-equipment',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LaboratoryEquipmentSupplierRoute =
-  LaboratoryEquipmentSupplierRouteImport.update({
-    id: '/laboratory-equipment-supplier',
-    path: '/laboratory-equipment-supplier',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const LaboratoryEquipmentRoute = LaboratoryEquipmentRouteImport.update({
-  id: '/laboratory-equipment',
-  path: '/laboratory-equipment',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InternationalBookSellerRoute = InternationalBookSellerRouteImport.update({
-  id: '/international-book-seller',
-  path: '/international-book-seller',
+const HospitalConsumablesRoute = HospitalConsumablesRouteImport.update({
+  id: '/hospital-consumables',
+  path: '/hospital-consumables',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HospitalConsumablesAndStationeriesRoute =
@@ -176,93 +136,113 @@ const HospitalConsumablesAndStationeriesRoute =
     path: '/hospital-consumables-and-stationeries',
     getParentRoute: () => rootRouteImport,
   } as any)
-const HospitalConsumablesRoute = HospitalConsumablesRouteImport.update({
-  id: '/hospital-consumables',
-  path: '/hospital-consumables',
+const InternationalBookSellerRoute = InternationalBookSellerRouteImport.update({
+  id: '/international-book-seller',
+  path: '/international-book-seller',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GoogleBusinessProfileRoute = GoogleBusinessProfileRouteImport.update({
-  id: '/google-business-profile',
-  path: '/google-business-profile',
+const LaboratoryEquipmentRoute = LaboratoryEquipmentRouteImport.update({
+  id: '/laboratory-equipment',
+  path: '/laboratory-equipment',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
+const LaboratoryEquipmentSupplierRoute =
+  LaboratoryEquipmentSupplierRouteImport.update({
+    id: '/laboratory-equipment-supplier',
+    path: '/laboratory-equipment-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MedicalEquipmentRoute = MedicalEquipmentRouteImport.update({
+  id: '/medical-equipment',
+  path: '/medical-equipment',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EducationalMaterialsRoute = EducationalMaterialsRouteImport.update({
-  id: '/educational-materials',
-  path: '/educational-materials',
+const MedicalEquipmentSupplierRoute =
+  MedicalEquipmentSupplierRouteImport.update({
+    id: '/medical-equipment-supplier',
+    path: '/medical-equipment-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MedicalTextbooksSupplierRoute =
+  MedicalTextbooksSupplierRouteImport.update({
+    id: '/medical-textbooks-supplier',
+    path: '/medical-textbooks-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const NucAccreditationBooksRoute = NucAccreditationBooksRouteImport.update({
+  id: '/nuc-accreditation-books',
+  path: '/nuc-accreditation-books',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DeliveryInformationRoute = DeliveryInformationRouteImport.update({
-  id: '/delivery-information',
-  path: '/delivery-information',
+const NucAccreditationTextbooksSupplierRoute =
+  NucAccreditationTextbooksSupplierRouteImport.update({
+    id: '/nuc-accreditation-textbooks-supplier',
+    path: '/nuc-accreditation-textbooks-supplier',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const NucTextbooksRoute = NucTextbooksRouteImport.update({
+  id: '/nuc-textbooks',
+  path: '/nuc-textbooks',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const OrderRoute = OrderRouteImport.update({
+  id: '/order',
+  path: '/order',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheckoutRoute = CheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
+const OsogboRoute = OsogboRouteImport.update({
+  id: '/osogbo',
+  path: '/osogbo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CartRoute = CartRouteImport.update({
-  id: '/cart',
-  path: '/cart',
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BusinessSolutionsRoute = BusinessSolutionsRouteImport.update({
-  id: '/business-solutions',
-  path: '/business-solutions',
+const ProcurementRoute = ProcurementRouteImport.update({
+  id: '/procurement',
+  path: '/procurement',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BooksRoute = BooksRouteImport.update({
-  id: '/books',
-  path: '/books',
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
+const SalesRepRoute = SalesRepRouteImport.update({
+  id: '/sales-rep',
+  path: '/sales-rep',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const ScientificInstrumentsRoute = ScientificInstrumentsRouteImport.update({
+  id: '/scientific-instruments',
+  path: '/scientific-instruments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
+const SurgicalInstrumentsRoute = SurgicalInstrumentsRouteImport.update({
+  id: '/surgical-instruments',
+  path: '/surgical-instruments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductIdRoute = ProductIdRouteImport.update({
-  id: '/product/$id',
-  path: '/product/$id',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CategorySlugRoute = CategorySlugRouteImport.update({
-  id: '/category/$slug',
-  path: '/category/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
+const TrackRoute = TrackRouteImport.update({
+  id: '/track',
+  path: '/track',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
@@ -270,44 +250,40 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategorySlugRoute = CategorySlugRouteImport.update({
+  id: '/category/$slug',
+  path: '/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductIdRoute = ProductIdRouteImport.update({
+  id: '/product/$id',
+  path: '/product/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const ApiPublicVitalsAlertsRoute = ApiPublicVitalsAlertsRouteImport.update({
-  id: '/api/public/vitals-alerts',
-  path: '/api/public/vitals-alerts',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedAdminAuditRoute = AuthenticatedAdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
-const AuthenticatedAdminVitalsRoute =
-  AuthenticatedAdminVitalsRouteImport.update({
-    id: '/vitals',
-    path: '/vitals',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminSecurityRoute =
-  AuthenticatedAdminSecurityRouteImport.update({
-    id: '/security',
-    path: '/security',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminReviewsRoute =
-  AuthenticatedAdminReviewsRouteImport.update({
-    id: '/reviews',
-    path: '/reviews',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminProductsRoute =
-  AuthenticatedAdminProductsRouteImport.update({
-    id: '/products',
-    path: '/products',
-    getParentRoute: () => AuthenticatedAdminRoute,
-  } as any)
-const AuthenticatedAdminPricingRoute =
-  AuthenticatedAdminPricingRouteImport.update({
-    id: '/pricing',
-    path: '/pricing',
+const AuthenticatedAdminCustomersRoute =
+  AuthenticatedAdminCustomersRouteImport.update({
+    id: '/customers',
+    path: '/customers',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 const AuthenticatedAdminOrdersRoute =
@@ -316,16 +292,40 @@ const AuthenticatedAdminOrdersRoute =
     path: '/orders',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminCustomersRoute =
-  AuthenticatedAdminCustomersRouteImport.update({
-    id: '/customers',
-    path: '/customers',
+const AuthenticatedAdminPricingRoute =
+  AuthenticatedAdminPricingRouteImport.update({
+    id: '/pricing',
+    path: '/pricing',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
-const AuthenticatedAdminAuditRoute = AuthenticatedAdminAuditRouteImport.update({
-  id: '/audit',
-  path: '/audit',
-  getParentRoute: () => AuthenticatedAdminRoute,
+const AuthenticatedAdminProductsRoute =
+  AuthenticatedAdminProductsRouteImport.update({
+    id: '/products',
+    path: '/products',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminReviewsRoute =
+  AuthenticatedAdminReviewsRouteImport.update({
+    id: '/reviews',
+    path: '/reviews',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminSecurityRoute =
+  AuthenticatedAdminSecurityRouteImport.update({
+    id: '/security',
+    path: '/security',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminVitalsRoute =
+  AuthenticatedAdminVitalsRouteImport.update({
+    id: '/vitals',
+    path: '/vitals',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const ApiPublicVitalsAlertsRoute = ApiPublicVitalsAlertsRouteImport.update({
+  id: '/api/public/vitals-alerts',
+  path: '/api/public/vitals-alerts',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -690,242 +690,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/track': {
-      id: '/track'
-      path: '/track'
-      fullPath: '/track'
-      preLoaderRoute: typeof TrackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/surgical-instruments': {
-      id: '/surgical-instruments'
-      path: '/surgical-instruments'
-      fullPath: '/surgical-instruments'
-      preLoaderRoute: typeof SurgicalInstrumentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/shop': {
-      id: '/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof ShopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/scientific-instruments': {
-      id: '/scientific-instruments'
-      path: '/scientific-instruments'
-      fullPath: '/scientific-instruments'
-      preLoaderRoute: typeof ScientificInstrumentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sales-rep': {
-      id: '/sales-rep'
-      path: '/sales-rep'
-      fullPath: '/sales-rep'
-      preLoaderRoute: typeof SalesRepRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/procurement': {
-      id: '/procurement'
-      path: '/procurement'
-      fullPath: '/procurement'
-      preLoaderRoute: typeof ProcurementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/osogbo': {
-      id: '/osogbo'
-      path: '/osogbo'
-      fullPath: '/osogbo'
-      preLoaderRoute: typeof OsogboRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/order': {
-      id: '/order'
-      path: '/order'
-      fullPath: '/order'
-      preLoaderRoute: typeof OrderRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nuc-textbooks': {
-      id: '/nuc-textbooks'
-      path: '/nuc-textbooks'
-      fullPath: '/nuc-textbooks'
-      preLoaderRoute: typeof NucTextbooksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nuc-accreditation-textbooks-supplier': {
-      id: '/nuc-accreditation-textbooks-supplier'
-      path: '/nuc-accreditation-textbooks-supplier'
-      fullPath: '/nuc-accreditation-textbooks-supplier'
-      preLoaderRoute: typeof NucAccreditationTextbooksSupplierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nuc-accreditation-books': {
-      id: '/nuc-accreditation-books'
-      path: '/nuc-accreditation-books'
-      fullPath: '/nuc-accreditation-books'
-      preLoaderRoute: typeof NucAccreditationBooksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/medical-textbooks-supplier': {
-      id: '/medical-textbooks-supplier'
-      path: '/medical-textbooks-supplier'
-      fullPath: '/medical-textbooks-supplier'
-      preLoaderRoute: typeof MedicalTextbooksSupplierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/medical-equipment-supplier': {
-      id: '/medical-equipment-supplier'
-      path: '/medical-equipment-supplier'
-      fullPath: '/medical-equipment-supplier'
-      preLoaderRoute: typeof MedicalEquipmentSupplierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/medical-equipment': {
-      id: '/medical-equipment'
-      path: '/medical-equipment'
-      fullPath: '/medical-equipment'
-      preLoaderRoute: typeof MedicalEquipmentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/laboratory-equipment-supplier': {
-      id: '/laboratory-equipment-supplier'
-      path: '/laboratory-equipment-supplier'
-      fullPath: '/laboratory-equipment-supplier'
-      preLoaderRoute: typeof LaboratoryEquipmentSupplierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/laboratory-equipment': {
-      id: '/laboratory-equipment'
-      path: '/laboratory-equipment'
-      fullPath: '/laboratory-equipment'
-      preLoaderRoute: typeof LaboratoryEquipmentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/international-book-seller': {
-      id: '/international-book-seller'
-      path: '/international-book-seller'
-      fullPath: '/international-book-seller'
-      preLoaderRoute: typeof InternationalBookSellerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hospital-consumables-and-stationeries': {
-      id: '/hospital-consumables-and-stationeries'
-      path: '/hospital-consumables-and-stationeries'
-      fullPath: '/hospital-consumables-and-stationeries'
-      preLoaderRoute: typeof HospitalConsumablesAndStationeriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hospital-consumables': {
-      id: '/hospital-consumables'
-      path: '/hospital-consumables'
-      fullPath: '/hospital-consumables'
-      preLoaderRoute: typeof HospitalConsumablesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/google-business-profile': {
-      id: '/google-business-profile'
-      path: '/google-business-profile'
-      fullPath: '/google-business-profile'
-      preLoaderRoute: typeof GoogleBusinessProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/educational-materials': {
-      id: '/educational-materials'
-      path: '/educational-materials'
-      fullPath: '/educational-materials'
-      preLoaderRoute: typeof EducationalMaterialsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/delivery-information': {
-      id: '/delivery-information'
-      path: '/delivery-information'
-      fullPath: '/delivery-information'
-      preLoaderRoute: typeof DeliveryInformationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout': {
-      id: '/checkout'
-      path: '/checkout'
-      fullPath: '/checkout'
-      preLoaderRoute: typeof CheckoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cart': {
-      id: '/cart'
-      path: '/cart'
-      fullPath: '/cart'
-      preLoaderRoute: typeof CartRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/business-solutions': {
-      id: '/business-solutions'
-      path: '/business-solutions'
-      fullPath: '/business-solutions'
-      preLoaderRoute: typeof BusinessSolutionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/books': {
-      id: '/books'
-      path: '/books'
-      fullPath: '/books'
-      preLoaderRoute: typeof BooksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -935,39 +704,242 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/product/$id': {
-      id: '/product/$id'
-      path: '/product/$id'
-      fullPath: '/product/$id'
-      preLoaderRoute: typeof ProductIdRouteImport
+    '/books': {
+      id: '/books'
+      path: '/books'
+      fullPath: '/books'
+      preLoaderRoute: typeof BooksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/category/$slug': {
-      id: '/category/$slug'
-      path: '/category/$slug'
-      fullPath: '/category/$slug'
-      preLoaderRoute: typeof CategorySlugRouteImport
+    '/business-solutions': {
+      id: '/business-solutions'
+      path: '/business-solutions'
+      fullPath: '/business-solutions'
+      preLoaderRoute: typeof BusinessSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delivery-information': {
+      id: '/delivery-information'
+      path: '/delivery-information'
+      fullPath: '/delivery-information'
+      preLoaderRoute: typeof DeliveryInformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/educational-materials': {
+      id: '/educational-materials'
+      path: '/educational-materials'
+      fullPath: '/educational-materials'
+      preLoaderRoute: typeof EducationalMaterialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/google-business-profile': {
+      id: '/google-business-profile'
+      path: '/google-business-profile'
+      fullPath: '/google-business-profile'
+      preLoaderRoute: typeof GoogleBusinessProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hospital-consumables': {
+      id: '/hospital-consumables'
+      path: '/hospital-consumables'
+      fullPath: '/hospital-consumables'
+      preLoaderRoute: typeof HospitalConsumablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hospital-consumables-and-stationeries': {
+      id: '/hospital-consumables-and-stationeries'
+      path: '/hospital-consumables-and-stationeries'
+      fullPath: '/hospital-consumables-and-stationeries'
+      preLoaderRoute: typeof HospitalConsumablesAndStationeriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/international-book-seller': {
+      id: '/international-book-seller'
+      path: '/international-book-seller'
+      fullPath: '/international-book-seller'
+      preLoaderRoute: typeof InternationalBookSellerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laboratory-equipment': {
+      id: '/laboratory-equipment'
+      path: '/laboratory-equipment'
+      fullPath: '/laboratory-equipment'
+      preLoaderRoute: typeof LaboratoryEquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laboratory-equipment-supplier': {
+      id: '/laboratory-equipment-supplier'
+      path: '/laboratory-equipment-supplier'
+      fullPath: '/laboratory-equipment-supplier'
+      preLoaderRoute: typeof LaboratoryEquipmentSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-equipment': {
+      id: '/medical-equipment'
+      path: '/medical-equipment'
+      fullPath: '/medical-equipment'
+      preLoaderRoute: typeof MedicalEquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-equipment-supplier': {
+      id: '/medical-equipment-supplier'
+      path: '/medical-equipment-supplier'
+      fullPath: '/medical-equipment-supplier'
+      preLoaderRoute: typeof MedicalEquipmentSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-textbooks-supplier': {
+      id: '/medical-textbooks-supplier'
+      path: '/medical-textbooks-supplier'
+      fullPath: '/medical-textbooks-supplier'
+      preLoaderRoute: typeof MedicalTextbooksSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nuc-accreditation-books': {
+      id: '/nuc-accreditation-books'
+      path: '/nuc-accreditation-books'
+      fullPath: '/nuc-accreditation-books'
+      preLoaderRoute: typeof NucAccreditationBooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nuc-accreditation-textbooks-supplier': {
+      id: '/nuc-accreditation-textbooks-supplier'
+      path: '/nuc-accreditation-textbooks-supplier'
+      fullPath: '/nuc-accreditation-textbooks-supplier'
+      preLoaderRoute: typeof NucAccreditationTextbooksSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nuc-textbooks': {
+      id: '/nuc-textbooks'
+      path: '/nuc-textbooks'
+      fullPath: '/nuc-textbooks'
+      preLoaderRoute: typeof NucTextbooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/osogbo': {
+      id: '/osogbo'
+      path: '/osogbo'
+      fullPath: '/osogbo'
+      preLoaderRoute: typeof OsogboRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/procurement': {
+      id: '/procurement'
+      path: '/procurement'
+      fullPath: '/procurement'
+      preLoaderRoute: typeof ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-rep': {
+      id: '/sales-rep'
+      path: '/sales-rep'
+      fullPath: '/sales-rep'
+      preLoaderRoute: typeof SalesRepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scientific-instruments': {
+      id: '/scientific-instruments'
+      path: '/scientific-instruments'
+      fullPath: '/scientific-instruments'
+      preLoaderRoute: typeof ScientificInstrumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/surgical-instruments': {
+      id: '/surgical-instruments'
+      path: '/surgical-instruments'
+      fullPath: '/surgical-instruments'
+      preLoaderRoute: typeof SurgicalInstrumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/track': {
+      id: '/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof TrackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -977,6 +949,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/category/$slug': {
+      id: '/category/$slug'
+      path: '/category/$slug'
+      fullPath: '/category/$slug'
+      preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$id': {
+      id: '/product/$id'
+      path: '/product/$id'
+      fullPath: '/product/$id'
+      preLoaderRoute: typeof ProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin/': {
       id: '/_authenticated/admin/'
       path: '/'
@@ -984,53 +984,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/api/public/vitals-alerts': {
-      id: '/api/public/vitals-alerts'
-      path: '/api/public/vitals-alerts'
-      fullPath: '/api/public/vitals-alerts'
-      preLoaderRoute: typeof ApiPublicVitalsAlertsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/admin/vitals': {
-      id: '/_authenticated/admin/vitals'
-      path: '/vitals'
-      fullPath: '/admin/vitals'
-      preLoaderRoute: typeof AuthenticatedAdminVitalsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/security': {
-      id: '/_authenticated/admin/security'
-      path: '/security'
-      fullPath: '/admin/security'
-      preLoaderRoute: typeof AuthenticatedAdminSecurityRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/reviews': {
-      id: '/_authenticated/admin/reviews'
-      path: '/reviews'
-      fullPath: '/admin/reviews'
-      preLoaderRoute: typeof AuthenticatedAdminReviewsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/products': {
-      id: '/_authenticated/admin/products'
-      path: '/products'
-      fullPath: '/admin/products'
-      preLoaderRoute: typeof AuthenticatedAdminProductsRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/pricing': {
-      id: '/_authenticated/admin/pricing'
-      path: '/pricing'
-      fullPath: '/admin/pricing'
-      preLoaderRoute: typeof AuthenticatedAdminPricingRouteImport
-      parentRoute: typeof AuthenticatedAdminRoute
-    }
-    '/_authenticated/admin/orders': {
-      id: '/_authenticated/admin/orders'
-      path: '/orders'
-      fullPath: '/admin/orders'
-      preLoaderRoute: typeof AuthenticatedAdminOrdersRouteImport
+    '/_authenticated/admin/audit': {
+      id: '/_authenticated/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AuthenticatedAdminAuditRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/admin/customers': {
@@ -1040,12 +998,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminCustomersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
-    '/_authenticated/admin/audit': {
-      id: '/_authenticated/admin/audit'
-      path: '/audit'
-      fullPath: '/admin/audit'
-      preLoaderRoute: typeof AuthenticatedAdminAuditRouteImport
+    '/_authenticated/admin/orders': {
+      id: '/_authenticated/admin/orders'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AuthenticatedAdminOrdersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/pricing': {
+      id: '/_authenticated/admin/pricing'
+      path: '/pricing'
+      fullPath: '/admin/pricing'
+      preLoaderRoute: typeof AuthenticatedAdminPricingRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/products': {
+      id: '/_authenticated/admin/products'
+      path: '/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof AuthenticatedAdminProductsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/reviews': {
+      id: '/_authenticated/admin/reviews'
+      path: '/reviews'
+      fullPath: '/admin/reviews'
+      preLoaderRoute: typeof AuthenticatedAdminReviewsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/security': {
+      id: '/_authenticated/admin/security'
+      path: '/security'
+      fullPath: '/admin/security'
+      preLoaderRoute: typeof AuthenticatedAdminSecurityRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/vitals': {
+      id: '/_authenticated/admin/vitals'
+      path: '/vitals'
+      fullPath: '/admin/vitals'
+      preLoaderRoute: typeof AuthenticatedAdminVitalsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/api/public/vitals-alerts': {
+      id: '/api/public/vitals-alerts'
+      path: '/api/public/vitals-alerts'
+      fullPath: '/api/public/vitals-alerts'
+      preLoaderRoute: typeof ApiPublicVitalsAlertsRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
