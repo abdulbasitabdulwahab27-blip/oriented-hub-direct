@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, createRootRouteWithContext, useRouter, useRouterState, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
 
@@ -134,6 +134,28 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const currentUrl = useRouterState({ select: (state) => state.location.href });
+
+  useEffect(() => {
+    const measurementId = "G-9N5H2DNVPJ";
+    const pageUrl = new URL(currentUrl, window.location.origin);
+    const pagePath = `${pageUrl.pathname}${pageUrl.search}`;
+    const analyticsWindow = window as Window & { dataLayer?: IArguments[] };
+    analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+    const gtag = (...args: unknown[]) => analyticsWindow.dataLayer?.push(args as unknown as IArguments);
+
+    if (!document.querySelector(`script[src="https://www.googletagmanager.com/gtag/js?id=${measurementId}"]`)) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.appendChild(script);
+    }
+
+    gtag("js", new Date());
+    gtag("config", measurementId, { send_page_view: false });
+    gtag("event", "page_view", { page_path: pagePath });
+  }, [currentUrl]);
+
   useEffect(() => {
     const start = () => void import("@/lib/vitals").then((m) => m.initWebVitals());
     if ("requestIdleCallback" in window) (window as any).requestIdleCallback(start, { timeout: 4000 });
