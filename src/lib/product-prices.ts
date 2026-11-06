@@ -9,6 +9,7 @@ export async function fetchPriceMap(): Promise<Record<string, PriceRow>> {
   if (error) return {};
   const map: Record<string, PriceRow> = {};
   for (const row of data ?? []) {
+    if (typeof row.slug !== "string") continue;
     map[row.slug] = { slug: row.slug, price: Number(row.price) || 0, currency: row.currency || "NGN" };
   }
   return map;

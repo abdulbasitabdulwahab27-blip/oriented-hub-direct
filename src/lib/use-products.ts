@@ -65,6 +65,7 @@ export function useAllProducts() {
 
       const map: Record<string, { price: number; currency: string }> = {};
       for (const row of priceRes.data ?? []) {
+        if (typeof row.slug !== "string") continue;
         map[row.slug] = { price: Number(row.price) || 0, currency: row.currency || "NGN" };
       }
       setPriceMap(map);
