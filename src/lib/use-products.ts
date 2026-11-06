@@ -49,11 +49,11 @@ export function useAllProducts() {
       const { supabase } = await import("@/integrations/supabase/client");
       const [prodRes, priceRes] = await Promise.all([
         supabase
-          .from("products")
+          .from("catalog_products")
           .select("id, slug, name, category, image, description, features, best_seller, price, currency, stock, track_stock")
           .order("sort_order", { ascending: true })
           .order("created_at", { ascending: false }),
-        supabase.from("product_prices").select("slug, price, currency"),
+        supabase.from("catalog_product_prices").select("slug, price, currency"),
       ]);
       if (cancelled) return;
       if (prodRes.error) {
@@ -65,6 +65,7 @@ export function useAllProducts() {
 
       const map: Record<string, { price: number; currency: string }> = {};
       for (const row of priceRes.data ?? []) {
+        if (typeof row.slug !== "string") continue;
         map[row.slug] = { price: Number(row.price) || 0, currency: row.currency || "NGN" };
       }
       setPriceMap(map);

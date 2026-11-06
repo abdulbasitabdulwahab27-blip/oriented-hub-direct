@@ -5,10 +5,11 @@ import { productSlugAliases, products, type Product } from "@/lib/products";
 export type PriceRow = { slug: string; price: number; currency: string };
 
 export async function fetchPriceMap(): Promise<Record<string, PriceRow>> {
-  const { data, error } = await supabase.from("product_prices").select("slug, price, currency");
+  const { data, error } = await supabase.from("catalog_product_prices").select("slug, price, currency");
   if (error) return {};
   const map: Record<string, PriceRow> = {};
   for (const row of data ?? []) {
+    if (typeof row.slug !== "string") continue;
     map[row.slug] = { slug: row.slug, price: Number(row.price) || 0, currency: row.currency || "NGN" };
   }
   return map;
