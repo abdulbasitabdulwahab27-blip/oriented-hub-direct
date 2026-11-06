@@ -382,7 +382,81 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      catalog_product_prices: {
+        Row: {
+          currency: string | null
+          price: number | null
+          slug: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          currency?: string | null
+          price?: number | null
+          slug?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          currency?: string | null
+          price?: number | null
+          slug?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      catalog_products: {
+        Row: {
+          best_seller: boolean | null
+          category: string | null
+          created_at: string | null
+          currency: string | null
+          description: string | null
+          features: string[] | null
+          id: string | null
+          image: string | null
+          name: string | null
+          price: number | null
+          slug: string | null
+          sort_order: number | null
+          stock: number | null
+          track_stock: boolean | null
+          updated_at: string | null
+        }
+        Insert: {
+          best_seller?: boolean | null
+          category?: string | null
+          created_at?: string | null
+          currency?: string | null
+          description?: string | null
+          features?: string[] | null
+          id?: string | null
+          image?: string | null
+          name?: string | null
+          price?: number | null
+          slug?: string | null
+          sort_order?: number | null
+          stock?: number | null
+          track_stock?: boolean | null
+          updated_at?: string | null
+        }
+        Update: {
+          best_seller?: boolean | null
+          category?: string | null
+          created_at?: string | null
+          currency?: string | null
+          description?: string | null
+          features?: string[] | null
+          id?: string | null
+          image?: string | null
+          name?: string | null
+          price?: number | null
+          slug?: string | null
+          sort_order?: number | null
+          stock?: number | null
+          track_stock?: boolean | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       rls_policy_inventory: { Args: never; Returns: Json }
