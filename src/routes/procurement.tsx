@@ -119,7 +119,7 @@ function ProcurementPage() {
               : null;
     const candidates = catalogProducts
       .filter((product) => !categorySlug || product.category === categorySlug)
-      .slice(0, 250)
+      .slice(0, 100)
       .map((product) => ({
         id: product.id,
         slug: product.slug,
@@ -369,6 +369,90 @@ function ProcurementPage() {
               />
               <span className="mt-1 block text-xs text-muted-foreground">{form.items.length}/3000 characters</span>
             </label>
+
+            <section aria-labelledby="procurement-match-heading" className="rounded-lg border border-border bg-muted/30 p-4 sm:p-5">
+              <div className="flex items-start gap-3">
+                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <div className="min-w-0 flex-1">
+                  <h3 id="procurement-match-heading" className="font-semibold">Find matching catalog products</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Get suggestions from your requirement list. Confirm editions and specifications with our procurement team before purchase.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={findMatches}
+                    disabled={matching || catalogLoading || form.items.trim().length < 3}
+                    className="mt-3 inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <Sparkles className="h-4 w-4" aria-hidden="true" />
+                    {matching ? "Finding matches…" : catalogLoading ? "Loading catalog…" : "Suggest matching products"}
+                  </button>
+                </div>
+              </div>
+
+              {matchError && <p role="status" className="mt-4 text-sm text-muted-foreground">{matchError}</p>}
+              {clarification && recommendations.length > 0 && (
+                <p role="status" className="mt-4 text-sm text-muted-foreground">{clarification}</p>
+              )}
+              {recommendations.length > 0 && (
+                <div className="mt-4 border-t border-border pt-4">
+                  <p className="text-sm font-semibold">Review suggested products</p>
+                  <ul className="mt-3 divide-y divide-border">
+                    {recommendations.map((item) => {
+                      const product = catalogProducts.find((candidate) => candidate.id === item.productId);
+                      if (!product) return null;
+                      return (
+                        <li key={item.productId} className="grid gap-3 py-3 sm:grid-cols-[minmax(0,1fr)_110px] sm:items-start">
+                          <label className="flex min-w-0 items-start gap-3">
+                            <input
+                              type="checkbox"
+                              checked={item.selected}
+                              onChange={(event) => setRecommendations((current) => current.map((suggestion) =>
+                                suggestion.productId === item.productId ? { ...suggestion, selected: event.target.checked } : suggestion,
+                              ))}
+                              className="mt-1 h-4 w-4 shrink-0 accent-primary"
+                            />
+                            <span className="min-w-0">
+                              <span className="block text-sm font-semibold">{product.name}</span>
+                              <span className="mt-1 block text-xs text-muted-foreground">{item.reason}</span>
+                            </span>
+                          </label>
+                          <label className="flex items-center gap-2 pl-7 text-sm sm:pl-0">
+                            <span className="text-muted-foreground">Qty</span>
+                            <input
+                              type="number"
+                              min={1}
+                              max={1000}
+                              step={1}
+                              inputMode="numeric"
+                              aria-label={`Quantity for ${product.name}`}
+                              value={item.quantity}
+                              onChange={(event) => {
+                                const quantity = Number(event.target.value);
+                                setRecommendations((current) => current.map((suggestion) =>
+                                  suggestion.productId === item.productId
+                                    ? { ...suggestion, quantity: Number.isInteger(quantity) ? Math.max(1, Math.min(1000, quantity)) : 1 }
+                                    : suggestion,
+                                ));
+                              }}
+                              className="w-20 rounded-md border border-input bg-background px-2 py-2 text-sm"
+                            />
+                          </label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={addMatchesToRequest}
+                    className="mt-3 inline-flex min-h-10 items-center justify-center rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold hover:bg-muted"
+                  >
+                    Add selected to requirement list
+                  </button>
+                  <p className="mt-2 text-xs text-muted-foreground">Suggestions are not a final quote or confirmation of stock. Your original request stays in the list for review.</p>
+                </div>
+              )}
+            </section>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block">
