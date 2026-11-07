@@ -41,7 +41,7 @@ function createRunIdFetch(initialRunId?: string): typeof fetch {
 }
 
 export class ProcurementMatcherError extends Error {
-  constructor(message: string) {
+  constructor(message: string, readonly statusCode?: number) {
     super(message);
     this.name = "ProcurementMatcherError";
   }
@@ -122,6 +122,7 @@ export async function matchProcurementProducts(input: MatchInput) {
   } catch (error) {
     if (input.request.signal.aborted) throw error;
     if (error instanceof ProcurementMatcherError) throw error;
-    throw new ProcurementMatcherError(providerMessage(error));
+    const statusCode = APICallError.isInstance(error) ? error.statusCode : undefined;
+    throw new ProcurementMatcherError(providerMessage(error), statusCode);
   }
 }

@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequest } from "@tanstack/react-start/server";
+import { getRequest, setResponseStatus } from "@tanstack/react-start/server";
 import { z } from "zod";
 
 const candidateSchema = z.object({
@@ -37,6 +37,10 @@ export const recommendProcurementProducts = createServerFn({ method: "POST" })
       return { ok: true as const, ...result };
     } catch (error) {
       if (request.signal.aborted) throw error;
+      const { ProcurementMatcherError } = await import("@/lib/procurement-matcher.server");
+      if (error instanceof ProcurementMatcherError && error.statusCode) {
+        setResponseStatus(error.statusCode);
+      }
       return {
         ok: false as const,
         error: error instanceof Error
