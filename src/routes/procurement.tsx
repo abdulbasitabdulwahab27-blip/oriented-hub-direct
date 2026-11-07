@@ -2,10 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Building2, BadgePercent, FileSpreadsheet, Truck, ShieldCheck, Phone, Mail, MapPin } from "lucide-react";
+import { Building2, BadgePercent, FileSpreadsheet, Truck, ShieldCheck, Phone, Mail, MapPin, Sparkles } from "lucide-react";
 import { waLink, EMAIL, ADDRESS, WHATSAPP_PRIMARY, WHATSAPP_ALT } from "@/lib/whatsapp";
 import { canonicalLink, pageMeta } from "@/lib/seo";
 import { emailOrder } from "@/lib/order-email.functions";
+import { useAllProducts } from "@/lib/use-products";
+import { recommendProcurementProducts } from "@/lib/procurement-matcher.functions";
 
 const schema = z.object({
   institution: z.string().trim().min(2, "Enter the institution name").max(200),
@@ -70,6 +72,7 @@ export const Route = createFileRoute("/procurement")({
 });
 
 function ProcurementPage() {
+  const { products: catalogProducts, loading: catalogLoading } = useAllProducts();
   const [form, setForm] = useState({
     institution: "",
     contactName: "",
@@ -85,9 +88,85 @@ function ProcurementPage() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [tracking, setTracking] = useState<string | null>(null);
+  const [matching, setMatching] = useState(false);
+  const [matchError, setMatchError] = useState("");
+  const [clarification, setClarification] = useState("");
+  const [recommendations, setRecommendations] = useState<Array<{ productId: string; quantity: number; reason: string; selected: boolean }>>([]);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm({ ...form, [k]: e.target.value });
+
+  const findMatches = async () => {
+    if (form.items.trim().length < 3) {
+      toast.error("Describe the items you need first.");
+      return;
+    }
+    if (catalogLoading || catalogProducts.length === 0) {
+      setMatchError("The catalog is still loading. Please try again in a moment.");
+      return;
+    }
+
+    const categorySlug = form.category === "Medical & nursing textbooks" || form.category === "NUC accreditation textbooks"
+      ? "books"
+      : form.category === "Laboratory equipment & reagents"
+        ? "laboratory"
+        : form.category === "Medical equipment & simulators"
+          ? "medical-equipment"
+          : form.category === "Hospital consumables"
+            ? "consumables"
+            : form.category === "Educational materials & stationery"
+              ? "educational"
+              : null;
+    const candidates = catalogProducts
+      .filter((product) => !categorySlug || product.category === categorySlug)
+      .slice(0, 250)
+      .map((product) => ({
+        id: product.id,
+        slug: product.slug,
+        name: product.name.slice(0, 180),
+        category: product.category.slice(0, 100),
+        description: product.description.slice(0, 450),
+        features: product.features.slice(0, 8).map((feature) => feature.slice(0, 120)),
+      }));
+
+    setMatching(true);
+    setMatchError("");
+    setClarification("");
+    setRecommendations([]);
+    try {
+      const result = await recommendProcurementProducts({ data: { need: form.items.trim(), candidates } });
+      if (!result.ok) {
+        setMatchError(result.error);
+        return;
+      }
+      setRecommendations(result.recommendations.map((item) => ({ ...item, selected: true })));
+      setClarification(result.clarification);
+      if (result.recommendations.length === 0) {
+        setMatchError(result.clarification || "No clear catalog match was found. Keep your requirement text and submit it for manual review.");
+      }
+    } catch (error) {
+      setMatchError(error instanceof Error ? error.message : "Recommendations are unavailable. Enter your requirements manually.");
+    } finally {
+      setMatching(false);
+    }
+  };
+
+  const addMatchesToRequest = () => {
+    const lines = recommendations
+      .filter((item) => item.selected)
+      .map((item) => {
+        const product = catalogProducts.find((candidate) => candidate.id === item.productId);
+        return product ? `${item.quantity} × ${product.name}` : null;
+      })
+      .filter((line): line is string => line !== null);
+    if (lines.length === 0) {
+      toast.error("Select at least one product to add.");
+      return;
+    }
+    const existing = form.items.trim();
+    setForm({ ...form, items: [existing, ...lines].filter(Boolean).join("\n") });
+    toast.success("Selected products added to your requirement list. Review and edit it before submitting.");
+  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
