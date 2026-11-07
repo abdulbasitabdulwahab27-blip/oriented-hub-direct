@@ -2,10 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Building2, BadgePercent, FileSpreadsheet, Truck, ShieldCheck, Phone, Mail, MapPin } from "lucide-react";
+import { Building2, BadgePercent, FileSpreadsheet, Truck, ShieldCheck, Phone, Mail, MapPin, Sparkles } from "lucide-react";
 import { waLink, EMAIL, ADDRESS, WHATSAPP_PRIMARY, WHATSAPP_ALT } from "@/lib/whatsapp";
 import { canonicalLink, pageMeta } from "@/lib/seo";
 import { emailOrder } from "@/lib/order-email.functions";
+import { useAllProducts } from "@/lib/use-products";
+import { recommendProcurementProducts } from "@/lib/procurement-matcher.functions";
 
 const schema = z.object({
   institution: z.string().trim().min(2, "Enter the institution name").max(200),
@@ -70,6 +72,7 @@ export const Route = createFileRoute("/procurement")({
 });
 
 function ProcurementPage() {
+  const { products: catalogProducts, loading: catalogLoading } = useAllProducts();
   const [form, setForm] = useState({
     institution: "",
     contactName: "",
@@ -85,9 +88,90 @@ function ProcurementPage() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [tracking, setTracking] = useState<string | null>(null);
+  const [matching, setMatching] = useState(false);
+  const [matchError, setMatchError] = useState("");
+  const [clarification, setClarification] = useState("");
+  const [recommendations, setRecommendations] = useState<Array<{ productId: string; quantity: number; reason: string; selected: boolean }>>([]);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm({ ...form, [k]: e.target.value });
+
+  const findMatches = async () => {
+    if (form.items.trim().length < 3) {
+      toast.error("Describe the items you need first.");
+      return;
+    }
+    if (catalogLoading || catalogProducts.length === 0) {
+      setMatchError("The catalog is still loading. Please try again in a moment.");
+      return;
+    }
+
+    const categorySlug = form.category === "Medical & nursing textbooks" || form.category === "NUC accreditation textbooks"
+      ? "books"
+      : form.category === "Laboratory equipment & reagents"
+        ? "laboratory"
+        : form.category === "Medical equipment & simulators"
+          ? "medical-equipment"
+          : form.category === "Hospital consumables"
+            ? "consumables"
+            : form.category === "Educational materials & stationery"
+              ? "educational"
+              : null;
+    const candidates = catalogProducts
+      .filter((product) => !categorySlug || product.category === categorySlug)
+      .slice(0, 100)
+      .map((product) => ({
+        id: product.id,
+        slug: product.slug,
+        name: product.name.slice(0, 180),
+        category: product.category.slice(0, 100),
+        description: product.description.slice(0, 450),
+        features: product.features.slice(0, 8).map((feature) => feature.slice(0, 120)),
+      }));
+
+    setMatching(true);
+    setMatchError("");
+    setClarification("");
+    setRecommendations([]);
+    try {
+      const result = await recommendProcurementProducts({ data: { need: form.items.trim(), candidates } });
+      if (!result.ok) {
+        setMatchError(result.error);
+        return;
+      }
+      setRecommendations(result.recommendations.map((item) => ({ ...item, selected: true })));
+      setClarification(result.clarification);
+      if (result.recommendations.length === 0) {
+        setMatchError(result.clarification || "No clear catalog match was found. Keep your requirement text and submit it for manual review.");
+      }
+    } catch (error) {
+      setMatchError(error instanceof Error ? error.message : "Recommendations are unavailable. Enter your requirements manually.");
+    } finally {
+      setMatching(false);
+    }
+  };
+
+  const addMatchesToRequest = () => {
+    const lines = recommendations
+      .filter((item) => item.selected)
+      .map((item) => {
+        const product = catalogProducts.find((candidate) => candidate.id === item.productId);
+        return product ? `${item.quantity} × ${product.name}` : null;
+      })
+      .filter((line): line is string => line !== null);
+    if (lines.length === 0) {
+      toast.error("Select at least one product to add.");
+      return;
+    }
+    const existing = form.items.trim();
+    const nextItems = [existing, ...lines].filter(Boolean).join("\n");
+    if (nextItems.length > 3000) {
+      toast.error("The requirement list is full. Shorten it before adding suggested products.");
+      return;
+    }
+    setForm({ ...form, items: nextItems });
+    toast.success("Selected products added to your requirement list. Review and edit it before submitting.");
+  };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -290,6 +374,90 @@ function ProcurementPage() {
               />
               <span className="mt-1 block text-xs text-muted-foreground">{form.items.length}/3000 characters</span>
             </label>
+
+            <section aria-labelledby="procurement-match-heading" className="rounded-lg border border-border bg-muted/30 p-4 sm:p-5">
+              <div className="flex items-start gap-3">
+                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <div className="min-w-0 flex-1">
+                  <h3 id="procurement-match-heading" className="font-semibold">Find matching catalog products</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Get suggestions from your requirement list. Confirm editions and specifications with our procurement team before purchase.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={findMatches}
+                    disabled={matching || catalogLoading || form.items.trim().length < 3}
+                    className="mt-3 inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <Sparkles className="h-4 w-4" aria-hidden="true" />
+                    {matching ? "Finding matches…" : catalogLoading ? "Loading catalog…" : "Suggest matching products"}
+                  </button>
+                </div>
+              </div>
+
+              {matchError && <p role="status" className="mt-4 text-sm text-muted-foreground">{matchError}</p>}
+              {clarification && recommendations.length > 0 && (
+                <p role="status" className="mt-4 text-sm text-muted-foreground">{clarification}</p>
+              )}
+              {recommendations.length > 0 && (
+                <div className="mt-4 border-t border-border pt-4">
+                  <p className="text-sm font-semibold">Review suggested products</p>
+                  <ul className="mt-3 divide-y divide-border">
+                    {recommendations.map((item) => {
+                      const product = catalogProducts.find((candidate) => candidate.id === item.productId);
+                      if (!product) return null;
+                      return (
+                        <li key={item.productId} className="grid gap-3 py-3 sm:grid-cols-[minmax(0,1fr)_110px] sm:items-start">
+                          <label className="flex min-w-0 items-start gap-3">
+                            <input
+                              type="checkbox"
+                              checked={item.selected}
+                              onChange={(event) => setRecommendations((current) => current.map((suggestion) =>
+                                suggestion.productId === item.productId ? { ...suggestion, selected: event.target.checked } : suggestion,
+                              ))}
+                              className="mt-1 h-4 w-4 shrink-0 accent-primary"
+                            />
+                            <span className="min-w-0">
+                              <span className="block text-sm font-semibold">{product.name}</span>
+                              <span className="mt-1 block text-xs text-muted-foreground">{item.reason}</span>
+                            </span>
+                          </label>
+                          <label className="flex items-center gap-2 pl-7 text-sm sm:pl-0">
+                            <span className="text-muted-foreground">Qty</span>
+                            <input
+                              type="number"
+                              min={1}
+                              max={1000}
+                              step={1}
+                              inputMode="numeric"
+                              aria-label={`Quantity for ${product.name}`}
+                              value={item.quantity}
+                              onChange={(event) => {
+                                const quantity = Number(event.target.value);
+                                setRecommendations((current) => current.map((suggestion) =>
+                                  suggestion.productId === item.productId
+                                    ? { ...suggestion, quantity: Number.isInteger(quantity) ? Math.max(1, Math.min(1000, quantity)) : 1 }
+                                    : suggestion,
+                                ));
+                              }}
+                              className="w-20 rounded-md border border-input bg-background px-2 py-2 text-sm"
+                            />
+                          </label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={addMatchesToRequest}
+                    className="mt-3 inline-flex min-h-10 items-center justify-center rounded-md border border-border bg-background px-4 py-2 text-sm font-semibold hover:bg-muted"
+                  >
+                    Add selected to requirement list
+                  </button>
+                  <p className="mt-2 text-xs text-muted-foreground">Suggestions are not a final quote or confirmation of stock. Your original request stays in the list for review.</p>
+                </div>
+              )}
+            </section>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block">
