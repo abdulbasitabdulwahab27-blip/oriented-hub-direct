@@ -1,5 +1,6 @@
 import { createOpenAI } from "@ai-sdk/openai";
 import { APICallError, Output, streamText } from "ai";
+import { setResponseHeader } from "@tanstack/react-start/server";
 import { z } from "zod";
 
 const outputSchema = z.object({
@@ -27,16 +28,19 @@ type MatchInput = {
   }>;
 };
 
-function createRunIdFetch(initialRunId?: string): typeof fetch {
+function createRunIdFetch(initialRunId?: string) {
   let runId = initialRunId?.trim() || undefined;
-  return async (input, init) => {
-    const headers = new Headers(init?.headers);
-    if (runId && !headers.has("X-Lovable-AIG-Run-ID")) {
-      headers.set("X-Lovable-AIG-Run-ID", runId);
-    }
-    const response = await fetch(input, { ...init, headers });
-    runId ??= response.headers.get("X-Lovable-AIG-Run-ID")?.trim() || undefined;
-    return response;
+  return {
+    getRunId: () => runId,
+    fetch: async (input: RequestInfo | URL, init?: RequestInit) => {
+      const headers = new Headers(init?.headers);
+      if (runId && !headers.has("X-Lovable-AIG-Run-ID")) {
+        headers.set("X-Lovable-AIG-Run-ID", runId);
+      }
+      const response = await fetch(input, { ...init, headers });
+      runId ??= response.headers.get("X-Lovable-AIG-Run-ID")?.trim() || undefined;
+      return response;
+    },
   };
 }
 
@@ -79,6 +83,7 @@ function providerMessage(error: unknown): string {
 
 export async function matchProcurementProducts(input: MatchInput) {
   const runId = input.request.headers.get("X-Lovable-AIG-Run-ID")?.trim() || undefined;
+  const runIdFetch = createRunIdFetch(runId);
   const provider = createOpenAI({
     baseURL: "https://ai.gateway.lovable.dev/v1",
     apiKey: input.apiKey,
@@ -86,7 +91,7 @@ export async function matchProcurementProducts(input: MatchInput) {
       "Lovable-API-Key": input.apiKey,
       "X-Lovable-AIG-SDK": "vercel-ai-sdk",
     },
-    fetch: createRunIdFetch(runId),
+    fetch: runIdFetch.fetch,
   });
 
   const result = streamText({
@@ -110,6 +115,8 @@ export async function matchProcurementProducts(input: MatchInput) {
 
   try {
     const generated = await result.output;
+    const gatewayRunId = runIdFetch.getRunId();
+    if (gatewayRunId) setResponseHeader("X-Lovable-AIG-Run-ID", gatewayRunId);
     if (!generated) throw new ProcurementMatcherError("No recommendations were returned.");
     const allowedIds = new Set(input.candidates.map((candidate) => candidate.id));
     const seen = new Set<string>();

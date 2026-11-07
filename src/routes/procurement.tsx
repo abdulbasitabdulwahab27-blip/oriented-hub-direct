@@ -164,7 +164,12 @@ function ProcurementPage() {
       return;
     }
     const existing = form.items.trim();
-    setForm({ ...form, items: [existing, ...lines].filter(Boolean).join("\n") });
+    const nextItems = [existing, ...lines].filter(Boolean).join("\n");
+    if (nextItems.length > 3000) {
+      toast.error("The requirement list is full. Shorten it before adding suggested products.");
+      return;
+    }
+    setForm({ ...form, items: nextItems });
     toast.success("Selected products added to your requirement list. Review and edit it before submitting.");
   };
 
